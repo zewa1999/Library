@@ -12,6 +12,7 @@
 // <summary></summary>
 // ***********************************************************************
 using Proiect_.NET;
+using Proiect_.NET.Injection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +37,12 @@ namespace Library.UI
             ConfigurationEditor.SaveProperties(properties);
         }
 
-        //public static void InitializeProperty(ConfigurationReader configReader, string propertyName)
+        public static void AddDepencies()
+        {
+            Injector.Inject();
+            var kernel = Injector.Kernel;
+        }        //public static void InitializeProperty(ConfigurationReader configReader, string propertyName)
+
         //{
         //    if (int.TryParse(configReader.InitializeProperty(propertyName)))
         //    {

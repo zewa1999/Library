@@ -12,11 +12,10 @@ using System.Threading.Tasks;
 
 namespace Library.ServiceLayer.Services
 {
-    public class BorrowerService : BaseService<Borrower, IBorrowerRepository>, IBorrowerService
+    public class AccountService : BaseService<Account, IAccountRepository>, IAccountService
     {
-        public BorrowerService()
-            : base(Injector.Get<IBorrowerRepository>(), new BorrowerValidator())
-
+        public AccountService()
+            : base(Injector.Get<IAccountRepository>(), new AccountValidator())
         {
         }
     }

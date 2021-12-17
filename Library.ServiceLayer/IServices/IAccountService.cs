@@ -1,4 +1,5 @@
 ﻿using Library.DomainLayer;
+using Library.DomainLayer.Person;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Library.ServiceLayer.IServices
 {
-    public interface IPropertiesService : IBaseService<Properties>
+    public interface IAccountService : IBaseService<Account>
     {
     }
 }

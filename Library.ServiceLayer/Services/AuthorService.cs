@@ -8,18 +8,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Library.DataLayer.Interfaces;
+using Library.DomainLayer.Validators;
+using Proiect_.NET.Injection;
 
 namespace Library.ServiceLayer.Services
 {
-    public class AuthorService : IAuthorService
+    public class AuthorService : BaseService<Author, IAuthorRepository>, IAuthorService
     {
-        public IAuthorRepository _authRepo;
-        public IPropertiesRepository _propRepo;
-
-        public AuthorService(IAuthorRepository authRepo, IPropertiesRepository propRepo)
+        public AuthorService()
+            : base(Injector.Get<IAuthorRepository>(), new AuthorValidator())
         {
-            _authRepo = authRepo;
-            _propRepo = propRepo;
         }
     }
 }

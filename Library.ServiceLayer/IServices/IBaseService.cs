@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Library.ServiceLayer.IServices
 {
+    using FluentValidation.Results;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -16,29 +17,24 @@ namespace Library.ServiceLayer.IServices
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public interface IBaseService<T>
+        where T : class
     {
         /// <summary>
         /// Inserts the specified entity.
         /// </summary>
         /// <param name="entity">The entity.</param>
-        void Insert(T entity);
+        ValidationResult Insert(T entity);
 
         /// <summary>
         /// Updates the specified item.
         /// </summary>
         /// <param name="item">The item.</param>
-        void Update(T item);
+        ValidationResult Update(T entity);
 
         /// <summary>
         /// Deletes the specified identifier.
         /// </summary>
         /// <param name="id">The identifier.</param>
-        void Delete(object id);
-
-        /// <summary>
-        /// Deletes the specified entity.
-        /// </summary>
-        /// <param name="entity">The entity.</param>
         void Delete(T entity);
 
         /// <summary>
@@ -55,9 +51,6 @@ namespace Library.ServiceLayer.IServices
         /// <param name="orderBy">The order by.</param>
         /// <param name="includeProperties">The include properties.</param>
         /// <returns>IEnumerable&lt;T&gt;.</returns>
-        IEnumerable<T> Get(
-            Expression<Func<T, bool>> filter = null,
-            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
-            string includeProperties = "");
+        IEnumerable<T> GetAll();
     }
 }

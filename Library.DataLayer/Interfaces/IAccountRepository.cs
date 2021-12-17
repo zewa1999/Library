@@ -1,13 +1,14 @@
 ﻿using Library.DomainLayer;
+using Library.DomainLayer.Person;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Library.ServiceLayer.IServices
+namespace Library.DataLayer.Interfaces
 {
-    public interface IPropertiesService : IBaseService<Properties>
+    public interface IAccountRepository : IRepository<Account>
     {
     }
 }

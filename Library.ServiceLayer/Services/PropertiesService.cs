@@ -1,6 +1,9 @@
-﻿using Library.DataLayer.Interfaces;
+﻿using Library.DataLayer.Concretes;
+using Library.DataLayer.Interfaces;
 using Library.DomainLayer;
+using Library.DomainLayer.Validators;
 using Library.ServiceLayer.IServices;
+using Proiect_.NET.Injection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,15 +12,11 @@ using System.Threading.Tasks;
 
 namespace Library.ServiceLayer.Services
 {
-    public class PropertiesService : IPropertiesService
+    public class PropertiesService : BaseService<Properties, IPropertiesRepository>, IPropertiesService
     {
-        public IAuthorRepository _authRepo;
-        public IPropertiesRepository _propRepo;
-
-        public PropertiesService(IAuthorRepository authRepo, IPropertiesRepository propRepo)
+        public PropertiesService()
+            : base(Injector.Get<IPropertiesRepository>(), new PropertiesValidator())
         {
-            _authRepo = authRepo;
-            _propRepo = propRepo;
         }
     }
 }

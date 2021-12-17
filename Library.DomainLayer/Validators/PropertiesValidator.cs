@@ -21,12 +21,12 @@ namespace Library.DomainLayer.Validators
     /// Implements the <see cref="FluentValidation.AbstractValidator{Library.DomainLayer.Properties}" />
     /// </summary>
     /// <seealso cref="FluentValidation.AbstractValidator{Library.DomainLayer.Properties}" />
-    public class PropertiesModelValidator : AbstractValidator<Properties>
+    public class PropertiesValidator : AbstractValidator<Properties>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PropertiesModelValidator"/> class.
+        /// Initializes a new instance of the <see cref="PropertiesValidator"/> class.
         /// </summary>
-        public PropertiesModelValidator()
+        public PropertiesValidator()
         {
             RuleFor(p => p.Domenii)
                 .GreaterThanOrEqualTo(1);
