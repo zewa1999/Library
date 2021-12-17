@@ -1,4 +1,5 @@
-﻿using Library.DomainLayer;
+﻿using Library.DataLayer.Interfaces;
+using Library.DomainLayer;
 using Library.DomainLayer.Person;
 using Library.ServiceLayer.IServices;
 using System;
@@ -9,7 +10,15 @@ using System.Threading.Tasks;
 
 namespace Library.ServiceLayer.Services
 {
-    public class DomainService : BaseService<Domain>, IDomainService
+    public class DomainService : IDomainService
     {
+        public IAuthorRepository _authRepo;
+        public IPropertiesRepository _propRepo;
+
+        public DomainService(IAuthorRepository authRepo, IPropertiesRepository propRepo)
+        {
+            _authRepo = authRepo;
+            _propRepo = propRepo;
+        }
     }
 }

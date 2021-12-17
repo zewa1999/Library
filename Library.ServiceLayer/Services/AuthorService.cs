@@ -11,7 +11,7 @@ using Library.DataLayer.Interfaces;
 
 namespace Library.ServiceLayer.Services
 {
-    public class AuthorService : BaseService<Author>, IAuthorService
+    public class AuthorService : IAuthorService
     {
         public IAuthorRepository _authRepo;
         public IPropertiesRepository _propRepo;

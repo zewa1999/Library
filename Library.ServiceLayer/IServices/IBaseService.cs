@@ -1,14 +1,20 @@
-﻿using Library.DataLayer.Interfaces;
-using Library.DomainLayer.Person;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Library.ServiceLayer.IServices
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Linq.Expressions;
+
+    /// <summary>
+    /// Interface for the repository.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public interface IBaseService<T>
     {
         /// <summary>
