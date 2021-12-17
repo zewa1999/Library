@@ -13,11 +13,13 @@ namespace Library.ServiceLayer.Services
 {
     public class AuthorService : BaseService<Author>, IAuthorService
     {
-        public IAuthorRepository _repo;
+        public IAuthorRepository _authRepo;
+        public IPropertiesRepository _propRepo;
 
-        public AuthorService(IAuthorRepository repo)
+        public AuthorService(IAuthorRepository authRepo, IPropertiesRepository propRepo)
         {
-            _repo = repo;
+            _authRepo = authRepo;
+            _propRepo = propRepo;
         }
     }
 }

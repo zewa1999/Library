@@ -20,7 +20,7 @@ namespace Library.DomainLayer
     /// Class PropertiesModel.
     /// </summary>
     ///
-    public class PropertiesModel
+    public class Properties
     {
         [Required]
         public int Id { get; set; }

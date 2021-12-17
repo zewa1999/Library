@@ -74,7 +74,7 @@ namespace Library.DataLayer
         /// Gets or sets or set the Properties table.
         /// </summary>
         /// <value>The properties.</value>
-        public DbSet<PropertiesModel> Properties { get; set; }
+        public DbSet<Properties> Properties { get; set; }
 
         /// <summary>
         /// Method used to configure the options for the context of the database.

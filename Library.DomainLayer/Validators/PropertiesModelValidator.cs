@@ -18,10 +18,10 @@ namespace Library.DomainLayer.Validators
 
     /// <summary>
     /// Class PropertiesModelValidator.
-    /// Implements the <see cref="FluentValidation.AbstractValidator{Library.DomainLayer.PropertiesModel}" />
+    /// Implements the <see cref="FluentValidation.AbstractValidator{Library.DomainLayer.Properties}" />
     /// </summary>
-    /// <seealso cref="FluentValidation.AbstractValidator{Library.DomainLayer.PropertiesModel}" />
-    public class PropertiesModelValidator : AbstractValidator<PropertiesModel>
+    /// <seealso cref="FluentValidation.AbstractValidator{Library.DomainLayer.Properties}" />
+    public class PropertiesModelValidator : AbstractValidator<Properties>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="PropertiesModelValidator"/> class.

@@ -41,15 +41,15 @@ namespace Proiect_.NET
         /// Loads all properties.
         /// </summary>
         /// <returns>PropertiesModel.</returns>
-        public static PropertiesModel LoadAllProperties()
+        public static Properties LoadAllProperties()
         {
-            PropertiesModel properties = null;
+            Properties properties = null;
             try
             {
                 using (StreamReader r = new StreamReader("AppSettings.json"))
                 {
                     string json = r.ReadToEnd();
-                    properties = JsonConvert.DeserializeObject<PropertiesModel>(json);
+                    properties = JsonConvert.DeserializeObject<Properties>(json);
                 }
             }
             catch (Exception ex)
@@ -70,7 +70,7 @@ namespace Proiect_.NET
         /// Saves the properties.
         /// </summary>
         /// <param name="properties">The properties.</param>
-        public static void SaveProperties(PropertiesModel properties)
+        public static void SaveProperties(Properties properties)
         {
             //_logger.Info($"Entering SaveProperties method.");
 
