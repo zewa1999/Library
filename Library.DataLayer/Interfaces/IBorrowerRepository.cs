@@ -18,7 +18,7 @@ namespace Library.DataLayer.Interfaces
     /// <summary>
     /// Interface for the borrower controller.
     /// </summary>
-    internal interface IBorrowerRepository : IRepository<Borrower>
+    public interface IBorrowerRepository : IRepository<Borrower>
     {
     }
 }

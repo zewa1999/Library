@@ -5,11 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Library.DataLayer\Library.DataLayer.csproj" />
+    <ProjectReference Include="..\Library.DomainLayer\Library.DomainLayer.csproj" />
   </ItemGroup>
 
 </Project>

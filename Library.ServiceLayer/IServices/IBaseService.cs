@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Library.ServiceLayer.IServices
 {
-    public interface IService<T>
+    public interface IBaseService<T>
     {
         /// <summary>
         /// Inserts the specified entity.

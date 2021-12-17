@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Library.ServiceLayer.IServices
 {
-    public interface IAuthorService : IService<Author>
+    public interface IAuthorService : IBaseService<Author>
     {
     }
 }

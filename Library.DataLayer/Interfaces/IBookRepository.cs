@@ -18,7 +18,7 @@ namespace Library.DataLayer.Interfaces
     /// <summary>
     /// Interface for the book controller.
     /// </summary>
-    internal interface IBookRepository : IRepository<Book>
+    public interface IBookRepository : IRepository<Book>
     {
     }
 }

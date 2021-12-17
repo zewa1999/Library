@@ -1,13 +1,14 @@
 ﻿using Library.DomainLayer.Person;
+using Library.ServiceLayer.IServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Library.ServiceLayer.IServices
+namespace Library.ServiceLayer.Services
 {
-    public interface ILibrarianService : IBaseService<Librarian>
+    public class BorrowerService : BaseService<Borrower>, IBorrowerService
     {
     }
 }

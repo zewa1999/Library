@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Library.ServiceLayer.IServices
 {
-    public interface IBookService : IService<Book>
+    public interface IBookService : IBaseService<Book>
     {
     }
 }

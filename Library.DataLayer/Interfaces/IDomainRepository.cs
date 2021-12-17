@@ -18,7 +18,7 @@ namespace Library.DataLayer.Interfaces
     /// <summary>
     /// Interface for the domain controller.
     /// </summary>
-    internal interface IDomainRepository : IRepository<Domain>
+    public interface IDomainRepository : IRepository<Domain>
     {
     }
 }

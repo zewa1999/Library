@@ -19,7 +19,7 @@ namespace Library.DataLayer.Interfaces
     /// <summary>
     /// Interface for the author controller.
     /// </summary>
-    internal interface IAuthorRepository : IRepository<Author>
+    public interface IAuthorRepository : IRepository<Author>
     {
     }
 }

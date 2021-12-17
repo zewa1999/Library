@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Library.ServiceLayer.IServices
 {
-    public interface IBorrowService : IService<Borrow>
+    public interface IBorrowService : IBaseService<Borrow>
     {
     }
 }

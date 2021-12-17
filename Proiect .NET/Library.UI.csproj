@@ -21,6 +21,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Library.DataLayer\Library.DataLayer.csproj" />
+    <ProjectReference Include="..\Library.DomainLayer\Library.DomainLayer.csproj" />
+    <ProjectReference Include="..\Library.ServiceLayer\Library.ServiceLayer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="App.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
