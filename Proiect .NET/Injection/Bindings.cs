@@ -3,11 +3,6 @@ using Library.DataLayer.Interfaces;
 using Library.ServiceLayer.IServices;
 using Library.ServiceLayer.Services;
 using Ninject.Modules;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Proiect_.NET.Injection
 {

@@ -69,6 +69,10 @@ namespace Library.ServiceLayer.Services
             {
                 _repository.Insert(entity);
             }
+            else
+            {
+                Utils.LogErrors(result);
+            }
 
             return result;
         }
@@ -81,9 +85,14 @@ namespace Library.ServiceLayer.Services
         public ValidationResult Update(T entity)
         {
             var result = _validator.Validate(entity);
+            Utils.LogErrors(result);
             if (result.IsValid)
             {
                 _repository.Update(entity);
+            }
+            else
+            {
+                Utils.LogErrors(result);
             }
 
             return result;

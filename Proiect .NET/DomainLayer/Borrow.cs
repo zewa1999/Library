@@ -17,6 +17,7 @@ namespace Library.DomainLayer
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     /// <summary>
     /// Class Borrow.
@@ -27,6 +28,8 @@ namespace Library.DomainLayer
         /// Gets or sets the identifier.
         /// </summary>
         /// <value>The identifier.</value>
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public int Id { get; set; }
 
         /// <summary>
@@ -41,6 +44,6 @@ namespace Library.DomainLayer
         /// </summary>
         /// <value>The borrowed books.</value>
         [Required]
-        public virtual ICollection<Book> BorrowedBooks { get; set; }
+        public virtual ICollection<Book>? BorrowedBooks { get; set; }
     }
 }

@@ -15,6 +15,7 @@
 namespace Library.DomainLayer
 {
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     /// <summary>
     /// Class PropertiesModel.
@@ -25,7 +26,8 @@ namespace Library.DomainLayer
         /// Gets or sets the identifier.
         /// </summary>
         /// <value>The identifier.</value>
-        [Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public int Id { get; set; }
 
         /// <summary>

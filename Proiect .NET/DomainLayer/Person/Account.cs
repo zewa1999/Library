@@ -15,6 +15,7 @@
 namespace Library.DomainLayer.Person
 {
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     /// <summary>
     /// Class Account.
@@ -25,6 +26,9 @@ namespace Library.DomainLayer.Person
         /// Gets or sets the identifier.
         /// </summary>
         /// <value>The identifier.</value>
+
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public int Id { get; set; }
 
         /// <summary>

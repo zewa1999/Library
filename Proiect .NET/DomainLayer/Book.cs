@@ -15,6 +15,7 @@ namespace Library.DomainLayer
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     /// <summary>
     /// Class Book.
@@ -25,6 +26,8 @@ namespace Library.DomainLayer
         /// Gets or sets the identifier.
         /// </summary>
         /// <value>The identifier.</value>
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
         public int Id { get; set; }
 
         /// <summary>

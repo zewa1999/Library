@@ -15,6 +15,7 @@ namespace Library.DomainLayer
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     /// <summary>
     /// Class Author.
@@ -25,7 +26,9 @@ namespace Library.DomainLayer
         /// Gets or sets the identifier.
         /// </summary>
         /// <value>The identifier.</value>
-        public int Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
+        public int AuthorId { get; set; }
 
         /// <summary>
         /// Gets or sets the first name.
@@ -47,7 +50,6 @@ namespace Library.DomainLayer
         /// Gets or sets the books.
         /// </summary>
         /// <value>The books.</value>
-        [Required]
         public virtual ICollection<Book> Books { get; set; }
     }
 }

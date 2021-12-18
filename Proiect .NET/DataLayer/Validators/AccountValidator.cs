@@ -26,8 +26,7 @@ namespace Library.DataLayer.Validators
         {
             RuleFor(a => a.PhoneNumber)
                 .NotEmpty().WithMessage("Empty phone number")
-                .Length(10).WithMessage("Lenght should be 10")
-                .Matches(@"^[2-9]\d{2}-\d{3}-\d{4}$").WithMessage("Please add a valid phone number");
+                .Length(10).WithMessage("Lenght should be 10");
 
             RuleFor(a => a.Email)
                 .EmailAddress().WithMessage("The email is not valid");

@@ -40,13 +40,23 @@ namespace Library.UI
         {
             Injector.Initialize();
             var service = Injector.Create<IAccountService>();
+            var borrowerService = Injector.Create<IBorrowerService>();
             var account = new Account()
             {
-                PhoneNumber = "074124sda324s",
-                Email = "Ado.231net.com"
+                PhoneNumber = "0732456789",
+                Email = "ado@net.com"
+            };
+            service.Insert(account);
+
+            var borrower = new Borrower()
+            {
+                LastName = "Marcel",
+                FirstName = "Garcea",
+                Address = "Alexandru ioan cuza nr 5",
+                Account = account
             };
 
-            service.Insert(account);
+            borrowerService.Insert(borrower);
         }
     }
 }

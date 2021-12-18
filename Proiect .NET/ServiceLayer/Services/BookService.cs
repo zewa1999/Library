@@ -11,13 +11,11 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using FluentValidation.Results;
 using Library.DataLayer.Interfaces;
 using Library.DataLayer.Validators;
 using Library.DomainLayer;
 using Library.ServiceLayer.IServices;
 using Proiect_.NET.Injection;
-using System.Collections.Generic;
 
 namespace Library.ServiceLayer.Services
 {

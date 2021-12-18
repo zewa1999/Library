@@ -1,15 +1,10 @@
 ﻿using FluentValidation.Results;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.ServiceLayer
 {
     public static class Utils
     {
-        public static bool CheckErrors(ValidationResult results)
+        public static bool LogErrors(ValidationResult results)
         {
             if (results.IsValid == false)
             {
