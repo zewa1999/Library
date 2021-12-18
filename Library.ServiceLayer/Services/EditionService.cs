@@ -1,22 +1,42 @@
-﻿using Library.DataLayer.Interfaces;
+﻿// ***********************************************************************
+// Assembly         : Library.ServiceLayer
+// Author           : costa
+// Created          : 12-17-2021
+//
+// Last Modified By : costa
+// Last Modified On : 12-18-2021
+// ***********************************************************************
+// <copyright file="EditionService.cs" company="Library.ServiceLayer">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using FluentValidation.Results;
+using Library.DataLayer.Interfaces;
+using Library.DataLayer.Validators;
 using Library.DomainLayer;
-using Library.DomainLayer.Person;
-using Library.DomainLayer.Validators;
 using Library.ServiceLayer.IServices;
-using Proiect_.NET.Injection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.ServiceLayer.Services
 {
+    /// <summary>
+    /// Class EditionService.
+    /// Implements the <see cref="Library.ServiceLayer.Services.BaseService{Library.DomainLayer.Edition, Library.DataLayer.Interfaces.IEditionRepository}" />
+    /// Implements the <see cref="Library.ServiceLayer.IServices.IEditionService" />
+    /// </summary>
+    /// <seealso cref="Library.ServiceLayer.Services.BaseService{Library.DomainLayer.Edition, Library.DataLayer.Interfaces.IEditionRepository}" />
+    /// <seealso cref="Library.ServiceLayer.IServices.IEditionService" />
     public class EditionService : BaseService<Edition, IEditionRepository>, IEditionService
     {
-        public EditionService()
-            : base(Injector.Get<IEditionRepository>(), new EditionValidator())
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EditionService"/> class.
+        /// </summary>
+        /// <param name="editionRepository">The edition repository.</param>
+        /// <param name="propertiesRepository">The properties repository.</param>
+        public EditionService(IEditionRepository editionRepository, IPropertiesRepository propertiesRepository)
+            : base(editionRepository, propertiesRepository)
         {
+            _validator = new EditionValidator(propertiesRepository);
         }
     }
 }

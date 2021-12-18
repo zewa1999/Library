@@ -4,9 +4,9 @@
 // Created          : 11-29-2021
 //
 // Last Modified By : costa
-// Last Modified On : 11-29-2021
+// Last Modified On : 12-17-2021
 // ***********************************************************************
-// <copyright file="PropertiesModel.cs" company="Library.DomainLayer">
+// <copyright file="Properties.cs" company="Library.DomainLayer">
 //     Copyright (c) . All rights reserved.
 // </copyright>
 // <summary></summary>
@@ -19,9 +19,12 @@ namespace Library.DomainLayer
     /// <summary>
     /// Class PropertiesModel.
     /// </summary>
-    ///
     public class Properties
     {
+        /// <summary>
+        /// Gets or sets the identifier.
+        /// </summary>
+        /// <value>The identifier.</value>
         [Required]
         public int Id { get; set; }
 

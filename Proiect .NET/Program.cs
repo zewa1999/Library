@@ -33,8 +33,6 @@ namespace Library.UI
         /// <param name="args">The arguments.</param>
         public static void Main(string[] args)
         {
-            var properties = ConfigurationEditor.LoadAllProperties();
-            ConfigurationEditor.SaveProperties(properties);
         }
 
         public static void AddDepencies()

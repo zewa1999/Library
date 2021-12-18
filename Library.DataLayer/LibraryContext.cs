@@ -4,14 +4,17 @@
 // Created          : 11-25-2021
 //
 // Last Modified By : costa
-// Last Modified On : 12-08-2021
+// Last Modified On : 12-18-2021
 // ***********************************************************************
-// <copyright file="LibraryContext.cs" company="Library.DataLayer">
-//     Copyright (c) . All rights reserved.
+// <copyright file="LibraryContext.cs" Company Name="Transilvania University of Brasov">
+//    "Copyright (c) Costache Stelian-Andrei. All rights reserved." #
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-namespace Library.DataLayer
+/// <summary>
+/// The DataMapper namespace.
+/// </summary>
+namespace Library.DataLayer.DataMapper
 {
     using Library.DomainLayer;
     using Library.DomainLayer.Person;

@@ -1,23 +1,43 @@
-﻿using Library.DataLayer.Concretes;
-using Library.DomainLayer;
-using Library.DataLayer;
-using Library.ServiceLayer.IServices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// ***********************************************************************
+// Assembly         : Library.ServiceLayer
+// Author           : costa
+// Created          : 12-17-2021
+//
+// Last Modified By : costa
+// Last Modified On : 12-18-2021
+// ***********************************************************************
+// <copyright file="AuthorService.cs" company="Library.ServiceLayer">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using FluentValidation.Results;
 using Library.DataLayer.Interfaces;
-using Library.DomainLayer.Validators;
-using Proiect_.NET.Injection;
+using Library.DataLayer.Validators;
+using Library.DomainLayer;
+using Library.ServiceLayer.IServices;
+using System.Collections.Generic;
 
 namespace Library.ServiceLayer.Services
 {
+    /// <summary>
+    /// Class AuthorService.
+    /// Implements the <see cref="Library.ServiceLayer.Services.BaseService{Library.DomainLayer.Author, Library.DataLayer.Interfaces.IAuthorRepository}" />
+    /// Implements the <see cref="Library.ServiceLayer.IServices.IAuthorService" />
+    /// </summary>
+    /// <seealso cref="Library.ServiceLayer.Services.BaseService{Library.DomainLayer.Author, Library.DataLayer.Interfaces.IAuthorRepository}" />
+    /// <seealso cref="Library.ServiceLayer.IServices.IAuthorService" />
     public class AuthorService : BaseService<Author, IAuthorRepository>, IAuthorService
     {
-        public AuthorService()
-            : base(Injector.Get<IAuthorRepository>(), new AuthorValidator())
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AuthorService"/> class.
+        /// </summary>
+        /// <param name="authorRepository">The author repository.</param>
+        /// <param name="propertiesRepository">The properties repository.</param>
+        public AuthorService(IAuthorRepository authorRepository, IPropertiesRepository propertiesRepository)
+            : base(authorRepository, propertiesRepository)
         {
+            _validator = new AuthorValidator(propertiesRepository);
         }
     }
 }
