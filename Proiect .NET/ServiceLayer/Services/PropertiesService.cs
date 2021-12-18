@@ -17,6 +17,7 @@ using Library.DataLayer.Interfaces;
 using Library.DataLayer.Validators;
 using Library.DomainLayer;
 using Library.ServiceLayer.IServices;
+using Proiect_.NET.Injection;
 using System;
 using System.Collections.Generic;
 
@@ -40,9 +41,9 @@ namespace Library.ServiceLayer.Services
         /// Initializes a new instance of the <see cref="PropertiesService"/> class.
         /// </summary>
         /// <param name="propertiesRepository">The properties repository.</param>
-        public PropertiesService(IPropertiesRepository propertiesRepository)
+        public PropertiesService()
         {
-            _repository = propertiesRepository;
+            _repository = Injector.Create<IPropertiesRepository>();
             _validator = new PropertiesValidator(_repository);
         }
 

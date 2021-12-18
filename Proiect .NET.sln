@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31911.196
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library.UI", "Proiect .NET\Library.UI.csproj", "{78C4E216-998D-4ED3-8841-88E15A1CC62E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library", "Proiect .NET\Library.csproj", "{78C4E216-998D-4ED3-8841-88E15A1CC62E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C5D13AD8-1D79-4B60-9501-59C4637CCBAB}"
 EndProject

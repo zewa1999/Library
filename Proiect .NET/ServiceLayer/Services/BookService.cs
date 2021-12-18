@@ -16,6 +16,7 @@ using Library.DataLayer.Interfaces;
 using Library.DataLayer.Validators;
 using Library.DomainLayer;
 using Library.ServiceLayer.IServices;
+using Proiect_.NET.Injection;
 using System.Collections.Generic;
 
 namespace Library.ServiceLayer.Services
@@ -27,17 +28,17 @@ namespace Library.ServiceLayer.Services
     /// </summary>
     /// <seealso cref="Library.ServiceLayer.Services.BaseService{Library.DomainLayer.Book, Library.DataLayer.Interfaces.IBookRepository}" />
     /// <seealso cref="Library.ServiceLayer.IServices.IBookService" />
-    public class BookService : BaseService<Book, IBookRepository>, IBookService
+    public class BookService : BaseService<Book, IBookRepository, IPropertiesRepository>, IBookService
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="BookService"/> class.
         /// </summary>
         /// <param name="bookRepository">The book repository.</param>
         /// <param name="propertiesRepository">The properties repository.</param>
-        public BookService(IBookRepository bookRepository, IPropertiesRepository propertiesRepository)
-            : base(bookRepository, propertiesRepository)
+        public BookService()
+            : base(Injector.Create<IBookRepository>(), Injector.Create<IPropertiesRepository>())
         {
-            _validator = new BookValidator(propertiesRepository);
+            _validator = new BookValidator(_propertiesRepository);
         }
     }
 }

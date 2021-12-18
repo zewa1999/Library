@@ -15,15 +15,17 @@
   </ItemGroup>
 
   <ItemGroup>
-	  <PackageReference Include="FluentValidation" Version="10.3.5" />
-	  <PackageReference Include="log4net" Version="2.0.13" />
-	  <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+	  <PackageReference Include="FluentValidation" Version="10.3.6" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.0">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.0" />
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.0">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
 	  <PackageReference Include="Ninject" Version="3.3.4" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Library.Injection\Library.Injection.csproj" />
-    <ProjectReference Include="..\Library.ServiceLayer\Library.ServiceLayer.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,9 +40,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="DataLayer\App.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="nlog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

@@ -16,6 +16,7 @@ using Library.DataLayer.Interfaces;
 using Library.DataLayer.Validators;
 using Library.DomainLayer;
 using Library.ServiceLayer.IServices;
+using Proiect_.NET.Injection;
 using System.Collections.Generic;
 
 namespace Library.ServiceLayer.Services
@@ -27,17 +28,17 @@ namespace Library.ServiceLayer.Services
     /// </summary>
     /// <seealso cref="Library.ServiceLayer.Services.BaseService{Library.DomainLayer.Author, Library.DataLayer.Interfaces.IAuthorRepository}" />
     /// <seealso cref="Library.ServiceLayer.IServices.IAuthorService" />
-    public class AuthorService : BaseService<Author, IAuthorRepository>, IAuthorService
+    public class AuthorService : BaseService<Author, IAuthorRepository, IPropertiesRepository>, IAuthorService
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthorService"/> class.
         /// </summary>
         /// <param name="authorRepository">The author repository.</param>
         /// <param name="propertiesRepository">The properties repository.</param>
-        public AuthorService(IAuthorRepository authorRepository, IPropertiesRepository propertiesRepository)
-            : base(authorRepository, propertiesRepository)
+        public AuthorService()
+            : base(Injector.Create<IAuthorRepository>(), Injector.Create<IPropertiesRepository>())
         {
-            _validator = new AuthorValidator(propertiesRepository);
+            _validator = new AuthorValidator(_propertiesRepository);
         }
     }
 }

@@ -16,6 +16,7 @@ using Library.DataLayer.Interfaces;
 using Library.DataLayer.Validators;
 using Library.DomainLayer.Person;
 using Library.ServiceLayer.IServices;
+using Proiect_.NET.Injection;
 
 namespace Library.ServiceLayer.Services
 {
@@ -26,17 +27,17 @@ namespace Library.ServiceLayer.Services
     /// </summary>
     /// <seealso cref="Library.ServiceLayer.Services.BaseService{Library.DomainLayer.Person.Librarian, Library.DataLayer.Interfaces.ILibrarianRepository}" />
     /// <seealso cref="Library.ServiceLayer.IServices.ILibrarianService" />
-    public class LibrarianService : BaseService<Librarian, ILibrarianRepository>, ILibrarianService
+    public class LibrarianService : BaseService<Librarian, ILibrarianRepository, IPropertiesRepository>, ILibrarianService
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="LibrarianService"/> class.
         /// </summary>
         /// <param name="librarianRepository">The librarian repository.</param>
         /// <param name="propertiesRepository">The properties repository.</param>
-        public LibrarianService(ILibrarianRepository librarianRepository, IPropertiesRepository propertiesRepository)
-            : base(librarianRepository, propertiesRepository)
+        public LibrarianService()
+            : base(Injector.Create<ILibrarianRepository>(), Injector.Create<IPropertiesRepository>())
         {
-            _validator = new LibrarianValidator(propertiesRepository);
+            _validator = new LibrarianValidator(_propertiesRepository);
         }
     }
 }

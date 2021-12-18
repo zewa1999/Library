@@ -16,6 +16,7 @@ using Library.DataLayer.Interfaces;
 using Library.DataLayer.Validators;
 using Library.DomainLayer.Person;
 using Library.ServiceLayer.IServices;
+using Proiect_.NET.Injection;
 
 namespace Library.ServiceLayer.Services
 {
@@ -26,17 +27,17 @@ namespace Library.ServiceLayer.Services
     /// </summary>
     /// <seealso cref="Library.ServiceLayer.Services.BaseService{Library.DomainLayer.Person.Account, Library.DataLayer.Interfaces.IAccountRepository}" />
     /// <seealso cref="Library.ServiceLayer.IServices.IAccountService" />
-    public class AccountService : BaseService<Account, IAccountRepository>, IAccountService
+    public class AccountService : BaseService<Account, IAccountRepository, IPropertiesRepository>, IAccountService
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="AccountService"/> class.
         /// </summary>
         /// <param name="accountRepository">The account repository.</param>
         /// <param name="propertiesRepository">The properties repository.</param>
-        public AccountService(IAccountRepository accountRepository, IPropertiesRepository propertiesRepository)
-            : base(accountRepository, propertiesRepository)
+        public AccountService()
+            : base(Injector.Create<IAccountRepository>(), Injector.Create<IPropertiesRepository>())
         {
-            _validator = new AccountValidator(propertiesRepository);
+            _validator = new AccountValidator(_propertiesRepository);
         }
     }
 }

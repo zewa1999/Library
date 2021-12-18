@@ -16,6 +16,7 @@ using Library.DataLayer.Interfaces;
 using Library.DataLayer.Validators;
 using Library.DomainLayer;
 using Library.ServiceLayer.IServices;
+using Proiect_.NET.Injection;
 using System.Collections.Generic;
 
 namespace Library.ServiceLayer.Services
@@ -27,17 +28,17 @@ namespace Library.ServiceLayer.Services
     /// </summary>
     /// <seealso cref="Library.ServiceLayer.Services.BaseService{Library.DomainLayer.Domain, Library.DataLayer.Interfaces.IDomainRepository}" />
     /// <seealso cref="Library.ServiceLayer.IServices.IDomainService" />
-    public class DomainService : BaseService<Domain, IDomainRepository>, IDomainService
+    public class DomainService : BaseService<Domain, IDomainRepository, IPropertiesRepository>, IDomainService
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="DomainService"/> class.
         /// </summary>
         /// <param name="domainRepository">The domain repository.</param>
         /// <param name="propertiesRepository">The properties repository.</param>
-        public DomainService(IDomainRepository domainRepository, IPropertiesRepository propertiesRepository)
-             : base(domainRepository, propertiesRepository)
+        public DomainService()
+             : base(Injector.Create<IDomainRepository>(), Injector.Create<IPropertiesRepository>())
         {
-            _validator = new DomainValidator(propertiesRepository);
+            _validator = new DomainValidator(_propertiesRepository);
         }
     }
 }

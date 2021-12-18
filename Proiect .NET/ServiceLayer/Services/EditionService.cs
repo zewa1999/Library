@@ -16,6 +16,7 @@ using Library.DataLayer.Interfaces;
 using Library.DataLayer.Validators;
 using Library.DomainLayer;
 using Library.ServiceLayer.IServices;
+using Proiect_.NET.Injection;
 
 namespace Library.ServiceLayer.Services
 {
@@ -26,17 +27,17 @@ namespace Library.ServiceLayer.Services
     /// </summary>
     /// <seealso cref="Library.ServiceLayer.Services.BaseService{Library.DomainLayer.Edition, Library.DataLayer.Interfaces.IEditionRepository}" />
     /// <seealso cref="Library.ServiceLayer.IServices.IEditionService" />
-    public class EditionService : BaseService<Edition, IEditionRepository>, IEditionService
+    public class EditionService : BaseService<Edition, IEditionRepository, IPropertiesRepository>, IEditionService
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="EditionService"/> class.
         /// </summary>
         /// <param name="editionRepository">The edition repository.</param>
         /// <param name="propertiesRepository">The properties repository.</param>
-        public EditionService(IEditionRepository editionRepository, IPropertiesRepository propertiesRepository)
-            : base(editionRepository, propertiesRepository)
+        public EditionService()
+            : base(Injector.Create<IEditionRepository>(), Injector.Create<IPropertiesRepository>())
         {
-            _validator = new EditionValidator(propertiesRepository);
+            _validator = new EditionValidator(_propertiesRepository);
         }
     }
 }

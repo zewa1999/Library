@@ -13,6 +13,8 @@
 // ***********************************************************************
 using Library.DataLayer.Concretes;
 using Library.DataLayer.Interfaces;
+using Library.DomainLayer.Person;
+using Library.ServiceLayer.IServices;
 using Library.ServiceLayer.Services;
 using Proiect_.NET;
 using Proiect_.NET.Injection;
@@ -37,7 +39,14 @@ namespace Library.UI
         public static void Main(string[] args)
         {
             Injector.Initialize();
-            IPropertiesRepository repo = Injector.Create<PropertiesRepository>();
+            var service = Injector.Create<IAccountService>();
+            var account = new Account()
+            {
+                PhoneNumber = "074124sda324s",
+                Email = "Ado.231net.com"
+            };
+
+            service.Insert(account);
         }
     }
 }

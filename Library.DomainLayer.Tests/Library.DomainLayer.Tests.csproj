@@ -16,8 +16,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Library.DomainLayer\Library.DomainLayer.csproj" />
-  </ItemGroup>
-
 </Project>

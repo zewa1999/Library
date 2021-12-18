@@ -17,6 +17,7 @@ using Library.DataLayer.Validators;
 using Library.DomainLayer;
 using Library.DomainLayer.Person;
 using Library.ServiceLayer.IServices;
+using Proiect_.NET.Injection;
 using System.Collections.Generic;
 
 namespace Library.ServiceLayer.Services
@@ -28,17 +29,17 @@ namespace Library.ServiceLayer.Services
     /// </summary>
     /// <seealso cref="Library.ServiceLayer.Services.BaseService{Library.DomainLayer.Borrow, Library.DataLayer.Interfaces.IBorrowRepository}" />
     /// <seealso cref="Library.ServiceLayer.IServices.IBorrowService" />
-    public class BorrowService : BaseService<Borrow, IBorrowRepository>, IBorrowService
+    public class BorrowService : BaseService<Borrow, IBorrowRepository, IPropertiesRepository>, IBorrowService
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="BorrowService"/> class.
         /// </summary>
         /// <param name="borrowRepository">The borrow repository.</param>
         /// <param name="propertiesRepository">The properties repository.</param>
-        public BorrowService(IBorrowRepository borrowRepository, IPropertiesRepository propertiesRepository)
-             : base(borrowRepository, propertiesRepository)
+        public BorrowService()
+             : base(Injector.Create<IBorrowRepository>(), Injector.Create<IPropertiesRepository>())
         {
-            _validator = new BorrowValidator(propertiesRepository);
+            _validator = new BorrowValidator(_propertiesRepository);
         }
     }
 }

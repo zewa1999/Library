@@ -26,9 +26,10 @@ namespace Library.ServiceLayer.Services
     /// <typeparam name="T"></typeparam>
     /// <typeparam name="U"></typeparam>
     /// <seealso cref="Library.ServiceLayer.IServices.IBaseService{T}" />
-    public abstract class BaseService<T, U> : IBaseService<T>
+    public abstract class BaseService<T, U, L> : IBaseService<T>
         where T : class
         where U : IRepository<T>
+        where L : IPropertiesRepository
     {
         /// <summary>
         /// The repository
@@ -43,14 +44,14 @@ namespace Library.ServiceLayer.Services
         /// <summary>
         /// The properties repository
         /// </summary>
-        protected IPropertiesRepository _propertiesRepository;
+        protected L _propertiesRepository;
 
         /// <summary>
         /// Ctor for base service
         /// </summary>
         /// <param name="repository">The actual repository that will fit into this class</param>
         /// <param name="propRepo">The property repo.</param>
-        public BaseService(U repository, IPropertiesRepository propRepo)
+        public BaseService(U repository, L propRepo)
         {
             _repository = repository;
             _propertiesRepository = propRepo;
