@@ -4,7 +4,7 @@
 // Created          : 11-29-2021
 //
 // Last Modified By : costa
-// Last Modified On : 12-17-2021
+// Last Modified On : 01-06-2022
 // ***********************************************************************
 // <copyright file="Properties.cs" company="Library.DomainLayer">
 //     Copyright (c) . All rights reserved.
@@ -41,6 +41,11 @@ namespace Library.DomainLayer
         /// </summary>
         /// <value>The numar maxim carti.</value>
         public int? NumarMaximCarti { get; set; }
+
+        /// <summary>
+        /// Gets or sets the l.
+        /// </summary>
+        /// <value>The l.</value>
         public int? L { get; set; }
 
         /// <summary>

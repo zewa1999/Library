@@ -4,7 +4,7 @@
 // Created          : 12-17-2021
 //
 // Last Modified By : costa
-// Last Modified On : 12-18-2021
+// Last Modified On : 01-06-2022
 // ***********************************************************************
 // <copyright file="BorrowerService.cs" company="Library.ServiceLayer">
 //     Copyright (c) . All rights reserved.
@@ -29,10 +29,8 @@ namespace Library.ServiceLayer.Services
     public class BorrowerService : BaseService<Borrower, IBorrowerRepository, IPropertiesRepository>, IBorrowerService
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="BorrowerService"/> class.
+        /// Initializes a new instance of the <see cref="BorrowerService" /> class.
         /// </summary>
-        /// <param name="borrowerRepository">The borrower repository.</param>
-        /// <param name="propertiesRepository">The properties repository.</param>
         public BorrowerService()
             : base(Injector.Create<IBorrowerRepository>(), Injector.Create<IPropertiesRepository>())
         {

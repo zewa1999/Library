@@ -4,7 +4,7 @@
 // Created          : 12-06-2021
 //
 // Last Modified By : costa
-// Last Modified On : 12-15-2021
+// Last Modified On : 01-06-2022
 // ***********************************************************************
 // <copyright file="Account.cs" company="Library.DomainLayer">
 //     Copyright (c) . All rights reserved.
@@ -46,6 +46,5 @@ namespace Library.DomainLayer.Person
         [Required]
         [StringLength(45)]
         public string Email { get; set; }
-
     }
 }

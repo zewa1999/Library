@@ -1,6 +1,16 @@
-﻿// <company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// ***********************************************************************
+// Assembly         : Library
+// Author           : costa
+// Created          : 01-06-2022
+//
+// Last Modified By : costa
+// Last Modified On : 01-06-2022
+// ***********************************************************************
+// <copyright file="AuthorValidator.cs" company="Library">
+//     Copyright (c) . All rights reserved.
 // </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 /// <summary>
 /// The Validators namespace.
@@ -22,10 +32,8 @@ namespace Library.DataLayer.Validators
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthorValidator" /> class.
         /// </summary>
-        /// <param name="propertiesRepository">The properties repository.</param>
         public AuthorValidator()
         {
-
             RuleFor(a => a.FirstName)
                 .NotNull().WithMessage("Null {PropertyName}")
                 .NotEmpty().WithMessage("{PropertyName} is Empty")

@@ -1,6 +1,16 @@
-﻿// <company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// ***********************************************************************
+// Assembly         : Library
+// Author           : costa
+// Created          : 01-06-2022
+//
+// Last Modified By : costa
+// Last Modified On : 01-06-2022
+// ***********************************************************************
+// <copyright file="AccountValidator.cs" company="Library">
+//     Copyright (c) . All rights reserved.
 // </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 /// <summary>
 /// The Validators namespace.
@@ -10,6 +20,7 @@ namespace Library.DataLayer.Validators
     using FluentValidation;
     using Library.DomainLayer.Person;
     using System.Linq;
+
     /// <summary>
     /// Class AccountValidator.
     /// Implements the <see cref="FluentValidation.AbstractValidator{Account}" />
@@ -20,7 +31,6 @@ namespace Library.DataLayer.Validators
         /// <summary>
         /// Initializes a new instance of the <see cref="AccountValidator" /> class.
         /// </summary>
-        /// <param name="propertiesRepository">The properties repository.</param>
         public AccountValidator()
         {
             RuleFor(a => a.PhoneNumber)
@@ -31,8 +41,13 @@ namespace Library.DataLayer.Validators
 
             RuleFor(a => a.Email)
                 .EmailAddress().WithMessage("The email is not valid");
-
         }
+
+        /// <summary>
+        /// Doeses the not contain letters.
+        /// </summary>
+        /// <param name="phoneNumber">The phone number.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         protected bool DoesNotContainLetters(string phoneNumber)
         {
             if (phoneNumber == null)

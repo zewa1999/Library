@@ -1,6 +1,16 @@
-﻿// <company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// ***********************************************************************
+// Assembly         : Library
+// Author           : costa
+// Created          : 01-06-2022
+//
+// Last Modified By : costa
+// Last Modified On : 01-06-2022
+// ***********************************************************************
+// <copyright file="BaseRepository.cs" company="Library">
+//     Copyright (c) . All rights reserved.
 // </copyright>
+// <summary></summary>
+// ***********************************************************************
 /// <summary>
 /// The DataLayer namespace.
 /// </summary>
@@ -22,7 +32,11 @@ namespace Library.DataLayer
     public abstract class BaseRepository<T> : IRepository<T>
         where T : class
     {
+        /// <summary>
+        /// The logger
+        /// </summary>
         protected readonly Logger logger = LogManager.GetCurrentClassLogger();
+
         /// <summary>
         /// Gets the specified filter.
         /// </summary>
@@ -62,7 +76,6 @@ namespace Library.DataLayer
                     {
                         return query.ToList();
                     }
-
                 }
                 catch (Exception ex)
                 {
@@ -109,12 +122,10 @@ namespace Library.DataLayer
 
                     ctx.SaveChanges();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     logger.Error(ex.Message + "The UPDATE could not been made!");
-
                 }
-                
             }
         }
 
@@ -148,10 +159,9 @@ namespace Library.DataLayer
 
                     ctx.SaveChanges();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     logger.Error(ex.Message + "The DELETE could not been made!");
-
                 }
             }
         }
@@ -167,12 +177,11 @@ namespace Library.DataLayer
             {
                 try
                 {
-                return ctx.Set<T>().Find(id);
+                    return ctx.Set<T>().Find(id);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     logger.Error(ex.Message + "The GetByID could not been made. Will return null!");
-
                 }
                 return null;
             }

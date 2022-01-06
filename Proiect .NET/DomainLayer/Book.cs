@@ -4,7 +4,7 @@
 // Created          : 11-25-2021
 //
 // Last Modified By : costa
-// Last Modified On : 12-15-2021
+// Last Modified On : 01-06-2022
 // ***********************************************************************
 // <copyright file="Book.cs" company="Library.DomainLayer">
 //     Copyright (c) . All rights reserved.
@@ -45,12 +45,19 @@ namespace Library.DomainLayer
         [Required]
         public bool? LecturesOnlyBook { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether this instance is borrowed.
+        /// </summary>
+        /// <value><c>null</c> if [is borrowed] contains no value, <c>true</c> if [is borrowed]; otherwise, <c>false</c>.</value>
         [Required]
         public bool? IsBorrowed { get; set; }
 
+        /// <summary>
+        /// Gets or sets the type.
+        /// </summary>
+        /// <value>The type.</value>
         [Required]
         public string Type { get; set; }
-
 
         /// <summary>
         /// Gets or sets the authors.

@@ -1,6 +1,16 @@
-﻿// <company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// ***********************************************************************
+// Assembly         : Library
+// Author           : costa
+// Created          : 01-06-2022
+//
+// Last Modified By : costa
+// Last Modified On : 01-06-2022
+// ***********************************************************************
+// <copyright file="DomainValidator.cs" company="Library">
+//     Copyright (c) . All rights reserved.
 // </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 /// <summary>
 /// The Validators namespace.
@@ -9,6 +19,7 @@ namespace Library.DataLayer.Validators
 {
     using FluentValidation;
     using Library.DomainLayer;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Class DomainValidator.
@@ -20,10 +31,8 @@ namespace Library.DataLayer.Validators
         /// <summary>
         /// Initializes a new instance of the <see cref="DomainValidator" /> class.
         /// </summary>
-        /// <param name="propertiesRepository">The properties repository.</param>
         public DomainValidator()//x)
         {
-
             //https://stackoverflow.com/questions/55804470/fluentvalidation-recursive-list-causes-stack-overflow
 
             // singleton cu lista emoty
@@ -35,7 +44,7 @@ namespace Library.DataLayer.Validators
                 .NotEmpty().WithMessage("{PropertyName} is Empty")
                 .Length(2, 50).WithMessage("Lenght of {PropertyName} Invalid");
 
-            //Nu stiu cum sa fac aici ca sa nu fie dependinta circulara
+            // Nu stiu cum sa fac aici ca sa nu fie dependinta circulara
             //    RuleFor(d => d.Name)
             //    .NotNull().WithMessage("Null {PropertyName}")
             //    .NotEmpty().WithMessage("{PropertyName} is Empty")
@@ -45,6 +54,10 @@ namespace Library.DataLayer.Validators
             //{
             //    v.Add<Domain>(new DomainValidator());
             //});
+
+            RuleFor(b => b.ChildrenDomains)
+                .NotNull().WithMessage("Null {PropertyName}")
+                .Must(HaveEntities).WithMessage("{PropertyName} is Empty");
 
             RuleForEach(b => b.ChildrenDomains).ChildRules(domain =>
             {
@@ -58,6 +71,16 @@ namespace Library.DataLayer.Validators
                 .NotEmpty().WithMessage("{PropertyName} is Empty")
                 .Length(2, 50).WithMessage("Lenght of {PropertyName} Invalid");
             });
+        }
+
+        protected bool HaveEntities<T>(ICollection<T> entities)
+        {
+            if (entities == null || entities.Count == 0)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

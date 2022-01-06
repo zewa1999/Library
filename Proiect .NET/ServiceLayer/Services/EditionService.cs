@@ -4,7 +4,7 @@
 // Created          : 12-17-2021
 //
 // Last Modified By : costa
-// Last Modified On : 12-18-2021
+// Last Modified On : 01-06-2022
 // ***********************************************************************
 // <copyright file="EditionService.cs" company="Library.ServiceLayer">
 //     Copyright (c) . All rights reserved.
@@ -29,10 +29,8 @@ namespace Library.ServiceLayer.Services
     public class EditionService : BaseService<Edition, IEditionRepository, IPropertiesRepository>, IEditionService
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="EditionService"/> class.
+        /// Initializes a new instance of the <see cref="EditionService" /> class.
         /// </summary>
-        /// <param name="editionRepository">The edition repository.</param>
-        /// <param name="propertiesRepository">The properties repository.</param>
         public EditionService()
             : base(Injector.Create<IEditionRepository>(), Injector.Create<IPropertiesRepository>())
         {

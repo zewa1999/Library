@@ -4,7 +4,7 @@
 // Created          : 12-17-2021
 //
 // Last Modified By : costa
-// Last Modified On : 12-18-2021
+// Last Modified On : 01-06-2022
 // ***********************************************************************
 // <copyright file="PropertiesService.cs" company="Library.ServiceLayer">
 //     Copyright (c) . All rights reserved.
@@ -35,12 +35,14 @@ namespace Library.ServiceLayer.Services
         /// </summary>
         private readonly IValidator _validator;
 
+        /// <summary>
+        /// The repository
+        /// </summary>
         private readonly IPropertiesRepository _repository;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PropertiesService"/> class.
+        /// Initializes a new instance of the <see cref="PropertiesService" /> class.
         /// </summary>
-        /// <param name="propertiesRepository">The properties repository.</param>
         public PropertiesService()
         {
             _repository = Injector.Create<IPropertiesRepository>();
@@ -67,6 +69,11 @@ namespace Library.ServiceLayer.Services
             return _repository.Get();
         }
 
+        /// <summary>
+        /// Gets the by identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns>Properties.</returns>
         public Properties GetByID(object id)
         {
             return _repository.GetByID(id);

@@ -4,7 +4,7 @@
 // Created          : 12-17-2021
 //
 // Last Modified By : costa
-// Last Modified On : 12-18-2021
+// Last Modified On : 01-06-2022
 // ***********************************************************************
 // <copyright file="BaseService.cs" company="Library.ServiceLayer">
 //     Copyright (c) . All rights reserved.
@@ -25,6 +25,7 @@ namespace Library.ServiceLayer.Services
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <typeparam name="U"></typeparam>
+    /// <typeparam name="L"></typeparam>
     /// <seealso cref="Library.ServiceLayer.IServices.IBaseService{T}" />
     public abstract class BaseService<T, U, L> : IBaseService<T>
         where T : class

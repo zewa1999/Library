@@ -4,7 +4,7 @@
 // Created          : 12-17-2021
 //
 // Last Modified By : costa
-// Last Modified On : 12-18-2021
+// Last Modified On : 01-06-2022
 // ***********************************************************************
 // <copyright file="AccountService.cs" company="Library.ServiceLayer">
 //     Copyright (c) . All rights reserved.
@@ -29,10 +29,8 @@ namespace Library.ServiceLayer.Services
     public class AccountService : BaseService<Account, IAccountRepository, IPropertiesRepository>, IAccountService
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AccountService"/> class.
+        /// Initializes a new instance of the <see cref="AccountService" /> class.
         /// </summary>
-        /// <param name="accountRepository">The account repository.</param>
-        /// <param name="propertiesRepository">The properties repository.</param>
         public AccountService()
             : base(Injector.Create<IAccountRepository>(), Injector.Create<IPropertiesRepository>())
         {

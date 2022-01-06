@@ -2,6 +2,7 @@
 using Library.DataLayer.Validators;
 using Library.DomainLayer;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 
 namespace Library.DataLayer.Tests.ValidatorsTests
 {
@@ -9,6 +10,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
     public class AuthorValidatorTests
     {
         private AuthorValidator validator;
+
         [TestInitialize]
         public void Initialize()
         {
@@ -223,7 +225,16 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveAnyValidationErrors();
         }
 
-        // de facut pentru books
+        [TestMethod]
+        public void ShouldHaveErrorWhenBooksCollectionIsNotNull()
+        {
+            var model = new Author()
+            {
+                Books = new List<Book>()
+            };
+
+            var result = validator.TestValidate(model);
+            result.ShouldNotHaveValidationErrorFor(a => a.Books);
+        }
     }
 }
-

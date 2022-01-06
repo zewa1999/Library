@@ -1,6 +1,16 @@
-﻿// <company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// ***********************************************************************
+// Assembly         : Library
+// Author           : costa
+// Created          : 01-06-2022
+//
+// Last Modified By : costa
+// Last Modified On : 01-06-2022
+// ***********************************************************************
+// <copyright file="PropertiesRepository.cs" company="Library">
+//     Copyright (c) . All rights reserved.
 // </copyright>
+// <summary></summary>
+// ***********************************************************************
 using Library.DataLayer.DataMapper;
 using Library.DataLayer.Interfaces;
 using Library.DomainLayer;
@@ -21,6 +31,10 @@ namespace Library.DataLayer.Concretes
     /// <seealso cref="Library.DataLayer.Interfaces.IPropertiesRepository" />
     public class PropertiesRepository : BaseRepository<Properties>, IPropertiesRepository
     {
+        /// <summary>
+        /// Gets the last properties.
+        /// </summary>
+        /// <returns>Properties.</returns>
         public Properties GetLastProperties()
         {
             using (var ctx = new LibraryContext())

@@ -1,4 +1,17 @@
-﻿using Library.DataLayer.Concretes;
+﻿// ***********************************************************************
+// Assembly         : Library
+// Author           : costa
+// Created          : 01-06-2022
+//
+// Last Modified By : costa
+// Last Modified On : 01-06-2022
+// ***********************************************************************
+// <copyright file="Bindings.cs" company="Library">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using Library.DataLayer.Concretes;
 using Library.DataLayer.Interfaces;
 using Library.ServiceLayer.IServices;
 using Library.ServiceLayer.Services;
@@ -6,14 +19,25 @@ using Ninject.Modules;
 
 namespace Proiect_.NET.Injection
 {
+    /// <summary>
+    /// Class Bindings.
+    /// Implements the <see cref="Ninject.Modules.NinjectModule" />
+    /// </summary>
+    /// <seealso cref="Ninject.Modules.NinjectModule" />
     public class Bindings : NinjectModule
     {
+        /// <summary>
+        /// Loads the module into the kernel.
+        /// </summary>
         public override void Load()
         {
             LoadRepositoryLayer();
             LoadServicesLayer();
         }
 
+        /// <summary>
+        /// Loads the services layer.
+        /// </summary>
         private void LoadServicesLayer()
         {
             Bind<IAuthorService>().To<AuthorService>();
@@ -27,6 +51,9 @@ namespace Proiect_.NET.Injection
             Bind<IAccountService>().To<AccountService>();
         }
 
+        /// <summary>
+        /// Loads the repository layer.
+        /// </summary>
         private void LoadRepositoryLayer()
         {
             Bind<IAuthorRepository>().To<AuthorRepository>();
