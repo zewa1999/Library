@@ -36,7 +36,7 @@ namespace Library.ServiceLayer.Services
         public EditionService()
             : base(Injector.Create<IEditionRepository>(), Injector.Create<IPropertiesRepository>())
         {
-            _validator = new EditionValidator(_propertiesRepository);
+            _validator = new EditionValidator();
         }
     }
 }

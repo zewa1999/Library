@@ -51,7 +51,7 @@ namespace Library.ServiceLayer.Services
         /// </summary>
         /// <param name="repository">The actual repository that will fit into this class</param>
         /// <param name="propRepo">The property repo.</param>
-        public BaseService(U repository, L propRepo)
+        protected BaseService(U repository, L propRepo)
         {
             _repository = repository;
             _propertiesRepository = propRepo;
@@ -62,7 +62,7 @@ namespace Library.ServiceLayer.Services
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns>ValidationResult.</returns>
-        public ValidationResult Insert(T entity)
+        public virtual ValidationResult Insert(T entity)
         {
             var result = _validator.Validate(entity);
             if (result.IsValid)
@@ -82,7 +82,7 @@ namespace Library.ServiceLayer.Services
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns>ValidationResult.</returns>
-        public ValidationResult Update(T entity)
+        public virtual ValidationResult Update(T entity)
         {
             var result = _validator.Validate(entity);
             Utils.LogErrors(result);
@@ -102,7 +102,7 @@ namespace Library.ServiceLayer.Services
         /// Deletes the specified identifier.
         /// </summary>
         /// <param name="entity">The entity.</param>
-        public void Delete(T entity)
+        public virtual void Delete(T entity)
         {
             _repository.Delete(entity);
         }
@@ -112,7 +112,7 @@ namespace Library.ServiceLayer.Services
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns>T.</returns>
-        public T GetByID(object id)
+        public virtual T GetByID(object id)
         {
             return _repository.GetByID(id);
         }
@@ -121,7 +121,7 @@ namespace Library.ServiceLayer.Services
         /// Gets all.
         /// </summary>
         /// <returns>IEnumerable&lt;T&gt;.</returns>
-        public IEnumerable<T> GetAll()
+        public virtual IEnumerable<T> GetAll()
         {
             return _repository.Get();
         }

@@ -8,7 +8,6 @@
 namespace Library.DataLayer.Validators
 {
     using FluentValidation;
-    using Library.DataLayer.Interfaces;
     using Library.DomainLayer;
 
     /// <summary>
@@ -22,18 +21,43 @@ namespace Library.DataLayer.Validators
         /// Initializes a new instance of the <see cref="DomainValidator" /> class.
         /// </summary>
         /// <param name="propertiesRepository">The properties repository.</param>
-        public DomainValidator(IPropertiesRepository propertiesRepository)
+        public DomainValidator()//x)
         {
+
+            //https://stackoverflow.com/questions/55804470/fluentvalidation-recursive-list-causes-stack-overflow
+
+            // singleton cu lista emoty
+
+            // adaugi x in lista
+
             RuleFor(d => d.Name)
+                .NotNull().WithMessage("Null {PropertyName}")
                 .NotEmpty().WithMessage("{PropertyName} is Empty")
                 .Length(2, 50).WithMessage("Lenght of {PropertyName} Invalid");
 
-            RuleFor(d => d.ParentDomain).SetInheritanceValidator(v =>
-            {
-                v.Add<Domain>(new DomainValidator(propertiesRepository));
-            });
+            //Nu stiu cum sa fac aici ca sa nu fie dependinta circulara
+            //    RuleFor(d => d.Name)
+            //    .NotNull().WithMessage("Null {PropertyName}")
+            //    .NotEmpty().WithMessage("{PropertyName} is Empty")
+            //    .Length(2, 50).WithMessage("Lenght of {PropertyName} Invalid");
 
-            RuleForEach(d => d.ChildrenDomains).SetValidator(new DomainValidator(propertiesRepository));
+            //RuleFor(d => d.ParentDomain).SetInheritanceValidator(v =>  // daca v nu e in lista...
+            //{
+            //    v.Add<Domain>(new DomainValidator());
+            //});
+
+            RuleForEach(b => b.ChildrenDomains).ChildRules(domain =>
+            {
+                domain.RuleFor(d => d.Name)
+                 .NotNull().WithMessage("Null {PropertyName}")
+                 .NotEmpty().WithMessage("{PropertyName} is Empty")
+                 .Length(2, 50).WithMessage("Lenght of {PropertyName} Invalid");
+
+                domain.RuleFor(d => d.Name)
+                .NotNull().WithMessage("Null {PropertyName}")
+                .NotEmpty().WithMessage("{PropertyName} is Empty")
+                .Length(2, 50).WithMessage("Lenght of {PropertyName} Invalid");
+            });
         }
     }
 }

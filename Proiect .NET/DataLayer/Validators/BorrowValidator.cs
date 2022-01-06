@@ -8,7 +8,6 @@
 namespace Library.DataLayer.Validators
 {
     using FluentValidation;
-    using Library.DataLayer.Interfaces;
     using Library.DomainLayer;
     using Library.DomainLayer.Person;
 
@@ -23,14 +22,22 @@ namespace Library.DataLayer.Validators
         /// Initializes a new instance of the <see cref="BorrowValidator" /> class.
         /// </summary>
         /// <param name="propertiesRepository">The properties repository.</param>
-        public BorrowValidator(IPropertiesRepository propertiesRepository)
+        public BorrowValidator()
         {
             RuleFor(b => b.Borrower).SetInheritanceValidator(v =>
             {
-                v.Add<Borrower>(new BorrowerValidator(propertiesRepository));
+                v.Add<Borrower>(new BorrowerValidator());
             });
 
-            RuleForEach(b => b.BorrowedBooks).SetValidator(new BookValidator(propertiesRepository));
+            RuleFor(b => b.NoOfTimeExtended)
+               .NotNull().WithMessage("Null {PropertyName}")
+               .LessThan(4);
+            RuleFor(b => b.BorrowDate)
+                .NotNull().WithMessage("Complete Date is not a valid date.");
+            RuleFor(b => b.EndDate)
+                .NotNull().WithMessage("Complete Date is not a valid date.");
+
+            RuleForEach(b => b.BorrowedBooks).SetValidator(new BookValidator());
         }
     }
 }

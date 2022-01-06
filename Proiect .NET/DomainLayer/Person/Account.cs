@@ -46,5 +46,6 @@ namespace Library.DomainLayer.Person
         [Required]
         [StringLength(45)]
         public string Email { get; set; }
+
     }
 }

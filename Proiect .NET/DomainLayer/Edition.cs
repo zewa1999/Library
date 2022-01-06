@@ -51,13 +51,13 @@ namespace Library.DomainLayer
         /// </summary>
         /// <value>The edition number.</value>
         [Required]
-        public int EditionNumber { get; set; }
+        public int? EditionNumber { get; set; }
 
         /// <summary>
         /// Gets or sets the number of pages.
         /// </summary>
         /// <value>The number of pages.</value>
         [Required]
-        public int NumberOfPages { get; set; }
+        public int? NumberOfPages { get; set; }
     }
 }

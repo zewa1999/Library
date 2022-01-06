@@ -27,6 +27,6 @@ namespace Library.DomainLayer.Person
         /// </summary>
         /// <value><c>true</c> if this instance is reader; otherwise, <c>false</c>.</value>
         [Required]
-        public bool IsReader { get; set; }
+        public bool? IsReader { get; set; }
     }
 }

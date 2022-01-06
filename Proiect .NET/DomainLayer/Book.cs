@@ -43,7 +43,14 @@ namespace Library.DomainLayer
         /// </summary>
         /// <value><c>true</c> if this instance is borrowable; otherwise, <c>false</c>.</value>
         [Required]
-        public bool IsBorrowable { get; set; }
+        public bool? LecturesOnlyBook { get; set; }
+
+        [Required]
+        public bool? IsBorrowed { get; set; }
+
+        [Required]
+        public string Type { get; set; }
+
 
         /// <summary>
         /// Gets or sets the authors.

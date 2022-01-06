@@ -8,9 +8,8 @@
 namespace Library.DataLayer.Validators
 {
     using FluentValidation;
-    using Library.DataLayer.Interfaces;
     using Library.DomainLayer.Person;
-
+    using System.Linq;
     /// <summary>
     /// Class AccountValidator.
     /// Implements the <see cref="FluentValidation.AbstractValidator{Account}" />
@@ -22,14 +21,23 @@ namespace Library.DataLayer.Validators
         /// Initializes a new instance of the <see cref="AccountValidator" /> class.
         /// </summary>
         /// <param name="propertiesRepository">The properties repository.</param>
-        public AccountValidator(IPropertiesRepository propertiesRepository)
+        public AccountValidator()
         {
             RuleFor(a => a.PhoneNumber)
+                .NotNull().WithMessage("Null phone number")
                 .NotEmpty().WithMessage("Empty phone number")
+                .Must(DoesNotContainLetters)
                 .Length(10).WithMessage("Lenght should be 10");
 
             RuleFor(a => a.Email)
                 .EmailAddress().WithMessage("The email is not valid");
+
+        }
+        protected bool DoesNotContainLetters(string phoneNumber)
+        {
+            if (phoneNumber == null)
+                return false;
+            return phoneNumber.Any(x => !char.IsLetter(x));
         }
     }
 }

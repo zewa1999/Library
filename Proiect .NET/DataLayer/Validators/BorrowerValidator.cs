@@ -8,7 +8,6 @@
 namespace Library.DataLayer.Validators
 {
     using FluentValidation;
-    using Library.DataLayer.Interfaces;
     using Library.DomainLayer.Person;
     using System;
     using System.Linq;
@@ -24,30 +23,35 @@ namespace Library.DataLayer.Validators
         /// Initializes a new instance of the <see cref="BorrowerValidator" /> class.
         /// </summary>
         /// <param name="propertiesRepository">The properties repository.</param>
-        public BorrowerValidator(IPropertiesRepository propertiesRepository)
+        public BorrowerValidator()
         {
+
             RuleFor(b => b.FirstName)
+                .NotNull().WithMessage("Null {PropertyName}")
                 .NotEmpty().WithMessage("{PropertyName} is Empty")
                 .Length(2, 50).WithMessage("Lenght of {PropertyName} Invalid")
                 .Must(BeAValidName).WithMessage("{PropertyName} contains invalid characters");
 
             RuleFor(b => b.LastName)
+                .NotNull().WithMessage("Null {PropertyName}")
                 .NotEmpty().WithMessage("{PropertyName} is Empty")
                 .Length(2, 50).WithMessage("Lenght of {PropertyName} Invalid")
                 .Must(BeAValidName).WithMessage("{PropertyName} contains invalid characters");
 
             RuleFor(b => b.Address)
+                .NotNull().WithMessage("Null {PropertyName}")
                 .NotEmpty().WithMessage("{PropertyName} is Empty")
                 .Length(2, 80).WithMessage("Lenght of {PropertyName} Invalid");
 
             RuleFor(b => b.LastName)
+                .NotNull().WithMessage("Null {PropertyName}")
                 .NotEmpty().WithMessage("{PropertyName} is Empty")
                 .Length(2, 50).WithMessage("Lenght of {PropertyName} Invalid")
                 .Must(BeAValidName).WithMessage("{PropertyName} contains invalid characters");
 
             RuleFor(b => b.Account).SetInheritanceValidator(v =>
             {
-                v.Add<Account>(new AccountValidator(propertiesRepository));
+                v.Add<Account>(new AccountValidator());
             });
         }
 

@@ -36,7 +36,7 @@ namespace Library.ServiceLayer.Services
         public AccountService()
             : base(Injector.Create<IAccountRepository>(), Injector.Create<IPropertiesRepository>())
         {
-            _validator = new AccountValidator(_propertiesRepository);
+            _validator = new AccountValidator();
         }
     }
 }

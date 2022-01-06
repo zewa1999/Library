@@ -8,7 +8,6 @@
 namespace Library.DataLayer.Validators
 {
     using FluentValidation;
-    using Library.DataLayer.Interfaces;
     using Library.DomainLayer;
     using System;
     using System.Linq;
@@ -24,16 +23,43 @@ namespace Library.DataLayer.Validators
         /// Initializes a new instance of the <see cref="BookValidator" /> class.
         /// </summary>
         /// <param name="propertiesRepository">The properties repository.</param>
-        public BookValidator(IPropertiesRepository propertiesRepository)
+        public BookValidator()
         {
+
             RuleFor(b => b.Title)
+                .NotNull().WithMessage("Null {PropertyName}")
                 .NotEmpty().WithMessage("{PropertyName} is Empty")
                 .Length(2, 50).WithMessage("Lenght of {PropertyName} Invalid")
                 .Must(BeAValidName).WithMessage("{PropertyName} contains invalid characters");
 
-            RuleForEach(b => b.Authors).SetValidator(new AuthorValidator(propertiesRepository));
-            RuleForEach(b => b.Editions).SetValidator(new EditionValidator(propertiesRepository));
-            RuleForEach(b => b.Domains).SetValidator(new DomainValidator(propertiesRepository));
+            RuleFor(b => b.Type)
+                .NotNull().WithMessage("Null {PropertyName}")
+                .NotEmpty().WithMessage("{PropertyName} is Empty")
+                .Length(2, 50).WithMessage("Lenght of {PropertyName} Invalid")
+                .Must(BeAValidName).WithMessage("{PropertyName} contains invalid characters");
+
+            RuleFor(b => b.IsBorrowed)
+                .NotNull().WithMessage("Null {PropertyName}");
+            RuleFor(b => b.LecturesOnlyBook)
+                .NotNull().WithMessage("Null {PropertyName}");
+
+            RuleForEach(b => b.Authors).ChildRules(author =>
+            {
+                author.RuleFor(b => b.FirstName)
+                .NotNull().WithMessage("Null {PropertyName}")
+                .NotEmpty().WithMessage("{PropertyName} is Empty")
+                .Length(2, 50).WithMessage("Lenght of {PropertyName} Invalid")
+                .Must(BeAValidName).WithMessage("{PropertyName} contains invalid characters");
+
+                author.RuleFor(b => b.LastName)
+                    .NotNull().WithMessage("Null {PropertyName}")
+                    .NotEmpty().WithMessage("{PropertyName} is Empty")
+                    .Length(2, 50).WithMessage("Lenght of {PropertyName} Invalid")
+                    .Must(BeAValidName).WithMessage("{PropertyName} contains invalid characters");
+            });
+
+            RuleForEach(b => b.Editions).SetValidator(new EditionValidator());
+            RuleForEach(b => b.Domains).SetValidator(new DomainValidator());
         }
 
         /// <summary>

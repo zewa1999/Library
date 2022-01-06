@@ -16,4 +16,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Proiect .NET\Library.csproj" />
+  </ItemGroup>
+
 </Project>

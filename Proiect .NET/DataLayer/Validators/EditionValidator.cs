@@ -8,7 +8,6 @@
 namespace Library.DataLayer.Validators
 {
     using FluentValidation;
-    using Library.DataLayer.Interfaces;
     using Library.DomainLayer;
 
     /// <summary>
@@ -22,21 +21,26 @@ namespace Library.DataLayer.Validators
         /// Initializes a new instance of the <see cref="EditionValidator" /> class.
         /// </summary>
         /// <param name="propertiesRepository">The properties repository.</param>
-        public EditionValidator(IPropertiesRepository propertiesRepository)
+        public EditionValidator()
         {
             RuleFor(e => e.Publisher)
+                .NotNull().WithMessage("Null {PropertyName}")
                 .NotEmpty().WithMessage("{PropertyName} is Empty")
                 .Length(2, 50).WithMessage("Lenght of {PropertyName} Invalid");
 
             RuleFor(e => e.Year)
-                  .NotEmpty().WithMessage("{PropertyName} is Empty")
-                  .Length(0, 4).WithMessage("Lenght of {PropertyName} Invalid");
+                .NotNull().WithMessage("Null {PropertyName}")
+                .NotEmpty().WithMessage("{PropertyName} is Empty")
+                .Length(0, 4).WithMessage("Lenght of {PropertyName} Invalid");
 
             RuleFor(e => e.EditionNumber)
-                .NotEmpty().WithMessage("{PropertyName} is Empty");
+                .NotNull().WithMessage("Null {PropertyName}")
+                .GreaterThan(1).WithMessage("{PropertyName} should be greater than 1");
 
             RuleFor(e => e.NumberOfPages)
-                  .NotEmpty().WithMessage("{PropertyName} is Empty");
+                .NotNull().WithMessage("Null {PropertyName}")
+                .GreaterThan(1).WithMessage("{PropertyName} should be greater than 1");
+
         }
     }
 }

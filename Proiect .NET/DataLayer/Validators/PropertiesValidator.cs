@@ -8,7 +8,6 @@
 namespace Library.DataLayer.Validators
 {
     using FluentValidation;
-    using Library.DataLayer.Interfaces;
     using Library.DomainLayer;
 
     /// <summary>
@@ -22,14 +21,37 @@ namespace Library.DataLayer.Validators
         /// Initializes a new instance of the <see cref="PropertiesValidator" /> class.
         /// </summary>
         /// <param name="propertiesRepository">The properties repository.</param>
-        public PropertiesValidator(IPropertiesRepository propertiesRepository)
+        public PropertiesValidator()
         {
             this.RuleFor(p => p.Domenii)
-                .GreaterThanOrEqualTo(1);
+            .NotNull().WithMessage("Null {PropertyName}")
+            .GreaterThanOrEqualTo(1);
             this.RuleFor(p => p.NrMaximCartiImprumutate)
+                .NotNull().WithMessage("Null {PropertyName}")
                 .GreaterThanOrEqualTo(1);
-            this.RuleFor(p => p.Perioada);
+            this.RuleFor(p => p.Perioada)
+                .NotNull().WithMessage("Null {PropertyName}")
+                .GreaterThanOrEqualTo(1);
             this.RuleFor(p => p.NrMaximCartiImprumutateAcelasiDomeniu)
+                .NotNull().WithMessage("Null {PropertyName}")
+                .GreaterThanOrEqualTo(1);
+            this.RuleFor(p => p.NumarMaximCarti)
+                .NotNull().WithMessage("Null {PropertyName}")
+                .GreaterThanOrEqualTo(1);
+            this.RuleFor(p => p.L)
+                .NotNull().WithMessage("Null {PropertyName}")
+                .GreaterThanOrEqualTo(1);
+            this.RuleFor(p => p.LimitaMaximaImprumut)
+                .NotNull().WithMessage("Null {PropertyName}")
+                .GreaterThanOrEqualTo(1);
+            this.RuleFor(p => p.Delta)
+                .NotNull().WithMessage("Null {PropertyName}")
+                .GreaterThanOrEqualTo(1);
+            this.RuleFor(p => p.NumarCartiImprumutateZilnic)
+                .NotNull().WithMessage("Null {PropertyName}")
+                .GreaterThanOrEqualTo(1);
+            this.RuleFor(p => p.Persimp)
+                .NotNull().WithMessage("Null {PropertyName}")
                 .GreaterThanOrEqualTo(1);
         }
     }

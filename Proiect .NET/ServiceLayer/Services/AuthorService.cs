@@ -36,7 +36,7 @@ namespace Library.ServiceLayer.Services
         public AuthorService()
             : base(Injector.Create<IAuthorRepository>(), Injector.Create<IPropertiesRepository>())
         {
-            _validator = new AuthorValidator(_propertiesRepository);
+            _validator = new AuthorValidator();
         }
     }
 }

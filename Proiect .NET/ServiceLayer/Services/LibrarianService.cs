@@ -36,7 +36,7 @@ namespace Library.ServiceLayer.Services
         public LibrarianService()
             : base(Injector.Create<ILibrarianRepository>(), Injector.Create<IPropertiesRepository>())
         {
-            _validator = new LibrarianValidator(_propertiesRepository);
+            _validator = new LibrarianValidator();
         }
     }
 }

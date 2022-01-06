@@ -34,54 +34,55 @@ namespace Library.DomainLayer
         /// Gets or sets the domenii.
         /// </summary>
         /// <value>The domenii.</value>
-        public int Domenii { get; set; }
+        public int? Domenii { get; set; }
 
         /// <summary>
         /// Gets or sets the numar maxim carti.
         /// </summary>
         /// <value>The numar maxim carti.</value>
-        public int NumarMaximCarti { get; set; }
+        public int? NumarMaximCarti { get; set; }
+        public int? L { get; set; }
 
         /// <summary>
         /// Gets or sets the perioada.
         /// </summary>
         /// <value>The perioada.</value>
-        public int Perioada { get; set; }
+        public int? Perioada { get; set; }
 
         /// <summary>
         /// Gets or sets the nr maxim carti imprumutate.
         /// </summary>
         /// <value>The nr maxim carti imprumutate.</value>
-        public int NrMaximCartiImprumutate { get; set; }
+        public int? NrMaximCartiImprumutate { get; set; }
 
         /// <summary>
         /// Gets or sets the nr maxim carti imprumutate acelasi domeniu.
         /// </summary>
         /// <value>The nr maxim carti imprumutate acelasi domeniu.</value>
-        public int NrMaximCartiImprumutateAcelasiDomeniu { get; set; }
+        public int? NrMaximCartiImprumutateAcelasiDomeniu { get; set; }
 
         /// <summary>
         /// Gets or sets the limita maxima imprumut.
         /// </summary>
         /// <value>The limita maxima imprumut.</value>
-        public int LimitaMaximaImprumut { get; set; }
+        public int? LimitaMaximaImprumut { get; set; }
 
         /// <summary>
         /// Gets or sets the delta.
         /// </summary>
         /// <value>The delta.</value>
-        public int Delta { get; set; }
+        public int? Delta { get; set; }
 
         /// <summary>
         /// Gets or sets the numar carti imprumutate zilnic.
         /// </summary>
         /// <value>The numar carti imprumutate zilnic.</value>
-        public int NumarCartiImprumutateZilnic { get; set; }
+        public int? NumarCartiImprumutateZilnic { get; set; }
 
         /// <summary>
         /// Gets or sets the persimp.
         /// </summary>
         /// <value>The persimp.</value>
-        public int Persimp { get; set; }
+        public int? Persimp { get; set; }
     }
 }

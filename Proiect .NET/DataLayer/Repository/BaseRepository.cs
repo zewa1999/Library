@@ -9,6 +9,7 @@ namespace Library.DataLayer
     using Library.DataLayer.DataMapper;
     using Library.DataLayer.Interfaces;
     using Microsoft.EntityFrameworkCore;
+    using NLog;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -21,6 +22,7 @@ namespace Library.DataLayer
     public abstract class BaseRepository<T> : IRepository<T>
         where T : class
     {
+        protected readonly Logger logger = LogManager.GetCurrentClassLogger();
         /// <summary>
         /// Gets the specified filter.
         /// </summary>
@@ -35,30 +37,39 @@ namespace Library.DataLayer
         {
             using (var ctx = new LibraryContext())
             {
-                var dbSet = ctx.Set<T>();
-
-                IQueryable<T> query = dbSet;
-
-                if (filter != null)
+                try
                 {
-                    query = query.Where(filter);
+                    var dbSet = ctx.Set<T>();
+
+                    IQueryable<T> query = dbSet;
+
+                    if (filter != null)
+                    {
+                        query = query.Where(filter);
+                    }
+
+                    foreach (var includeProperty in includeProperties.Split
+                        (new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                    {
+                        query = query.Include(includeProperty);
+                    }
+
+                    if (orderBy != null)
+                    {
+                        return orderBy(query).ToList();
+                    }
+                    else
+                    {
+                        return query.ToList();
+                    }
+
                 }
-
-                foreach (var includeProperty in includeProperties.Split
-                    (new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                catch (Exception ex)
                 {
-                    query = query.Include(includeProperty);
-                }
-
-                if (orderBy != null)
-                {
-                    return orderBy(query).ToList();
-                }
-                else
-                {
-                    return query.ToList();
+                    logger.Error(ex.Message + "The query will return an empty list!");
                 }
             }
+            return new List<T>();
         }
 
         /// <summary>
@@ -69,9 +80,16 @@ namespace Library.DataLayer
         {
             using (var ctx = new LibraryContext())
             {
-                var dbSet = ctx.Set<T>();
-                dbSet.Add(entity);
-                ctx.SaveChanges();
+                try
+                {
+                    var dbSet = ctx.Set<T>();
+                    dbSet.Add(entity);
+                    ctx.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    logger.Error(ex.Message + "The INSERT could not been made!");
+                }
             }
         }
 
@@ -83,11 +101,20 @@ namespace Library.DataLayer
         {
             using (var ctx = new LibraryContext())
             {
-                var dbSet = ctx.Set<T>();
-                dbSet.Attach(item);
-                ctx.Entry(item).State = EntityState.Modified;
+                try
+                {
+                    var dbSet = ctx.Set<T>();
+                    dbSet.Attach(item);
+                    ctx.Entry(item).State = EntityState.Modified;
 
-                ctx.SaveChanges();
+                    ctx.SaveChanges();
+                }
+                catch(Exception ex)
+                {
+                    logger.Error(ex.Message + "The UPDATE could not been made!");
+
+                }
+                
             }
         }
 
@@ -108,16 +135,24 @@ namespace Library.DataLayer
         {
             using (var ctx = new LibraryContext())
             {
-                var dbSet = ctx.Set<T>();
-
-                if (ctx.Entry(entityToDelete).State == EntityState.Detached)
+                try
                 {
-                    dbSet.Attach(entityToDelete);
+                    var dbSet = ctx.Set<T>();
+
+                    if (ctx.Entry(entityToDelete).State == EntityState.Detached)
+                    {
+                        dbSet.Attach(entityToDelete);
+                    }
+
+                    dbSet.Remove(entityToDelete);
+
+                    ctx.SaveChanges();
                 }
+                catch(Exception ex)
+                {
+                    logger.Error(ex.Message + "The DELETE could not been made!");
 
-                dbSet.Remove(entityToDelete);
-
-                ctx.SaveChanges();
+                }
             }
         }
 
@@ -130,7 +165,16 @@ namespace Library.DataLayer
         {
             using (var ctx = new LibraryContext())
             {
+                try
+                {
                 return ctx.Set<T>().Find(id);
+                }
+                catch(Exception ex)
+                {
+                    logger.Error(ex.Message + "The GetByID could not been made. Will return null!");
+
+                }
+                return null;
             }
         }
     }

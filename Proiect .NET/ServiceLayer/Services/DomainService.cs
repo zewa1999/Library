@@ -36,7 +36,7 @@ namespace Library.ServiceLayer.Services
         public DomainService()
              : base(Injector.Create<IDomainRepository>(), Injector.Create<IPropertiesRepository>())
         {
-            _validator = new DomainValidator(_propertiesRepository);
+            _validator = new DomainValidator();
         }
     }
 }

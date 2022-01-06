@@ -28,7 +28,7 @@ namespace Library.DomainLayer
         /// <value>The identifier.</value>
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
-        public int AuthorId { get; set; }
+        public int Id { get; set; }
 
         /// <summary>
         /// Gets or sets the first name.

@@ -15,5 +15,6 @@ namespace Library.DataLayer.Interfaces
     /// <seealso cref="Library.DataLayer.Interfaces.IRepository{Library.DomainLayer.Properties}" />
     public interface IPropertiesRepository : IRepository<Properties>
     {
+        public Properties GetLastProperties();
     }
 }

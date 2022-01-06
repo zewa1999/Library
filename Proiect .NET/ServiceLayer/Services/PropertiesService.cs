@@ -44,7 +44,7 @@ namespace Library.ServiceLayer.Services
         public PropertiesService()
         {
             _repository = Injector.Create<IPropertiesRepository>();
-            _validator = new PropertiesValidator(_repository);
+            _validator = new PropertiesValidator();
         }
 
         /// <summary>

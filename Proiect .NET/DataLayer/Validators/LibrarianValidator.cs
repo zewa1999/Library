@@ -8,7 +8,6 @@
 namespace Library.DataLayer.Validators
 {
     using FluentValidation;
-    using Library.DataLayer.Interfaces;
     using Library.DomainLayer.Person;
 
     /// <summary>
@@ -22,9 +21,11 @@ namespace Library.DataLayer.Validators
         /// Initializes a new instance of the <see cref="LibrarianValidator" /> class.
         /// </summary>
         /// <param name="propertiesRepository">The properties repository.</param>
-        public LibrarianValidator(IPropertiesRepository propertiesRepository)
+        public LibrarianValidator()
         {
-            Include(new BorrowerValidator(propertiesRepository));
+            RuleFor(l => l.IsReader)
+                .NotNull().WithMessage("Null {PropertyName}");
+            Include(new BorrowerValidator());
         }
     }
 }

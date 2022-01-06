@@ -42,7 +42,7 @@ namespace Library.DomainLayer
         /// Gets or sets the parent domain.
         /// </summary>
         /// <value>The parent domain.</value>
-        public Domain? ParentDomain { get; set; }
+        public virtual Domain ParentDomain { get; set; }
 
         /// <summary>
         /// Gets or sets the children domains.
