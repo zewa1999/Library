@@ -22,5 +22,6 @@ namespace Library.ServiceLayer.IServices
     /// <seealso cref="Library.ServiceLayer.IServices.IBaseService{Library.DomainLayer.Person.Account}" />
     public interface IAccountService : IBaseService<Account>
     {
+        public bool Insert2(Account entity);
     }
 }

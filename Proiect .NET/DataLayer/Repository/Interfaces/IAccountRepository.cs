@@ -25,5 +25,6 @@ namespace Library.DataLayer.Interfaces
     /// <seealso cref="Library.DataLayer.Interfaces.IRepository{Library.DomainLayer.Person.Account}" />
     public interface IAccountRepository : IRepository<Account>
     {
+        public bool Insert2(Account entity);
     }
 }

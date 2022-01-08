@@ -11,6 +11,7 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using Library.DataLayer.DataMapper;
 using Library.DataLayer.Interfaces;
 using Library.DomainLayer.Person;
 
@@ -28,5 +29,14 @@ namespace Library.DataLayer.Concretes
     /// <seealso cref="Library.DataLayer.Interfaces.IAccountRepository" />
     public class AccountRepository : BaseRepository<Account>, IAccountRepository
     {
+        public bool Insert2(Account entity)
+        {
+            using (var ctx = new LibraryContext())
+            {
+                ctx.Accounts.Add(entity);
+                ctx.SaveChanges();
+            }
+            return true;
+        }
     }
 }

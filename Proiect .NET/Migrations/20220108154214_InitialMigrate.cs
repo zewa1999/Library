@@ -1,41 +1,10 @@
-﻿// ***********************************************************************
-// Assembly         : Library
-// Author           : costa
-// Created          : 01-06-2022
-//
-// Last Modified By : costa
-// Last Modified On : 01-06-2022
-// ***********************************************************************
-// <copyright file="20220104150058_InitialMigration.cs" company="Library">
-//     Copyright (c) . All rights reserved.
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-using System;
+﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Proiect_.NET.Migrations
 {
-    /// <summary>
-    /// Class InitialMigration.
-    /// Implements the <see cref="Microsoft.EntityFrameworkCore.Migrations.Migration" />
-    /// </summary>
-    /// <seealso cref="Microsoft.EntityFrameworkCore.Migrations.Migration" />
-    public partial class InitialMigration : Migration
+    public partial class InitialMigrate : Migration
     {
-        /// <summary>
-        /// <para>
-        /// Builds the operations that will migrate the database 'up'.
-        /// </para>
-        /// <para>
-        /// That is, builds the operations that will take the database from the state left in by the
-        /// previous migration so that it is up-to-date with regard to this migration.
-        /// </para>
-        /// <para>
-        /// This method must be overridden in each class the inherits from <see cref="T:Microsoft.EntityFrameworkCore.Migrations.Migration" />.
-        /// </para>
-        /// </summary>
-        /// <param name="migrationBuilder">The <see cref="T:Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder" /> that will build the operations.</param>
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -72,16 +41,16 @@ namespace Proiect_.NET.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Domenii = table.Column<int>(type: "int", nullable: false),
-                    NumarMaximCarti = table.Column<int>(type: "int", nullable: false),
-                    L = table.Column<int>(type: "int", nullable: false),
-                    Perioada = table.Column<int>(type: "int", nullable: false),
-                    NrMaximCartiImprumutate = table.Column<int>(type: "int", nullable: false),
-                    NrMaximCartiImprumutateAcelasiDomeniu = table.Column<int>(type: "int", nullable: false),
-                    LimitaMaximaImprumut = table.Column<int>(type: "int", nullable: false),
-                    Delta = table.Column<int>(type: "int", nullable: false),
-                    NumarCartiImprumutateZilnic = table.Column<int>(type: "int", nullable: false),
-                    Persimp = table.Column<int>(type: "int", nullable: false)
+                    Domenii = table.Column<int>(type: "int", nullable: true),
+                    NumarMaximCarti = table.Column<int>(type: "int", nullable: true),
+                    L = table.Column<int>(type: "int", nullable: true),
+                    Perioada = table.Column<int>(type: "int", nullable: true),
+                    NrMaximCartiImprumutate = table.Column<int>(type: "int", nullable: true),
+                    NrMaximCartiImprumutateAcelasiDomeniu = table.Column<int>(type: "int", nullable: true),
+                    LimitaMaximaImprumut = table.Column<int>(type: "int", nullable: true),
+                    Delta = table.Column<int>(type: "int", nullable: true),
+                    NumarCartiImprumutateZilnic = table.Column<int>(type: "int", nullable: true),
+                    Persimp = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -267,10 +236,6 @@ namespace Proiect_.NET.Migrations
                 column: "BookId");
         }
 
-        /// <summary>
-        /// Downs the specified migration builder.
-        /// </summary>
-        /// <param name="migrationBuilder">The migration builder.</param>
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

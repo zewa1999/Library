@@ -31,7 +31,6 @@ namespace Library.DomainLayer.Tests
 
             bool isIntString = book.Title.All(char.IsDigit);
             Assert.IsFalse(isIntString);
-
         }
 
         [TestMethod]
@@ -94,8 +93,7 @@ namespace Library.DomainLayer.Tests
                 Books = new List<Book>()
             };
 
-            var authorsList = new List<Author>();
-            authorsList.Add(author);
+            var authorsList = new List<Author>() { author };
 
             book = new Book()
             {
@@ -103,7 +101,6 @@ namespace Library.DomainLayer.Tests
                 LecturesOnlyBook = true,
                 Authors = authorsList
             };
-
 
             Assert.IsNotNull(book.Authors);
         }

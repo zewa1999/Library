@@ -54,9 +54,14 @@ namespace Library.ServiceLayer.Services
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <exception cref="NotImplementedException"></exception>
-        public void Delete(Properties entity)
+        public bool Delete(Properties entity)
         {
-            _repository.Delete(entity);
+            return _repository.Delete(entity);
+        }
+
+        public bool DeleteById(object entity)
+        {
+            return _repository.DeleteById(entity);
         }
 
         /// <summary>

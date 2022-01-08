@@ -15,6 +15,7 @@ using FluentValidation;
 using FluentValidation.Results;
 using Library.DataLayer.Interfaces;
 using Library.ServiceLayer.IServices;
+using System;
 using System.Collections.Generic;
 
 namespace Library.ServiceLayer.Services
@@ -65,15 +66,26 @@ namespace Library.ServiceLayer.Services
         /// <returns>ValidationResult.</returns>
         public virtual ValidationResult Insert(T entity)
         {
+            Console.WriteLine("BaseService insert");
             var result = _validator.Validate(entity);
+            var isValid = false;
             if (result.IsValid)
             {
-                _repository.Insert(entity);
+                isValid = true;
             }
             else
             {
                 Utils.LogErrors(result);
             }
+
+            if (isValid == true)
+            {
+                Console.WriteLine("Repo insert");
+
+                _repository.Insert(entity);
+                Console.WriteLine("Repo after insert");
+            }
+            Console.WriteLine("Out insert");
 
             return result;
         }
@@ -103,9 +115,14 @@ namespace Library.ServiceLayer.Services
         /// Deletes the specified identifier.
         /// </summary>
         /// <param name="entity">The entity.</param>
-        public virtual void Delete(T entity)
+        public virtual bool Delete(T entity)
         {
-            _repository.Delete(entity);
+            return _repository.Delete(entity);
+        }
+
+        public virtual bool DeleteById(object id)
+        {
+            return _repository.DeleteById(id);
         }
 
         /// <summary>

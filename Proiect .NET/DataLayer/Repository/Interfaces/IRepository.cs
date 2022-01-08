@@ -31,25 +31,25 @@ namespace Library.DataLayer.Interfaces
         /// Inserts the specified entity.
         /// </summary>
         /// <param name="entity">The entity.</param>
-        void Insert(T entity);
+        bool Insert(T entity);
 
         /// <summary>
         /// Updates the specified item.
         /// </summary>
         /// <param name="item">The item.</param>
-        void Update(T item);
+        bool Update(T item);
 
         /// <summary>
         /// Deletes the specified identifier.
         /// </summary>
         /// <param name="id">The identifier.</param>
-        void Delete(object id);
+        bool DeleteById(object id);
 
         /// <summary>
         /// Deletes the specified entity.
         /// </summary>
         /// <param name="entity">The entity.</param>
-        void Delete(T entity);
+        bool Delete(T entity);
 
         /// <summary>
         /// Gets the by identifier.

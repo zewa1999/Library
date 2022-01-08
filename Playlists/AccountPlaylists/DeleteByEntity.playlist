@@ -1,0 +1,54 @@
+<Playlist Version="2.0">
+  <Rule Name="Includes" Match="Any">
+    <Rule Match="All">
+      <Property Name="Solution" />
+      <Rule Match="Any">
+        <Rule Match="All">
+          <Property Name="Project" Value="Library.ServiceLayer.Tests" />
+          <Rule Match="Any">
+            <Rule Match="All">
+              <Property Name="Namespace" Value="Library.ServiceLayer.Tests" />
+              <Rule Match="Any">
+                <Rule Match="All">
+                  <Property Name="Class" Value="AccountServiceTest" />
+                  <Rule Match="Any">
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="Library.ServiceLayer.Tests.AccountServiceTest.TestInsert" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="TestInsert" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="Library.ServiceLayer.Tests.AccountServiceTest.TestGetAll" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="TestGetAll" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="Library.ServiceLayer.Tests.AccountServiceTest.TestGetById" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="TestGetById" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="Library.ServiceLayer.Tests.AccountServiceTest.TestUpdate" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="TestUpdate" />
+                      </Rule>
+                    </Rule>
+                    <Rule Match="All">
+                      <Property Name="TestWithNormalizedFullyQualifiedName" Value="Library.ServiceLayer.Tests.AccountServiceTest.TestDelete" />
+                      <Rule Match="Any">
+                        <Property Name="DisplayName" Value="TestDelete" />
+                      </Rule>
+                    </Rule>
+                  </Rule>
+                </Rule>
+              </Rule>
+            </Rule>
+          </Rule>
+        </Rule>
+      </Rule>
+    </Rule>
+  </Rule>
+</Playlist>

@@ -36,5 +36,10 @@ namespace Library.ServiceLayer.Services
         {
             _validator = new AccountValidator();
         }
+
+        public bool Insert2(Account entity)
+        {
+            return _repository.Insert2(entity);
+        }
     }
 }

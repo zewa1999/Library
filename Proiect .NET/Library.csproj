@@ -11,10 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="App.config" />
-  </ItemGroup>
-
-  <ItemGroup>
 	  <PackageReference Include="FluentValidation" Version="10.3.6" />
 	  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.0">
 	    <PrivateAssets>all</PrivateAssets>
@@ -30,17 +26,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="App.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="ConfigurationReader.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update="AppSettings.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="DataLayer\App.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="nlog.config">

@@ -8,6 +8,7 @@ namespace Library.DomainLayer.Tests
     public class BorrowerTests
     {
         private Borrower borrower;
+
         [TestInitialize]
         public void Initialize()
         {
@@ -78,6 +79,7 @@ namespace Library.DomainLayer.Tests
             bool flag = borrower.Address.Contains("Number");
             Assert.IsTrue(flag);
         }
+
         [TestMethod]
         public void AddressShouldBeInvalidIfApartmentBuildingDoesNotExist()
         {
@@ -99,7 +101,6 @@ namespace Library.DomainLayer.Tests
             {
                 PhoneNumber = "073452531nnns",
                 Email = "123mail.com"
-                
             };
             bool emailFlag = true;
             bool phoneNumberFlag = borrower.Account.PhoneNumber.All(char.IsDigit);
@@ -113,19 +114,17 @@ namespace Library.DomainLayer.Tests
                     throw new AssertFailedException("The email is not valid");
                 }
 
-
                 new System.Net.Mail.MailAddress(borrower.Account.Email);
             }
             catch
             {
                 emailFlag = false;
             }
-           
+
             Assert.IsNotNull(borrower.Account.PhoneNumber);
             Assert.IsFalse(phoneNumberFlag);
             Assert.AreNotEqual(10, borrower.Account.PhoneNumber.Length);
             Assert.IsFalse(emailFlag);
-
         }
 
         [TestMethod]
@@ -135,7 +134,6 @@ namespace Library.DomainLayer.Tests
             {
                 PhoneNumber = "073452531nnns",
                 Email = "validemail@ceva.com"
-
             };
             bool emailFlag = true;
             bool phoneNumberFlag = borrower.Account.PhoneNumber.All(char.IsDigit);
@@ -148,7 +146,6 @@ namespace Library.DomainLayer.Tests
                 {
                     throw new AssertFailedException("The email is not valid");
                 }
-
 
                 new System.Net.Mail.MailAddress(borrower.Account.Email);
             }
@@ -162,7 +159,6 @@ namespace Library.DomainLayer.Tests
             Assert.AreNotEqual(10, borrower.Account.PhoneNumber.Length);
 
             Assert.IsTrue(emailFlag);
-
         }
 
         [TestMethod]
@@ -172,7 +168,6 @@ namespace Library.DomainLayer.Tests
             {
                 PhoneNumber = "0724525672",
                 Email = "invalidemail.com"
-
             };
             bool emailFlag = true;
             bool phoneNumberFlag = borrower.Account.PhoneNumber.All(char.IsDigit);
@@ -185,7 +180,6 @@ namespace Library.DomainLayer.Tests
                 {
                     throw new AssertFailedException("The email is not valid");
                 }
-
 
                 new System.Net.Mail.MailAddress(borrower.Account.Email);
             }
@@ -198,7 +192,6 @@ namespace Library.DomainLayer.Tests
             Assert.IsTrue(phoneNumberFlag);
             Assert.AreEqual(10, borrower.Account.PhoneNumber.Length);
             Assert.IsFalse(emailFlag);
-
         }
 
         [TestMethod]
@@ -208,7 +201,6 @@ namespace Library.DomainLayer.Tests
             {
                 PhoneNumber = "0724525672",
                 Email = "validmail@ceva.com"
-
             };
             bool emailFlag = true;
             bool phoneNumberFlag = borrower.Account.PhoneNumber.All(char.IsDigit);
@@ -221,7 +213,6 @@ namespace Library.DomainLayer.Tests
                 {
                     throw new AssertFailedException("The email is not valid");
                 }
-
 
                 new System.Net.Mail.MailAddress(borrower.Account.Email);
             }
@@ -235,7 +226,6 @@ namespace Library.DomainLayer.Tests
             Assert.AreEqual(10, borrower.Account.PhoneNumber.Length);
 
             Assert.IsTrue(emailFlag);
-
         }
     }
 }

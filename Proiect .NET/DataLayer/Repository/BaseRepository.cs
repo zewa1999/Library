@@ -82,35 +82,47 @@ namespace Library.DataLayer
                     logger.Error(ex.Message + "The query will return an empty list!");
                 }
             }
-            return new List<T>();
+            return null;
         }
 
         /// <summary>
         /// Inserts the specified entity.
         /// </summary>
         /// <param name="entity">The entity.</param>
-        public virtual void Insert(T entity)
+        public virtual bool Insert(T entity)
         {
+            Console.WriteLine("Repo insert");
+
             using (var ctx = new LibraryContext())
             {
                 try
                 {
                     var dbSet = ctx.Set<T>();
+                    Console.WriteLine(ctx.Accounts.Count());
+
                     dbSet.Add(entity);
+                    Console.WriteLine(ctx.Accounts.Count());
+
                     ctx.SaveChanges();
+                    entity = null;
+                    Console.WriteLine(ctx.Accounts.Count());
                 }
                 catch (Exception ex)
                 {
                     logger.Error(ex.Message + "The INSERT could not been made!");
+                    return false;
                 }
             }
+            Console.WriteLine("Repo papa");
+
+            return true;
         }
 
         /// <summary>
         /// Updates the specified item.
         /// </summary>
         /// <param name="item">The item.</param>
-        public virtual void Update(T item)
+        public virtual bool Update(T item)
         {
             using (var ctx = new LibraryContext())
             {
@@ -125,24 +137,36 @@ namespace Library.DataLayer
                 catch (Exception ex)
                 {
                     logger.Error(ex.Message + "The UPDATE could not been made!");
+                    return false;
                 }
             }
+            return true;
         }
 
         /// <summary>
         /// Deletes the specified identifier.
         /// </summary>
         /// <param name="id">The identifier.</param>
-        public virtual void Delete(object id)
+        public virtual bool DeleteById(object id)
         {
-            Delete(GetByID(id));
+            try
+            {
+                Delete(GetByID(id));
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex.Message + "The DELETE could not been made!");
+                return false;
+            }
+
+            return true;
         }
 
         /// <summary>
         /// Deletes the specified entity to delete.
         /// </summary>
         /// <param name="entityToDelete">The entity to delete.</param>
-        public virtual void Delete(T entityToDelete)
+        public virtual bool Delete(T entityToDelete)
         {
             using (var ctx = new LibraryContext())
             {
@@ -162,8 +186,10 @@ namespace Library.DataLayer
                 catch (Exception ex)
                 {
                     logger.Error(ex.Message + "The DELETE could not been made!");
+                    return false;
                 }
             }
+            return true;
         }
 
         /// <summary>
@@ -183,8 +209,8 @@ namespace Library.DataLayer
                 {
                     logger.Error(ex.Message + "The GetByID could not been made. Will return null!");
                 }
-                return null;
             }
+            return null;
         }
     }
 }

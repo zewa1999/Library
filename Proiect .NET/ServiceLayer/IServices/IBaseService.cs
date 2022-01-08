@@ -41,7 +41,9 @@ namespace Library.ServiceLayer.IServices
         /// Deletes the specified identifier.
         /// </summary>
         /// <param name="entity">The entity.</param>
-        void Delete(T entity);
+        bool Delete(T entity);
+
+        bool DeleteById(object entity);
 
         /// <summary>
         /// Gets the by identifier.
