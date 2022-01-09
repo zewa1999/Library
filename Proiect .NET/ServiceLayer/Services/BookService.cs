@@ -45,7 +45,7 @@ namespace Library.ServiceLayer.Services
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns>ValidationResult.</returns>
-        public override ValidationResult Insert(Book entity)
+        public override bool Insert(Book entity)
         {
             var result = _validator.Validate(entity);
             Utils.LogErrors(result);
@@ -56,9 +56,10 @@ namespace Library.ServiceLayer.Services
             else
             {
                 Utils.LogErrors(result);
+                return false;
             }
 
-            return result;
+            return true;
         }
 
         /// <summary>

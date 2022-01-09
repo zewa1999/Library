@@ -55,10 +55,9 @@ namespace Library.ServiceLayer.Services
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns>ValidationResult.</returns>
-        public override ValidationResult Insert(Borrow entity)
+        public override bool Insert(Borrow entity)
         {
             var result = _validator.Validate(entity);
-            Utils.LogErrors(result);
             if (result.IsValid && CheckFlags(entity))
             {
                 _repository.Insert(entity);
@@ -66,9 +65,10 @@ namespace Library.ServiceLayer.Services
             else
             {
                 Utils.LogErrors(result);
+                return false;
             }
 
-            return result;
+            return true;
         }
 
         /// <summary>

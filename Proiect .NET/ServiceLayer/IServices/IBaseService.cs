@@ -28,14 +28,14 @@ namespace Library.ServiceLayer.IServices
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns>ValidationResult.</returns>
-        ValidationResult Insert(T entity);
+        bool Insert(T entity);
 
         /// <summary>
         /// Updates the specified item.
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns>ValidationResult.</returns>
-        ValidationResult Update(T entity);
+        bool Update(T entity);
 
         /// <summary>
         /// Deletes the specified identifier.

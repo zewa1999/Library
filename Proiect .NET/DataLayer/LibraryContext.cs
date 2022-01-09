@@ -85,7 +85,9 @@ namespace Library.DataLayer.DataMapper
         /// <param name="optionsBuilder">The optionsBuilder used to configure properties of the server.</param>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source= (localdb)\\MSSQLLocalDB; Initial Catalog=LibraryDatabase");
+            optionsBuilder
+               .UseLazyLoadingProxies()
+               .UseSqlServer("Data Source= (localdb)\\MSSQLLocalDB; Initial Catalog=LibraryDatabase");
         }
     }
 }

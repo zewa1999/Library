@@ -89,16 +89,17 @@ namespace Library.ServiceLayer.Services
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns>ValidationResult.</returns>
-        public ValidationResult Insert(Properties entity)
+        public bool Insert(Properties entity)
         {
             var context = new ValidationContext<Properties>(entity);
             ValidationResult result = _validator.Validate(context);
             if (result.IsValid)
             {
                 _repository.Insert(entity);
+                return true;
             }
 
-            return result;
+            return false;
         }
 
         /// <summary>
@@ -107,16 +108,17 @@ namespace Library.ServiceLayer.Services
         /// <param name="entity">The entity.</param>
         /// <returns>ValidationResult.</returns>
         /// <exception cref="NotImplementedException"></exception>
-        public ValidationResult Update(Properties entity)
+        public bool Update(Properties entity)
         {
             var context = new ValidationContext<Properties>(entity);
             ValidationResult result = _validator.Validate(context);
             if (result.IsValid)
             {
                 _repository.Insert(entity);
+                return true;
             }
 
-            return result;
+            return false;
         }
     }
 }

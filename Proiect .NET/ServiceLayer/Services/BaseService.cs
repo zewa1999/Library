@@ -64,9 +64,8 @@ namespace Library.ServiceLayer.Services
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns>ValidationResult.</returns>
-        public virtual ValidationResult Insert(T entity)
+        public virtual bool Insert(T entity)
         {
-            Console.WriteLine("BaseService insert");
             var result = _validator.Validate(entity);
             var isValid = false;
             if (result.IsValid)
@@ -76,18 +75,15 @@ namespace Library.ServiceLayer.Services
             else
             {
                 Utils.LogErrors(result);
+                return false;
             }
 
             if (isValid == true)
             {
-                Console.WriteLine("Repo insert");
-
                 _repository.Insert(entity);
-                Console.WriteLine("Repo after insert");
             }
-            Console.WriteLine("Out insert");
 
-            return result;
+            return true;
         }
 
         /// <summary>
@@ -95,7 +91,7 @@ namespace Library.ServiceLayer.Services
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns>ValidationResult.</returns>
-        public virtual ValidationResult Update(T entity)
+        public virtual bool Update(T entity)
         {
             var result = _validator.Validate(entity);
             Utils.LogErrors(result);
@@ -106,9 +102,10 @@ namespace Library.ServiceLayer.Services
             else
             {
                 Utils.LogErrors(result);
+                return false;
             }
 
-            return result;
+            return true;
         }
 
         /// <summary>

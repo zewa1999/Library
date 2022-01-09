@@ -91,21 +91,15 @@ namespace Library.DataLayer
         /// <param name="entity">The entity.</param>
         public virtual bool Insert(T entity)
         {
-            Console.WriteLine("Repo insert");
-
             using (var ctx = new LibraryContext())
             {
                 try
                 {
                     var dbSet = ctx.Set<T>();
-                    Console.WriteLine(ctx.Accounts.Count());
-
                     dbSet.Add(entity);
-                    Console.WriteLine(ctx.Accounts.Count());
-
                     ctx.SaveChanges();
+
                     entity = null;
-                    Console.WriteLine(ctx.Accounts.Count());
                 }
                 catch (Exception ex)
                 {
@@ -113,7 +107,6 @@ namespace Library.DataLayer
                     return false;
                 }
             }
-            Console.WriteLine("Repo papa");
 
             return true;
         }
