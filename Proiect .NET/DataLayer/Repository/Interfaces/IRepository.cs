@@ -4,7 +4,7 @@
 // Created          : 01-06-2022
 //
 // Last Modified By : costa
-// Last Modified On : 01-06-2022
+// Last Modified On : 01-08-2022
 // ***********************************************************************
 // <copyright file="IRepository.cs" company="Library">
 //     Copyright (c) . All rights reserved.
@@ -31,24 +31,28 @@ namespace Library.DataLayer.Interfaces
         /// Inserts the specified entity.
         /// </summary>
         /// <param name="entity">The entity.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         bool Insert(T entity);
 
         /// <summary>
         /// Updates the specified item.
         /// </summary>
         /// <param name="item">The item.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         bool Update(T item);
 
         /// <summary>
         /// Deletes the specified identifier.
         /// </summary>
         /// <param name="id">The identifier.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         bool DeleteById(object id);
 
         /// <summary>
         /// Deletes the specified entity.
         /// </summary>
         /// <param name="entity">The entity.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         bool Delete(T entity);
 
         /// <summary>

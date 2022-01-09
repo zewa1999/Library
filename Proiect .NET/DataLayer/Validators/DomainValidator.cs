@@ -73,6 +73,12 @@ namespace Library.DataLayer.Validators
             });
         }
 
+        /// <summary>
+        /// Haves the entities.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="entities">The entities.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         protected bool HaveEntities<T>(ICollection<T> entities)
         {
             if (entities == null || entities.Count == 0)

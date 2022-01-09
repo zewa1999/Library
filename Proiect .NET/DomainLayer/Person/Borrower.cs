@@ -4,7 +4,7 @@
 // Created          : 11-25-2021
 //
 // Last Modified By : costa
-// Last Modified On : 01-06-2022
+// Last Modified On : 01-09-2022
 // ***********************************************************************
 // <copyright file="Borrower.cs" company="Library.DomainLayer">
 //     Copyright (c) . All rights reserved.

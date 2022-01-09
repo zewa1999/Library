@@ -8,6 +8,7 @@ namespace Library.DomainLayer.Tests
     public class AccountTests
     {
         private Account account;
+
         [TestInitialize]
         public void InitializeTest()
         {
@@ -47,12 +48,12 @@ namespace Library.DomainLayer.Tests
 
             if (trimmedEmail.EndsWith("."))
             {
-                flag =  false; 
+                flag = false;
             }
             try
             {
                 var addr = new System.Net.Mail.MailAddress(account.Email);
-                flag =  addr.Address == trimmedEmail;
+                flag = addr.Address == trimmedEmail;
             }
             catch
             {

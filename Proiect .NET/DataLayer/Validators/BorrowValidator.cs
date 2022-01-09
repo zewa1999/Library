@@ -4,7 +4,7 @@
 // Created          : 01-06-2022
 //
 // Last Modified By : costa
-// Last Modified On : 01-06-2022
+// Last Modified On : 01-09-2022
 // ***********************************************************************
 // <copyright file="BorrowValidator.cs" company="Library">
 //     Copyright (c) . All rights reserved.
@@ -55,6 +55,12 @@ namespace Library.DataLayer.Validators
             RuleForEach(b => b.BorrowedBooks).SetValidator(new BookValidator());
         }
 
+        /// <summary>
+        /// Haves the entities.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="entities">The entities.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         protected bool HaveEntities<T>(ICollection<T> entities)
         {
             if (entities == null || entities.Count == 0)

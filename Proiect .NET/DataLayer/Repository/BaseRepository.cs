@@ -4,7 +4,7 @@
 // Created          : 01-06-2022
 //
 // Last Modified By : costa
-// Last Modified On : 01-06-2022
+// Last Modified On : 01-09-2022
 // ***********************************************************************
 // <copyright file="BaseRepository.cs" company="Library">
 //     Copyright (c) . All rights reserved.
@@ -89,6 +89,7 @@ namespace Library.DataLayer
         /// Inserts the specified entity.
         /// </summary>
         /// <param name="entity">The entity.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public virtual bool Insert(T entity)
         {
             using (var ctx = new LibraryContext())
@@ -115,6 +116,7 @@ namespace Library.DataLayer
         /// Updates the specified item.
         /// </summary>
         /// <param name="item">The item.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public virtual bool Update(T item)
         {
             using (var ctx = new LibraryContext())
@@ -140,6 +142,7 @@ namespace Library.DataLayer
         /// Deletes the specified identifier.
         /// </summary>
         /// <param name="id">The identifier.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public virtual bool DeleteById(object id)
         {
             try
@@ -159,6 +162,7 @@ namespace Library.DataLayer
         /// Deletes the specified entity to delete.
         /// </summary>
         /// <param name="entityToDelete">The entity to delete.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public virtual bool Delete(T entityToDelete)
         {
             using (var ctx = new LibraryContext())

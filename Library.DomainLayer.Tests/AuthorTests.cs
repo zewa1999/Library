@@ -8,6 +8,7 @@ namespace Library.DomainLayer.Tests
     public class AuthorTests
     {
         private Author author;
+
         [TestInitialize]
         public void Initialize()
         {

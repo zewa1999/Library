@@ -4,7 +4,7 @@
 // Created          : 01-06-2022
 //
 // Last Modified By : costa
-// Last Modified On : 01-06-2022
+// Last Modified On : 01-08-2022
 // ***********************************************************************
 // <copyright file="IAccountRepository.cs" company="Library">
 //     Copyright (c) . All rights reserved.
@@ -25,6 +25,11 @@ namespace Library.DataLayer.Interfaces
     /// <seealso cref="Library.DataLayer.Interfaces.IRepository{Library.DomainLayer.Person.Account}" />
     public interface IAccountRepository : IRepository<Account>
     {
+        /// <summary>
+        /// Insert2s the specified entity.
+        /// </summary>
+        /// <param name="entity">The entity.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool Insert2(Account entity);
     }
 }

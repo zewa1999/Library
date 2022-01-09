@@ -3,7 +3,6 @@ using Library.DataLayer.Validators;
 using Library.DomainLayer;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace Library.DataLayer.Tests.ValidatorsTests
 {

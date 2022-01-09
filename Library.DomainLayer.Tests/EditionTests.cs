@@ -54,7 +54,7 @@ namespace Library.DomainLayer.Tests
         {
             edition.EditionNumber = 23;
 
-            Assert.IsTrue(edition.EditionNumber <  50);
+            Assert.IsTrue(edition.EditionNumber < 50);
         }
 
         [TestMethod]

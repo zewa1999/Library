@@ -2,12 +2,14 @@
 using Library.DataLayer.Validators;
 using Library.DomainLayer;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 namespace Library.DataLayer.Tests.ValidatorsTests
 {
     [TestClass]
     public class EditionValidatorTests
     {
         private EditionValidator validator;
+
         [TestInitialize]
         public void Initialize()
         {
@@ -241,6 +243,5 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             var result = validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.NumberOfPages);
         }
-
     }
 }

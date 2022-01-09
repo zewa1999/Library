@@ -1,33 +1,53 @@
-﻿using Library.DataLayer.DataMapper;
+﻿// ***********************************************************************
+// Assembly         : Library.ServiceLayer.Tests
+// Author           : costa
+// Created          : 01-07-2022
+//
+// Last Modified By : costa
+// Last Modified On : 01-09-2022
+// ***********************************************************************
+// <copyright file="AccountServiceTest.cs" company="Library.ServiceLayer.Tests">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 using Library.DomainLayer.Person;
 using Library.ServiceLayer.IServices;
-using Library.ServiceLayer.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Proiect_.NET.Injection;
-using System;
+using Moq;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Moq;
-using FluentValidation.Results;
-using FluentValidation;
-using System.ComponentModel.DataAnnotations;
 
 namespace Library.ServiceLayer.Tests
 {
+    /// <summary>
+    /// Defines test class AccountServiceTest.
+    /// </summary>
     [TestClass]
     public class AccountServiceTest
     {
+        /// <summary>
+        /// The account service mock
+        /// </summary>
         private Mock<IAccountService> accountServiceMock;
+
+        /// <summary>
+        /// The account service
+        /// </summary>
         private IAccountService accountService;
 
+        /// <summary>
+        /// Initializes this instance.
+        /// </summary>
         [TestInitialize]
         public void Initialize()
         {
             accountServiceMock = new Mock<IAccountService>();
         }
 
+        /// <summary>
+        /// Defines the test method TestInsert.
+        /// </summary>
         [TestMethod]
         public void TestInsert()
         {
@@ -45,6 +65,9 @@ namespace Library.ServiceLayer.Tests
             Assert.IsTrue(result);
         }
 
+        /// <summary>
+        /// Defines the test method TestGetAll.
+        /// </summary>
         [TestMethod]
         public void TestGetAll()
         {
@@ -64,6 +87,9 @@ namespace Library.ServiceLayer.Tests
             Assert.AreEqual(1, result.Count());
         }
 
+        /// <summary>
+        /// Defines the test method TestGetById.
+        /// </summary>
         [TestMethod]
         public void TestGetById()
         {
@@ -85,6 +111,9 @@ namespace Library.ServiceLayer.Tests
             Assert.AreEqual("validemail@gmail.com", result.Email);
         }
 
+        /// <summary>
+        /// Defines the test method TestUpdate.
+        /// </summary>
         [TestMethod]
         public void TestUpdate()
         {
@@ -107,6 +136,9 @@ namespace Library.ServiceLayer.Tests
             Assert.IsTrue(result);
         }
 
+        /// <summary>
+        /// Defines the test method TestDelete.
+        /// </summary>
         [TestMethod]
         public void TestDelete()
         {

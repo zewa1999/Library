@@ -1,19 +1,31 @@
-﻿using Library.DataLayer.Concretes;
-using Library.DataLayer.DataMapper;
-using Library.DomainLayer.Person;
+﻿// ***********************************************************************
+// Assembly         : Library
+// Author           : costa
+// Created          : 01-08-2022
+//
+// Last Modified By : costa
+// Last Modified On : 01-09-2022
+// ***********************************************************************
+// <copyright file="UI.cs" company="Library">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 using Library.ServiceLayer.IServices;
-using Library.ServiceLayer.Services;
 using Proiect_.NET.Injection;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Proiect_.NET
 {
+    /// <summary>
+    /// Class UI.
+    /// </summary>
     public class UI
     {
+        /// <summary>
+        /// Defines the entry point of the application.
+        /// </summary>
+        /// <param name="args">The arguments.</param>
         public static void Main(String[] args)
         {
             //var repo = new AccountRepository();

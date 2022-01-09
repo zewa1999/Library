@@ -4,7 +4,7 @@
 // Created          : 12-17-2021
 //
 // Last Modified By : costa
-// Last Modified On : 01-06-2022
+// Last Modified On : 01-09-2022
 // ***********************************************************************
 // <copyright file="BaseService.cs" company="Library.ServiceLayer">
 //     Copyright (c) . All rights reserved.
@@ -12,10 +12,8 @@
 // <summary></summary>
 // ***********************************************************************
 using FluentValidation;
-using FluentValidation.Results;
 using Library.DataLayer.Interfaces;
 using Library.ServiceLayer.IServices;
-using System;
 using System.Collections.Generic;
 
 namespace Library.ServiceLayer.Services
@@ -112,11 +110,17 @@ namespace Library.ServiceLayer.Services
         /// Deletes the specified identifier.
         /// </summary>
         /// <param name="entity">The entity.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public virtual bool Delete(T entity)
         {
             return _repository.Delete(entity);
         }
 
+        /// <summary>
+        /// Deletes the by identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public virtual bool DeleteById(object id)
         {
             return _repository.DeleteById(id);

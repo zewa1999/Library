@@ -2,12 +2,14 @@
 using Library.DataLayer.Validators;
 using Library.DomainLayer;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 namespace Library.DataLayer.Tests.ValidatorsTests
 {
     [TestClass]
     public class PropertiesValidatorTests
     {
         private PropertiesValidator validator;
+
         [TestInitialize]
         public void Initialize()
         {

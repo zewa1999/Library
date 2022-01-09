@@ -4,14 +4,13 @@
 // Created          : 12-17-2021
 //
 // Last Modified By : costa
-// Last Modified On : 01-06-2022
+// Last Modified On : 01-09-2022
 // ***********************************************************************
 // <copyright file="BookService.cs" company="Library.ServiceLayer">
 //     Copyright (c) . All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using FluentValidation.Results;
 using Library.DataLayer.Interfaces;
 using Library.DataLayer.Validators;
 using Library.DomainLayer;

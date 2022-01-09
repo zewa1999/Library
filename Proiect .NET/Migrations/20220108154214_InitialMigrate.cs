@@ -1,10 +1,41 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : Library
+// Author           : costa
+// Created          : 01-08-2022
+//
+// Last Modified By : costa
+// Last Modified On : 01-09-2022
+// ***********************************************************************
+// <copyright file="20220108154214_InitialMigrate.cs" company="Library">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 using Microsoft.EntityFrameworkCore.Migrations;
+using System;
 
 namespace Proiect_.NET.Migrations
 {
+    /// <summary>
+    /// Class InitialMigrate.
+    /// Implements the <see cref="Microsoft.EntityFrameworkCore.Migrations.Migration" />
+    /// </summary>
+    /// <seealso cref="Microsoft.EntityFrameworkCore.Migrations.Migration" />
     public partial class InitialMigrate : Migration
     {
+        /// <summary>
+        /// <para>
+        /// Builds the operations that will migrate the database 'up'.
+        /// </para>
+        /// <para>
+        /// That is, builds the operations that will take the database from the state left in by the
+        /// previous migration so that it is up-to-date with regard to this migration.
+        /// </para>
+        /// <para>
+        /// This method must be overridden in each class the inherits from <see cref="T:Microsoft.EntityFrameworkCore.Migrations.Migration" />.
+        /// </para>
+        /// </summary>
+        /// <param name="migrationBuilder">The <see cref="T:Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder" /> that will build the operations.</param>
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -236,6 +267,10 @@ namespace Proiect_.NET.Migrations
                 column: "BookId");
         }
 
+        /// <summary>
+        /// Downs the specified migration builder.
+        /// </summary>
+        /// <param name="migrationBuilder">The migration builder.</param>
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

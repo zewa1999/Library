@@ -15,7 +15,7 @@ namespace Library.DomainLayer.Tests.PersonTests
         {
             borrow = new Borrow();
         }
-        
+
         [TestMethod]
         public void BorrowShouldHaveAValidBorrower()
         {
@@ -24,7 +24,6 @@ namespace Library.DomainLayer.Tests.PersonTests
             {
                 PhoneNumber = "0724525672",
                 Email = "vali@mail.com"
-
             };
 
             borrow = new()
@@ -94,7 +93,7 @@ namespace Library.DomainLayer.Tests.PersonTests
         public void BorrowDateShouldNotBeHigherThanCurrentDate()
         {
             borrow.BorrowDate = DateTime.Now.AddHours(1);
-            if(borrow.BorrowDate > DateTime.Now)
+            if (borrow.BorrowDate > DateTime.Now)
             {
                 Assert.IsFalse(false);
                 return;
@@ -117,7 +116,7 @@ namespace Library.DomainLayer.Tests.PersonTests
         public void NoOfTimeExtendedShouldBeNoHigherThanThree()
         {
             borrow.NoOfTimeExtended = 2;
-            if(borrow.NoOfTimeExtended > 3)
+            if (borrow.NoOfTimeExtended > 3)
             {
                 Assert.IsTrue(false);
             }

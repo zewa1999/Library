@@ -4,7 +4,7 @@
 // Created          : 12-17-2021
 //
 // Last Modified By : costa
-// Last Modified On : 01-06-2022
+// Last Modified On : 01-09-2022
 // ***********************************************************************
 // <copyright file="IBaseService.cs" company="Library.ServiceLayer">
 //     Copyright (c) . All rights reserved.
@@ -13,7 +13,6 @@
 // ***********************************************************************
 namespace Library.ServiceLayer.IServices
 {
-    using FluentValidation.Results;
     using System.Collections.Generic;
 
     /// <summary>
@@ -41,8 +40,14 @@ namespace Library.ServiceLayer.IServices
         /// Deletes the specified identifier.
         /// </summary>
         /// <param name="entity">The entity.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         bool Delete(T entity);
 
+        /// <summary>
+        /// Deletes the by identifier.
+        /// </summary>
+        /// <param name="entity">The entity.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         bool DeleteById(object entity);
 
         /// <summary>

@@ -4,14 +4,13 @@
 // Created          : 12-17-2021
 //
 // Last Modified By : costa
-// Last Modified On : 01-06-2022
+// Last Modified On : 01-09-2022
 // ***********************************************************************
 // <copyright file="BorrowService.cs" company="Library.ServiceLayer">
 //     Copyright (c) . All rights reserved.
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using FluentValidation.Results;
 using Library.DataLayer.Interfaces;
 using Library.DataLayer.Validators;
 using Library.DomainLayer;
@@ -41,7 +40,7 @@ namespace Library.ServiceLayer.Services
         private readonly IBookRepository bookRepository;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BorrowService"/> class.
+        /// Initializes a new instance of the <see cref="BorrowService" /> class.
         /// </summary>
         public BorrowService()
              : base(Injector.Create<IBorrowRepository>(), Injector.Create<IPropertiesRepository>())

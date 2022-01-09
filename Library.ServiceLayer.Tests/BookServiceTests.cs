@@ -1,28 +1,53 @@
-﻿using Library.DomainLayer;
+﻿// ***********************************************************************
+// Assembly         : Library.ServiceLayer.Tests
+// Author           : costa
+// Created          : 01-07-2022
+//
+// Last Modified By : costa
+// Last Modified On : 01-09-2022
+// ***********************************************************************
+// <copyright file="BookServiceTests.cs" company="Library.ServiceLayer.Tests">
+//     Copyright (c) . All rights reserved.
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
+using Library.DomainLayer;
 using Library.ServiceLayer.IServices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using Proiect_.NET.Injection;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Library.ServiceLayer.Tests
 {
+    /// <summary>
+    /// Defines test class BookServiceTests.
+    /// </summary>
     [TestClass]
     public class BookServiceTests
     {
+        /// <summary>
+        /// The book service mock
+        /// </summary>
         private Mock<IBookService> bookServiceMock;
+
+        /// <summary>
+        /// The book service
+        /// </summary>
         private IBookService bookService;
 
+        /// <summary>
+        /// Initializes this instance.
+        /// </summary>
         [TestInitialize]
         public void Initialize()
         {
             bookServiceMock = new Mock<IBookService>();
         }
 
+        /// <summary>
+        /// Defines the test method TestInsert.
+        /// </summary>
         [TestMethod]
         public void TestInsert()
         {
@@ -35,6 +60,9 @@ namespace Library.ServiceLayer.Tests
             Assert.IsTrue(result);
         }
 
+        /// <summary>
+        /// Defines the test method TestGetAll.
+        /// </summary>
         [TestMethod]
         public void TestGetAll()
         {
@@ -51,6 +79,9 @@ namespace Library.ServiceLayer.Tests
             Assert.AreEqual(1, result.Count());
         }
 
+        /// <summary>
+        /// Defines the test method TestGetById.
+        /// </summary>
         [TestMethod]
         public void TestGetById()
         {
@@ -65,6 +96,9 @@ namespace Library.ServiceLayer.Tests
             Assert.AreEqual(1, result.Id);
         }
 
+        /// <summary>
+        /// Defines the test method TestUpdate.
+        /// </summary>
         [TestMethod]
         public void TestUpdate()
         {
@@ -85,6 +119,9 @@ namespace Library.ServiceLayer.Tests
             Assert.IsTrue(result);
         }
 
+        /// <summary>
+        /// Defines the test method TestDelete.
+        /// </summary>
         [TestMethod]
         public void TestDelete()
         {
@@ -96,22 +133,37 @@ namespace Library.ServiceLayer.Tests
             Assert.IsTrue(result);
         }
 
+        /// <summary>
+        /// Tests the check if domain exists.
+        /// </summary>
         public void TestCheckIfDomainExists()
         {
         }
 
+        /// <summary>
+        /// Tests the book has correct domains.
+        /// </summary>
         public void TestBookHasCorrectDomains()
         {
         }
 
+        /// <summary>
+        /// Tests the get domains without the first.
+        /// </summary>
         public void TestGetDomainsWithoutTheFirst()
         {
         }
 
+        /// <summary>
+        /// Tests the add ancestor domains.
+        /// </summary>
         public void TestAddAncestorDomains()
         {
         }
 
+        /// <summary>
+        /// Tests the get domains with the first.
+        /// </summary>
         public void TestGetDomainsWithTheFirst()
         {
         }

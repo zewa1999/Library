@@ -12,16 +12,13 @@
 // <summary></summary>
 // ***********************************************************************
 
+using Library.DataLayer.Interfaces;
+using Library.DomainLayer;
+
 namespace Library.DataLayer.Concretes
 {
     /// <summary>
     /// The Concretes namespace.
-    /// </summary>
-    using Library.DataLayer.Interfaces;
-    using Library.DomainLayer;
-
-    /// <summary>
-    /// Methods for the edition controller.
     /// </summary>
     public class EditionRepository : BaseRepository<Edition>, IEditionRepository
     {

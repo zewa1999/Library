@@ -1,6 +1,5 @@
 ﻿using FluentValidation.TestHelper;
 using Library.DataLayer.Validators;
-using Library.DomainLayer;
 using Library.DomainLayer.Person;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
