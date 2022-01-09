@@ -3,7 +3,6 @@ using Library.DomainLayer.Person;
 using Library.ServiceLayer.IServices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using Proiect_.NET.Injection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,15 +12,15 @@ using System.Threading.Tasks;
 namespace Library.ServiceLayer.Tests
 {
     [TestClass]
-    public class BorrowerServiceTests
+    public class LibrarianServiceTests
     {
-        private Mock<IBorrowerService> borrowerServiceMock;
-        private IBorrowerService borrowerService;
+        private Mock<ILibrarianService> librarianServiceMock;
+        private ILibrarianService librarianService;
 
         [TestInitialize]
         public void Initialize()
         {
-            borrowerServiceMock = new Mock<IBorrowerService>();
+            librarianServiceMock = new Mock<ILibrarianService>();
         }
 
         [TestMethod]
@@ -33,18 +32,19 @@ namespace Library.ServiceLayer.Tests
                 Email = "gogumortu@gmail.com"
             };
 
-            var borrower = new Borrower()
+            var librarian = new Librarian()
             {
                 LastName = "Gogu",
                 FirstName = "Mortu",
                 Address = "Bucuresti, strada Mihai Viteazu, nr 7, bloc C3, ap 26",
+                IsReader = true,
                 Account = account
             };
 
-            borrowerServiceMock.Setup(x => x.Insert(borrower)).Returns(true);
-            borrowerService = borrowerServiceMock.Object;
+            librarianServiceMock.Setup(x => x.Insert(librarian)).Returns(true);
+            librarianService = librarianServiceMock.Object;
 
-            var result = borrowerService.Insert(borrower);
+            var result = librarianService.Insert(librarian);
 
             Assert.IsTrue(result);
         }
@@ -58,22 +58,23 @@ namespace Library.ServiceLayer.Tests
                 Email = "gogumortu@gmail.com"
             };
 
-            var borrower = new Borrower()
+            var librarian = new Librarian()
             {
                 LastName = "Gogu",
                 FirstName = "Mortu",
                 Address = "Bucuresti, strada Mihai Viteazu, nr 7, bloc C3, ap 26",
+                IsReader = true,
                 Account = account
             };
 
-            borrowerServiceMock.Setup(x => x.GetAll())
+            librarianServiceMock.Setup(x => x.GetAll())
                 .Returns(
-                new List<Borrower>()
-                {borrower});
+                new List<Librarian>()
+                {librarian});
 
-            borrowerService = borrowerServiceMock.Object;
+            librarianService = librarianServiceMock.Object;
 
-            var result = borrowerService.GetAll();
+            var result = librarianService.GetAll();
 
             Assert.IsNotNull(result);
             Assert.AreEqual(1, result.Count());
@@ -88,20 +89,21 @@ namespace Library.ServiceLayer.Tests
                 Email = "gogumortu@gmail.com"
             };
 
-            var borrower = new Borrower()
+            var librarian = new Librarian()
             {
                 Id = 1,
                 LastName = "Gogu",
                 FirstName = "Mortu",
+                IsReader = true,
                 Address = "Bucuresti, strada Mihai Viteazu, nr 7, bloc C3, ap 26",
                 Account = account
             };
-            borrowerServiceMock.Setup(x => x.GetByID(1))
-                .Returns(borrower);
+            librarianServiceMock.Setup(x => x.GetByID(1))
+                .Returns(librarian);
 
-            borrowerService = borrowerServiceMock.Object;
+            librarianService = librarianServiceMock.Object;
 
-            var result = borrowerService.GetByID(1);
+            var result = librarianService.GetByID(1);
 
             Assert.IsNotNull(result);
             Assert.AreEqual(1, result.Id);
@@ -119,25 +121,26 @@ namespace Library.ServiceLayer.Tests
                 Email = "gogumortu@gmail.com"
             };
 
-            var borrower = new Borrower()
+            var librarian = new Librarian()
             {
                 LastName = "Gogu",
                 FirstName = "Mortu",
+                IsReader = true,
                 Address = "Bucuresti, strada Mihai Viteazu, nr 7, bloc C3, ap 26",
                 Account = account
             };
 
-            borrowerServiceMock.Setup(x => x.GetByID(1))
-                .Returns(borrower);
+            librarianServiceMock.Setup(x => x.GetByID(1))
+                .Returns(librarian);
 
-            borrowerService = borrowerServiceMock.Object;
+            librarianService = librarianServiceMock.Object;
 
-            var modifiedAccount = borrowerService.GetByID(1);
+            var modifiedAccount = librarianService.GetByID(1);
             modifiedAccount.LastName = "Alexandru";
 
-            borrowerServiceMock.Setup(x => x.Update(modifiedAccount)).Returns(true);
+            librarianServiceMock.Setup(x => x.Update(modifiedAccount)).Returns(true);
 
-            var result = borrowerService.Update(modifiedAccount);
+            var result = librarianService.Update(modifiedAccount);
 
             Assert.IsTrue(result);
         }
@@ -145,10 +148,10 @@ namespace Library.ServiceLayer.Tests
         [TestMethod]
         public void TestDelete()
         {
-            borrowerServiceMock.Setup(x => x.DeleteById(1)).Returns(true);
-            borrowerService = borrowerServiceMock.Object;
+            librarianServiceMock.Setup(x => x.DeleteById(1)).Returns(true);
+            librarianService = librarianServiceMock.Object;
 
-            var result = borrowerService.DeleteById(1);
+            var result = librarianService.DeleteById(1);
 
             Assert.IsTrue(result);
         }
