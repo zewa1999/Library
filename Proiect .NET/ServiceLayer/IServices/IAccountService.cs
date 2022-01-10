@@ -11,10 +11,11 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using Library.DomainLayer.Person;
 
 namespace Library.ServiceLayer.IServices
 {
+    using Library.DomainLayer.Person;
+
     /// <summary>
     /// Interface IAccountService
     /// Implements the <see cref="Library.ServiceLayer.IServices.IBaseService{Library.DomainLayer.Person.Account}" />

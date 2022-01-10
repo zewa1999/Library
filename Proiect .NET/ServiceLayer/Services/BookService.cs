@@ -11,16 +11,20 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using Library.DataLayer.Interfaces;
-using Library.DataLayer.Validators;
-using Library.DomainLayer;
-using Library.ServiceLayer.IServices;
-using Proiect_.NET.Injection;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Library.ServiceLayer.Services
 {
+    using FluentValidation;
+    using Library.DataLayer.Interfaces;
+    using Library.DataLayer.Validators;
+    using Library.DomainLayer;
+    using Library.ServiceLayer.IServices;
+    using Proiect_.NET.DataLayer.Validators;
+    using Proiect_.NET.DataLayer.Validators.BookValidators;
+    using Proiect_.NET.Injection;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Class BookService.
     /// Implements the <see cref="Library.ServiceLayer.Services.BaseService{Library.DomainLayer.Book, Library.DataLayer.Interfaces.IBookRepository}" />
@@ -36,21 +40,25 @@ namespace Library.ServiceLayer.Services
         public BookService()
             : base(Injector.Create<IBookRepository>(), Injector.Create<IPropertiesRepository>())
         {
-            _validator = new BookValidator();
+            this._validator = new BookValidator();
         }
 
         /// <summary>
         /// Inserts the specified entity.
         /// </summary>
-        /// <param name="entity">The entity.</param>
-        /// <returns>ValidationResult.</returns>
+        /// <param name="entity"> The entity. </param>
+
         public override bool Insert(Book entity)
         {
-            var result = _validator.Validate(entity);
-            Utils.LogErrors(result);
-            if (result.IsValid && CheckFlags(entity))
+            if (entity.Authors.Count == 0)
             {
-                _repository.Insert(entity);
+                this._validator = new BookWithoutAuthorsValidator();
+            }
+
+            var result = _validator.Validate(entity);
+            if (result.IsValid && this.CheckFlags(entity))
+            {
+                this._repository.Insert(entity);
             }
             else
             {
@@ -58,6 +66,7 @@ namespace Library.ServiceLayer.Services
                 return false;
             }
 
+            this._validator = new BookValidator();
             return true;
         }
 
@@ -65,17 +74,16 @@ namespace Library.ServiceLayer.Services
         /// Checks the flags.
         /// </summary>
         /// <param name="book">The book.</param>
-        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         private bool CheckFlags(Book book)
         {
             var properties = _propertiesRepository.GetLastProperties();
 
             if (book.Domains.Count > properties.Domenii)
                 return false;
-            if (BookHasCorrectDomains(book) == false)
+            if (this.BookHasCorrectDomains(book) == false)
                 return false;
 
-            AddAncestorDomains(book);
+            this.AddAncestorDomains(book);
             return true;
         }
 
@@ -86,7 +94,6 @@ namespace Library.ServiceLayer.Services
         /// </summary>
         /// <param name="domain">The domain.</param>
         /// <param name="domains">The domains.</param>
-        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool CheckIfDomainExists(Domain domain, List<Domain> domains)
         {
             var noOfBadDomains = (from d in domains where d.Id == domain.Id select d).Count();
@@ -102,7 +109,7 @@ namespace Library.ServiceLayer.Services
                 return false;
             }
 
-            return CheckIfDomainExists(domain.ParentDomain, domains);
+            return this.CheckIfDomainExists(domain.ParentDomain, domains);
         }
 
         //Se va verifica faptul ca o carte nu poate sa se specifice explicit ca fiind din domenii aflate in relatia stramos-descendent.
@@ -110,17 +117,16 @@ namespace Library.ServiceLayer.Services
         /// Books the has correct domains.
         /// </summary>
         /// <param name="book">The book.</param>
-        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool BookHasCorrectDomains(Book book)
         {
             var domainsList = new List<Domain>();
 
             foreach (var domain in book.Domains)
             {
-                GetDomainsWithoutTheFirst(domain, domainsList);
+                this.GetDomainsWithoutTheFirst(domain, domainsList);
                 foreach (var parentDomain in domainsList)
                 {
-                    if (domain.Id == parentDomain.Id)
+                    if (parentDomain != null && domain.Id == parentDomain.Id)
                     {
                         return false;
                     }
@@ -145,12 +151,12 @@ namespace Library.ServiceLayer.Services
 
             if (domains.Count == 0)
             {
-                GetDomainsWithoutTheFirst(domain.ParentDomain, domains);
+                this.GetDomainsWithoutTheFirst(domain.ParentDomain, domains);
             }
             else
             {
                 domains.Add(domain.ParentDomain);
-                GetDomainsWithoutTheFirst(domain.ParentDomain, domains);
+                this.GetDomainsWithoutTheFirst(domain.ParentDomain, domains);
             }
         }
 
@@ -163,23 +169,20 @@ namespace Library.ServiceLayer.Services
         /// <param name="book">The book.</param>
         public void AddAncestorDomains(Book book)
         {
-            GetDomainsList(book);
-            book.Domains = GetDomainsList(book);
+            book.Domains = this.GetDomainsList(book);
         }
 
         /// <summary>
         /// Gets the domains list.
         /// </summary>
-        /// <param name="book">The book.</param>
-        /// <returns>List&lt;Domain&gt;.</returns>
+        /// <param name="book"> The book. </param>
         public List<Domain> GetDomainsList(Book book)
         {
             var domainsList = new List<Domain>();
 
             foreach (var domain in book.Domains)
             {
-                domainsList.Add(domain);
-                GetDomainsWithTheFirst(domain, domainsList);
+                this.GetDomainsWithTheFirst(domain, domainsList);
             }
             return domainsList;
         }
@@ -193,12 +196,12 @@ namespace Library.ServiceLayer.Services
         {
             if (domain.ParentDomain == null)
             {
-                domains.Add(domain.ParentDomain);
+                domains.Add(domain);
                 return;
             }
 
             domains.Add(domain.ParentDomain);
-            GetDomainsWithTheFirst(domain.ParentDomain, domains);
+            this.GetDomainsWithTheFirst(domain.ParentDomain, domains);
         }
     }
 

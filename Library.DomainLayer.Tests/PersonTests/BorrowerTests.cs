@@ -1,9 +1,9 @@
-﻿using Library.DomainLayer.Person;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Linq;
-
-namespace Library.DomainLayer.Tests
+﻿namespace Library.DomainLayer.Tests
 {
+    using Library.DomainLayer.Person;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System.Linq;
+
     [TestClass]
     public class BorrowerTests
     {
@@ -12,45 +12,45 @@ namespace Library.DomainLayer.Tests
         [TestInitialize]
         public void Initialize()
         {
-            borrower = new();
+            this.borrower = new();
         }
 
         [TestMethod]
         public void BorrowerIdShouldBeValid()
         {
-            borrower.Id = 1;
-            Assert.AreEqual(1, borrower.Id);
+            this.borrower.Id = 1;
+            Assert.AreEqual(1, this.borrower.Id);
         }
 
         [TestMethod]
         public void LastNameShouldBeValid()
         {
-            borrower.LastName = "Costache";
-            bool isIntString = borrower.LastName.All(char.IsLetter);
+            this.borrower.LastName = "Costache";
+            bool isIntString = this.borrower.LastName.All(char.IsLetter);
             Assert.IsTrue(isIntString);
         }
 
         [TestMethod]
         public void LastNameShouldBeInvalid()
         {
-            borrower.LastName = "Costache123";
-            bool isIntString = borrower.LastName.All(char.IsLetter);
+            this.borrower.LastName = "Costache123";
+            bool isIntString = this.borrower.LastName.All(char.IsLetter);
             Assert.IsFalse(isIntString);
         }
 
         [TestMethod]
         public void FirstNameShouldBeValid()
         {
-            borrower.FirstName = "Stelian";
-            bool isIntString = borrower.FirstName.All(char.IsLetter);
+            this.borrower.FirstName = "Stelian";
+            bool isIntString = this.borrower.FirstName.All(char.IsLetter);
             Assert.IsTrue(isIntString);
         }
 
         [TestMethod]
         public void FirstNameShouldBeInvalid()
         {
-            borrower.FirstName = "1223Andrei";
-            bool isIntString = borrower.FirstName.All(char.IsLetter);
+            this.borrower.FirstName = "1223Andrei";
+            bool isIntString = this.borrower.FirstName.All(char.IsLetter);
             Assert.IsFalse(isIntString);
         }
 
@@ -58,8 +58,8 @@ namespace Library.DomainLayer.Tests
         [TestMethod]
         public void AddressShouldBeValidIfContainsComma()
         {
-            borrower.Address = "Street Strada Mea, Apartment Building 16, Brasov, Number 37, Romania";
-            bool flag1 = borrower.Address.Contains(',');
+            this.borrower.Address = "Street Strada Mea, Apartment Building 16, Brasov, Number 37, Romania";
+            bool flag1 = this.borrower.Address.Contains(',');
             Assert.IsTrue(flag1);
             Assert.IsTrue(flag1);
         }
@@ -67,45 +67,45 @@ namespace Library.DomainLayer.Tests
         [TestMethod]
         public void AddressShouldBeInvalidIfStreetDoesNotExist()
         {
-            borrower.Address = "Apartment Building 16, Brasov, Number 37, Romania";
-            bool flag3 = borrower.Address.Contains("Street");
+            this.borrower.Address = "Apartment Building 16, Brasov, Number 37, Romania";
+            bool flag3 = this.borrower.Address.Contains("Street");
             Assert.IsFalse(flag3);
         }
 
         [TestMethod]
         public void AddressShouldBeInvalidIfNumberDoesNotExist()
         {
-            borrower.Address = "Apartment Building 16, Brasov, Number 37, Romania";
-            bool flag = borrower.Address.Contains("Number");
+            this.borrower.Address = "Apartment Building 16, Brasov, Number 37, Romania";
+            bool flag = this.borrower.Address.Contains("Number");
             Assert.IsTrue(flag);
         }
 
         [TestMethod]
         public void AddressShouldBeInvalidIfApartmentBuildingDoesNotExist()
         {
-            borrower.Address = "Apartment Building 16, Brasov, Number 37, Romania";
-            bool flag = borrower.Address.Contains("Apartment Building");
+            this.borrower.Address = "Apartment Building 16, Brasov, Number 37, Romania";
+            bool flag = this.borrower.Address.Contains("Apartment Building");
             Assert.IsTrue(flag);
         }
 
         [TestMethod]
         public void AddressShouldBeInvalidIfAccountIsNull()
         {
-            Assert.IsNull(borrower.Account);
+            Assert.IsNull(this.borrower.Account);
         }
 
         [TestMethod]
         public void BorrowerAccountShouldBeInvalidIfPhoneNumberIsInvalidAndEmailIsInvalid()
         {
-            borrower.Account = new()
+            this.borrower.Account = new()
             {
                 PhoneNumber = "073452531nnns",
                 Email = "123mail.com"
             };
             bool emailFlag = true;
-            bool phoneNumberFlag = borrower.Account.PhoneNumber.All(char.IsDigit);
+            bool phoneNumberFlag = this.borrower.Account.PhoneNumber.All(char.IsDigit);
 
-            var trimmedEmail = borrower.Account.Email.Trim();
+            var trimmedEmail = this.borrower.Account.Email.Trim();
 
             try
             {
@@ -114,31 +114,31 @@ namespace Library.DomainLayer.Tests
                     throw new AssertFailedException("The email is not valid");
                 }
 
-                new System.Net.Mail.MailAddress(borrower.Account.Email);
+                new System.Net.Mail.MailAddress(this.borrower.Account.Email);
             }
             catch
             {
                 emailFlag = false;
             }
 
-            Assert.IsNotNull(borrower.Account.PhoneNumber);
+            Assert.IsNotNull(this.borrower.Account.PhoneNumber);
             Assert.IsFalse(phoneNumberFlag);
-            Assert.AreNotEqual(10, borrower.Account.PhoneNumber.Length);
+            Assert.AreNotEqual(10, this.borrower.Account.PhoneNumber.Length);
             Assert.IsFalse(emailFlag);
         }
 
         [TestMethod]
         public void BorrowerAccountShouldBeInvalidIfPhoneNumberIsInvalidAndEmailIsValid()
         {
-            borrower.Account = new()
+            this.borrower.Account = new()
             {
                 PhoneNumber = "073452531nnns",
                 Email = "validemail@ceva.com"
             };
             bool emailFlag = true;
-            bool phoneNumberFlag = borrower.Account.PhoneNumber.All(char.IsDigit);
+            bool phoneNumberFlag = this.borrower.Account.PhoneNumber.All(char.IsDigit);
 
-            var trimmedEmail = borrower.Account.Email.Trim();
+            var trimmedEmail = this.borrower.Account.Email.Trim();
 
             try
             {
@@ -147,16 +147,16 @@ namespace Library.DomainLayer.Tests
                     throw new AssertFailedException("The email is not valid");
                 }
 
-                new System.Net.Mail.MailAddress(borrower.Account.Email);
+                new System.Net.Mail.MailAddress(this.borrower.Account.Email);
             }
             catch
             {
                 emailFlag = false;
             }
 
-            Assert.IsNotNull(borrower.Account.PhoneNumber);
+            Assert.IsNotNull(this.borrower.Account.PhoneNumber);
             Assert.IsFalse(phoneNumberFlag);
-            Assert.AreNotEqual(10, borrower.Account.PhoneNumber.Length);
+            Assert.AreNotEqual(10, this.borrower.Account.PhoneNumber.Length);
 
             Assert.IsTrue(emailFlag);
         }
@@ -164,15 +164,15 @@ namespace Library.DomainLayer.Tests
         [TestMethod]
         public void BorrowerAccountShouldBeInvalidIfPhoneNumberIsValidAndEmailIsInvalid()
         {
-            borrower.Account = new()
+            this.borrower.Account = new()
             {
                 PhoneNumber = "0724525672",
                 Email = "invalidemail.com"
             };
             bool emailFlag = true;
-            bool phoneNumberFlag = borrower.Account.PhoneNumber.All(char.IsDigit);
+            bool phoneNumberFlag = this.borrower.Account.PhoneNumber.All(char.IsDigit);
 
-            var trimmedEmail = borrower.Account.Email.Trim();
+            var trimmedEmail = this.borrower.Account.Email.Trim();
 
             try
             {
@@ -181,31 +181,31 @@ namespace Library.DomainLayer.Tests
                     throw new AssertFailedException("The email is not valid");
                 }
 
-                new System.Net.Mail.MailAddress(borrower.Account.Email);
+                new System.Net.Mail.MailAddress(this.borrower.Account.Email);
             }
             catch
             {
                 emailFlag = false;
             }
 
-            Assert.IsNotNull(borrower.Account.PhoneNumber);
+            Assert.IsNotNull(this.borrower.Account.PhoneNumber);
             Assert.IsTrue(phoneNumberFlag);
-            Assert.AreEqual(10, borrower.Account.PhoneNumber.Length);
+            Assert.AreEqual(10, this.borrower.Account.PhoneNumber.Length);
             Assert.IsFalse(emailFlag);
         }
 
         [TestMethod]
         public void BorrowerAccountShouldBeValidIfPhoneNumberIsValidAndEmailIsValid()
         {
-            borrower.Account = new()
+            this.borrower.Account = new()
             {
                 PhoneNumber = "0724525672",
                 Email = "validmail@ceva.com"
             };
             bool emailFlag = true;
-            bool phoneNumberFlag = borrower.Account.PhoneNumber.All(char.IsDigit);
+            bool phoneNumberFlag = this.borrower.Account.PhoneNumber.All(char.IsDigit);
 
-            var trimmedEmail = borrower.Account.Email.Trim();
+            var trimmedEmail = this.borrower.Account.Email.Trim();
 
             try
             {
@@ -214,16 +214,16 @@ namespace Library.DomainLayer.Tests
                     throw new AssertFailedException("The email is not valid");
                 }
 
-                new System.Net.Mail.MailAddress(borrower.Account.Email);
+                new System.Net.Mail.MailAddress(this.borrower.Account.Email);
             }
             catch
             {
                 emailFlag = false;
             }
 
-            Assert.IsNotNull(borrower.Account.PhoneNumber);
+            Assert.IsNotNull(this.borrower.Account.PhoneNumber);
             Assert.IsTrue(phoneNumberFlag);
-            Assert.AreEqual(10, borrower.Account.PhoneNumber.Length);
+            Assert.AreEqual(10, this.borrower.Account.PhoneNumber.Length);
 
             Assert.IsTrue(emailFlag);
         }

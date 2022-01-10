@@ -11,20 +11,21 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using FluentValidation;
-using FluentValidation.Results;
-using Library.DataLayer.Interfaces;
-using Library.DataLayer.Validators;
-using Library.DomainLayer;
-using Library.ServiceLayer.IServices;
-using Proiect_.NET.Injection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
 
 namespace Library.ServiceLayer.Services
 {
+    using FluentValidation;
+    using FluentValidation.Results;
+    using Library.DataLayer.Interfaces;
+    using Library.DataLayer.Validators;
+    using Library.DomainLayer;
+    using Library.ServiceLayer.IServices;
+    using Proiect_.NET.Injection;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Linq.Expressions;
+
     /// <summary>
     /// Class PropertiesService.
     /// Implements the <see cref="Library.ServiceLayer.IServices.IPropertiesService" />
@@ -47,8 +48,8 @@ namespace Library.ServiceLayer.Services
         /// </summary>
         public PropertiesService()
         {
-            _repository = Injector.Create<IPropertiesRepository>();
-            _validator = new PropertiesValidator();
+            this._repository = Injector.Create<IPropertiesRepository>();
+            this._validator = new PropertiesValidator();
         }
 
         /// <summary>
@@ -59,7 +60,7 @@ namespace Library.ServiceLayer.Services
         /// <exception cref="NotImplementedException"></exception>
         public bool Delete(Properties entity)
         {
-            return _repository.Delete(entity);
+            return this._repository.Delete(entity);
         }
 
         /// <summary>
@@ -69,43 +70,39 @@ namespace Library.ServiceLayer.Services
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool DeleteById(object entity)
         {
-            return _repository.DeleteById(entity);
+            return this._repository.DeleteById(entity);
         }
 
         /// <summary>
         /// Gets all.
         /// </summary>
-        /// <returns>IEnumerable&lt;Properties&gt;.</returns>
-        /// <exception cref="NotImplementedException"></exception>
         public IEnumerable<Properties> GetAll(Expression<Func<Properties, bool>> filter = null,
             Func<IQueryable<Properties>, IOrderedQueryable<Properties>> orderBy = null,
             string includeProperties = "")
         {
-            return _repository.Get(filter, book => book.OrderBy(x => x.Id), includeProperties);
+            return this._repository.Get(filter, book => book.OrderBy(x => x.Id), includeProperties);
         }
 
         /// <summary>
         /// Gets the by identifier.
         /// </summary>
         /// <param name="id">The identifier.</param>
-        /// <returns>Properties.</returns>
         public Properties GetByID(object id)
         {
-            return _repository.GetByID(id);
+            return this._repository.GetByID(id);
         }
 
         /// <summary>
         /// Inserts the specified entity.
         /// </summary>
-        /// <param name="entity">The entity.</param>
-        /// <returns>ValidationResult.</returns>
+        /// <param name="entity"> The entity. </param>
         public bool Insert(Properties entity)
         {
             var context = new ValidationContext<Properties>(entity);
-            ValidationResult result = _validator.Validate(context);
+            ValidationResult result = this._validator.Validate(context);
             if (result.IsValid)
             {
-                _repository.Insert(entity);
+                this._repository.Insert(entity);
                 return true;
             }
 
@@ -115,16 +112,14 @@ namespace Library.ServiceLayer.Services
         /// <summary>
         /// Updates the specified entity.
         /// </summary>
-        /// <param name="entity">The entity.</param>
-        /// <returns>ValidationResult.</returns>
-        /// <exception cref="NotImplementedException"></exception>
+        /// <param name="entity"> The entity. </param>
         public bool Update(Properties entity)
         {
             var context = new ValidationContext<Properties>(entity);
-            ValidationResult result = _validator.Validate(context);
+            ValidationResult result = this._validator.Validate(context);
             if (result.IsValid)
             {
-                _repository.Insert(entity);
+                this._repository.Insert(entity);
                 return true;
             }
 

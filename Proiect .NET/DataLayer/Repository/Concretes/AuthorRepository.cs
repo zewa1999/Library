@@ -6,11 +6,12 @@
 // Last Modified By : costa
 // Last Modified On : 01-06-2022
 // ***********************************************************************
-// <copyright file="AuthorRepository.cs" company="Library">
-//     Copyright (c) . All rights reserved.
+// <copyright file="AuthorRepository.cs" company="Transilvania University of Brasov">
+//     Costache Stelian-Andrei
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+
 /// <summary>
 /// The Concretes namespace.
 /// </summary>

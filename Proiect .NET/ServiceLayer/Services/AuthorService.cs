@@ -11,14 +11,15 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using Library.DataLayer.Interfaces;
-using Library.DataLayer.Validators;
-using Library.DomainLayer;
-using Library.ServiceLayer.IServices;
-using Proiect_.NET.Injection;
 
 namespace Library.ServiceLayer.Services
 {
+    using Library.DataLayer.Interfaces;
+    using Library.DataLayer.Validators;
+    using Library.DomainLayer;
+    using Library.ServiceLayer.IServices;
+    using Proiect_.NET.Injection;
+
     /// <summary>
     /// Class AuthorService.
     /// Implements the <see cref="Library.ServiceLayer.Services.BaseService{Library.DomainLayer.Author, Library.DataLayer.Interfaces.IAuthorRepository}" />
@@ -34,7 +35,7 @@ namespace Library.ServiceLayer.Services
         public AuthorService()
             : base(Injector.Create<IAuthorRepository>(), Injector.Create<IPropertiesRepository>())
         {
-            _validator = new AuthorValidator();
+            this._validator = new AuthorValidator();
         }
     }
 }

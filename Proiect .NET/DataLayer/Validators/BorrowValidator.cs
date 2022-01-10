@@ -50,7 +50,7 @@ namespace Library.DataLayer.Validators
 
             RuleFor(b => b.BorrowedBooks)
                .NotNull().WithMessage("Null {PropertyName}")
-               .Must(HaveEntities).WithMessage("{PropertyName} is Empty");
+               .Must(this.HaveEntities).WithMessage("{PropertyName} is Empty");
 
             RuleForEach(b => b.BorrowedBooks).SetValidator(new BookValidator());
         }

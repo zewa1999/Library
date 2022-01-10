@@ -1,10 +1,10 @@
-﻿using FluentValidation.TestHelper;
-using Library.DataLayer.Validators;
-using Library.DomainLayer;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace Library.DataLayer.Tests.ValidatorsTests
+﻿namespace Library.DataLayer.Tests.ValidatorsTests
 {
+    using FluentValidation.TestHelper;
+    using Library.DataLayer.Validators;
+    using Library.DomainLayer;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class PropertiesValidatorTests
     {
@@ -13,7 +13,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
         [TestInitialize]
         public void Initialize()
         {
-            validator = new();
+            this.validator = new();
         }
 
         [TestMethod]
@@ -24,7 +24,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Domenii = null
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.Domenii);
         }
 
@@ -36,7 +36,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Domenii = 3
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.Domenii);
         }
 
@@ -48,7 +48,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Domenii = 0
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.Domenii);
         }
 
@@ -60,7 +60,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Domenii = 2
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.Domenii);
         }
 
@@ -72,7 +72,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 NrMaximCartiImprumutate = null
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.NrMaximCartiImprumutate);
         }
 
@@ -84,7 +84,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 NrMaximCartiImprumutate = 3
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.NrMaximCartiImprumutate);
         }
 
@@ -96,7 +96,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 NrMaximCartiImprumutate = 0
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.NrMaximCartiImprumutate);
         }
 
@@ -108,7 +108,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 NrMaximCartiImprumutate = 2
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.NrMaximCartiImprumutate);
         }
 
@@ -120,7 +120,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Perioada = null
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.Perioada);
         }
 
@@ -132,7 +132,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Perioada = 3
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.Perioada);
         }
 
@@ -144,7 +144,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Perioada = 0
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.Perioada);
         }
 
@@ -156,7 +156,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Perioada = 2
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.Perioada);
         }
 
@@ -168,7 +168,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 NrMaximCartiImprumutateAcelasiDomeniu = null
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.NrMaximCartiImprumutateAcelasiDomeniu);
         }
 
@@ -180,7 +180,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 NrMaximCartiImprumutateAcelasiDomeniu = 3
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.NrMaximCartiImprumutateAcelasiDomeniu);
         }
 
@@ -192,7 +192,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 NrMaximCartiImprumutateAcelasiDomeniu = 0
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.NrMaximCartiImprumutateAcelasiDomeniu);
         }
 
@@ -204,7 +204,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 NrMaximCartiImprumutateAcelasiDomeniu = 2
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.NrMaximCartiImprumutateAcelasiDomeniu);
         }
 
@@ -216,7 +216,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 NumarMaximCarti = null
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.NumarMaximCarti);
         }
 
@@ -228,7 +228,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 NumarMaximCarti = 3
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.NumarMaximCarti);
         }
 
@@ -240,7 +240,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 NumarMaximCarti = 0
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.NumarMaximCarti);
         }
 
@@ -252,7 +252,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 NumarMaximCarti = 2
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.NumarMaximCarti);
         }
 
@@ -264,7 +264,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 LimitaMaximaImprumut = null
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.LimitaMaximaImprumut);
         }
 
@@ -276,7 +276,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 LimitaMaximaImprumut = 3
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.LimitaMaximaImprumut);
         }
 
@@ -288,7 +288,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 LimitaMaximaImprumut = 0
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.LimitaMaximaImprumut);
         }
 
@@ -300,7 +300,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 LimitaMaximaImprumut = 2
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.LimitaMaximaImprumut);
         }
 
@@ -312,7 +312,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Delta = null
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.Delta);
         }
 
@@ -324,7 +324,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Delta = 3
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.Delta);
         }
 
@@ -336,7 +336,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Delta = 0
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.Delta);
         }
 
@@ -348,7 +348,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Delta = 2
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.Delta);
         }
 
@@ -360,7 +360,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 NumarCartiImprumutateZilnic = null
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.NumarCartiImprumutateZilnic);
         }
 
@@ -372,7 +372,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 NumarCartiImprumutateZilnic = 3
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.NumarCartiImprumutateZilnic);
         }
 
@@ -384,7 +384,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 NumarCartiImprumutateZilnic = 0
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.NumarCartiImprumutateZilnic);
         }
 
@@ -396,7 +396,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 NumarCartiImprumutateZilnic = 2
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.NumarCartiImprumutateZilnic);
         }
 
@@ -408,7 +408,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Persimp = null
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.Persimp);
         }
 
@@ -420,7 +420,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Persimp = 3
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.Persimp);
         }
 
@@ -432,7 +432,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Persimp = 0
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.Persimp);
         }
 
@@ -444,7 +444,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Persimp = 2
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.Persimp);
         }
     }

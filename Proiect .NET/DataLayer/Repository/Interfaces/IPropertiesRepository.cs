@@ -11,13 +11,14 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using Library.DomainLayer;
 
 /// <summary>
 /// The Interfaces namespace.
 /// </summary>
 namespace Library.DataLayer.Interfaces
 {
+    using Library.DomainLayer;
+
     /// <summary>
     /// Interface IPropertiesRepository
     /// Implements the <see cref="Library.DataLayer.Interfaces.IRepository{Library.DomainLayer.Properties}" />
@@ -28,7 +29,6 @@ namespace Library.DataLayer.Interfaces
         /// <summary>
         /// Gets the last properties.
         /// </summary>
-        /// <returns>Properties.</returns>
         public Properties GetLastProperties();
     }
 }

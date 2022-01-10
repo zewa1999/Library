@@ -19,6 +19,7 @@ namespace Library.DataLayer.DataMapper
     using Library.DomainLayer;
     using Library.DomainLayer.Person;
     using Microsoft.EntityFrameworkCore;
+    using System.Configuration;
 
     /// <summary>
     /// The library context class used to generate the database.
@@ -85,9 +86,10 @@ namespace Library.DataLayer.DataMapper
         /// <param name="optionsBuilder">The optionsBuilder used to configure properties of the server.</param>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            //var connString = ConfigurationManager.ConnectionStrings[1].ToString();
             optionsBuilder
                .UseLazyLoadingProxies()
-               .UseSqlServer("Data Source= (localdb)\\MSSQLLocalDB; Initial Catalog=LibraryDatabase");
+               .UseSqlServer("Data Source= (localdb)\\MSSQLLocalDB; Initial Catalog=LibraryDatabase"/*connString*/);
         }
     }
 }

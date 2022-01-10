@@ -1,28 +1,123 @@
-﻿using Library.DomainLayer;
-using Library.DomainLayer.Person;
-using Library.ServiceLayer.Services;
-using Proiect_.NET.Injection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Proiect_.NET.UI
+﻿namespace Proiect_.NET.UI
 {
+    using Library.DomainLayer;
+    using Library.DomainLayer.Person;
+    using Library.ServiceLayer.Services;
+    using Proiect_.NET.Injection;
+    using System;
+    using System.Collections.Generic;
+    using System.Configuration;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
     public class UI
     {
         public static void Main(String[] args)
         {
             Injector.Initialize();
 
-            var flag6 = EndToEndDomain();
+            //var propertiesFlag = EndToEndProperties();
+            var flag8 = EndToEndBook();
+            //var flag7 = EndToEndAuthor();
+            //var flag6 = EndToEndDomain();
             //var flag5 = EndToEndLibrarian();
             //var flag4 = EndToEndBorrower();
             //var flag3 = EndToEndEdition();
             //var flag2 = EndToEndProperties();
             //var flag1 = EndToEndAccount();
-            Console.WriteLine(flag6);
+            Console.WriteLine(flag8);
+        }
+
+        private static bool EndToEndBook()
+        {
+            var service = Injector.Create<BookService>();
+
+            var author = new Author()
+            {
+                FirstName = "Marcel",
+                LastName = "Dorel",
+            };
+
+            var domain = new Domain()
+            {
+                Name = "Stiinta",
+                ParentDomain = null,
+                ChildrenDomains = new List<Domain>()
+            };
+
+            var account = new Account()
+            {
+                PhoneNumber = "0734525427",
+                Email = "gogumortu@gmail.com"
+            };
+
+            var edition = new Edition()
+            {
+                Publisher = "Cartea studentilor saraci",
+                Year = "1999",
+                EditionNumber = int.MaxValue,
+                NumberOfPages = 25
+            };
+
+            var borrower = new Borrower()
+            {
+                LastName = "Gogu",
+                FirstName = "Mortu",
+                Address = "Bucuresti, strada Mihai Viteazu, nr 7, bloc C3, ap 26",
+                Account = account
+            };
+
+            var book = new Book()
+            {
+                Title = "Head first design patters",
+                LecturesOnlyBook = false,
+                IsBorrowed = false,
+                Type = "Hard  cover",
+                Authors = new List<Author>() { author },
+                Domains = new List<Domain>() { domain },
+                Editions = new List<Edition>() { edition },
+            };
+
+            //if (service.Insert(book) == false)
+            //{
+            //    Console.WriteLine("A crapat la insert!");
+            //    return false;
+            //}
+
+            //if (service.GetByID(1) == null)
+            //{
+            //    Console.WriteLine("A crapat la GetByID!");
+            //    return false;
+            //}
+
+            if (service.GetAll(null, book => book.OrderBy(x => x.Id), "") == null)
+            {
+                Console.WriteLine("A crapat la Get!");
+                return false;
+            }
+
+            var entity = service.GetByID(1);
+            var domains = entity.Domains.ToList();
+            var childrenDomains = domains[0].ChildrenDomains;
+            if (entity != null)
+            {
+                Console.WriteLine("A mers GetByID!");
+                entity.Title = "Idiot things in programming";
+                if (service.Update(entity) == false)
+                {
+                    Console.WriteLine("A crapat Update!");
+                    return false;
+                }
+            }
+
+            if (service.DeleteById(1) == false)
+            {
+                Console.WriteLine("A crapat Delete!");
+                return false;
+            }
+
+            return true;
         }
 
         private static bool EndToEndDomain()
@@ -229,8 +324,7 @@ namespace Proiect_.NET.UI
             var author = new Author()
             {
                 FirstName = "Marcel",
-                LastName = "Dorel",
-                Books = new List<Book>()
+                LastName = "Dorel"
             };
 
             if (service.Insert(author) == false)
@@ -371,11 +465,11 @@ namespace Proiect_.NET.UI
                 }
             }
 
-            if (service.DeleteById(1) == false)
-            {
-                Console.WriteLine("A crapat Delete!");
-                return false;
-            }
+            //if (service.DeleteById(1) == false)
+            //{
+            //    Console.WriteLine("A crapat Delete!");
+            //    return false;
+            //}
 
             return true;
         }

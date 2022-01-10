@@ -1,12 +1,12 @@
-﻿using FluentValidation.TestHelper;
-using Library.DataLayer.Validators;
-using Library.DomainLayer;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-
-namespace Library.DataLayer.Tests.ValidatorsTests
+﻿namespace Library.DataLayer.Tests.ValidatorsTests
 {
+    using FluentValidation.TestHelper;
+    using Library.DataLayer.Validators;
+    using Library.DomainLayer;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System;
+    using System.Collections.Generic;
+
     [TestClass]
     public class BorrowValidatorTests
     {
@@ -15,7 +15,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
         [TestInitialize]
         public void Initialize()
         {
-            validator = new();
+            this.validator = new();
         }
 
         [TestMethod]
@@ -26,7 +26,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 NoOfTimeExtended = null
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.NoOfTimeExtended);
         }
 
@@ -38,7 +38,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 NoOfTimeExtended = 3
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.NoOfTimeExtended);
         }
 
@@ -50,7 +50,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 NoOfTimeExtended = 0
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.NoOfTimeExtended);
         }
 
@@ -62,7 +62,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 NoOfTimeExtended = 2
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.NoOfTimeExtended);
         }
 
@@ -74,7 +74,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 NoOfTimeExtended = 5
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.NoOfTimeExtended);
         }
 
@@ -86,7 +86,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 BorrowDate = null
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.BorrowDate);
         }
 
@@ -98,7 +98,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 BorrowDate = DateTime.Now
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.BorrowDate);
         }
 
@@ -110,7 +110,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 EndDate = null
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.EndDate);
         }
 
@@ -122,7 +122,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 EndDate = DateTime.Now
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.EndDate);
         }
 
@@ -134,7 +134,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 BorrowedBooks = null
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.BorrowedBooks);
         }
 
@@ -146,7 +146,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 BorrowedBooks = new List<Book>()
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.BorrowedBooks);
         }
     }

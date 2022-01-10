@@ -11,7 +11,6 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using Library.DomainLayer.Person;
 
 namespace Library.DomainLayer
 {
@@ -19,6 +18,7 @@ namespace Library.DomainLayer
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using Library.DomainLayer.Person;
 
     /// <summary>
     /// Class Borrow.

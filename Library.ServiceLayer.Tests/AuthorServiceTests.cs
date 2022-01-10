@@ -11,15 +11,16 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using Library.DomainLayer;
-using Library.ServiceLayer.IServices;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Library.ServiceLayer.Tests
 {
+    using Library.DomainLayer;
+    using Library.ServiceLayer.IServices;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Moq;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Defines test class AuthorServiceTests.
     /// </summary>
@@ -42,7 +43,7 @@ namespace Library.ServiceLayer.Tests
         [TestInitialize]
         public void Initialize()
         {
-            authorServiceMock = new Mock<IAuthorService>();
+            this.authorServiceMock = new Mock<IAuthorService>();
         }
 
         /// <summary>
@@ -55,13 +56,12 @@ namespace Library.ServiceLayer.Tests
             {
                 FirstName = "Marcel",
                 LastName = "Dorel",
-                Books = new List<Book>()
             };
 
-            authorServiceMock.Setup(x => x.Insert(author)).Returns(true);
-            authorService = authorServiceMock.Object;
+            this.authorServiceMock.Setup(x => x.Insert(author)).Returns(true);
+            this.authorService = this.authorServiceMock.Object;
 
-            var result = authorService.Insert(author);
+            var result = this.authorService.Insert(author);
 
             Assert.IsTrue(result);
         }
@@ -72,19 +72,18 @@ namespace Library.ServiceLayer.Tests
         [TestMethod]
         public void TestGetAll()
         {
-            authorServiceMock.Setup(x => x.GetAll(null, book => book.OrderBy(x => x.Id), null))
+            this.authorServiceMock.Setup(x => x.GetAll(null, book => book.OrderBy(x => x.Id), null))
                 .Returns(
                 new List<Author>()
                 { new Author {
                 FirstName = "Marcel",
                 LastName = "Dorel",
-                Books = new List<Book>()
                 }
                 });
 
-            authorService = authorServiceMock.Object;
+            this.authorService = this.authorServiceMock.Object;
 
-            var result = authorService.GetAll();
+            var result = this.authorService.GetAll();
 
             Assert.IsNotNull(result);
             Assert.AreEqual(1, result.Count());
@@ -96,18 +95,17 @@ namespace Library.ServiceLayer.Tests
         [TestMethod]
         public void TestGetById()
         {
-            authorServiceMock.Setup(x => x.GetByID(1))
+            this.authorServiceMock.Setup(x => x.GetByID(1))
                 .Returns(new Author
                 {
                     Id = 1,
                     FirstName = "Marcel",
                     LastName = "Dorel",
-                    Books = new List<Book>()
                 });
 
-            authorService = authorServiceMock.Object;
+            this.authorService = this.authorServiceMock.Object;
 
-            var result = authorService.GetByID(1);
+            var result = this.authorService.GetByID(1);
 
             Assert.IsNotNull(result);
             Assert.AreEqual(1, result.Id);
@@ -121,22 +119,21 @@ namespace Library.ServiceLayer.Tests
         [TestMethod]
         public void TestUpdate()
         {
-            authorServiceMock.Setup(x => x.GetByID(1))
+            this.authorServiceMock.Setup(x => x.GetByID(1))
                 .Returns(new Author
                 {
                     FirstName = "Marcel",
                     LastName = "Dorel",
-                    Books = new List<Book>()
                 });
 
-            authorService = authorServiceMock.Object;
+            this.authorService = this.authorServiceMock.Object;
 
-            var modifiedAuthor = authorService.GetByID(1);
+            var modifiedAuthor = this.authorService.GetByID(1);
             modifiedAuthor.FirstName = "Marcel";
 
-            authorServiceMock.Setup(x => x.Update(modifiedAuthor)).Returns(true);
+            this.authorServiceMock.Setup(x => x.Update(modifiedAuthor)).Returns(true);
 
-            var result = authorService.Update(modifiedAuthor);
+            var result = this.authorService.Update(modifiedAuthor);
 
             Assert.IsTrue(result);
         }
@@ -147,10 +144,10 @@ namespace Library.ServiceLayer.Tests
         [TestMethod]
         public void TestDelete()
         {
-            authorServiceMock.Setup(x => x.DeleteById(1)).Returns(true);
-            authorService = authorServiceMock.Object;
+            this.authorServiceMock.Setup(x => x.DeleteById(1)).Returns(true);
+            this.authorService = this.authorServiceMock.Object;
 
-            var result = authorService.DeleteById(1);
+            var result = this.authorService.DeleteById(1);
 
             Assert.IsTrue(result);
         }

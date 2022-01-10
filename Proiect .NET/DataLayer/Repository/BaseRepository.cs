@@ -16,14 +16,14 @@
 /// </summary>
 namespace Library.DataLayer
 {
-    using Library.DataLayer.DataMapper;
-    using Library.DataLayer.Interfaces;
-    using Microsoft.EntityFrameworkCore;
-    using NLog;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Expressions;
+    using Library.DataLayer.DataMapper;
+    using Library.DataLayer.Interfaces;
+    using Microsoft.EntityFrameworkCore;
+    using NLog;
 
     /// <summary>
     /// Abstract class to be inherited to implement the CRUD operation for an entity.
@@ -37,51 +37,49 @@ namespace Library.DataLayer
         /// </summary>
         protected readonly Logger logger = LogManager.GetCurrentClassLogger();
 
+        protected readonly LibraryContext ctx = new LibraryContext();
+
         /// <summary>
         /// Gets the specified filter.
         /// </summary>
-        /// <param name="filter">The filter.</param>
-        /// <param name="orderBy">The order by.</param>
-        /// <param name="includeProperties">The include properties.</param>
-        /// <returns>IEnumerable&lt;T&gt;.</returns>
+        /// <param name="filter"> The filter. </param>
+        /// <param name="orderBy"> The order by. </param>
+        /// <param name="includeProperties"> The include properties. </param>
         public virtual IEnumerable<T> Get(
             Expression<Func<T, bool>> filter = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
             string includeProperties = "")
         {
-            using (var ctx = new LibraryContext())
+            try
             {
-                try
+                var databaseSet = ctx.Set<T>();
+
+                IQueryable<T> query = databaseSet;
+
+                if (filter != null)
                 {
-                    var dbSet = ctx.Set<T>();
-
-                    IQueryable<T> query = dbSet;
-
-                    if (filter != null)
-                    {
-                        query = query.Where(filter);
-                    }
-
-                    foreach (var includeProperty in includeProperties.Split
-                        (new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
-                    {
-                        query = query.Include(includeProperty);
-                    }
-
-                    if (orderBy != null)
-                    {
-                        return orderBy(query).ToList();
-                    }
-                    else
-                    {
-                        return query.ToList();
-                    }
+                    query = query.Where(filter);
                 }
-                catch (Exception ex)
+
+                foreach (var includeProperty in includeProperties.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
                 {
-                    logger.Error(ex.Message + "The query will return an empty list!");
+                    query = query.Include(includeProperty);
+                }
+
+                if (orderBy != null)
+                {
+                    return orderBy(query).ToList();
+                }
+                else
+                {
+                    return query.ToList();
                 }
             }
+            catch (Exception ex)
+            {
+                this.logger.Error(ex.Message + "The query will return an empty list!");
+            }
+
             return null;
         }
 
@@ -92,21 +90,18 @@ namespace Library.DataLayer
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public virtual bool Insert(T entity)
         {
-            using (var ctx = new LibraryContext())
+            try
             {
-                try
-                {
-                    var dbSet = ctx.Set<T>();
-                    dbSet.Add(entity);
-                    ctx.SaveChanges();
+                var databaseSet = ctx.Set<T>();
+                databaseSet.Add(entity);
+                ctx.SaveChanges();
 
-                    entity = null;
-                }
-                catch (Exception ex)
-                {
-                    logger.Error(ex.Message + "The INSERT could not been made!");
-                    return false;
-                }
+                entity = null;
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error(ex.Message + ex.InnerException + "The INSERT could not been made!");
+                return false;
             }
 
             return true;
@@ -119,22 +114,20 @@ namespace Library.DataLayer
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public virtual bool Update(T item)
         {
-            using (var ctx = new LibraryContext())
+            try
             {
-                try
-                {
-                    var dbSet = ctx.Set<T>();
-                    dbSet.Attach(item);
-                    ctx.Entry(item).State = EntityState.Modified;
+                var databaseSet = ctx.Set<T>();
+                databaseSet.Attach(item);
+                ctx.Entry(item).State = EntityState.Modified;
 
-                    ctx.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    logger.Error(ex.Message + "The UPDATE could not been made!");
-                    return false;
-                }
+                ctx.SaveChanges();
             }
+            catch (Exception ex)
+            {
+                this.logger.Error(ex.Message + ex.InnerException + "The UPDATE could not been made!");
+                return false;
+            }
+
             return true;
         }
 
@@ -147,11 +140,11 @@ namespace Library.DataLayer
         {
             try
             {
-                Delete(GetByID(id));
+                this.Delete(this.GetByID(id));
             }
             catch (Exception ex)
             {
-                logger.Error(ex.Message + "The DELETE could not been made!");
+                this.logger.Error(ex.Message + ex.InnerException + "The DELETE could not been made!");
                 return false;
             }
 
@@ -165,48 +158,43 @@ namespace Library.DataLayer
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public virtual bool Delete(T entityToDelete)
         {
-            using (var ctx = new LibraryContext())
+            try
             {
-                try
+                var dbSet = ctx.Set<T>();
+
+                if (ctx.Entry(entityToDelete).State == EntityState.Detached)
                 {
-                    var dbSet = ctx.Set<T>();
-
-                    if (ctx.Entry(entityToDelete).State == EntityState.Detached)
-                    {
-                        dbSet.Attach(entityToDelete);
-                    }
-
-                    dbSet.Remove(entityToDelete);
-
-                    ctx.SaveChanges();
+                    dbSet.Attach(entityToDelete);
                 }
-                catch (Exception ex)
-                {
-                    logger.Error(ex.Message + "The DELETE could not been made!");
-                    return false;
-                }
+
+                dbSet.Remove(entityToDelete);
+
+                ctx.SaveChanges();
             }
+            catch (Exception ex)
+            {
+                this.logger.Error(ex.Message + ex.InnerException + "The DELETE could not been made!");
+                return false;
+            }
+
             return true;
         }
 
         /// <summary>
         /// Gets the by identifier.
         /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <returns>T.</returns>
+        /// <param name="id"> The identifier. </param>
         public virtual T GetByID(object id)
         {
-            using (var ctx = new LibraryContext())
+            try
             {
-                try
-                {
-                    return ctx.Set<T>().Find(id);
-                }
-                catch (Exception ex)
-                {
-                    logger.Error(ex.Message + "The GetByID could not been made. Will return null!");
-                }
+                return ctx.Set<T>().Find(id);
             }
+            catch (Exception ex)
+            {
+                this.logger.Error(ex.Message + ex.InnerException + "The GetByID could not been made. Will return null!");
+            }
+
             return null;
         }
     }

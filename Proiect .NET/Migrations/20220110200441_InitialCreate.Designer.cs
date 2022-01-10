@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Proiect_.NET.Migrations
 {
     [DbContext(typeof(LibraryContext))]
-    [Migration("20220110141659_InitialCreate")]
+    [Migration("20220110200441_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,27 +21,15 @@ namespace Proiect_.NET.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.0");
 
-            modelBuilder.Entity("AuthorBook", b =>
-                {
-                    b.Property<int>("AuthorsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BooksId")
-                        .HasColumnType("int");
-
-                    b.HasKey("AuthorsId", "BooksId");
-
-                    b.HasIndex("BooksId");
-
-                    b.ToTable("AuthorBook");
-                });
-
             modelBuilder.Entity("Library.DomainLayer.Author", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
+
+                    b.Property<int?>("BookId")
+                        .HasColumnType("int");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -54,6 +42,8 @@ namespace Proiect_.NET.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("BookId");
 
                     b.ToTable("Authors");
                 });
@@ -295,19 +285,11 @@ namespace Proiect_.NET.Migrations
                     b.HasDiscriminator().HasValue("Librarian");
                 });
 
-            modelBuilder.Entity("AuthorBook", b =>
+            modelBuilder.Entity("Library.DomainLayer.Author", b =>
                 {
-                    b.HasOne("Library.DomainLayer.Author", null)
-                        .WithMany()
-                        .HasForeignKey("AuthorsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Library.DomainLayer.Book", null)
-                        .WithMany()
-                        .HasForeignKey("BooksId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .WithMany("Authors")
+                        .HasForeignKey("BookId");
                 });
 
             modelBuilder.Entity("Library.DomainLayer.Book", b =>
@@ -361,6 +343,8 @@ namespace Proiect_.NET.Migrations
 
             modelBuilder.Entity("Library.DomainLayer.Book", b =>
                 {
+                    b.Navigation("Authors");
+
                     b.Navigation("Domains");
 
                     b.Navigation("Editions");

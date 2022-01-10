@@ -11,16 +11,17 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using Library.DomainLayer;
-using Library.ServiceLayer.IServices;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Library.ServiceLayer.Tests
 {
+    using Library.DomainLayer;
+    using Library.ServiceLayer.IServices;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Moq;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Defines test class BorrowServiceTests.
     /// </summary>
@@ -43,7 +44,7 @@ namespace Library.ServiceLayer.Tests
         [TestInitialize]
         public void Initialize()
         {
-            borrowServiceMock = new Mock<IBorrowService>();
+            this.borrowServiceMock = new Mock<IBorrowService>();
         }
 
         /// <summary>
@@ -53,10 +54,10 @@ namespace Library.ServiceLayer.Tests
         public void TestInsert()
         {
             var borrow = TestUtils.GetBorrowModel();
-            borrowServiceMock.Setup(x => x.Insert(borrow)).Returns(true);
-            borrowService = borrowServiceMock.Object;
+            this.borrowServiceMock.Setup(x => x.Insert(borrow)).Returns(true);
+            this.borrowService = this.borrowServiceMock.Object;
 
-            var result = borrowService.Insert(borrow);
+            var result = this.borrowService.Insert(borrow);
 
             Assert.IsTrue(result);
         }
@@ -67,14 +68,14 @@ namespace Library.ServiceLayer.Tests
         [TestMethod]
         public void TestGetAll()
         {
-            borrowServiceMock.Setup(x => x.GetAll(null, book => book.OrderBy(x => x.Id), null))
+            this.borrowServiceMock.Setup(x => x.GetAll(null, book => book.OrderBy(x => x.Id), null))
                 .Returns(
                 new List<Borrow>()
                 {TestUtils.GetBorrowModel()});
 
-            borrowService = borrowServiceMock.Object;
+            this.borrowService = this.borrowServiceMock.Object;
 
-            var result = borrowService.GetAll();
+            var result = this.borrowService.GetAll();
 
             Assert.IsNotNull(result);
             Assert.AreEqual(1, result.Count());
@@ -87,11 +88,11 @@ namespace Library.ServiceLayer.Tests
         public void TestGetById()
         {
             var borrow = TestUtils.GetBorrowModelWithId();
-            borrowServiceMock.Setup(x => x.GetByID(1))
+            this.borrowServiceMock.Setup(x => x.GetByID(1))
                 .Returns(TestUtils.GetBorrowModelWithId());
 
-            borrowService = borrowServiceMock.Object;
-            var result = borrowService.GetByID(1);
+            this.borrowService = this.borrowServiceMock.Object;
+            var result = this.borrowService.GetByID(1);
 
             Assert.IsNotNull(result);
             Assert.AreEqual(1, result.Id);
@@ -105,17 +106,17 @@ namespace Library.ServiceLayer.Tests
         {
             var borrow = TestUtils.GetBorrowModel();
 
-            borrowServiceMock.Setup(x => x.GetByID(1))
+            this.borrowServiceMock.Setup(x => x.GetByID(1))
                 .Returns(borrow);
 
-            borrowService = borrowServiceMock.Object;
+            this.borrowService = this.borrowServiceMock.Object;
 
-            var modifiedBorrow = borrowService.GetByID(1);
+            var modifiedBorrow = this.borrowService.GetByID(1);
             modifiedBorrow.EndDate = DateTime.Now;
 
-            borrowServiceMock.Setup(x => x.Update(modifiedBorrow)).Returns(true);
+            this.borrowServiceMock.Setup(x => x.Update(modifiedBorrow)).Returns(true);
 
-            var result = borrowService.Update(modifiedBorrow);
+            var result = this.borrowService.Update(modifiedBorrow);
 
             Assert.IsTrue(result);
         }
@@ -126,10 +127,10 @@ namespace Library.ServiceLayer.Tests
         [TestMethod]
         public void TestDelete()
         {
-            borrowServiceMock.Setup(x => x.DeleteById(1)).Returns(true);
-            borrowService = borrowServiceMock.Object;
+            this.borrowServiceMock.Setup(x => x.DeleteById(1)).Returns(true);
+            this.borrowService = this.borrowServiceMock.Object;
 
-            var result = borrowService.DeleteById(1);
+            var result = this.borrowService.DeleteById(1);
 
             Assert.IsTrue(result);
         }

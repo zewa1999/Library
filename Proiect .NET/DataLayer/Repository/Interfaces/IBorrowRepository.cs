@@ -28,22 +28,19 @@ namespace Library.DataLayer.Interfaces
         /// <summary>
         /// Gets the first borrow date.
         /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <returns>DateTime.</returns>
+        /// <param name="id"> The identifier. </param>
         public DateTime GetFirstBorrowDate(int id);
 
         /// <summary>
         /// Gets the number of borrows today.
         /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <returns>System.Int32.</returns>
+        /// <param name="id"> The identifier. </param>
         public int GetNumberOfBorrowsToday(int id);
 
         /// <summary>
         /// Gets the books between past months and present.
         /// </summary>
-        /// <param name="months">The months.</param>
-        /// <returns>IEnumerable&lt;Borrow&gt;.</returns>
+        /// <param name="months"> The months. </param>
         public IEnumerable<Borrow> GetBooksBetweenPastMonthsAndPresent(int months);
     }
 }

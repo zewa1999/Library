@@ -4,10 +4,10 @@
 // Created          : 01-06-2022
 //
 // Last Modified By : costa
-// Last Modified On : 01-09-2022
+// Last Modified On : 01-06-2022
 // ***********************************************************************
-// <copyright file="BorrowerRepository.cs" company="PlaceholderCompany">
-//     Copyright (c) PlaceholderCompany. All rights reserved.
+// <copyright file="BorrowerRepository.cs" company="Transilvania University of Brasov">
+//     Costache Stelian-Andrei
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
@@ -27,14 +27,5 @@ namespace Library.DataLayer.Concretes
     /// </summary>
     public class BorrowerRepository : BaseRepository<Borrower>, IBorrowerRepository
     {
-        public override Borrower GetByID(object id)
-        {
-            using (var ctx = new LibraryContext())
-            {
-                var entity = ctx.Borrowers.Find(id);
-                ctx.Entry(entity).Reference(p => p.Account).Load();
-                return entity;
-            }
-        }
     }
 }

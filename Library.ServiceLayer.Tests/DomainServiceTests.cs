@@ -11,15 +11,16 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using Library.DomainLayer;
-using Library.ServiceLayer.IServices;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Library.ServiceLayer.Tests
 {
+    using Library.DomainLayer;
+    using Library.ServiceLayer.IServices;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Moq;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Defines test class DomainServiceTests.
     /// </summary>
@@ -42,7 +43,7 @@ namespace Library.ServiceLayer.Tests
         [TestInitialize]
         public void Initialize()
         {
-            domainServiceMock = new Mock<IDomainService>();
+            this.domainServiceMock = new Mock<IDomainService>();
         }
 
         /// <summary>
@@ -58,10 +59,10 @@ namespace Library.ServiceLayer.Tests
                 ChildrenDomains = new List<Domain>()
             };
 
-            domainServiceMock.Setup(x => x.Insert(domain)).Returns(true);
-            domainService = domainServiceMock.Object;
+            this.domainServiceMock.Setup(x => x.Insert(domain)).Returns(true);
+            this.domainService = this.domainServiceMock.Object;
 
-            var result = domainService.Insert(domain);
+            var result = this.domainService.Insert(domain);
 
             Assert.IsTrue(result);
         }
@@ -79,14 +80,14 @@ namespace Library.ServiceLayer.Tests
                 ChildrenDomains = new List<Domain>()
             };
 
-            domainServiceMock.Setup(x => x.GetAll(null, book => book.OrderBy(x => x.Id), null))
+            this.domainServiceMock.Setup(x => x.GetAll(null, book => book.OrderBy(x => x.Id), null))
                 .Returns(
                 new List<Domain>()
                 {domain});
 
-            domainService = domainServiceMock.Object;
+            this.domainService = this.domainServiceMock.Object;
 
-            var result = domainService.GetAll();
+            var result = this.domainService.GetAll();
 
             Assert.IsNotNull(result);
             Assert.AreEqual(1, result.Count());
@@ -105,12 +106,12 @@ namespace Library.ServiceLayer.Tests
                 ParentDomain = null,
                 ChildrenDomains = new List<Domain>()
             };
-            domainServiceMock.Setup(x => x.GetByID(1))
+            this.domainServiceMock.Setup(x => x.GetByID(1))
                 .Returns(domain);
 
-            domainService = domainServiceMock.Object;
+            this.domainService = this.domainServiceMock.Object;
 
-            var result = domainService.GetByID(1);
+            var result = this.domainService.GetByID(1);
 
             Assert.IsNotNull(result);
             Assert.AreEqual(1, result.Id);
@@ -132,17 +133,17 @@ namespace Library.ServiceLayer.Tests
                 ChildrenDomains = new List<Domain>()
             };
 
-            domainServiceMock.Setup(x => x.GetByID(1))
+            this.domainServiceMock.Setup(x => x.GetByID(1))
                 .Returns(domain);
 
-            domainService = domainServiceMock.Object;
+            this.domainService = this.domainServiceMock.Object;
 
-            var modifiedAccount = domainService.GetByID(1);
+            var modifiedAccount = this.domainService.GetByID(1);
             modifiedAccount.Name = "Filozofie";
 
-            domainServiceMock.Setup(x => x.Update(modifiedAccount)).Returns(true);
+            this.domainServiceMock.Setup(x => x.Update(modifiedAccount)).Returns(true);
 
-            var result = domainService.Update(modifiedAccount);
+            var result = this.domainService.Update(modifiedAccount);
 
             Assert.IsTrue(result);
         }
@@ -153,10 +154,10 @@ namespace Library.ServiceLayer.Tests
         [TestMethod]
         public void TestDelete()
         {
-            domainServiceMock.Setup(x => x.DeleteById(1)).Returns(true);
-            domainService = domainServiceMock.Object;
+            this.domainServiceMock.Setup(x => x.DeleteById(1)).Returns(true);
+            this.domainService = this.domainServiceMock.Object;
 
-            var result = domainService.DeleteById(1);
+            var result = this.domainService.DeleteById(1);
 
             Assert.IsTrue(result);
         }

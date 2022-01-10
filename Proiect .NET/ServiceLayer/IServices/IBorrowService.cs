@@ -11,10 +11,11 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using Library.DomainLayer;
 
 namespace Library.ServiceLayer.IServices
 {
+    using Library.DomainLayer;
+
     /// <summary>
     /// Interface IBorrowService
     /// Implements the <see cref="Library.ServiceLayer.IServices.IBaseService{Library.DomainLayer.Borrow}" />

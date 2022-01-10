@@ -11,14 +11,15 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using Library.DataLayer.Interfaces;
-using Library.DataLayer.Validators;
-using Library.DomainLayer.Person;
-using Library.ServiceLayer.IServices;
-using Proiect_.NET.Injection;
 
 namespace Library.ServiceLayer.Services
 {
+    using Library.DataLayer.Interfaces;
+    using Library.DataLayer.Validators;
+    using Library.DomainLayer.Person;
+    using Library.ServiceLayer.IServices;
+    using Proiect_.NET.Injection;
+
     /// <summary>
     /// Class BorrowerService.
     /// Implements the <see cref="Library.ServiceLayer.Services.BaseService{Library.DomainLayer.Person.Borrower, Library.DataLayer.Interfaces.IBorrowerRepository}" />
@@ -34,7 +35,7 @@ namespace Library.ServiceLayer.Services
         public BorrowerService()
             : base(Injector.Create<IBorrowerRepository>(), Injector.Create<IPropertiesRepository>())
         {
-            _validator = new BorrowerValidator();
+            this._validator = new BorrowerValidator();
         }
     }
 }

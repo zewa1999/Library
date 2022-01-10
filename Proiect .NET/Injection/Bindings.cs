@@ -11,14 +11,15 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using Library.DataLayer.Concretes;
-using Library.DataLayer.Interfaces;
-using Library.ServiceLayer.IServices;
-using Library.ServiceLayer.Services;
-using Ninject.Modules;
 
 namespace Proiect_.NET.Injection
 {
+    using Library.DataLayer.Concretes;
+    using Library.DataLayer.Interfaces;
+    using Library.ServiceLayer.IServices;
+    using Library.ServiceLayer.Services;
+    using Ninject.Modules;
+
     /// <summary>
     /// Class Bindings.
     /// Implements the <see cref="Ninject.Modules.NinjectModule" />
@@ -31,8 +32,8 @@ namespace Proiect_.NET.Injection
         /// </summary>
         public override void Load()
         {
-            LoadRepositoryLayer();
-            LoadServicesLayer();
+            this.LoadRepositoryLayer();
+            this.LoadServicesLayer();
         }
 
         /// <summary>

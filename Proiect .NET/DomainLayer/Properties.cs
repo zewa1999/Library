@@ -81,7 +81,7 @@ namespace Library.DomainLayer
         /// <summary>
         /// Gets or sets the numar carti imprumutate zilnic.
         /// </summary>
-        /// <value>The numar carti imprumutate zilnic.</value>
+        /// <value> The number. </value>
         public int? NumarCartiImprumutateZilnic { get; set; }
 
         /// <summary>

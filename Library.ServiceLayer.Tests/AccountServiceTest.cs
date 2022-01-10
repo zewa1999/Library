@@ -11,15 +11,16 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using Library.DomainLayer.Person;
-using Library.ServiceLayer.IServices;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Library.ServiceLayer.Tests
 {
+    using Library.DomainLayer.Person;
+    using Library.ServiceLayer.IServices;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Moq;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Defines test class AccountServiceTest.
     /// </summary>
@@ -42,7 +43,7 @@ namespace Library.ServiceLayer.Tests
         [TestInitialize]
         public void Initialize()
         {
-            accountServiceMock = new Mock<IAccountService>();
+            this.accountServiceMock = new Mock<IAccountService>();
         }
 
         /// <summary>
@@ -57,10 +58,10 @@ namespace Library.ServiceLayer.Tests
                 Email = "validemail@gmail.com"
             };
 
-            accountServiceMock.Setup(x => x.Insert(account)).Returns(true);
-            accountService = accountServiceMock.Object;
+            this.accountServiceMock.Setup(x => x.Insert(account)).Returns(true);
+            this.accountService = this.accountServiceMock.Object;
 
-            var result = accountService.Insert(account);
+            var result = this.accountService.Insert(account);
 
             Assert.IsTrue(result);
         }
@@ -71,7 +72,7 @@ namespace Library.ServiceLayer.Tests
         [TestMethod]
         public void TestGetAll()
         {
-            accountServiceMock.Setup(x => x.GetAll(null, book => book.OrderBy(x => x.Id), null))
+            this.accountServiceMock.Setup(x => x.GetAll(null, book => book.OrderBy(x => x.Id), null))
                 .Returns(
                 new List<Account>()
                 { new Account {
@@ -79,9 +80,9 @@ namespace Library.ServiceLayer.Tests
                     Email = "validemail@gmail.com"}
                 });
 
-            accountService = accountServiceMock.Object;
+            this.accountService = this.accountServiceMock.Object;
 
-            var result = accountService.GetAll();
+            var result = this.accountService.GetAll();
 
             Assert.IsNotNull(result);
             Assert.AreEqual(1, result.Count());
@@ -93,7 +94,7 @@ namespace Library.ServiceLayer.Tests
         [TestMethod]
         public void TestGetById()
         {
-            accountServiceMock.Setup(x => x.GetByID(1))
+            this.accountServiceMock.Setup(x => x.GetByID(1))
                 .Returns(new Account
                 {
                     Id = 1,
@@ -101,9 +102,9 @@ namespace Library.ServiceLayer.Tests
                     Email = "validemail@gmail.com"
                 });
 
-            accountService = accountServiceMock.Object;
+            this.accountService = this.accountServiceMock.Object;
 
-            var result = accountService.GetByID(1);
+            var result = this.accountService.GetByID(1);
 
             Assert.IsNotNull(result);
             Assert.AreEqual(1, result.Id);
@@ -117,21 +118,21 @@ namespace Library.ServiceLayer.Tests
         [TestMethod]
         public void TestUpdate()
         {
-            accountServiceMock.Setup(x => x.GetByID(1))
+            this.accountServiceMock.Setup(x => x.GetByID(1))
                 .Returns(new Account
                 {
                     PhoneNumber = "0734525427",
                     Email = "validemail@gmail.com"
                 });
 
-            accountService = accountServiceMock.Object;
+            this.accountService = this.accountServiceMock.Object;
 
-            var modifiedAccount = accountService.GetByID(1);
+            var modifiedAccount = this.accountService.GetByID(1);
             modifiedAccount.Email = "modifiedemail@gmail.ro";
 
-            accountServiceMock.Setup(x => x.Update(modifiedAccount)).Returns(true);
+            this.accountServiceMock.Setup(x => x.Update(modifiedAccount)).Returns(true);
 
-            var result = accountService.Update(modifiedAccount);
+            var result = this.accountService.Update(modifiedAccount);
 
             Assert.IsTrue(result);
         }
@@ -142,10 +143,10 @@ namespace Library.ServiceLayer.Tests
         [TestMethod]
         public void TestDelete()
         {
-            accountServiceMock.Setup(x => x.DeleteById(1)).Returns(true);
-            accountService = accountServiceMock.Object;
+            this.accountServiceMock.Setup(x => x.DeleteById(1)).Returns(true);
+            this.accountService = this.accountServiceMock.Object;
 
-            var result = accountService.DeleteById(1);
+            var result = this.accountService.DeleteById(1);
 
             Assert.IsTrue(result);
         }

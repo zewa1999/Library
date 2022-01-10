@@ -30,45 +30,39 @@ namespace Library.DataLayer.Interfaces
         /// <summary>
         /// Inserts the specified entity.
         /// </summary>
-        /// <param name="entity">The entity.</param>
-        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        /// <param name="entity"> The entity. </param>
         bool Insert(T entity);
 
         /// <summary>
         /// Updates the specified item.
         /// </summary>
-        /// <param name="item">The item.</param>
-        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        /// <param name="item"> The item. </param>
         bool Update(T item);
 
         /// <summary>
         /// Deletes the specified identifier.
         /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        /// <param name="id"> The identifier. </param>
         bool DeleteById(object id);
 
         /// <summary>
         /// Deletes the specified entity.
         /// </summary>
         /// <param name="entity">The entity.</param>
-        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         bool Delete(T entity);
 
         /// <summary>
         /// Gets the by identifier.
         /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <returns>T.</returns>
+        /// <param name="id"> The identifier. </param>
         T GetByID(object id);
 
         /// <summary>
         /// Gets the specified filter.
         /// </summary>
-        /// <param name="filter">The filter.</param>
-        /// <param name="orderBy">The order by.</param>
-        /// <param name="includeProperties">The include properties.</param>
-        /// <returns>IEnumerable&lt;T&gt;.</returns>
+        /// <param name="filter"> The filter. </param>
+        /// <param name="orderBy"> The order by. </param>
+        /// <param name="includeProperties"> The include properties. </param>
         IEnumerable<T> Get(
             Expression<Func<T, bool>> filter = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,

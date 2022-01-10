@@ -11,16 +11,17 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using FluentValidation;
-using Library.DataLayer.Interfaces;
-using Library.ServiceLayer.IServices;
-using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
-using System.Linq;
 
 namespace Library.ServiceLayer.Services
 {
+    using FluentValidation;
+    using Library.DataLayer.Interfaces;
+    using Library.ServiceLayer.IServices;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq.Expressions;
+    using System.Linq;
+
     /// <summary>
     /// Class BaseService.
     /// Implements the <see cref="Library.ServiceLayer.IServices.IBaseService{T}" />
@@ -56,18 +57,17 @@ namespace Library.ServiceLayer.Services
         /// <param name="propRepo">The property repo.</param>
         protected BaseService(U repository, L propRepo)
         {
-            _repository = repository;
-            _propertiesRepository = propRepo;
+            this._repository = repository;
+            this._propertiesRepository = propRepo;
         }
 
         /// <summary>
         /// Inserts the specified entity.
         /// </summary>
-        /// <param name="entity">The entity.</param>
-        /// <returns>ValidationResult.</returns>
+        /// <param name="entity"> The entity. </param>
         public virtual bool Insert(T entity)
         {
-            var result = _validator.Validate(entity);
+            var result = this._validator.Validate(entity);
             var isValid = false;
             if (result.IsValid)
             {
@@ -81,7 +81,7 @@ namespace Library.ServiceLayer.Services
 
             if (isValid == true)
             {
-                _repository.Insert(entity);
+                this._repository.Insert(entity);
             }
 
             return true;
@@ -90,15 +90,14 @@ namespace Library.ServiceLayer.Services
         /// <summary>
         /// Updates the specified item.
         /// </summary>
-        /// <param name="entity">The entity.</param>
-        /// <returns>ValidationResult.</returns>
+        /// <param name="entity"> The entity. </param>
         public virtual bool Update(T entity)
         {
-            var result = _validator.Validate(entity);
+            var result = this._validator.Validate(entity);
             Utils.LogErrors(result);
             if (result.IsValid)
             {
-                _repository.Update(entity);
+                this._repository.Update(entity);
             }
             else
             {
@@ -113,42 +112,38 @@ namespace Library.ServiceLayer.Services
         /// Deletes the specified identifier.
         /// </summary>
         /// <param name="entity">The entity.</param>
-        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public virtual bool Delete(T entity)
         {
-            return _repository.Delete(entity);
+            return this._repository.Delete(entity);
         }
 
         /// <summary>
         /// Deletes the by identifier.
         /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        /// <param name="id"> The identifier. </param>
         public virtual bool DeleteById(object id)
         {
-            return _repository.DeleteById(id);
+            return this._repository.DeleteById(id);
         }
 
         /// <summary>
         /// Gets the by identifier.
         /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <returns>T.</returns>
+        /// <param name="id"> The identifier. </param>
         public virtual T GetByID(object id)
         {
-            return _repository.GetByID(id);
+            return this._repository.GetByID(id);
         }
 
         /// <summary>
         /// Gets all.
         /// </summary>
-        /// <returns>IEnumerable&lt;T&gt;.</returns>
         public virtual IEnumerable<T> GetAll(
             Expression<Func<T, bool>> filter = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
             string includeProperties = "")
         {
-            return _repository.Get(filter, orderBy, includeProperties);
+            return this._repository.Get(filter, orderBy, includeProperties);
         }
     }
 }

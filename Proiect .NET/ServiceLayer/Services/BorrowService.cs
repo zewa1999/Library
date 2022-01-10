@@ -11,17 +11,18 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using Library.DataLayer.Interfaces;
-using Library.DataLayer.Validators;
-using Library.DomainLayer;
-using Library.ServiceLayer.IServices;
-using Proiect_.NET.Injection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Library.ServiceLayer.Services
 {
+    using Library.DataLayer.Interfaces;
+    using Library.DataLayer.Validators;
+    using Library.DomainLayer;
+    using Library.ServiceLayer.IServices;
+    using Proiect_.NET.Injection;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Class BorrowService.
     /// Implements the <see cref="Library.ServiceLayer.Services.BaseService{Library.DomainLayer.Borrow, Library.DataLayer.Interfaces.IBorrowRepository}" />
@@ -45,21 +46,20 @@ namespace Library.ServiceLayer.Services
         public BorrowService()
              : base(Injector.Create<IBorrowRepository>(), Injector.Create<IPropertiesRepository>())
         {
-            bookRepository = Injector.Create<IBookRepository>();
-            _validator = new BorrowValidator();
+            this.bookRepository = Injector.Create<IBookRepository>();
+            this._validator = new BorrowValidator();
         }
 
         /// <summary>
         /// Inserts the specified entity.
         /// </summary>
-        /// <param name="entity">The entity.</param>
-        /// <returns>ValidationResult.</returns>
+        /// <param name="entity"> The entity. </param>
         public override bool Insert(Borrow entity)
         {
-            var result = _validator.Validate(entity);
-            if (result.IsValid && CheckFlags(entity))
+            var result = this._validator.Validate(entity);
+            if (result.IsValid && this.CheckFlags(entity))
             {
-                _repository.Insert(entity);
+                this._repository.Insert(entity);
             }
             else
             {
@@ -77,11 +77,11 @@ namespace Library.ServiceLayer.Services
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         private bool CheckFlags(Borrow entity)
         {
-            var properties = _propertiesRepository.GetLastProperties();
-            var numberOfBorrowedBooks = GetNumberOfBorrowedBooks(entity.Id);
-            DateTime maxPeriodOfTimeForBorrowing = GetMaximumPeriodOfTimeForBorrowing(entity, properties);
+            var properties = this._propertiesRepository.GetLastProperties();
+            var numberOfBorrowedBooks = this.GetNumberOfBorrowedBooks(entity.Id);
+            DateTime maxPeriodOfTimeForBorrowing = this.GetMaximumPeriodOfTimeForBorrowing(entity, properties);
 
-            if (!CheckIfBooksAreBorrowable(entity))
+            if (!this.CheckIfBooksAreBorrowable(entity))
                 return false;
             // Pot imprumuta un numar maxim de carti NMC intr-o perioada PER
 
@@ -93,11 +93,11 @@ namespace Library.ServiceLayer.Services
             //La un imprumut pot prelua cel mult C carti; daca numarul cartilor imprumutate
             //la o cerere de imprumut e cel putin 3,
             //atunci acestea trebui sa faca parte din cel putin 2 categorii distincte
-            if (entity.BorrowedBooks.Count >= properties.NumarMaximCarti && entity.BorrowedBooks.Count >= 3 && CheckDistinctCategories(entity))
+            if (entity.BorrowedBooks.Count >= properties.NumarMaximCarti && entity.BorrowedBooks.Count >= 3 && this.CheckDistinctCategories(entity))
                 return false;
-            if (CheckNoOfBooksOfTheSameDomain())
+            if (this.CheckNoOfBooksOfTheSameDomain())
                 return false;
-            if (CheckSameBookBorrowingInADeltaTime(entity))
+            if (this.CheckSameBookBorrowingInADeltaTime(entity))
                 return false;
 
             return true;
@@ -108,12 +108,11 @@ namespace Library.ServiceLayer.Services
         /// <summary>
         /// Gets the number of borrowed books.
         /// </summary>
-        /// <param name="borrowerId">The borrower identifier.</param>
-        /// <returns>System.Int32.</returns>
+        /// <param name="borrowerId"> The borrower identifier. </param>
         public int GetNumberOfBorrowedBooks(int borrowerId)
         {
             var numberOfBooksBorrowed = 0;
-            var listOfBorrows = _repository.Get(null, book => book.OrderBy(x => x.Id), "");
+            var listOfBorrows = this._repository.Get(null, book => book.OrderBy(x => x.Id), "");
             foreach (var borrow in listOfBorrows)
             {
                 if (borrow.Borrower.Id == borrowerId)
@@ -128,12 +127,11 @@ namespace Library.ServiceLayer.Services
         /// <summary>
         /// Gets the maximum period of time for borrowing.
         /// </summary>
-        /// <param name="entity">The entity.</param>
-        /// <param name="properties">The properties.</param>
-        /// <returns>DateTime.</returns>
+        /// <param name="entity"> The entity. </param>
+        /// <param name="properties"> The properties. </param>
         private DateTime GetMaximumPeriodOfTimeForBorrowing(Borrow entity, Properties properties)
         {
-            var firstBorrowDate = _repository.GetFirstBorrowDate(entity.Id);
+            var firstBorrowDate = this._repository.GetFirstBorrowDate(entity.Id);
             var maxPeriodOfTimeForBorrowing = firstBorrowDate.AddMonths((int)properties.Perioada);
             return maxPeriodOfTimeForBorrowing;
         }
@@ -142,11 +140,10 @@ namespace Library.ServiceLayer.Services
         /// Checks the lim.
         /// </summary>
         /// <param name="borrowedBook">The borrowed book.</param>
-        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         private bool CheckLIM(Book borrowedBook)
         {
-            var properties = _propertiesRepository.GetLastProperties();
-            var listOfBorrows = _repository.Get(null, book => book.OrderBy(x => x.Id), "");
+            var properties = this._propertiesRepository.GetLastProperties();
+            var listOfBorrows = this._repository.Get(null, book => book.OrderBy(x => x.Id), "");
 
             foreach (var borrow in listOfBorrows)
             {
@@ -169,8 +166,8 @@ namespace Library.ServiceLayer.Services
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         private bool CheckSameBookBorrowingInADeltaTime(Borrow entity)
         {
-            var listOfBorrows = _repository.Get(null, book => book.OrderBy(x => x.Id), "");
-            var properties = _propertiesRepository.GetLastProperties();
+            var listOfBorrows = this._repository.Get(null, book => book.OrderBy(x => x.Id), "");
+            var properties = this._propertiesRepository.GetLastProperties();
             var deltaTime = DateTime.Now.AddMonths((int)-properties.Delta);
 
             foreach (var borrow in listOfBorrows)
@@ -197,8 +194,8 @@ namespace Library.ServiceLayer.Services
         private bool CheckNoOfBooksOfTheSameDomain()
         {
             int noOfBooksWithTheSameDomain = 0;
-            var properties = _propertiesRepository.GetLastProperties();
-            var listOfBorrows = GetBooksBetweenPastMonthsAndPresent((int)properties.L);
+            var properties = this._propertiesRepository.GetLastProperties();
+            var listOfBorrows = this.GetBooksBetweenPastMonthsAndPresent((int)properties.L);
             var domainDictionary = new Dictionary<string, int>();
             foreach (var borrow in listOfBorrows)
             {
@@ -242,7 +239,7 @@ namespace Library.ServiceLayer.Services
         {
             foreach (var book in entity.BorrowedBooks)
             {
-                if (book.LecturesOnlyBook == true || CanBorrowBook(book.Title) || CheckLIM(book))
+                if (book.LecturesOnlyBook == true || this.CanBorrowBook(book.Title) || this.CheckLIM(book))
                     return false;
             }
 
@@ -256,8 +253,8 @@ namespace Library.ServiceLayer.Services
         /// <returns><c>true</c> if this instance [can borrow book] the specified title; otherwise, <c>false</c>.</returns>
         private bool CanBorrowBook(string title)
         {
-            var allBooksWithTheSameName = bookRepository.GetBooksWithTheSameTitle(title);
-            var unavailableBooks = bookRepository.GetUnavailableBooks(allBooksWithTheSameName);
+            var allBooksWithTheSameName = this.bookRepository.GetBooksWithTheSameTitle(title);
+            var unavailableBooks = this.bookRepository.GetUnavailableBooks(allBooksWithTheSameName);
 
             if (allBooksWithTheSameName.Count() * 0.1f < allBooksWithTheSameName.Count() - unavailableBooks.Count())
             {
@@ -279,13 +276,13 @@ namespace Library.ServiceLayer.Services
                 var parentDomainsList = new List<Domain>();
                 foreach (var domain in book.Domains)
                 {
-                    var parentDomain = bookRepository.GetParentDomain(domain);
+                    var parentDomain = this.bookRepository.GetParentDomain(domain);
                     parentDomainsList.Add(parentDomain);
                 }
                 domainsList.AddRange(parentDomainsList);
             }
 
-            RemoveDomainsDuplicates(domainsList);
+            this.RemoveDomainsDuplicates(domainsList);
             if (domainsList.Count < 2)
             {
                 return false;
@@ -297,11 +294,10 @@ namespace Library.ServiceLayer.Services
         /// <summary>
         /// Gets the books between past months and present.
         /// </summary>
-        /// <param name="months">The months.</param>
-        /// <returns>IEnumerable&lt;Borrow&gt;.</returns>
+        /// <param name="months"> The months. </param>
         public IEnumerable<Borrow> GetBooksBetweenPastMonthsAndPresent(int months)
         {
-            return _repository.GetBooksBetweenPastMonthsAndPresent(months);
+            return this._repository.GetBooksBetweenPastMonthsAndPresent(months);
         }
 
         /// <summary>

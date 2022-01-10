@@ -11,13 +11,14 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using Library.DomainLayer.Person;
 
 /// <summary>
 /// The Interfaces namespace.
 /// </summary>
 namespace Library.DataLayer.Interfaces
 {
+    using Library.DomainLayer.Person;
+
     /// <summary>
     /// Interface IAccountRepository
     /// Implements the <see cref="Library.DataLayer.Interfaces.IRepository{Library.DomainLayer.Person.Account}" />

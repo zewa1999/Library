@@ -1,10 +1,10 @@
-﻿using FluentValidation.TestHelper;
-using Library.DataLayer.Validators;
-using Library.DomainLayer.Person;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace Library.DataLayer.Tests.ValidatorsTests
+﻿namespace Library.DataLayer.Tests.ValidatorsTests
 {
+    using FluentValidation.TestHelper;
+    using Library.DataLayer.Validators;
+    using Library.DomainLayer.Person;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class BorrowerValidatorTests
     {
@@ -13,7 +13,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
         [TestInitialize]
         public void Initialize()
         {
-            validator = new();
+            this.validator = new();
         }
 
         [TestMethod]
@@ -25,7 +25,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 LastName = "Costache"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.FirstName);
         }
 
@@ -38,7 +38,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 LastName = "Costache"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.FirstName);
         }
 
@@ -51,7 +51,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 LastName = "Costache"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.FirstName);
         }
 
@@ -64,7 +64,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 LastName = "Costache"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.FirstName);
         }
 
@@ -77,7 +77,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 LastName = "Costache"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.FirstName);
         }
 
@@ -90,7 +90,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 LastName = "Costache"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.FirstName);
         }
 
@@ -103,7 +103,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 LastName = "Costache"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.FirstName);
         }
 
@@ -116,7 +116,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 LastName = "Costache"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.FirstName);
         }
 
@@ -129,7 +129,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 FirstName = "Costache"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.LastName);
         }
 
@@ -142,7 +142,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 FirstName = "Costache"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.LastName);
         }
 
@@ -155,7 +155,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 FirstName = "Costache"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.LastName);
         }
 
@@ -168,7 +168,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 FirstName = "Costache"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.LastName);
         }
 
@@ -181,7 +181,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 FirstName = "Costache"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.LastName);
         }
 
@@ -194,7 +194,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 FirstName = "Costache"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.LastName);
         }
 
@@ -207,7 +207,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 FirstName = "Costache"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.LastName);
         }
 
@@ -220,7 +220,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 FirstName = "Costache"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.LastName);
         }
 
@@ -232,7 +232,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Address = null
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.Address);
         }
 
@@ -244,7 +244,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Address = "ceva"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.Address);
         }
 
@@ -256,7 +256,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Address = ""
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.Address);
         }
 
@@ -268,7 +268,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Address = "altceva"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.Address);
         }
 
@@ -280,7 +280,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Address = "q"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.Address);
         }
 
@@ -292,7 +292,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Address = "qrwer"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.Address);
         }
 

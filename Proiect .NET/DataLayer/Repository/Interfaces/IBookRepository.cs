@@ -27,8 +27,7 @@ namespace Library.DataLayer.Interfaces
         /// <summary>
         /// Gets the parent domain.
         /// </summary>
-        /// <param name="domain">The domain.</param>
-        /// <returns>Domain.</returns>
+        /// <param name="domain"> The domain. </param>
         public Domain GetParentDomain(Domain domain);
 
         /// <summary>
@@ -41,15 +40,13 @@ namespace Library.DataLayer.Interfaces
         /// <summary>
         /// Gets the unavailable books.
         /// </summary>
-        /// <param name="allBooksWithTheSameName">Name of all books with the same.</param>
-        /// <returns>IEnumerable&lt;Book&gt;.</returns>
+        /// <param name="allBooksWithTheSameName"> Name of all books with the same. </param>
         public IEnumerable<Book> GetUnavailableBooks(IEnumerable<Book> allBooksWithTheSameName);
 
         /// <summary>
         /// Gets the books with the same title.
         /// </summary>
-        /// <param name="title">The title.</param>
-        /// <returns>IEnumerable&lt;Book&gt;.</returns>
+        /// <param name="title"> The title. </param>
         public IEnumerable<Book> GetBooksWithTheSameTitle(string title);
     }
 }

@@ -34,20 +34,16 @@ namespace Library.DataLayer.Concretes
         /// <summary>
         /// Gets the last properties.
         /// </summary>
-        /// <returns>Properties.</returns>
         public Properties GetLastProperties()
         {
-            using (var ctx = new LibraryContext())
+            try
             {
-                try
-                {
-                    var lastPropertiesId = ctx.Properties.Max(x => x.Id);
-                    return ctx.Properties.FirstOrDefault(x => x.Id == lastPropertiesId);
-                }
-                catch (Exception ex)
-                {
-                    logger.Error(ex.Message + "The query could not been made!");
-                }
+                var lastPropertiesId = ctx.Properties.Max(x => x.Id);
+                return ctx.Properties.FirstOrDefault(x => x.Id == lastPropertiesId);
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex.Message + "The query could not been made!");
             }
             return new Properties();
         }

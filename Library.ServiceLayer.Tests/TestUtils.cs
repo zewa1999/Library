@@ -11,13 +11,14 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using Library.DomainLayer;
-using Library.DomainLayer.Person;
-using System;
-using System.Collections.Generic;
 
 namespace Library.ServiceLayer.Tests
 {
+    using Library.DomainLayer;
+    using Library.DomainLayer.Person;
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
     /// Class TestUtils.
     /// </summary>
@@ -26,14 +27,12 @@ namespace Library.ServiceLayer.Tests
         /// <summary>
         /// Gets the borrow model.
         /// </summary>
-        /// <returns>Borrow.</returns>
         public static Borrow GetBorrowModel()
         {
             var author = new Author()
             {
                 FirstName = "Marcel",
                 LastName = "Dorel",
-                Books = new List<Book>()
             };
 
             var domain = new Domain()
@@ -88,14 +87,12 @@ namespace Library.ServiceLayer.Tests
         /// <summary>
         /// Gets the borrow model with identifier.
         /// </summary>
-        /// <returns>Borrow.</returns>
         public static Borrow GetBorrowModelWithId()
         {
             var author = new Author()
             {
                 FirstName = "Marcel",
                 LastName = "Dorel",
-                Books = new List<Book>()
             };
 
             var domain = new Domain()
@@ -151,14 +148,12 @@ namespace Library.ServiceLayer.Tests
         /// <summary>
         /// Gets the book model.
         /// </summary>
-        /// <returns>Book.</returns>
         public static Book GetBookModel()
         {
             var author = new Author()
             {
                 FirstName = "Marcel",
                 LastName = "Dorel",
-                Books = new List<Book>()
             };
 
             var domain = new Domain()
@@ -205,14 +200,12 @@ namespace Library.ServiceLayer.Tests
         /// <summary>
         /// Gets the book model with identifier.
         /// </summary>
-        /// <returns>Book.</returns>
         public static Book GetBookModelWithId()
         {
             var author = new Author()
             {
                 FirstName = "Marcel",
                 LastName = "Dorel",
-                Books = new List<Book>()
             };
 
             var domain = new Domain()

@@ -39,18 +39,13 @@ namespace Library.DataLayer.Validators
                 .NotNull().WithMessage("Null {PropertyName}")
                 .NotEmpty().WithMessage("{PropertyName} is Empty")
                 .Length(2, 50).WithMessage("Lenght of {PropertyName} Invalid")
-                .Must(BeAValidName).WithMessage("{PropertyName} contains invalid characters");
+                .Must(this.BeAValidName).WithMessage("{PropertyName} contains invalid characters");
 
             RuleFor(a => a.LastName)
                 .NotNull().WithMessage("Null {PropertyName}")
                 .NotEmpty().WithMessage("{PropertyName} is Empty")
                 .Length(2, 50).WithMessage("Lenght of {PropertyName} Invalid")
-                .Must(BeAValidName).WithMessage("{PropertyName} contains invalid characters");
-
-            RuleFor(a => a.Books)
-                .NotNull().WithMessage("Null {PropertyName}")
-                .Must(HaveEntities).WithMessage("{PropertyName} is Empty");
-            RuleForEach(a => a.Books).SetValidator(new BookValidator());
+                .Must(this.BeAValidName).WithMessage("{PropertyName} contains invalid characters");
         }
 
         /// <summary>

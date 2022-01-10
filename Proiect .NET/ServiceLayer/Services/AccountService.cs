@@ -11,14 +11,15 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using Library.DataLayer.Interfaces;
-using Library.DataLayer.Validators;
-using Library.DomainLayer.Person;
-using Library.ServiceLayer.IServices;
-using Proiect_.NET.Injection;
 
 namespace Library.ServiceLayer.Services
 {
+    using Library.DataLayer.Interfaces;
+    using Library.DataLayer.Validators;
+    using Library.DomainLayer.Person;
+    using Library.ServiceLayer.IServices;
+    using Proiect_.NET.Injection;
+
     /// <summary>
     /// Class AccountService.
     /// Implements the <see cref="Library.ServiceLayer.Services.BaseService{Library.DomainLayer.Person.Account, Library.DataLayer.Interfaces.IAccountRepository}" />
@@ -34,7 +35,7 @@ namespace Library.ServiceLayer.Services
         public AccountService()
             : base(Injector.Create<IAccountRepository>(), Injector.Create<IPropertiesRepository>())
         {
-            _validator = new AccountValidator();
+            this._validator = new AccountValidator();
         }
     }
 }

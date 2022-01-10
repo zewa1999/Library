@@ -11,15 +11,16 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using Library.DomainLayer;
-using Library.ServiceLayer.IServices;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Library.ServiceLayer.Tests
 {
+    using Library.DomainLayer;
+    using Library.ServiceLayer.IServices;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Moq;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Defines test class BookServiceTests.
     /// </summary>
@@ -42,7 +43,7 @@ namespace Library.ServiceLayer.Tests
         [TestInitialize]
         public void Initialize()
         {
-            bookServiceMock = new Mock<IBookService>();
+            this.bookServiceMock = new Mock<IBookService>();
         }
 
         /// <summary>
@@ -52,10 +53,10 @@ namespace Library.ServiceLayer.Tests
         public void TestInsert()
         {
             var book = TestUtils.GetBookModel();
-            bookServiceMock.Setup(x => x.Insert(book)).Returns(true);
-            bookService = bookServiceMock.Object;
+            this.bookServiceMock.Setup(x => x.Insert(book)).Returns(true);
+            this.bookService = this.bookServiceMock.Object;
 
-            var result = bookService.Insert(book);
+            var result = this.bookService.Insert(book);
 
             Assert.IsTrue(result);
         }
@@ -66,14 +67,14 @@ namespace Library.ServiceLayer.Tests
         [TestMethod]
         public void TestGetAll()
         {
-            bookServiceMock.Setup(x => x.GetAll(null, book => book.OrderBy(x => x.Id), null))
+            this.bookServiceMock.Setup(x => x.GetAll(null, book => book.OrderBy(x => x.Id), null))
                 .Returns(
                 new List<Book>()
                 {TestUtils.GetBookModel()});
 
-            bookService = bookServiceMock.Object;
+            this.bookService = this.bookServiceMock.Object;
 
-            var result = bookService.GetAll();
+            var result = this.bookService.GetAll();
 
             Assert.IsNotNull(result);
             Assert.AreEqual(1, result.Count());
@@ -86,11 +87,11 @@ namespace Library.ServiceLayer.Tests
         public void TestGetById()
         {
             var book = TestUtils.GetBookModelWithId();
-            bookServiceMock.Setup(x => x.GetByID(1))
+            this.bookServiceMock.Setup(x => x.GetByID(1))
                 .Returns(TestUtils.GetBookModelWithId());
 
-            bookService = bookServiceMock.Object;
-            var result = bookService.GetByID(1);
+            this.bookService = this.bookServiceMock.Object;
+            var result = this.bookService.GetByID(1);
 
             Assert.IsNotNull(result);
             Assert.AreEqual(1, result.Id);
@@ -104,17 +105,17 @@ namespace Library.ServiceLayer.Tests
         {
             var book = TestUtils.GetBookModel();
 
-            bookServiceMock.Setup(x => x.GetByID(1))
+            this.bookServiceMock.Setup(x => x.GetByID(1))
                 .Returns(book);
 
-            bookService = bookServiceMock.Object;
+            this.bookService = this.bookServiceMock.Object;
 
-            var modifiedBook = bookService.GetByID(1);
+            var modifiedBook = this.bookService.GetByID(1);
             modifiedBook.Title = "O carte oarecare";
 
-            bookServiceMock.Setup(x => x.Update(modifiedBook)).Returns(true);
+            this.bookServiceMock.Setup(x => x.Update(modifiedBook)).Returns(true);
 
-            var result = bookService.Update(modifiedBook);
+            var result = this.bookService.Update(modifiedBook);
 
             Assert.IsTrue(result);
         }
@@ -125,10 +126,10 @@ namespace Library.ServiceLayer.Tests
         [TestMethod]
         public void TestDelete()
         {
-            bookServiceMock.Setup(x => x.DeleteById(1)).Returns(true);
-            bookService = bookServiceMock.Object;
+            this.bookServiceMock.Setup(x => x.DeleteById(1)).Returns(true);
+            this.bookService = this.bookServiceMock.Object;
 
-            var result = bookService.DeleteById(1);
+            var result = this.bookService.DeleteById(1);
 
             Assert.IsTrue(result);
         }

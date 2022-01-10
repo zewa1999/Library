@@ -34,7 +34,7 @@ namespace Library.DataLayer.Validators
         {
             RuleFor(l => l.IsReader)
                 .NotNull().WithMessage("Null {PropertyName}");
-            Include(new BorrowerValidator());
+            this.Include(new BorrowerValidator());
         }
     }
 }

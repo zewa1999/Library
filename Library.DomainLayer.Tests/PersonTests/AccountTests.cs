@@ -1,9 +1,9 @@
-using Library.DomainLayer.Person;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-
 namespace Library.DomainLayer.Tests
 {
+    using Library.DomainLayer.Person;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System;
+
     [TestClass]
     public class AccountTests
     {
@@ -12,39 +12,39 @@ namespace Library.DomainLayer.Tests
         [TestInitialize]
         public void InitializeTest()
         {
-            account = new();
+            this.account = new();
         }
 
         [TestMethod]
         public void AccountPhoneNumberShouldBeWrongIfLenghtIsNot10()
         {
-            account.PhoneNumber = "0721";
+            this.account.PhoneNumber = "0721";
 
-            Assert.AreNotEqual(10, account.PhoneNumber.Length);
+            Assert.AreNotEqual(10, this.account.PhoneNumber.Length);
         }
 
         [TestMethod]
         public void AccountPhoneNumberShouldBeNull()
         {
-            account.PhoneNumber = null;
+            this.account.PhoneNumber = null;
 
-            Assert.IsNull(account.PhoneNumber);
+            Assert.IsNull(this.account.PhoneNumber);
         }
 
         [TestMethod]
         public void AccountIdShouldBeValid()
         {
-            account.Id = 1;
+            this.account.Id = 1;
 
-            Assert.AreEqual(1, account.Id);
+            Assert.AreEqual(1, this.account.Id);
         }
 
         [TestMethod]
         public void AccountEmailShouldBeValid()
         {
-            account.Email = "email@email.com";
+            this.account.Email = "email@email.com";
             bool flag = true;
-            var trimmedEmail = account.Email.Trim();
+            var trimmedEmail = this.account.Email.Trim();
 
             if (trimmedEmail.EndsWith("."))
             {
@@ -52,7 +52,7 @@ namespace Library.DomainLayer.Tests
             }
             try
             {
-                var addr = new System.Net.Mail.MailAddress(account.Email);
+                var addr = new System.Net.Mail.MailAddress(this.account.Email);
                 flag = addr.Address == trimmedEmail;
             }
             catch
@@ -67,16 +67,16 @@ namespace Library.DomainLayer.Tests
         [ExpectedException(typeof(FormatException))]
         public void AccountEmailShouldBeInvalidAndThrowException()
         {
-            account.Email = "emailNotValid";
+            this.account.Email = "emailNotValid";
 
-            var trimmedEmail = account.Email.Trim();
+            var trimmedEmail = this.account.Email.Trim();
 
             if (trimmedEmail.EndsWith("."))
             {
                 throw new AssertFailedException("The email is not valid");
             }
 
-            new System.Net.Mail.MailAddress(account.Email);
+            new System.Net.Mail.MailAddress(this.account.Email);
         }
     }
 }

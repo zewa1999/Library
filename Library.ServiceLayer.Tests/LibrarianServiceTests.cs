@@ -11,15 +11,16 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using Library.DomainLayer.Person;
-using Library.ServiceLayer.IServices;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Library.ServiceLayer.Tests
 {
+    using Library.DomainLayer.Person;
+    using Library.ServiceLayer.IServices;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Moq;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Defines test class LibrarianServiceTests.
     /// </summary>
@@ -42,7 +43,7 @@ namespace Library.ServiceLayer.Tests
         [TestInitialize]
         public void Initialize()
         {
-            librarianServiceMock = new Mock<ILibrarianService>();
+            this.librarianServiceMock = new Mock<ILibrarianService>();
         }
 
         /// <summary>
@@ -66,10 +67,10 @@ namespace Library.ServiceLayer.Tests
                 Account = account
             };
 
-            librarianServiceMock.Setup(x => x.Insert(librarian)).Returns(true);
-            librarianService = librarianServiceMock.Object;
+            this.librarianServiceMock.Setup(x => x.Insert(librarian)).Returns(true);
+            this.librarianService = this.librarianServiceMock.Object;
 
-            var result = librarianService.Insert(librarian);
+            var result = this.librarianService.Insert(librarian);
 
             Assert.IsTrue(result);
         }
@@ -95,14 +96,14 @@ namespace Library.ServiceLayer.Tests
                 Account = account
             };
 
-            librarianServiceMock.Setup(x => x.GetAll(null, book => book.OrderBy(x => x.Id), null))
+            this.librarianServiceMock.Setup(x => x.GetAll(null, book => book.OrderBy(x => x.Id), null))
                 .Returns(
                 new List<Librarian>()
                 {librarian});
 
-            librarianService = librarianServiceMock.Object;
+            this.librarianService = this.librarianServiceMock.Object;
 
-            var result = librarianService.GetAll();
+            var result = this.librarianService.GetAll();
 
             Assert.IsNotNull(result);
             Assert.AreEqual(1, result.Count());
@@ -129,12 +130,12 @@ namespace Library.ServiceLayer.Tests
                 Address = "Bucuresti, strada Mihai Viteazu, nr 7, bloc C3, ap 26",
                 Account = account
             };
-            librarianServiceMock.Setup(x => x.GetByID(1))
+            this.librarianServiceMock.Setup(x => x.GetByID(1))
                 .Returns(librarian);
 
-            librarianService = librarianServiceMock.Object;
+            this.librarianService = this.librarianServiceMock.Object;
 
-            var result = librarianService.GetByID(1);
+            var result = this.librarianService.GetByID(1);
 
             Assert.IsNotNull(result);
             Assert.AreEqual(1, result.Id);
@@ -164,17 +165,17 @@ namespace Library.ServiceLayer.Tests
                 Account = account
             };
 
-            librarianServiceMock.Setup(x => x.GetByID(1))
+            this.librarianServiceMock.Setup(x => x.GetByID(1))
                 .Returns(librarian);
 
-            librarianService = librarianServiceMock.Object;
+            this.librarianService = this.librarianServiceMock.Object;
 
-            var modifiedAccount = librarianService.GetByID(1);
+            var modifiedAccount = this.librarianService.GetByID(1);
             modifiedAccount.LastName = "Alexandru";
 
-            librarianServiceMock.Setup(x => x.Update(modifiedAccount)).Returns(true);
+            this.librarianServiceMock.Setup(x => x.Update(modifiedAccount)).Returns(true);
 
-            var result = librarianService.Update(modifiedAccount);
+            var result = this.librarianService.Update(modifiedAccount);
 
             Assert.IsTrue(result);
         }
@@ -185,10 +186,10 @@ namespace Library.ServiceLayer.Tests
         [TestMethod]
         public void TestDelete()
         {
-            librarianServiceMock.Setup(x => x.DeleteById(1)).Returns(true);
-            librarianService = librarianServiceMock.Object;
+            this.librarianServiceMock.Setup(x => x.DeleteById(1)).Returns(true);
+            this.librarianService = this.librarianServiceMock.Object;
 
-            var result = librarianService.DeleteById(1);
+            var result = this.librarianService.DeleteById(1);
 
             Assert.IsTrue(result);
         }

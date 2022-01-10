@@ -28,42 +28,36 @@ namespace Library.ServiceLayer.IServices
         /// <summary>
         /// Inserts the specified entity.
         /// </summary>
-        /// <param name="entity">The entity.</param>
-        /// <returns>ValidationResult.</returns>
+        /// <param name="entity"> The entity. </param>
         bool Insert(T entity);
 
         /// <summary>
         /// Updates the specified item.
         /// </summary>
-        /// <param name="entity">The entity.</param>
-        /// <returns>ValidationResult.</returns>
+        /// <param name="entity"> The entity. </param>
         bool Update(T entity);
 
         /// <summary>
         /// Deletes the specified identifier.
         /// </summary>
-        /// <param name="entity">The entity.</param>
-        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        /// <param name="entity"> The entity. </param>
         bool Delete(T entity);
 
         /// <summary>
         /// Deletes the by identifier.
         /// </summary>
-        /// <param name="entity">The entity.</param>
-        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        /// <param name="entity"> The entity. </param>
         bool DeleteById(object entity);
 
         /// <summary>
         /// Gets the by identifier.
         /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <returns>T.</returns>
+        /// <param name="id"> The identifier. </param>
         T GetByID(object id);
 
         /// <summary>
         /// Gets the specified filter.
         /// </summary>
-        /// <returns>IEnumerable&lt;T&gt;.</returns>
         IEnumerable<T> GetAll(
             Expression<Func<T, bool>> filter = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,

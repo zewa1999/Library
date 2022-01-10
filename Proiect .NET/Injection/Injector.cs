@@ -11,11 +11,12 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using Ninject;
-using System.Reflection;
 
 namespace Proiect_.NET.Injection
 {
+    using Ninject;
+    using System.Reflection;
+
     /// <summary>
     /// Class Injector.
     /// </summary>
@@ -39,7 +40,6 @@ namespace Proiect_.NET.Injection
         /// Creates this instance.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <returns>T.</returns>
         public static T Create<T>()
         {
             return _kernel.Get<T>();

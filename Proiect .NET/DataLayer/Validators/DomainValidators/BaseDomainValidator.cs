@@ -1,13 +1,8 @@
-﻿using FluentValidation;
-using Library.DomainLayer;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Proiect_.NET.DataLayer.Validators
+﻿namespace Proiect_.NET.DataLayer.Validators
 {
+    using FluentValidation;
+    using Library.DomainLayer;
+
     public class BaseDomainValidator : AbstractValidator<Domain>
     {
         public BaseDomainValidator()

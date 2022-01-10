@@ -22,20 +22,6 @@ namespace Proiect_.NET.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Authors",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Authors", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Properties",
                 columns: table => new
                 {
@@ -127,27 +113,24 @@ namespace Proiect_.NET.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "AuthorBook",
+                name: "Authors",
                 columns: table => new
                 {
-                    AuthorsId = table.Column<int>(type: "int", nullable: false),
-                    BooksId = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FirstName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    BookId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AuthorBook", x => new { x.AuthorsId, x.BooksId });
+                    table.PrimaryKey("PK_Authors", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AuthorBook_Authors_AuthorsId",
-                        column: x => x.AuthorsId,
-                        principalTable: "Authors",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_AuthorBook_Books_BooksId",
-                        column: x => x.BooksId,
+                        name: "FK_Authors_Books_BookId",
+                        column: x => x.BookId,
                         principalTable: "Books",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -201,9 +184,9 @@ namespace Proiect_.NET.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_AuthorBook_BooksId",
-                table: "AuthorBook",
-                column: "BooksId");
+                name: "IX_Authors_BookId",
+                table: "Authors",
+                column: "BookId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Books_BorrowId",
@@ -239,7 +222,7 @@ namespace Proiect_.NET.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "AuthorBook");
+                name: "Authors");
 
             migrationBuilder.DropTable(
                 name: "Domains");
@@ -249,9 +232,6 @@ namespace Proiect_.NET.Migrations
 
             migrationBuilder.DropTable(
                 name: "Properties");
-
-            migrationBuilder.DropTable(
-                name: "Authors");
 
             migrationBuilder.DropTable(
                 name: "Books");

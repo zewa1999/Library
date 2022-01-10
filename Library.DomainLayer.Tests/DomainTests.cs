@@ -1,9 +1,9 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Library.DomainLayer.Tests.PersonTests
+﻿namespace Library.DomainLayer.Tests.PersonTests
 {
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System.Collections.Generic;
+    using System.Linq;
+
     [TestClass]
     public class DomainTests
     {
@@ -12,15 +12,15 @@ namespace Library.DomainLayer.Tests.PersonTests
         [TestInitialize]
         public void Initialize()
         {
-            domain = new();
+            this.domain = new();
         }
 
         [TestMethod]
         public void DomainNameShouldNotContainDigits()
         {
-            domain.Name = "Informatica 221";
+            this.domain.Name = "Informatica 221";
 
-            var flag = domain.Name.All(char.IsDigit);
+            var flag = this.domain.Name.All(char.IsDigit);
 
             Assert.IsFalse(flag);
         }
@@ -28,9 +28,9 @@ namespace Library.DomainLayer.Tests.PersonTests
         [TestMethod]
         public void DomainNameShouldBeCapitalized()
         {
-            domain.Name = "Informatica";
+            this.domain.Name = "Informatica";
 
-            var flag = char.IsUpper(domain.Name[0]);
+            var flag = char.IsUpper(this.domain.Name[0]);
             Assert.IsTrue(flag);
         }
 
@@ -38,18 +38,18 @@ namespace Library.DomainLayer.Tests.PersonTests
         public void DomainParentShouldNotBeNull()
         {
             var parentDomain = new Domain();
-            domain.ParentDomain = parentDomain;
+            this.domain.ParentDomain = parentDomain;
 
-            Assert.IsNotNull(domain.ParentDomain);
+            Assert.IsNotNull(this.domain.ParentDomain);
         }
 
         [TestMethod]
         public void DomainChildrensShouldNotBeNull()
         {
             var childrens = new List<Domain>();
-            domain.ChildrenDomains = childrens;
+            this.domain.ChildrenDomains = childrens;
 
-            Assert.IsNotNull(domain.ChildrenDomains);
+            Assert.IsNotNull(this.domain.ChildrenDomains);
         }
     }
 }

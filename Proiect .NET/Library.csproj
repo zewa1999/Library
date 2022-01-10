@@ -24,6 +24,7 @@
 	  </PackageReference>
 	  <PackageReference Include="Ninject" Version="3.3.4" />
 	  <PackageReference Include="NLog" Version="4.7.6" />
+	  <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,6 +32,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="App.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="AppSettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

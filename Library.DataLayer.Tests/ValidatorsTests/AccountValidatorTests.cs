@@ -1,10 +1,26 @@
-﻿using FluentValidation.TestHelper;
-using Library.DataLayer.Validators;
-using Library.DomainLayer.Person;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿// ***********************************************************************
+// Assembly         : Library
+// Author           : costa
+// Created          : 01-06-2022
+//
+// Last Modified By : costa
+// Last Modified On : 01-06-2022
+// ***********************************************************************
+// <copyright file="AccountValidatorTests.cs" company="Transilvania University of Brasov">
+//     Costache Stelian-Andrei
+// </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 namespace Library.DataLayer.Tests.ValidatorsTests
 {
+    using FluentValidation.TestHelper;
+    using Library.DataLayer.Validators;
+    using Library.DomainLayer.Person;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+    /// <summary>Defines test class AccountValidatorTests.</summary>
+
     [TestClass]
     public class AccountValidatorTests
     {
@@ -13,7 +29,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
         [TestInitialize]
         public void Initialize()
         {
-            validator = new();
+            this.validator = new();
         }
 
         [TestMethod]
@@ -24,7 +40,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 PhoneNumber = null
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.PhoneNumber);
         }
 
@@ -36,7 +52,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 PhoneNumber = "0755234562"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveAnyValidationErrors();
         }
 
@@ -48,7 +64,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 PhoneNumber = ""
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.PhoneNumber);
         }
 
@@ -60,7 +76,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 PhoneNumber = "0723456729"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveAnyValidationErrors();
         }
 
@@ -72,7 +88,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 PhoneNumber = "12345678901231234"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.PhoneNumber);
         }
 
@@ -84,7 +100,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 PhoneNumber = "0723456739"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveAnyValidationErrors();
         }
 
@@ -96,7 +112,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 PhoneNumber = "1234567890dasda"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.PhoneNumber);
         }
 
@@ -108,7 +124,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 PhoneNumber = "0723455672"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveAnyValidationErrors();
         }
 
@@ -120,7 +136,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 PhoneNumber = "0755234123"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveAnyValidationErrors();
         }
 
@@ -133,7 +149,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 PhoneNumber = "0755234123"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.Email);
         }
 
@@ -146,7 +162,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 PhoneNumber = "0755234123"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.Email);
         }
 
@@ -159,7 +175,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 PhoneNumber = "0755234123"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.Email);
         }
 
@@ -172,7 +188,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 PhoneNumber = "0755234123"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveAnyValidationErrors();
         }
     }

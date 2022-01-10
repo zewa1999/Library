@@ -11,11 +11,12 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using FluentValidation.Results;
-using NLog;
 
 namespace Library.ServiceLayer
 {
+    using FluentValidation.Results;
+    using NLog;
+
     /// <summary>
     /// Class Utils.
     /// </summary>

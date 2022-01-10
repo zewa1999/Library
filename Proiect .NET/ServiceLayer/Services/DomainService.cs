@@ -11,16 +11,17 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using FluentValidation;
-using Library.DataLayer.Interfaces;
-using Library.DataLayer.Validators;
-using Library.DomainLayer;
-using Library.ServiceLayer.IServices;
-using Proiect_.NET.DataLayer.Validators;
-using Proiect_.NET.Injection;
 
 namespace Library.ServiceLayer.Services
 {
+    using FluentValidation;
+    using Library.DataLayer.Interfaces;
+    using Library.DataLayer.Validators;
+    using Library.DomainLayer;
+    using Library.ServiceLayer.IServices;
+    using Proiect_.NET.DataLayer.Validators;
+    using Proiect_.NET.Injection;
+
     /// <summary>
     /// Class DomainService.
     /// Implements the <see cref="Library.ServiceLayer.Services.BaseService{Library.DomainLayer.Domain, Library.DataLayer.Interfaces.IDomainRepository}" />
@@ -36,17 +37,17 @@ namespace Library.ServiceLayer.Services
         public DomainService()
              : base(Injector.Create<IDomainRepository>(), Injector.Create<IPropertiesRepository>())
         {
-            _validator = new DomainValidator();
+            this._validator = new DomainValidator();
         }
 
         public override bool Insert(Domain entity)
         {
             if (entity.ParentDomain == null)
             {
-                _validator = new BaseDomainValidator();
+                this._validator = new BaseDomainValidator();
             }
 
-            var result = _validator.Validate(entity);
+            var result = this._validator.Validate(entity);
             var isValid = false;
             if (result.IsValid)
             {
@@ -60,10 +61,10 @@ namespace Library.ServiceLayer.Services
 
             if (isValid == true)
             {
-                _repository.Insert(entity);
+                this._repository.Insert(entity);
             }
 
-            _validator = new DomainValidator();
+            this._validator = new DomainValidator();
             return true;
         }
     }

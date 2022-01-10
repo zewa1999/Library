@@ -11,14 +11,15 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using Library.DataLayer.Interfaces;
-using Library.DataLayer.Validators;
-using Library.DomainLayer;
-using Library.ServiceLayer.IServices;
-using Proiect_.NET.Injection;
 
 namespace Library.ServiceLayer.Services
 {
+    using Library.DataLayer.Interfaces;
+    using Library.DataLayer.Validators;
+    using Library.DomainLayer;
+    using Library.ServiceLayer.IServices;
+    using Proiect_.NET.Injection;
+
     /// <summary>
     /// Class EditionService.
     /// Implements the <see cref="Library.ServiceLayer.Services.BaseService{Library.DomainLayer.Edition, Library.DataLayer.Interfaces.IEditionRepository}" />
@@ -34,7 +35,7 @@ namespace Library.ServiceLayer.Services
         public EditionService()
             : base(Injector.Create<IEditionRepository>(), Injector.Create<IPropertiesRepository>())
         {
-            _validator = new EditionValidator();
+            this._validator = new EditionValidator();
         }
     }
 }

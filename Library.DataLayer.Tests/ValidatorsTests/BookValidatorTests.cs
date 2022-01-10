@@ -1,11 +1,11 @@
-﻿using FluentValidation.TestHelper;
-using Library.DataLayer.Validators;
-using Library.DomainLayer;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
-
-namespace Library.DataLayer.Tests.ValidatorsTests
+﻿namespace Library.DataLayer.Tests.ValidatorsTests
 {
+    using FluentValidation.TestHelper;
+    using Library.DataLayer.Validators;
+    using Library.DomainLayer;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System.Collections.Generic;
+
     [TestClass]
     public class BookValidatorTests
     {
@@ -14,7 +14,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
         [TestInitialize]
         public void Initialize()
         {
-            validator = new();
+            this.validator = new();
         }
 
         [TestMethod]
@@ -25,7 +25,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Title = null
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.Title);
         }
 
@@ -37,7 +37,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Title = "ceva"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.Title);
         }
 
@@ -49,7 +49,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Title = ""
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.Title);
         }
 
@@ -61,7 +61,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Title = "altceva"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.Title);
         }
 
@@ -73,7 +73,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Title = "q"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.Title);
         }
 
@@ -85,7 +85,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Title = "qrwer",
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.Title);
         }
 
@@ -97,7 +97,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Title = "--gds031"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.Title);
         }
 
@@ -109,7 +109,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Title = "Costache"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.Title);
         }
 
@@ -121,7 +121,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Type = null
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.Type);
         }
 
@@ -133,7 +133,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Type = "ceva"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.Type);
         }
 
@@ -145,7 +145,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Type = ""
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.Type);
         }
 
@@ -157,7 +157,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Type = "altceva"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.Type);
         }
 
@@ -169,7 +169,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Type = "q"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.Type);
         }
 
@@ -181,7 +181,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Type = "qrwer",
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.Type);
         }
 
@@ -193,7 +193,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Type = "--gds031"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.Type);
         }
 
@@ -205,7 +205,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Type = "Costache"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.Type);
         }
 
@@ -217,7 +217,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 IsBorrowed = null
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.IsBorrowed);
         }
 
@@ -229,7 +229,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 IsBorrowed = true
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.IsBorrowed);
         }
 
@@ -241,7 +241,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Authors = null
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.Authors);
         }
 
@@ -253,7 +253,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Authors = new List<Author>()
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.Authors);
         }
 
@@ -265,7 +265,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Editions = null
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.Editions);
         }
 
@@ -277,7 +277,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Editions = new List<Edition>()
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.Editions);
         }
 
@@ -289,7 +289,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Domains = null
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.Domains);
         }
 
@@ -301,7 +301,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Domains = new List<Domain>()
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.Domains);
         }
     }

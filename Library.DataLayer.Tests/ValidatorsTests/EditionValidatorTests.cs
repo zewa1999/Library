@@ -1,10 +1,10 @@
-﻿using FluentValidation.TestHelper;
-using Library.DataLayer.Validators;
-using Library.DomainLayer;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace Library.DataLayer.Tests.ValidatorsTests
+﻿namespace Library.DataLayer.Tests.ValidatorsTests
 {
+    using FluentValidation.TestHelper;
+    using Library.DataLayer.Validators;
+    using Library.DomainLayer;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class EditionValidatorTests
     {
@@ -13,7 +13,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
         [TestInitialize]
         public void Initialize()
         {
-            validator = new();
+            this.validator = new();
         }
 
         [TestMethod]
@@ -24,7 +24,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Publisher = null
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.Publisher);
         }
 
@@ -36,7 +36,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Publisher = "NotNull"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.Publisher);
         }
 
@@ -48,7 +48,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Publisher = ""
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.Publisher);
         }
 
@@ -60,7 +60,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Publisher = "notEmpty"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.Publisher);
         }
 
@@ -72,7 +72,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Publisher = "q"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.Publisher);
         }
 
@@ -84,7 +84,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Publisher = "qwert"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.Publisher);
         }
 
@@ -96,7 +96,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Year = null
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.Year);
         }
 
@@ -108,7 +108,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Year = "134"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.Year);
         }
 
@@ -120,7 +120,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Year = ""
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.Year);
         }
 
@@ -132,7 +132,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Year = "124"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.Year);
         }
 
@@ -144,7 +144,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 Year = "1234"
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.Year);
         }
 
@@ -156,7 +156,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 EditionNumber = null
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.EditionNumber);
         }
 
@@ -168,7 +168,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 EditionNumber = 3
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.EditionNumber);
         }
 
@@ -180,7 +180,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 EditionNumber = 0
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.EditionNumber);
         }
 
@@ -192,7 +192,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 EditionNumber = 2
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.EditionNumber);
         }
 
@@ -204,7 +204,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 NumberOfPages = null
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.NumberOfPages);
         }
 
@@ -216,7 +216,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 NumberOfPages = 3
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.NumberOfPages);
         }
 
@@ -228,7 +228,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 NumberOfPages = 0
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.NumberOfPages);
         }
 
@@ -240,7 +240,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
                 NumberOfPages = 2
             };
 
-            var result = validator.TestValidate(model);
+            var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.NumberOfPages);
         }
     }

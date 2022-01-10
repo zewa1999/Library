@@ -38,13 +38,13 @@ namespace Library.DataLayer.Validators
                 .NotNull().WithMessage("Null {PropertyName}")
                 .NotEmpty().WithMessage("{PropertyName} is Empty")
                 .Length(2, 50).WithMessage("Lenght of {PropertyName} Invalid")
-                .Must(BeAValidName).WithMessage("{PropertyName} contains invalid characters");
+                .Must(this.BeAValidName).WithMessage("{PropertyName} contains invalid characters");
 
             RuleFor(b => b.LastName)
                 .NotNull().WithMessage("Null {PropertyName}")
                 .NotEmpty().WithMessage("{PropertyName} is Empty")
                 .Length(2, 50).WithMessage("Lenght of {PropertyName} Invalid")
-                .Must(BeAValidName).WithMessage("{PropertyName} contains invalid characters");
+                .Must(this.BeAValidName).WithMessage("{PropertyName} contains invalid characters");
 
             RuleFor(b => b.Address)
                 .NotNull().WithMessage("Null {PropertyName}")

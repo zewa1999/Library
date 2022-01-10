@@ -1,9 +1,9 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Library.DomainLayer.Tests
+﻿namespace Library.DomainLayer.Tests
 {
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System.Collections.Generic;
+    using System.Linq;
+
     [TestClass]
     public class BookTests
     {
@@ -12,24 +12,24 @@ namespace Library.DomainLayer.Tests
         [TestInitialize]
         public void Initialize()
         {
-            book = new();
+            this.book = new();
         }
 
         [TestMethod]
         public void TitleShouldBeValid()
         {
-            book.Title = "o suta de zile pe mare si programez de ma doare capul";
+            this.book.Title = "o suta de zile pe mare si programez de ma doare capul";
 
-            bool isIntString = book.Title.All(char.IsDigit);
+            bool isIntString = this.book.Title.All(char.IsDigit);
             Assert.IsFalse(isIntString);
         }
 
         [TestMethod]
         public void TitleShouldNotHaveDigits()
         {
-            book.Title = "100 de zile pe mare si programez de ma doare capul";
+            this.book.Title = "100 de zile pe mare si programez de ma doare capul";
 
-            bool isIntString = book.Title.All(char.IsDigit);
+            bool isIntString = this.book.Title.All(char.IsDigit);
             Assert.IsFalse(isIntString);
         }
 
@@ -40,20 +40,19 @@ namespace Library.DomainLayer.Tests
             {
                 FirstName = "Marcel",
                 LastName = "Dorel",
-                Books = new List<Book>()
             };
 
             var authorsList = new List<Author>();
             authorsList.Add(author);
 
-            book = new Book()
+            this.book = new Book()
             {
                 Title = "How to write bad code with Costache",
                 LecturesOnlyBook = true,
                 Authors = authorsList,
             };
 
-            var flag = book.Authors.All(x => x.FirstName.All(char.IsDigit));
+            var flag = this.book.Authors.All(x => x.FirstName.All(char.IsDigit));
 
             Assert.IsFalse(flag);
         }
@@ -65,20 +64,19 @@ namespace Library.DomainLayer.Tests
             {
                 FirstName = "Marcel",
                 LastName = "Dorel",
-                Books = new List<Book>()
             };
 
             var authorsList = new List<Author>();
             authorsList.Add(author);
 
-            book = new Book()
+            this.book = new Book()
             {
                 Title = "How to write bad code with Costache",
                 LecturesOnlyBook = true,
                 Authors = authorsList,
             };
 
-            var flag = book.Authors.All(x => x.LastName.All(char.IsDigit));
+            var flag = this.book.Authors.All(x => x.LastName.All(char.IsDigit));
 
             Assert.IsFalse(flag);
         }
@@ -90,19 +88,18 @@ namespace Library.DomainLayer.Tests
             {
                 FirstName = "Marcel",
                 LastName = "Dorel",
-                Books = new List<Book>()
             };
 
             var authorsList = new List<Author>() { author };
 
-            book = new Book()
+            this.book = new Book()
             {
                 Title = "How to write bad code with Costache",
                 LecturesOnlyBook = true,
                 Authors = authorsList
             };
 
-            Assert.IsNotNull(book.Authors);
+            Assert.IsNotNull(this.book.Authors);
         }
 
         [TestMethod]
@@ -118,7 +115,7 @@ namespace Library.DomainLayer.Tests
             var domainsList = new List<Domain>();
             domainsList.Add(domain);
 
-            book = new Book()
+            this.book = new Book()
             {
                 Title = "How to write bad code with Costache",
                 LecturesOnlyBook = true,
@@ -126,7 +123,7 @@ namespace Library.DomainLayer.Tests
                 Domains = domainsList
             };
 
-            Assert.IsNotNull(book.Domains);
+            Assert.IsNotNull(this.book.Domains);
         }
 
         [TestMethod]
@@ -143,7 +140,7 @@ namespace Library.DomainLayer.Tests
             var editionsList = new List<Edition>();
             editionsList.Add(edition);
 
-            book = new Book()
+            this.book = new Book()
             {
                 Title = "How to write bad code with Costache",
                 LecturesOnlyBook = true,
@@ -151,23 +148,23 @@ namespace Library.DomainLayer.Tests
                 Editions = editionsList
             };
 
-            Assert.IsNotNull(book.Editions);
+            Assert.IsNotNull(this.book.Editions);
         }
 
         [TestMethod]
         public void TypeShouldNotContainDigitsValid()
         {
-            book.Type = "HardBook";
+            this.book.Type = "HardBook";
 
-            bool isIntString = book.Type.All(char.IsDigit);
+            bool isIntString = this.book.Type.All(char.IsDigit);
             Assert.IsFalse(isIntString);
         }
 
         [TestMethod]
         public void BookShouldBeBorrowable()
         {
-            book.LecturesOnlyBook = true;
-            if (book.LecturesOnlyBook == true)
+            this.book.LecturesOnlyBook = true;
+            if (this.book.LecturesOnlyBook == true)
             {
                 Assert.IsTrue(true);
                 return;
@@ -178,8 +175,8 @@ namespace Library.DomainLayer.Tests
         [TestMethod]
         public void BookShouldNotBeBorrowable()
         {
-            book.LecturesOnlyBook = false;
-            if (book.LecturesOnlyBook == true)
+            this.book.LecturesOnlyBook = false;
+            if (this.book.LecturesOnlyBook == true)
                 Assert.IsTrue(true);
             Assert.IsFalse(false);
         }
@@ -187,8 +184,8 @@ namespace Library.DomainLayer.Tests
         [TestMethod]
         public void BookShouldBeBorrowed()
         {
-            book.IsBorrowed = false;
-            if (book.IsBorrowed == true)
+            this.book.IsBorrowed = false;
+            if (this.book.IsBorrowed == true)
                 Assert.IsTrue(true);
             Assert.IsFalse(false);
         }
@@ -196,8 +193,8 @@ namespace Library.DomainLayer.Tests
         [TestMethod]
         public void BookShouldNotBeBorrowed()
         {
-            book.IsBorrowed = false;
-            if (book.IsBorrowed == true)
+            this.book.IsBorrowed = false;
+            if (this.book.IsBorrowed == true)
             {
                 Assert.IsTrue(true);
                 return;

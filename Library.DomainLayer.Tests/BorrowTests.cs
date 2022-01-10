@@ -1,10 +1,10 @@
-﻿using Library.DomainLayer.Person;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-
-namespace Library.DomainLayer.Tests.PersonTests
+﻿namespace Library.DomainLayer.Tests.PersonTests
 {
+    using Library.DomainLayer.Person;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System;
+    using System.Collections.Generic;
+
     [TestClass]
     public class BorrowTests
     {
@@ -13,7 +13,7 @@ namespace Library.DomainLayer.Tests.PersonTests
         [TestInitialize]
         public void Initialize()
         {
-            borrow = new Borrow();
+            this.borrow = new Borrow();
         }
 
         [TestMethod]
@@ -26,13 +26,13 @@ namespace Library.DomainLayer.Tests.PersonTests
                 Email = "vali@mail.com"
             };
 
-            borrow = new()
+            this.borrow = new()
             {
                 Borrower = borrower,
                 BorrowedBooks = null
             };
 
-            Assert.IsNotNull(borrow.Borrower);
+            Assert.IsNotNull(this.borrow.Borrower);
         }
 
         [TestMethod]
@@ -42,7 +42,6 @@ namespace Library.DomainLayer.Tests.PersonTests
             {
                 FirstName = "Marcel",
                 LastName = "Dorel",
-                Books = new List<Book>()
             };
 
             var authorsList = new List<Author>();
@@ -80,20 +79,20 @@ namespace Library.DomainLayer.Tests.PersonTests
                 Editions = editionsList
             });
 
-            borrow = new()
+            this.borrow = new()
             {
                 Borrower = null,
                 BorrowedBooks = borrowedBooks
             };
 
-            Assert.IsNotNull(borrow.BorrowedBooks);
+            Assert.IsNotNull(this.borrow.BorrowedBooks);
         }
 
         [TestMethod]
         public void BorrowDateShouldNotBeHigherThanCurrentDate()
         {
-            borrow.BorrowDate = DateTime.Now.AddHours(1);
-            if (borrow.BorrowDate > DateTime.Now)
+            this.borrow.BorrowDate = DateTime.Now.AddHours(1);
+            if (this.borrow.BorrowDate > DateTime.Now)
             {
                 Assert.IsFalse(false);
                 return;
@@ -104,8 +103,8 @@ namespace Library.DomainLayer.Tests.PersonTests
         [TestMethod]
         public void EndDateShouldNotExceedThreeMonths()
         {
-            borrow.EndDate = DateTime.Now.AddMonths(2);
-            if (borrow.EndDate > DateTime.Now.AddMonths(3))
+            this.borrow.EndDate = DateTime.Now.AddMonths(2);
+            if (this.borrow.EndDate > DateTime.Now.AddMonths(3))
             {
                 Assert.IsTrue(false);
             }
@@ -115,8 +114,8 @@ namespace Library.DomainLayer.Tests.PersonTests
         [TestMethod]
         public void NoOfTimeExtendedShouldBeNoHigherThanThree()
         {
-            borrow.NoOfTimeExtended = 2;
-            if (borrow.NoOfTimeExtended > 3)
+            this.borrow.NoOfTimeExtended = 2;
+            if (this.borrow.NoOfTimeExtended > 3)
             {
                 Assert.IsTrue(false);
             }

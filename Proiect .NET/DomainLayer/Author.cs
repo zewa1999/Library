@@ -45,12 +45,5 @@ namespace Library.DomainLayer
         [Required]
         [StringLength(50)]
         public string LastName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the books.
-        /// </summary>
-        /// <value>The books.</value>
-        [Required]
-        public virtual ICollection<Book> Books { get; set; }
     }
 }
