@@ -20,6 +20,7 @@ namespace Library.DataLayer.Validators
     using FluentValidation;
     using Library.DomainLayer;
     using System;
+    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
@@ -46,6 +47,9 @@ namespace Library.DataLayer.Validators
                 .Length(2, 50).WithMessage("Lenght of {PropertyName} Invalid")
                 .Must(BeAValidName).WithMessage("{PropertyName} contains invalid characters");
 
+            RuleFor(a => a.Books)
+                .NotNull().WithMessage("Null {PropertyName}")
+                .Must(HaveEntities).WithMessage("{PropertyName} is Empty");
             RuleForEach(a => a.Books).SetValidator(new BookValidator());
         }
 
@@ -62,6 +66,16 @@ namespace Library.DataLayer.Validators
             name = name.Replace(" ", "");
             name = name.Replace("-", "");
             return name.All(Char.IsLetter);
+        }
+
+        protected bool HaveEntities<T>(ICollection<T> entities)
+        {
+            if (entities == null || entities.Count == 0)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

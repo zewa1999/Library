@@ -14,7 +14,10 @@
 using FluentValidation;
 using Library.DataLayer.Interfaces;
 using Library.ServiceLayer.IServices;
+using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
+using System.Linq;
 
 namespace Library.ServiceLayer.Services
 {
@@ -140,9 +143,12 @@ namespace Library.ServiceLayer.Services
         /// Gets all.
         /// </summary>
         /// <returns>IEnumerable&lt;T&gt;.</returns>
-        public virtual IEnumerable<T> GetAll()
+        public virtual IEnumerable<T> GetAll(
+            Expression<Func<T, bool>> filter = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            string includeProperties = "")
         {
-            return _repository.Get();
+            return _repository.Get(filter, orderBy, includeProperties);
         }
     }
 }

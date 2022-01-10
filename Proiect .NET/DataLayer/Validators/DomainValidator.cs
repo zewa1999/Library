@@ -56,21 +56,16 @@ namespace Library.DataLayer.Validators
             //});
 
             RuleFor(b => b.ChildrenDomains)
-                .NotNull().WithMessage("Null {PropertyName}")
-                .Must(HaveEntities).WithMessage("{PropertyName} is Empty");
+                .NotNull().WithMessage("Null {PropertyName}");
+            //.Must(HaveEntities).WithMessage("{PropertyName} is Empty");
 
-            RuleForEach(b => b.ChildrenDomains).ChildRules(domain =>
-            {
-                domain.RuleFor(d => d.Name)
-                 .NotNull().WithMessage("Null {PropertyName}")
-                 .NotEmpty().WithMessage("{PropertyName} is Empty")
-                 .Length(2, 50).WithMessage("Lenght of {PropertyName} Invalid");
-
-                domain.RuleFor(d => d.Name)
-                .NotNull().WithMessage("Null {PropertyName}")
-                .NotEmpty().WithMessage("{PropertyName} is Empty")
-                .Length(2, 50).WithMessage("Lenght of {PropertyName} Invalid");
-            });
+            //RuleForEach(b => b.ChildrenDomains).ChildRules(domain =>
+            //{
+            //    domain.RuleFor(d => d.Name)
+            //     .NotNull().WithMessage("Null {PropertyName}")
+            //     .NotEmpty().WithMessage("{PropertyName} is Empty")
+            //     .Length(2, 50).WithMessage("Lenght of {PropertyName} Invalid");
+            //});
         }
 
         /// <summary>

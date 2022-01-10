@@ -16,13 +16,26 @@
 /// </summary>
 namespace Library.DataLayer.Concretes
 {
+    using Library.DataLayer.DataMapper;
     using Library.DataLayer.Interfaces;
     using Library.DomainLayer;
+    using Library.DomainLayer.Person;
 
     /// <summary>
     /// Methods for the domain controller.
     /// </summary>
     public class DomainRepository : BaseRepository<Domain>, IDomainRepository
     {
+        public override Domain GetByID(object id)
+        {
+            using (var ctx = new LibraryContext())
+            {
+                var entity = ctx.Domains.Find(id);
+                ctx.Entry(entity).Reference(p => p.ParentDomain).Load();
+                ctx.Entry(entity).Collection(p => p.ChildrenDomains).Load();
+
+                return entity;
+            }
+        }
     }
 }

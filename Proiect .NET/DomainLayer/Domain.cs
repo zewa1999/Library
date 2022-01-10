@@ -34,7 +34,6 @@ namespace Library.DomainLayer
         /// Gets or sets the name.
         /// </summary>
         /// <value>The name.</value>
-        [Required]
         [StringLength(50)]
         public string Name { get; set; }
 
@@ -43,6 +42,8 @@ namespace Library.DomainLayer
         /// </summary>
         /// <value>The parent domain.</value>
         public virtual Domain ParentDomain { get; set; }
+
+        public int? ParentDomainId { get; set; }
 
         /// <summary>
         /// Gets or sets the children domains.

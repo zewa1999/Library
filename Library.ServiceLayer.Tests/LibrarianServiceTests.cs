@@ -95,7 +95,7 @@ namespace Library.ServiceLayer.Tests
                 Account = account
             };
 
-            librarianServiceMock.Setup(x => x.GetAll())
+            librarianServiceMock.Setup(x => x.GetAll(null, book => book.OrderBy(x => x.Id), null))
                 .Returns(
                 new List<Librarian>()
                 {librarian});

@@ -73,7 +73,7 @@ namespace Library.ServiceLayer.Tests
         [TestMethod]
         public void TestGetAll()
         {
-            editionServiceMock.Setup(x => x.GetAll())
+            editionServiceMock.Setup(x => x.GetAll(null, book => book.OrderBy(x => x.Id), null))
                 .Returns(
                 new List<Edition>()
                 { new Edition {

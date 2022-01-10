@@ -14,6 +14,7 @@
 using Library.DataLayer.DataMapper;
 using Library.DataLayer.Interfaces;
 using Library.DomainLayer.Person;
+using Ninject.Activation;
 
 /// <summary>
 /// The Concretes namespace.
@@ -29,19 +30,5 @@ namespace Library.DataLayer.Concretes
     /// <seealso cref="Library.DataLayer.Interfaces.IAccountRepository" />
     public class AccountRepository : BaseRepository<Account>, IAccountRepository
     {
-        /// <summary>
-        /// Insert2s the specified entity.
-        /// </summary>
-        /// <param name="entity">The entity.</param>
-        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-        public bool Insert2(Account entity)
-        {
-            using (var ctx = new LibraryContext())
-            {
-                ctx.Accounts.Add(entity);
-                ctx.SaveChanges();
-            }
-            return true;
-        }
     }
 }

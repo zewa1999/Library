@@ -66,7 +66,7 @@ namespace Library.ServiceLayer.Tests
         [TestMethod]
         public void TestGetAll()
         {
-            bookServiceMock.Setup(x => x.GetAll())
+            bookServiceMock.Setup(x => x.GetAll(null, book => book.OrderBy(x => x.Id), null))
                 .Returns(
                 new List<Book>()
                 {TestUtils.GetBookModel()});

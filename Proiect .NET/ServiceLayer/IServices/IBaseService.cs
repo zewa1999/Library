@@ -13,7 +13,10 @@
 // ***********************************************************************
 namespace Library.ServiceLayer.IServices
 {
+    using System;
     using System.Collections.Generic;
+    using System.Linq.Expressions;
+    using System.Linq;
 
     /// <summary>
     /// Interface for the repository.
@@ -61,6 +64,9 @@ namespace Library.ServiceLayer.IServices
         /// Gets the specified filter.
         /// </summary>
         /// <returns>IEnumerable&lt;T&gt;.</returns>
-        IEnumerable<T> GetAll();
+        IEnumerable<T> GetAll(
+            Expression<Func<T, bool>> filter = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+            string includeProperties = "");
     }
 }

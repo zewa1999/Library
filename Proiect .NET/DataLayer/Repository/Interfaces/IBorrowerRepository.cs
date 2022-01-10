@@ -23,5 +23,6 @@ namespace Library.DataLayer.Interfaces
     /// </summary>
     public interface IBorrowerRepository : IRepository<Borrower>
     {
+        // public Borrower GetByIDWithInclude(object id, string includeProperties = "");
     }
 }

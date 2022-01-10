@@ -113,7 +113,7 @@ namespace Library.ServiceLayer.Services
         public int GetNumberOfBorrowedBooks(int borrowerId)
         {
             var numberOfBooksBorrowed = 0;
-            var listOfBorrows = _repository.Get();
+            var listOfBorrows = _repository.Get(null, book => book.OrderBy(x => x.Id), "");
             foreach (var borrow in listOfBorrows)
             {
                 if (borrow.Borrower.Id == borrowerId)
@@ -146,7 +146,7 @@ namespace Library.ServiceLayer.Services
         private bool CheckLIM(Book borrowedBook)
         {
             var properties = _propertiesRepository.GetLastProperties();
-            var listOfBorrows = _repository.Get();
+            var listOfBorrows = _repository.Get(null, book => book.OrderBy(x => x.Id), "");
 
             foreach (var borrow in listOfBorrows)
             {
@@ -169,7 +169,7 @@ namespace Library.ServiceLayer.Services
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         private bool CheckSameBookBorrowingInADeltaTime(Borrow entity)
         {
-            var listOfBorrows = _repository.Get();
+            var listOfBorrows = _repository.Get(null, book => book.OrderBy(x => x.Id), "");
             var properties = _propertiesRepository.GetLastProperties();
             var deltaTime = DateTime.Now.AddMonths((int)-properties.Delta);
 

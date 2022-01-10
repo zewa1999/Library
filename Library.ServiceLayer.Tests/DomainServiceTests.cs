@@ -79,7 +79,7 @@ namespace Library.ServiceLayer.Tests
                 ChildrenDomains = new List<Domain>()
             };
 
-            domainServiceMock.Setup(x => x.GetAll())
+            domainServiceMock.Setup(x => x.GetAll(null, book => book.OrderBy(x => x.Id), null))
                 .Returns(
                 new List<Domain>()
                 {domain});

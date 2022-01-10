@@ -1,17 +1,4 @@
-﻿// ***********************************************************************
-// Assembly         : Library.ServiceLayer.Tests
-// Author           : costa
-// Created          : 01-07-2022
-//
-// Last Modified By : costa
-// Last Modified On : 01-09-2022
-// ***********************************************************************
-// <copyright file="BorrowerServiceTests.cs" company="Library.ServiceLayer.Tests">
-//     Copyright (c) . All rights reserved.
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
-using Library.DomainLayer.Person;
+﻿using Library.DomainLayer.Person;
 using Library.ServiceLayer.IServices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -93,7 +80,7 @@ namespace Library.ServiceLayer.Tests
                 Account = account
             };
 
-            borrowerServiceMock.Setup(x => x.GetAll())
+            borrowerServiceMock.Setup(x => x.GetAll(null, book => book.OrderBy(x => x.Id), null))
                 .Returns(
                 new List<Borrower>()
                 {borrower});

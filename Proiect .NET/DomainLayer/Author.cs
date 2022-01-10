@@ -50,6 +50,7 @@ namespace Library.DomainLayer
         /// Gets or sets the books.
         /// </summary>
         /// <value>The books.</value>
+        [Required]
         public virtual ICollection<Book> Books { get; set; }
     }
 }

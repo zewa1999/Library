@@ -11,10 +11,12 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
+using FluentValidation;
 using Library.DataLayer.Interfaces;
 using Library.DataLayer.Validators;
 using Library.DomainLayer;
 using Library.ServiceLayer.IServices;
+using Proiect_.NET.DataLayer.Validators;
 using Proiect_.NET.Injection;
 
 namespace Library.ServiceLayer.Services
@@ -35,6 +37,34 @@ namespace Library.ServiceLayer.Services
              : base(Injector.Create<IDomainRepository>(), Injector.Create<IPropertiesRepository>())
         {
             _validator = new DomainValidator();
+        }
+
+        public override bool Insert(Domain entity)
+        {
+            if (entity.ParentDomain == null)
+            {
+                _validator = new BaseDomainValidator();
+            }
+
+            var result = _validator.Validate(entity);
+            var isValid = false;
+            if (result.IsValid)
+            {
+                isValid = true;
+            }
+            else
+            {
+                Utils.LogErrors(result);
+                return false;
+            }
+
+            if (isValid == true)
+            {
+                _repository.Insert(entity);
+            }
+
+            _validator = new DomainValidator();
+            return true;
         }
     }
 }

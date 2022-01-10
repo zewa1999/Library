@@ -20,6 +20,8 @@ using Library.ServiceLayer.IServices;
 using Proiect_.NET.Injection;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace Library.ServiceLayer.Services
 {
@@ -75,9 +77,11 @@ namespace Library.ServiceLayer.Services
         /// </summary>
         /// <returns>IEnumerable&lt;Properties&gt;.</returns>
         /// <exception cref="NotImplementedException"></exception>
-        public IEnumerable<Properties> GetAll()
+        public IEnumerable<Properties> GetAll(Expression<Func<Properties, bool>> filter = null,
+            Func<IQueryable<Properties>, IOrderedQueryable<Properties>> orderBy = null,
+            string includeProperties = "")
         {
-            return _repository.Get();
+            return _repository.Get(filter, book => book.OrderBy(x => x.Id), includeProperties);
         }
 
         /// <summary>
