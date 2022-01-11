@@ -1,16 +1,7 @@
-﻿// ***********************************************************************
-// Assembly         : Library.DomainLayer
-// Author           : costa
-// Created          : 11-25-2021
-//
-// Last Modified By : costa
-// Last Modified On : 01-09-2022
-// ***********************************************************************
-// <copyright file="Librarian.cs" company="Library.DomainLayer">
-//     Copyright (c) . All rights reserved.
+﻿// <copyright file="Librarian.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
+
 namespace Library.DomainLayer.Person
 {
     using System.ComponentModel.DataAnnotations;
@@ -22,10 +13,6 @@ namespace Library.DomainLayer.Person
     /// <seealso cref="Library.DomainLayer.Person.Borrower" />
     public class Librarian : Borrower
     {
-        /// <summary>
-        /// Gets or sets a value indicating whether this instance is reader.
-        /// </summary>
-        /// <value><c>true</c> if this instance is reader; otherwise, <c>false</c>.</value>
         [Required]
         public bool? IsReader { get; set; }
     }

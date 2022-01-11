@@ -11,6 +11,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="stylecop.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AdditionalFiles>
+  </ItemGroup>
+
+  <ItemGroup>
 	  <PackageReference Include="FluentValidation" Version="10.3.6" />
 	  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.0">
 	    <PrivateAssets>all</PrivateAssets>
@@ -24,6 +34,11 @@
 	  </PackageReference>
 	  <PackageReference Include="Ninject" Version="3.3.4" />
 	  <PackageReference Include="NLog" Version="4.7.6" />
+	  <PackageReference Include="StyleCop" Version="6.2.0" />
+	  <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
 	  <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
   </ItemGroup>
 

@@ -1,39 +1,39 @@
-﻿using FluentValidation;
-using Library.DataLayer.Validators;
-using Library.DomainLayer;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="BookWithoutAuthorsValidator.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
+// </copyright>
 
-namespace Proiect_.NET.DataLayer.Validators.BookValidators
+namespace Library.DataLayer.Validators
 {
+    using FluentValidation;
+    using Library.DomainLayer;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class BookWithoutAuthorsValidator : AbstractValidator<Book>
     {
         public BookWithoutAuthorsValidator()
         {
-            RuleFor(b => b.Title)
+            this.RuleFor(b => b.Title)
                 .NotNull().WithMessage("Null {PropertyName}")
                 .NotEmpty().WithMessage("{PropertyName} is Empty")
                 .Length(2, 50).WithMessage("Lenght of {PropertyName} Invalid")
                 .Must(this.BeAValidName).WithMessage("{PropertyName} contains invalid characters");
 
-            RuleFor(b => b.Type)
+            this.RuleFor(b => b.Type)
                 .NotNull().WithMessage("Null {PropertyName}")
                 .NotEmpty().WithMessage("{PropertyName} is Empty")
                 .Length(2, 50).WithMessage("Lenght of {PropertyName} Invalid")
                 .Must(this.BeAValidName).WithMessage("{PropertyName} contains invalid characters");
 
-            RuleFor(b => b.IsBorrowed)
+            this.RuleFor(b => b.IsBorrowed)
                 .NotNull().WithMessage("Null {PropertyName}");
-            RuleFor(b => b.LecturesOnlyBook)
-                .NotNull().WithMessage("Null {PropertyName}");
-
-            RuleFor(b => b.Authors)
+            this.RuleFor(b => b.LecturesOnlyBook)
                 .NotNull().WithMessage("Null {PropertyName}");
 
-            RuleForEach(b => b.Authors).ChildRules(author =>
+            this.RuleFor(b => b.Authors)
+                .NotNull().WithMessage("Null {PropertyName}");
+
+            this.RuleForEach(b => b.Authors).ChildRules(author =>
             {
                 author.RuleFor(b => b.FirstName)
                 .NotNull().WithMessage("Null {PropertyName}")
@@ -48,14 +48,14 @@ namespace Proiect_.NET.DataLayer.Validators.BookValidators
                     .Must(this.BeAValidName).WithMessage("{PropertyName} contains invalid characters");
             });
 
-            RuleFor(b => b.Editions)
+            this.RuleFor(b => b.Editions)
                 .NotNull().WithMessage("Null {PropertyName}")
                 .Must(this.HaveEntities).WithMessage("{PropertyName} is Empty");
-            RuleFor(b => b.Domains)
+            this.RuleFor(b => b.Domains)
                 .NotNull().WithMessage("Null {PropertyName}")
                 .Must(this.HaveEntities).WithMessage("{PropertyName} is Empty");
-            RuleForEach(b => b.Editions).SetValidator(new EditionValidator());
-            RuleForEach(b => b.Domains).SetValidator(new DomainValidator());
+            this.RuleForEach(b => b.Editions).SetValidator(new EditionValidator());
+            this.RuleForEach(b => b.Domains).SetValidator(new DomainValidator());
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Proiect_.NET.DataLayer.Validators.BookValidators
                 return false;
             name = name.Replace(" ", string.Empty);
             name = name.Replace("-", string.Empty);
-            return name.All(Char.IsLetter);
+            return name.All(char.IsLetter);
         }
 
         /// <summary>

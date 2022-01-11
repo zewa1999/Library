@@ -1,16 +1,6 @@
-﻿// ***********************************************************************
-// Assembly         : Library.ServiceLayer
-// Author           : costa
-// Created          : 12-17-2021
-//
-// Last Modified By : costa
-// Last Modified On : 01-09-2022
-// ***********************************************************************
-// <copyright file="PropertiesService.cs" company="Library.ServiceLayer">
-//     Copyright (c) . All rights reserved.
+﻿// <copyright file="PropertiesService.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Library.ServiceLayer.Services
 {
@@ -36,20 +26,20 @@ namespace Library.ServiceLayer.Services
         /// <summary>
         /// The validator
         /// </summary>
-        private readonly IValidator _validator;
+        private readonly IValidator validator;
 
         /// <summary>
         /// The repository
         /// </summary>
-        private readonly IPropertiesRepository _repository;
+        private readonly IPropertiesRepository repository;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PropertiesService" /> class.
         /// </summary>
         public PropertiesService()
         {
-            this._repository = Injector.Create<IPropertiesRepository>();
-            this._validator = new PropertiesValidator();
+            this.repository = Injector.Create<IPropertiesRepository>();
+            this.validator = new PropertiesValidator();
         }
 
         /// <summary>
@@ -60,7 +50,7 @@ namespace Library.ServiceLayer.Services
         /// <exception cref="NotImplementedException"></exception>
         public bool Delete(Properties entity)
         {
-            return this._repository.Delete(entity);
+            return this.repository.Delete(entity);
         }
 
         /// <summary>
@@ -70,7 +60,7 @@ namespace Library.ServiceLayer.Services
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool DeleteById(object entity)
         {
-            return this._repository.DeleteById(entity);
+            return this.repository.DeleteById(entity);
         }
 
         /// <summary>
@@ -80,7 +70,7 @@ namespace Library.ServiceLayer.Services
             Func<IQueryable<Properties>, IOrderedQueryable<Properties>> orderBy = null,
             string includeProperties = "")
         {
-            return this._repository.Get(filter, book => book.OrderBy(x => x.Id), includeProperties);
+            return this.repository.Get(filter, book => book.OrderBy(x => x.Id), includeProperties);
         }
 
         /// <summary>
@@ -89,7 +79,7 @@ namespace Library.ServiceLayer.Services
         /// <param name="id">The identifier.</param>
         public Properties GetByID(object id)
         {
-            return this._repository.GetByID(id);
+            return this.repository.GetByID(id);
         }
 
         /// <summary>
@@ -99,10 +89,10 @@ namespace Library.ServiceLayer.Services
         public bool Insert(Properties entity)
         {
             var context = new ValidationContext<Properties>(entity);
-            ValidationResult result = this._validator.Validate(context);
+            ValidationResult result = this.validator.Validate(context);
             if (result.IsValid)
             {
-                this._repository.Insert(entity);
+                this.repository.Insert(entity);
                 return true;
             }
 
@@ -116,10 +106,10 @@ namespace Library.ServiceLayer.Services
         public bool Update(Properties entity)
         {
             var context = new ValidationContext<Properties>(entity);
-            ValidationResult result = this._validator.Validate(context);
+            ValidationResult result = this.validator.Validate(context);
             if (result.IsValid)
             {
-                this._repository.Insert(entity);
+                this.repository.Insert(entity);
                 return true;
             }
 

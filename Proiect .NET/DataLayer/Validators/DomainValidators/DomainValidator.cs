@@ -1,16 +1,6 @@
-﻿// ***********************************************************************
-// Assembly         : Library
-// Author           : costa
-// Created          : 01-06-2022
-//
-// Last Modified By : costa
-// Last Modified On : 01-06-2022
-// ***********************************************************************
-// <copyright file="DomainValidator.cs" company="Library">
-//     Copyright (c) . All rights reserved.
+﻿// <copyright file="DomainValidator.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 /// <summary>
 /// The Validators namespace.
@@ -39,7 +29,7 @@ namespace Library.DataLayer.Validators
 
             // adaugi x in lista
 
-            RuleFor(d => d.Name)
+            this.RuleFor(d => d.Name)
                 .NotNull().WithMessage("Null {PropertyName}")
                 .NotEmpty().WithMessage("{PropertyName} is Empty")
                 .Length(2, 50).WithMessage("Lenght of {PropertyName} Invalid");
@@ -55,7 +45,7 @@ namespace Library.DataLayer.Validators
             //    v.Add<Domain>(new DomainValidator());
             //});
 
-            RuleFor(b => b.ChildrenDomains)
+            this.RuleFor(b => b.ChildrenDomains)
                 .NotNull().WithMessage("Null {PropertyName}");
             //.Must(HaveEntities).WithMessage("{PropertyName} is Empty");
 

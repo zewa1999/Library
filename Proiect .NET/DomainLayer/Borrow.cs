@@ -1,24 +1,14 @@
-﻿// ***********************************************************************
-// Assembly         : Library.DomainLayer
-// Author           : costa
-// Created          : 11-25-2021
-//
-// Last Modified By : costa
-// Last Modified On : 01-09-2022
-// ***********************************************************************
-// <copyright file="Borrow.cs" company="Library.DomainLayer">
-//     Copyright (c) . All rights reserved.
+﻿// <copyright file="Borrow.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Library.DomainLayer
 {
+    using Library.DomainLayer.Person;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using Library.DomainLayer.Person;
 
     /// <summary>
     /// Class Borrow.
@@ -60,6 +50,9 @@ namespace Library.DomainLayer
         /// <value>The borrower.</value>
         [Required]
         public virtual Borrower Borrower { get; set; }
+
+        [Required]
+        public virtual Librarian Librarian { get; set; }
 
         /// <summary>
         /// Gets or sets the borrower identifier.

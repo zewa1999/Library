@@ -1,3 +1,7 @@
+// <copyright file="AccountTests.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
+// </copyright>
+
 namespace Library.DomainLayer.Tests
 {
     using Library.DomainLayer.Person;

@@ -1,29 +1,17 @@
-﻿// ***********************************************************************
-// Assembly         : Library
-// Author           : costa
-// Created          : 01-06-2022
-//
-// Last Modified By : costa
-// Last Modified On : 01-06-2022
-// ***********************************************************************
-// <copyright file="BookRepository.cs" company="Transilvania University of Brasov">
-//     Costache Stelian-Andrei
+﻿// <copyright file="BookRepository.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 /// <summary>
 /// The Concretes namespace.
 /// </summary>
 namespace Library.DataLayer.Concretes
 {
+    using Library.DataLayer.Interfaces;
+    using Library.DomainLayer;
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Library.DataLayer.DataMapper;
-    using Library.DataLayer.Interfaces;
-    using Library.DomainLayer;
-    using Microsoft.EntityFrameworkCore;
 
     /// <summary>
     /// Methods for the author controller.
@@ -57,11 +45,11 @@ namespace Library.DataLayer.Concretes
         {
             try
             {
-                return from book in ctx.Books where book.Title == title select book;
+                return from book in this.ctx.Books where book.Title == title select book;
             }
             catch (Exception ex)
             {
-                logger.Error(ex.Message + "The query could not been made, will return empty list!");
+                this.logger.Error(ex.Message + "The query could not been made, will return empty list!");
             }
 
             return new List<Book>();
@@ -70,7 +58,8 @@ namespace Library.DataLayer.Concretes
         /// <summary>
         /// Gets the books with the same title.
         /// </summary>
-        /// <param name="title"> The title. </param>
+        /// <param name="allBooksWithTheSameName"> The title. </param>
+        /// <returns> IEnumerable of Book. </returns>
         public IEnumerable<Book> GetUnavailableBooks(IEnumerable<Book> allBooksWithTheSameName)
         {
             try
@@ -79,7 +68,7 @@ namespace Library.DataLayer.Concretes
             }
             catch (Exception ex)
             {
-                logger.Error(ex.Message + "The query could not been made, will return empty list!");
+                this.logger.Error(ex.Message + "The query could not been made, will return empty list!");
             }
 
             return new List<Book>();
@@ -104,8 +93,10 @@ namespace Library.DataLayer.Concretes
                         return false;
                     }
                 }
+
                 domainsList.Clear();
             }
+
             return true;
         }
 
@@ -137,6 +128,7 @@ namespace Library.DataLayer.Concretes
         /// Gets the parent domain.
         /// </summary>
         /// <param name="domain"> The domain. </param>
+        /// /// <returns> Domain. </returns>
         public Domain GetParentDomain(Domain domain)
         {
             if (domain.ParentDomain == null)

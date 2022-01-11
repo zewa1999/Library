@@ -1,16 +1,6 @@
-﻿// ***********************************************************************
-// Assembly         : Library
-// Author           : costa
-// Created          : 01-06-2022
-//
-// Last Modified By : costa
-// Last Modified On : 01-09-2022
-// ***********************************************************************
-// <copyright file="BorrowValidator.cs" company="Library">
-//     Copyright (c) . All rights reserved.
+﻿// <copyright file="BorrowValidator.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 /// <summary>
 /// The Validators namespace.
@@ -34,25 +24,25 @@ namespace Library.DataLayer.Validators
         /// </summary>
         public BorrowValidator()
         {
-            RuleFor(b => b.Borrower).SetInheritanceValidator(v =>
+            this.RuleFor(b => b.Borrower).SetInheritanceValidator(v =>
             {
                 v.Add<Borrower>(new BorrowerValidator());
             });
 
-            RuleFor(b => b.NoOfTimeExtended)
+            this.RuleFor(b => b.NoOfTimeExtended)
                .NotNull().WithMessage("Null {PropertyName}")
                .GreaterThanOrEqualTo(1).WithMessage("{PropertyName} error")
                .LessThan(4).WithMessage("{PropertyName} error");
-            RuleFor(b => b.BorrowDate)
+            this.RuleFor(b => b.BorrowDate)
                 .NotNull().WithMessage("Complete Date is not a valid date.");
-            RuleFor(b => b.EndDate)
+            this.RuleFor(b => b.EndDate)
                 .NotNull().WithMessage("Complete Date is not a valid date.");
 
-            RuleFor(b => b.BorrowedBooks)
+            this.RuleFor(b => b.BorrowedBooks)
                .NotNull().WithMessage("Null {PropertyName}")
                .Must(this.HaveEntities).WithMessage("{PropertyName} is Empty");
 
-            RuleForEach(b => b.BorrowedBooks).SetValidator(new BookValidator());
+            this.RuleForEach(b => b.BorrowedBooks).SetValidator(new BookValidator());
         }
 
         /// <summary>

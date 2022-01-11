@@ -1,7 +1,10 @@
-﻿namespace Library.DomainLayer.Tests
+﻿// <copyright file="AuthorTests.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
+// </copyright>
+
+namespace Library.DomainLayer.Tests
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using System.Collections.Generic;
     using System.Linq;
 
     [TestClass]

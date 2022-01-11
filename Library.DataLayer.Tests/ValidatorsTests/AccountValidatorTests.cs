@@ -1,16 +1,6 @@
-﻿// ***********************************************************************
-// Assembly         : Library
-// Author           : costa
-// Created          : 01-06-2022
-//
-// Last Modified By : costa
-// Last Modified On : 01-06-2022
-// ***********************************************************************
-// <copyright file="AccountValidatorTests.cs" company="Transilvania University of Brasov">
-//     Costache Stelian-Andrei
+﻿// <copyright file="AccountValidatorTests.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Library.DataLayer.Tests.ValidatorsTests
 {
@@ -37,7 +27,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
         {
             var model = new Account()
             {
-                PhoneNumber = null
+                PhoneNumber = null,
             };
 
             var result = this.validator.TestValidate(model);
@@ -49,7 +39,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
         {
             var model = new Account()
             {
-                PhoneNumber = "0755234562"
+                PhoneNumber = "0755234562",
             };
 
             var result = this.validator.TestValidate(model);
@@ -61,7 +51,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
         {
             var model = new Account()
             {
-                PhoneNumber = ""
+                PhoneNumber = string.Empty,
             };
 
             var result = this.validator.TestValidate(model);
@@ -73,7 +63,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
         {
             var model = new Account()
             {
-                PhoneNumber = "0723456729"
+                PhoneNumber = "0723456729",
             };
 
             var result = this.validator.TestValidate(model);
@@ -85,7 +75,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
         {
             var model = new Account()
             {
-                PhoneNumber = "12345678901231234"
+                PhoneNumber = "12345678901231234",
             };
 
             var result = this.validator.TestValidate(model);
@@ -97,7 +87,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
         {
             var model = new Account()
             {
-                PhoneNumber = "0723456739"
+                PhoneNumber = "0723456739",
             };
 
             var result = this.validator.TestValidate(model);
@@ -109,7 +99,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
         {
             var model = new Account()
             {
-                PhoneNumber = "1234567890dasda"
+                PhoneNumber = "1234567890dasda",
             };
 
             var result = this.validator.TestValidate(model);
@@ -121,7 +111,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
         {
             var model = new Account()
             {
-                PhoneNumber = "0723455672"
+                PhoneNumber = "0723455672",
             };
 
             var result = this.validator.TestValidate(model);
@@ -133,7 +123,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
         {
             var model = new Account()
             {
-                PhoneNumber = "0755234123"
+                PhoneNumber = "0755234123",
             };
 
             var result = this.validator.TestValidate(model);
@@ -146,7 +136,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             var model = new Account()
             {
                 Email = "invalidemail",
-                PhoneNumber = "0755234123"
+                PhoneNumber = "0755234123",
             };
 
             var result = this.validator.TestValidate(model);
@@ -159,7 +149,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             var model = new Account()
             {
                 Email = "invalidemail@",
-                PhoneNumber = "0755234123"
+                PhoneNumber = "0755234123",
             };
 
             var result = this.validator.TestValidate(model);
@@ -172,7 +162,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             var model = new Account()
             {
                 Email = "invalidemail.mail",
-                PhoneNumber = "0755234123"
+                PhoneNumber = "0755234123",
             };
 
             var result = this.validator.TestValidate(model);
@@ -185,7 +175,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             var model = new Account()
             {
                 Email = "validemail@mail.com",
-                PhoneNumber = "0755234123"
+                PhoneNumber = "0755234123",
             };
 
             var result = this.validator.TestValidate(model);

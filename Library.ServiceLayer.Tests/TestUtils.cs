@@ -1,16 +1,6 @@
-﻿// ***********************************************************************
-// Assembly         : Library.ServiceLayer.Tests
-// Author           : costa
-// Created          : 01-09-2022
-//
-// Last Modified By : costa
-// Last Modified On : 01-09-2022
-// ***********************************************************************
-// <copyright file="TestUtils.cs" company="Library.ServiceLayer.Tests">
-//     Copyright (c) . All rights reserved.
+﻿// <copyright file="TestUtils.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Library.ServiceLayer.Tests
 {
@@ -39,13 +29,13 @@ namespace Library.ServiceLayer.Tests
             {
                 Name = "Stiinta",
                 ParentDomain = null,
-                ChildrenDomains = new List<Domain>()
+                ChildrenDomains = new List<Domain>(),
             };
 
             var account = new Account()
             {
                 PhoneNumber = "0734525427",
-                Email = "gogumortu@gmail.com"
+                Email = "gogumortu@gmail.com",
             };
 
             var edition = new Edition()
@@ -53,7 +43,7 @@ namespace Library.ServiceLayer.Tests
                 Publisher = "Cartea studentilor saraci",
                 Year = "1999",
                 EditionNumber = int.MaxValue,
-                NumberOfPages = 1
+                NumberOfPages = 1,
             };
 
             var borrower = new Borrower()
@@ -61,7 +51,7 @@ namespace Library.ServiceLayer.Tests
                 LastName = "Gogu",
                 FirstName = "Mortu",
                 Address = "Bucuresti, strada Mihai Viteazu, nr 7, bloc C3, ap 26",
-                Account = account
+                Account = account,
             };
             var book = new Book()
             {
@@ -80,7 +70,7 @@ namespace Library.ServiceLayer.Tests
                 EndDate = DateTime.Now.AddMonths(3),
                 NoOfTimeExtended = 1,
                 Borrower = borrower,
-                BorrowedBooks = new List<Book>() { book }
+                BorrowedBooks = new List<Book>() { book },
             };
         }
 
@@ -99,13 +89,13 @@ namespace Library.ServiceLayer.Tests
             {
                 Name = "Stiinta",
                 ParentDomain = null,
-                ChildrenDomains = new List<Domain>()
+                ChildrenDomains = new List<Domain>(),
             };
 
             var account = new Account()
             {
                 PhoneNumber = "0734525427",
-                Email = "gogumortu@gmail.com"
+                Email = "gogumortu@gmail.com",
             };
 
             var edition = new Edition()
@@ -113,7 +103,7 @@ namespace Library.ServiceLayer.Tests
                 Publisher = "Cartea studentilor saraci",
                 Year = "1999",
                 EditionNumber = int.MaxValue,
-                NumberOfPages = 1
+                NumberOfPages = 1,
             };
 
             var borrower = new Borrower()
@@ -121,7 +111,7 @@ namespace Library.ServiceLayer.Tests
                 LastName = "Gogu",
                 FirstName = "Mortu",
                 Address = "Bucuresti, strada Mihai Viteazu, nr 7, bloc C3, ap 26",
-                Account = account
+                Account = account,
             };
             var book = new Book()
             {
@@ -141,7 +131,7 @@ namespace Library.ServiceLayer.Tests
                 EndDate = DateTime.Now.AddMonths(3),
                 NoOfTimeExtended = 1,
                 Borrower = borrower,
-                BorrowedBooks = new List<Book>() { book }
+                BorrowedBooks = new List<Book>() { book },
             };
         }
 
@@ -160,13 +150,13 @@ namespace Library.ServiceLayer.Tests
             {
                 Name = "Stiinta",
                 ParentDomain = null,
-                ChildrenDomains = new List<Domain>()
+                ChildrenDomains = new List<Domain>(),
             };
 
             var account = new Account()
             {
                 PhoneNumber = "0734525427",
-                Email = "gogumortu@gmail.com"
+                Email = "gogumortu@gmail.com",
             };
 
             var edition = new Edition()
@@ -174,7 +164,7 @@ namespace Library.ServiceLayer.Tests
                 Publisher = "Cartea studentilor saraci",
                 Year = "1999",
                 EditionNumber = int.MaxValue,
-                NumberOfPages = 1
+                NumberOfPages = 1,
             };
 
             var borrower = new Borrower()
@@ -182,7 +172,7 @@ namespace Library.ServiceLayer.Tests
                 LastName = "Gogu",
                 FirstName = "Mortu",
                 Address = "Bucuresti, strada Mihai Viteazu, nr 7, bloc C3, ap 26",
-                Account = account
+                Account = account,
             };
 
             return new Book()
@@ -212,13 +202,13 @@ namespace Library.ServiceLayer.Tests
             {
                 Name = "Stiinta",
                 ParentDomain = null,
-                ChildrenDomains = new List<Domain>()
+                ChildrenDomains = new List<Domain>(),
             };
 
             var account = new Account()
             {
                 PhoneNumber = "0734525427",
-                Email = "gogumortu@gmail.com"
+                Email = "gogumortu@gmail.com",
             };
 
             var edition = new Edition()
@@ -226,7 +216,7 @@ namespace Library.ServiceLayer.Tests
                 Publisher = "Cartea studentilor saraci",
                 Year = "1999",
                 EditionNumber = int.MaxValue,
-                NumberOfPages = 1
+                NumberOfPages = 1,
             };
 
             var borrower = new Borrower()
@@ -234,7 +224,7 @@ namespace Library.ServiceLayer.Tests
                 LastName = "Gogu",
                 FirstName = "Mortu",
                 Address = "Bucuresti, strada Mihai Viteazu, nr 7, bloc C3, ap 26",
-                Account = account
+                Account = account,
             };
 
             return new Book()

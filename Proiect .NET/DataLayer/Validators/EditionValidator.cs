@@ -1,16 +1,6 @@
-﻿// ***********************************************************************
-// Assembly         : Library
-// Author           : costa
-// Created          : 01-06-2022
-//
-// Last Modified By : costa
-// Last Modified On : 01-06-2022
-// ***********************************************************************
-// <copyright file="EditionValidator.cs" company="Library">
-//     Copyright (c) . All rights reserved.
+﻿// <copyright file="EditionValidator.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 /// <summary>
 /// The Validators namespace.
@@ -32,21 +22,21 @@ namespace Library.DataLayer.Validators
         /// </summary>
         public EditionValidator()
         {
-            RuleFor(e => e.Publisher)
+            this.RuleFor(e => e.Publisher)
                 .NotNull().WithMessage("Null {PropertyName}")
                 .NotEmpty().WithMessage("{PropertyName} is Empty")
                 .Length(2, 50).WithMessage("Lenght of {PropertyName} Invalid");
 
-            RuleFor(e => e.Year)
+            this.RuleFor(e => e.Year)
                 .NotNull().WithMessage("Null {PropertyName}")
                 .NotEmpty().WithMessage("{PropertyName} is Empty")
                 .Length(0, 4).WithMessage("Lenght of {PropertyName} Invalid");
 
-            RuleFor(e => e.EditionNumber)
+            this.RuleFor(e => e.EditionNumber)
                 .NotNull().WithMessage("Null {PropertyName}")
                 .GreaterThan(1).WithMessage("{PropertyName} should be greater than 1");
 
-            RuleFor(e => e.NumberOfPages)
+            this.RuleFor(e => e.NumberOfPages)
                 .NotNull().WithMessage("Null {PropertyName}")
                 .GreaterThan(1).WithMessage("{PropertyName} should be greater than 1");
         }

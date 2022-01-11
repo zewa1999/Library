@@ -1,16 +1,6 @@
-﻿// ***********************************************************************
-// Assembly         : Library.ServiceLayer.Tests
-// Author           : costa
-// Created          : 01-09-2022
-//
-// Last Modified By : costa
-// Last Modified On : 01-09-2022
-// ***********************************************************************
-// <copyright file="LibrarianServiceTests.cs" company="Library.ServiceLayer.Tests">
-//     Copyright (c) . All rights reserved.
+﻿// <copyright file="LibrarianServiceTests.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Library.ServiceLayer.Tests
 {
@@ -55,7 +45,7 @@ namespace Library.ServiceLayer.Tests
             var account = new Account()
             {
                 PhoneNumber = "0734525427",
-                Email = "gogumortu@gmail.com"
+                Email = "gogumortu@gmail.com",
             };
 
             var librarian = new Librarian()
@@ -64,7 +54,7 @@ namespace Library.ServiceLayer.Tests
                 FirstName = "Mortu",
                 Address = "Bucuresti, strada Mihai Viteazu, nr 7, bloc C3, ap 26",
                 IsReader = true,
-                Account = account
+                Account = account,
             };
 
             this.librarianServiceMock.Setup(x => x.Insert(librarian)).Returns(true);
@@ -84,7 +74,7 @@ namespace Library.ServiceLayer.Tests
             var account = new Account()
             {
                 PhoneNumber = "0734525427",
-                Email = "gogumortu@gmail.com"
+                Email = "gogumortu@gmail.com",
             };
 
             var librarian = new Librarian()
@@ -93,7 +83,7 @@ namespace Library.ServiceLayer.Tests
                 FirstName = "Mortu",
                 Address = "Bucuresti, strada Mihai Viteazu, nr 7, bloc C3, ap 26",
                 IsReader = true,
-                Account = account
+                Account = account,
             };
 
             this.librarianServiceMock.Setup(x => x.GetAll(null, book => book.OrderBy(x => x.Id), null))
@@ -118,7 +108,7 @@ namespace Library.ServiceLayer.Tests
             var account = new Account()
             {
                 PhoneNumber = "0734525427",
-                Email = "gogumortu@gmail.com"
+                Email = "gogumortu@gmail.com",
             };
 
             var librarian = new Librarian()
@@ -128,7 +118,7 @@ namespace Library.ServiceLayer.Tests
                 FirstName = "Mortu",
                 IsReader = true,
                 Address = "Bucuresti, strada Mihai Viteazu, nr 7, bloc C3, ap 26",
-                Account = account
+                Account = account,
             };
             this.librarianServiceMock.Setup(x => x.GetByID(1))
                 .Returns(librarian);
@@ -153,7 +143,7 @@ namespace Library.ServiceLayer.Tests
             var account = new Account()
             {
                 PhoneNumber = "0734525427",
-                Email = "gogumortu@gmail.com"
+                Email = "gogumortu@gmail.com",
             };
 
             var librarian = new Librarian()
@@ -162,7 +152,7 @@ namespace Library.ServiceLayer.Tests
                 FirstName = "Mortu",
                 IsReader = true,
                 Address = "Bucuresti, strada Mihai Viteazu, nr 7, bloc C3, ap 26",
-                Account = account
+                Account = account,
             };
 
             this.librarianServiceMock.Setup(x => x.GetByID(1))

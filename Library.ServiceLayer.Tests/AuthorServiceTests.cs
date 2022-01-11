@@ -1,16 +1,6 @@
-﻿// ***********************************************************************
-// Assembly         : Library.ServiceLayer.Tests
-// Author           : costa
-// Created          : 01-07-2022
-//
-// Last Modified By : costa
-// Last Modified On : 01-09-2022
-// ***********************************************************************
-// <copyright file="AuthorServiceTests.cs" company="Library.ServiceLayer.Tests">
-//     Copyright (c) . All rights reserved.
+﻿// <copyright file="AuthorServiceTests.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Library.ServiceLayer.Tests
 {
@@ -78,7 +68,7 @@ namespace Library.ServiceLayer.Tests
                 { new Author {
                 FirstName = "Marcel",
                 LastName = "Dorel",
-                }
+                },
                 });
 
             this.authorService = this.authorServiceMock.Object;

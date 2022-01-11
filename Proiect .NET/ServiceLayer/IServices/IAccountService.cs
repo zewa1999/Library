@@ -1,16 +1,6 @@
-﻿// ***********************************************************************
-// Assembly         : Library.ServiceLayer
-// Author           : costa
-// Created          : 12-17-2021
-//
-// Last Modified By : costa
-// Last Modified On : 01-09-2022
-// ***********************************************************************
-// <copyright file="IAccountService.cs" company="Library.ServiceLayer">
-//     Copyright (c) . All rights reserved.
+﻿// <copyright file="IAccountService.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Library.ServiceLayer.IServices
 {
@@ -18,7 +8,7 @@ namespace Library.ServiceLayer.IServices
 
     /// <summary>
     /// Interface IAccountService
-    /// Implements the <see cref="Library.ServiceLayer.IServices.IBaseService{Library.DomainLayer.Person.Account}" />
+    /// Implements the <see cref="Library.ServiceLayer.IServices.IBaseService{Library.DomainLayer.Person.Account}"/>.
     /// </summary>
     /// <seealso cref="Library.ServiceLayer.IServices.IBaseService{Library.DomainLayer.Person.Account}" />
     public interface IAccountService : IBaseService<Account>

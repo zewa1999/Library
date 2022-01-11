@@ -1,4 +1,8 @@
-﻿namespace Library.DomainLayer.Tests
+﻿// <copyright file="BookTests.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
+// </copyright>
+
+namespace Library.DomainLayer.Tests
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System.Collections.Generic;
@@ -96,7 +100,7 @@
             {
                 Title = "How to write bad code with Costache",
                 LecturesOnlyBook = true,
-                Authors = authorsList
+                Authors = authorsList,
             };
 
             Assert.IsNotNull(this.book.Authors);
@@ -109,7 +113,7 @@
             {
                 Name = "Informatica",
                 ParentDomain = null,
-                ChildrenDomains = null
+                ChildrenDomains = null,
             };
 
             var domainsList = new List<Domain>();
@@ -120,7 +124,7 @@
                 Title = "How to write bad code with Costache",
                 LecturesOnlyBook = true,
                 Authors = null,
-                Domains = domainsList
+                Domains = domainsList,
             };
 
             Assert.IsNotNull(this.book.Domains);
@@ -134,7 +138,7 @@
                 Publisher = "Casa de carti marcel dorel",
                 Year = "1987",
                 EditionNumber = 1,
-                NumberOfPages = 200
+                NumberOfPages = 200,
             };
 
             var editionsList = new List<Edition>();
@@ -145,7 +149,7 @@
                 Title = "How to write bad code with Costache",
                 LecturesOnlyBook = true,
                 Authors = null,
-                Editions = editionsList
+                Editions = editionsList,
             };
 
             Assert.IsNotNull(this.book.Editions);

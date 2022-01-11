@@ -1,4 +1,8 @@
-﻿namespace Proiect_.NET.UI
+﻿// <copyright file="UI.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
+// </copyright>
+
+namespace Proiect_.NET.UI
 {
     using Library.DomainLayer;
     using Library.DomainLayer.Person;
@@ -6,27 +10,116 @@
     using Proiect_.NET.Injection;
     using System;
     using System.Collections.Generic;
-    using System.Configuration;
     using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
+    /// <summary>
+    /// Class UI.
+    /// </summary>
     public class UI
     {
-        public static void Main(String[] args)
+        /// <summary>
+        /// Defines the entry point of the application.
+        /// </summary>
+        public static void Main()
         {
             Injector.Initialize();
+        }
 
-            //var propertiesFlag = EndToEndProperties();
-            var flag8 = EndToEndBook();
-            //var flag7 = EndToEndAuthor();
-            //var flag6 = EndToEndDomain();
-            //var flag5 = EndToEndLibrarian();
-            //var flag4 = EndToEndBorrower();
-            //var flag3 = EndToEndEdition();
-            //var flag2 = EndToEndProperties();
-            //var flag1 = EndToEndAccount();
-            Console.WriteLine(flag8);
+        private static bool EndToEndBorrow()
+        {
+            var service = Injector.Create<BorrowService>();
+
+            var author = new Author()
+            {
+                FirstName = "Marcel",
+                LastName = "Dorel",
+            };
+
+            var domain = new Domain()
+            {
+                Name = "Stiinta",
+                ParentDomain = null,
+                ChildrenDomains = new List<Domain>(),
+            };
+
+            var account = new Account()
+            {
+                PhoneNumber = "0734525427",
+                Email = "gogumortu@gmail.com",
+            };
+
+            var edition = new Edition()
+            {
+                Publisher = "Cartea studentilor saraci",
+                Year = "1999",
+                EditionNumber = int.MaxValue,
+                NumberOfPages = 200,
+            };
+
+            var borrower = new Borrower()
+            {
+                LastName = "Gogu",
+                FirstName = "Mortu",
+                Address = "Bucuresti, strada Mihai Viteazu, nr 7, bloc C3, ap 26",
+                Account = account,
+            };
+            var book = new Book()
+            {
+                Title = "Head first design patters",
+                LecturesOnlyBook = false,
+                IsBorrowed = false,
+                Type = "Hard  cover",
+                Authors = new List<Author>() { author },
+                Domains = new List<Domain>() { domain },
+                Editions = new List<Edition>() { edition },
+            };
+
+            var borrow = new Borrow()
+            {
+                BorrowDate = DateTime.Now,
+                EndDate = DateTime.Now.AddMonths(3),
+                NoOfTimeExtended = 1,
+                Borrower = borrower,
+                BorrowedBooks = new List<Book>() { book },
+            };
+
+            if (service.Insert(borrow) == false)
+            {
+                Console.WriteLine("A crapat la insert!");
+                return false;
+            }
+
+            if (service.GetByID(1) == null)
+            {
+                Console.WriteLine("A crapat la GetByID!");
+                return false;
+            }
+
+            if (service.GetAll(null, book => book.OrderBy(x => x.Id), string.Empty) == null)
+            {
+                Console.WriteLine("A crapat la Get!");
+                return false;
+            }
+
+            var entity = service.GetByID(1);
+            if (entity != null)
+            {
+                Console.WriteLine("A mers GetByID!");
+                entity.Borrower.Account.Email = "validEmail@gmail.com";
+                if (service.Update(entity) == false)
+                {
+                    Console.WriteLine("A crapat Update!");
+                    return false;
+                }
+            }
+
+            if (service.DeleteById(1) == false)
+            {
+                Console.WriteLine("A crapat Delete!");
+                return false;
+            }
+
+            return true;
         }
 
         private static bool EndToEndBook()
@@ -43,13 +136,13 @@
             {
                 Name = "Stiinta",
                 ParentDomain = null,
-                ChildrenDomains = new List<Domain>()
+                ChildrenDomains = new List<Domain>(),
             };
 
             var account = new Account()
             {
                 PhoneNumber = "0734525427",
-                Email = "gogumortu@gmail.com"
+                Email = "gogumortu@gmail.com",
             };
 
             var edition = new Edition()
@@ -57,7 +150,7 @@
                 Publisher = "Cartea studentilor saraci",
                 Year = "1999",
                 EditionNumber = int.MaxValue,
-                NumberOfPages = 25
+                NumberOfPages = 25,
             };
 
             var borrower = new Borrower()
@@ -65,7 +158,7 @@
                 LastName = "Gogu",
                 FirstName = "Mortu",
                 Address = "Bucuresti, strada Mihai Viteazu, nr 7, bloc C3, ap 26",
-                Account = account
+                Account = account,
             };
 
             var book = new Book()
@@ -79,19 +172,19 @@
                 Editions = new List<Edition>() { edition },
             };
 
-            //if (service.Insert(book) == false)
-            //{
-            //    Console.WriteLine("A crapat la insert!");
-            //    return false;
-            //}
+            if (service.Insert(book) == false)
+            {
+                Console.WriteLine("A crapat la insert!");
+                return false;
+            }
 
-            //if (service.GetByID(1) == null)
-            //{
-            //    Console.WriteLine("A crapat la GetByID!");
-            //    return false;
-            //}
+            if (service.GetByID(1) == null)
+            {
+                Console.WriteLine("A crapat la GetByID!");
+                return false;
+            }
 
-            if (service.GetAll(null, book => book.OrderBy(x => x.Id), "") == null)
+            if (service.GetAll(null, book => book.OrderBy(x => x.Id), string.Empty) == null)
             {
                 Console.WriteLine("A crapat la Get!");
                 return false;
@@ -143,7 +236,7 @@
                 return false;
             }
 
-            if (service.GetAll(null, book => book.OrderBy(x => x.Id), "") == null)
+            if (service.GetAll(null, book => book.OrderBy(x => x.Id), string.Empty) == null)
             {
                 Console.WriteLine("A crapat la Get!");
                 return false;
@@ -159,7 +252,7 @@
                     {
                         Name = "Proza",
                         ParentDomain = domain,
-                        ChildrenDomains = new List<Domain>()
+                        ChildrenDomains = new List<Domain>(),
                     });
             }
             else if (entity.ChildrenDomains.Count == 0)
@@ -169,7 +262,7 @@
                     {
                         Name = "Proza",
                         ParentDomain = domain,
-                        ChildrenDomains = new List<Domain>()
+                        ChildrenDomains = new List<Domain>(),
                     });
             }
             else
@@ -179,7 +272,7 @@
                     {
                         Name = "Proza",
                         ParentDomain = domain,
-                        ChildrenDomains = new List<Domain>()
+                        ChildrenDomains = new List<Domain>(),
                     });
             }
 
@@ -210,7 +303,7 @@
             var account = new Account()
             {
                 PhoneNumber = "0734525427",
-                Email = "gogumortu@gmail.com"
+                Email = "gogumortu@gmail.com",
             };
 
             var borrower = new Librarian()
@@ -219,7 +312,7 @@
                 FirstName = "Mortu",
                 Address = "Bucuresti, strada Mihai Viteazu, nr 7, bloc C3, ap 26",
                 IsReader = true,
-                Account = account
+                Account = account,
             };
 
             if (service.Insert(borrower) == false)
@@ -234,7 +327,7 @@
                 return false;
             }
 
-            if (service.GetAll(null, book => book.OrderBy(x => x.Id), "") == null)
+            if (service.GetAll(null, book => book.OrderBy(x => x.Id), string.Empty) == null)
             {
                 Console.WriteLine("A crapat la Get!");
                 return false;
@@ -268,7 +361,7 @@
             var account = new Account()
             {
                 PhoneNumber = "0734525427",
-                Email = "gogumortu@gmail.com"
+                Email = "gogumortu@gmail.com",
             };
 
             var borrower = new Borrower()
@@ -276,7 +369,7 @@
                 LastName = "Gogu",
                 FirstName = "Mortu",
                 Address = "Bucuresti, strada Mihai Viteazu, nr 7, bloc C3, ap 26",
-                Account = account
+                Account = account,
             };
 
             if (service.Insert(borrower) == false)
@@ -291,7 +384,7 @@
                 return false;
             }
 
-            if (service.GetAll(null, book => book.OrderBy(x => x.Id), "") == null)
+            if (service.GetAll(null, book => book.OrderBy(x => x.Id), string.Empty) == null)
             {
                 Console.WriteLine("A crapat la Get!");
                 return false;
@@ -324,7 +417,7 @@
             var author = new Author()
             {
                 FirstName = "Marcel",
-                LastName = "Dorel"
+                LastName = "Dorel",
             };
 
             if (service.Insert(author) == false)
@@ -339,7 +432,7 @@
                 return false;
             }
 
-            if (service.GetAll(null, book => book.OrderBy(x => x.Id), "") == null)
+            if (service.GetAll(null, book => book.OrderBy(x => x.Id), string.Empty) == null)
             {
                 Console.WriteLine("A crapat la Get!");
                 return false;
@@ -374,7 +467,7 @@
                 Publisher = "Cartea studentilor saraci",
                 Year = "1999",
                 EditionNumber = int.MaxValue,
-                NumberOfPages = 5
+                NumberOfPages = 5,
             };
 
             if (service.Insert(edition) == false)
@@ -389,7 +482,7 @@
                 return false;
             }
 
-            if (service.GetAll(null, book => book.OrderBy(x => x.Id), "") == null)
+            if (service.GetAll(null, book => book.OrderBy(x => x.Id), string.Empty) == null)
             {
                 Console.WriteLine("A crapat la Get!");
                 return false;
@@ -422,16 +515,16 @@
 
             var properties = new Properties()
             {
-                Domenii = 2,
-                NumarMaximCarti = 3,
+                DOMENII = 2,
+                NMC = 3,
                 L = 2,
-                NrMaximCartiImprumutate = 3,
-                NrMaximCartiImprumutateAcelasiDomeniu = 2,
-                LimitaMaximaImprumut = 2,
-                Delta = 3,
-                NumarCartiImprumutateZilnic = 4,
-                Persimp = 3,
-                Perioada = 3
+                C = 3,
+                D = 2,
+                LIM = 2,
+                DELTA = 3,
+                NCZ = 4,
+                PERSIMP = 3,
+                PER = 3,
             };
 
             if (service.Insert(properties) == false)
@@ -446,7 +539,7 @@
                 return false;
             }
 
-            if (service.GetAll(null, book => book.OrderBy(x => x.Id), "") == null)
+            if (service.GetAll(null, book => book.OrderBy(x => x.Id), string.Empty) == null)
             {
                 Console.WriteLine("A crapat la Get!");
                 return false;
@@ -456,8 +549,8 @@
             if (entity != null)
             {
                 Console.WriteLine("A mers GetByID!");
-                entity.NumarMaximCarti = 2;
-                entity.Perioada = 8;
+                entity.NMC = 2;
+                entity.PER = 8;
                 if (service.Update(entity) == false)
                 {
                     Console.WriteLine("A crapat Update!");
@@ -465,11 +558,11 @@
                 }
             }
 
-            //if (service.DeleteById(1) == false)
-            //{
-            //    Console.WriteLine("A crapat Delete!");
-            //    return false;
-            //}
+            if (service.DeleteById(1) == false)
+            {
+                Console.WriteLine("A crapat Delete!");
+                return false;
+            }
 
             return true;
         }
@@ -481,7 +574,7 @@
             var account = new Account()
             {
                 PhoneNumber = "0734525427",
-                Email = "validemail@gmail.com"
+                Email = "validemail@gmail.com",
             };
 
             if (service.Insert(account) == false)
@@ -496,7 +589,7 @@
                 return false;
             }
 
-            if (service.GetAll(null, book => book.OrderBy(x => x.Id), "") == null)
+            if (service.GetAll(null, book => book.OrderBy(x => x.Id), string.Empty) == null)
             {
                 Console.WriteLine("A crapat la Get!");
                 return false;

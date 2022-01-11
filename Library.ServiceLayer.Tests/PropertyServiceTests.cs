@@ -1,16 +1,6 @@
-﻿// ***********************************************************************
-// Assembly         : Library.ServiceLayer.Tests
-// Author           : costa
-// Created          : 01-09-2022
-//
-// Last Modified By : costa
-// Last Modified On : 01-09-2022
-// ***********************************************************************
-// <copyright file="PropertyServiceTests.cs" company="Library.ServiceLayer.Tests">
-//     Copyright (c) . All rights reserved.
+﻿// <copyright file="PropertyServiceTests.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Library.ServiceLayer.Tests
 {
@@ -54,15 +44,15 @@ namespace Library.ServiceLayer.Tests
         {
             var properties = new Properties()
             {
-                Domenii = 2,
-                NumarMaximCarti = 3,
+                DOMENII = 2,
+                NMC = 3,
                 L = 2,
-                NrMaximCartiImprumutate = 3,
-                NrMaximCartiImprumutateAcelasiDomeniu = 2,
-                LimitaMaximaImprumut = 2,
-                Delta = 3,
-                NumarCartiImprumutateZilnic = 4,
-                Persimp = 3
+                C = 3,
+                D = 2,
+                LIM = 2,
+                DELTA = 3,
+                NCZ = 4,
+                PERSIMP = 3,
             };
 
             this.propertiesServiceMock.Setup(x => x.Insert(properties)).Returns(true);
@@ -83,15 +73,15 @@ namespace Library.ServiceLayer.Tests
                 .Returns(
                 new List<Properties>()
                 { new Properties {
-                    Domenii = 2,
-                NumarMaximCarti = 3,
+                    DOMENII = 2,
+                NMC = 3,
                 L = 2,
-                NrMaximCartiImprumutate = 3,
-                NrMaximCartiImprumutateAcelasiDomeniu = 2,
-                LimitaMaximaImprumut = 2,
-                Delta = 3,
-                NumarCartiImprumutateZilnic = 4,
-                Persimp = 3}
+                C = 3,
+                D = 2,
+                LIM = 2,
+                DELTA = 3,
+                NCZ = 4,
+                PERSIMP = 3},
                 });
 
             this.propertiesService = this.propertiesServiceMock.Object;
@@ -112,15 +102,15 @@ namespace Library.ServiceLayer.Tests
                 .Returns(new Properties
                 {
                     Id = 1,
-                    Domenii = 2,
-                    NumarMaximCarti = 3,
+                    DOMENII = 2,
+                    NMC = 3,
                     L = 2,
-                    NrMaximCartiImprumutate = 3,
-                    NrMaximCartiImprumutateAcelasiDomeniu = 2,
-                    LimitaMaximaImprumut = 2,
-                    Delta = 3,
-                    NumarCartiImprumutateZilnic = 4,
-                    Persimp = 3
+                    C = 3,
+                    D = 2,
+                    LIM = 2,
+                    DELTA = 3,
+                    NCZ = 4,
+                    PERSIMP = 3,
                 });
 
             this.propertiesService = this.propertiesServiceMock.Object;
@@ -129,8 +119,8 @@ namespace Library.ServiceLayer.Tests
 
             Assert.IsNotNull(result);
             Assert.AreEqual(1, result.Id);
-            Assert.AreEqual(2, result.Domenii);
-            Assert.AreEqual(3, result.NumarMaximCarti);
+            Assert.AreEqual(2, result.DOMENII);
+            Assert.AreEqual(3, result.NMC);
             // etc
         }
 
@@ -143,21 +133,21 @@ namespace Library.ServiceLayer.Tests
             this.propertiesServiceMock.Setup(x => x.GetByID(1))
                 .Returns(new Properties
                 {
-                    Domenii = 2,
-                    NumarMaximCarti = 3,
+                    DOMENII = 2,
+                    NMC = 3,
                     L = 2,
-                    NrMaximCartiImprumutate = 3,
-                    NrMaximCartiImprumutateAcelasiDomeniu = 2,
-                    LimitaMaximaImprumut = 2,
-                    Delta = 3,
-                    NumarCartiImprumutateZilnic = 4,
-                    Persimp = 3
+                    C = 3,
+                    D = 2,
+                    LIM = 2,
+                    DELTA = 3,
+                    NCZ = 4,
+                    PERSIMP = 3,
                 });
 
             this.propertiesService = this.propertiesServiceMock.Object;
 
             var modifiedAccount = this.propertiesService.GetByID(1);
-            modifiedAccount.Domenii = 7;
+            modifiedAccount.DOMENII = 7;
 
             this.propertiesServiceMock.Setup(x => x.Update(modifiedAccount)).Returns(true);
 

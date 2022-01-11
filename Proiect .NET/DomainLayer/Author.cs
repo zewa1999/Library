@@ -1,19 +1,9 @@
-﻿// ***********************************************************************
-// Assembly         : Library.DomainLayer
-// Author           : costa
-// Created          : 11-25-2021
-//
-// Last Modified By : costa
-// Last Modified On : 01-06-2022
-// ***********************************************************************
-// <copyright file="Author.cs" company="Library.DomainLayer">
-//     Copyright (c) . All rights reserved.
+﻿// <copyright file="Author.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
+
 namespace Library.DomainLayer
 {
-    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 

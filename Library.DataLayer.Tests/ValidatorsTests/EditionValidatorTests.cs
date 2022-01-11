@@ -1,4 +1,8 @@
-﻿namespace Library.DataLayer.Tests.ValidatorsTests
+﻿// <copyright file="EditionValidatorTests.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
+// </copyright>
+
+namespace Library.DataLayer.Tests.ValidatorsTests
 {
     using FluentValidation.TestHelper;
     using Library.DataLayer.Validators;
@@ -21,7 +25,7 @@
         {
             var model = new Edition()
             {
-                Publisher = null
+                Publisher = null,
             };
 
             var result = this.validator.TestValidate(model);
@@ -33,7 +37,7 @@
         {
             var model = new Edition()
             {
-                Publisher = "NotNull"
+                Publisher = "NotNull",
             };
 
             var result = this.validator.TestValidate(model);
@@ -45,7 +49,7 @@
         {
             var model = new Edition()
             {
-                Publisher = ""
+                Publisher = string.Empty,
             };
 
             var result = this.validator.TestValidate(model);
@@ -57,7 +61,7 @@
         {
             var model = new Edition()
             {
-                Publisher = "notEmpty"
+                Publisher = "notEmpty",
             };
 
             var result = this.validator.TestValidate(model);
@@ -69,7 +73,7 @@
         {
             var model = new Edition()
             {
-                Publisher = "q"
+                Publisher = "q",
             };
 
             var result = this.validator.TestValidate(model);
@@ -81,7 +85,7 @@
         {
             var model = new Edition()
             {
-                Publisher = "qwert"
+                Publisher = "qwert",
             };
 
             var result = this.validator.TestValidate(model);
@@ -93,7 +97,7 @@
         {
             var model = new Edition()
             {
-                Year = null
+                Year = null,
             };
 
             var result = this.validator.TestValidate(model);
@@ -105,7 +109,7 @@
         {
             var model = new Edition()
             {
-                Year = "134"
+                Year = "134",
             };
 
             var result = this.validator.TestValidate(model);
@@ -117,7 +121,7 @@
         {
             var model = new Edition()
             {
-                Year = ""
+                Year = string.Empty,
             };
 
             var result = this.validator.TestValidate(model);
@@ -129,7 +133,7 @@
         {
             var model = new Edition()
             {
-                Year = "124"
+                Year = "124",
             };
 
             var result = this.validator.TestValidate(model);
@@ -141,7 +145,7 @@
         {
             var model = new Edition()
             {
-                Year = "1234"
+                Year = "1234",
             };
 
             var result = this.validator.TestValidate(model);
@@ -153,7 +157,7 @@
         {
             var model = new Edition()
             {
-                EditionNumber = null
+                EditionNumber = null,
             };
 
             var result = this.validator.TestValidate(model);
@@ -165,7 +169,7 @@
         {
             var model = new Edition()
             {
-                EditionNumber = 3
+                EditionNumber = 3,
             };
 
             var result = this.validator.TestValidate(model);
@@ -177,7 +181,7 @@
         {
             var model = new Edition()
             {
-                EditionNumber = 0
+                EditionNumber = 0,
             };
 
             var result = this.validator.TestValidate(model);
@@ -189,7 +193,7 @@
         {
             var model = new Edition()
             {
-                EditionNumber = 2
+                EditionNumber = 2,
             };
 
             var result = this.validator.TestValidate(model);
@@ -201,7 +205,7 @@
         {
             var model = new Edition()
             {
-                NumberOfPages = null
+                NumberOfPages = null,
             };
 
             var result = this.validator.TestValidate(model);
@@ -213,7 +217,7 @@
         {
             var model = new Edition()
             {
-                NumberOfPages = 3
+                NumberOfPages = 3,
             };
 
             var result = this.validator.TestValidate(model);
@@ -225,7 +229,7 @@
         {
             var model = new Edition()
             {
-                NumberOfPages = 0
+                NumberOfPages = 0,
             };
 
             var result = this.validator.TestValidate(model);
@@ -237,7 +241,7 @@
         {
             var model = new Edition()
             {
-                NumberOfPages = 2
+                NumberOfPages = 2,
             };
 
             var result = this.validator.TestValidate(model);

@@ -1,16 +1,6 @@
-﻿// ***********************************************************************
-// Assembly         : Library.ServiceLayer
-// Author           : costa
-// Created          : 12-17-2021
-//
-// Last Modified By : costa
-// Last Modified On : 01-09-2022
-// ***********************************************************************
-// <copyright file="BookService.cs" company="Library.ServiceLayer">
-//     Copyright (c) . All rights reserved.
+﻿// <copyright file="BookService.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Library.ServiceLayer.Services
 {
@@ -19,8 +9,6 @@ namespace Library.ServiceLayer.Services
     using Library.DataLayer.Validators;
     using Library.DomainLayer;
     using Library.ServiceLayer.IServices;
-    using Proiect_.NET.DataLayer.Validators;
-    using Proiect_.NET.DataLayer.Validators.BookValidators;
     using Proiect_.NET.Injection;
     using System.Collections.Generic;
     using System.Linq;
@@ -40,7 +28,7 @@ namespace Library.ServiceLayer.Services
         public BookService()
             : base(Injector.Create<IBookRepository>(), Injector.Create<IPropertiesRepository>())
         {
-            this._validator = new BookValidator();
+            this.validator = new BookValidator();
         }
 
         /// <summary>
@@ -52,13 +40,13 @@ namespace Library.ServiceLayer.Services
         {
             if (entity.Authors.Count == 0)
             {
-                this._validator = new BookWithoutAuthorsValidator();
+                this.validator = new BookWithoutAuthorsValidator();
             }
 
-            var result = _validator.Validate(entity);
+            var result = this.validator.Validate(entity);
             if (result.IsValid && this.CheckFlags(entity))
             {
-                this._repository.Insert(entity);
+                this.repository.Insert(entity);
             }
             else
             {
@@ -66,7 +54,7 @@ namespace Library.ServiceLayer.Services
                 return false;
             }
 
-            this._validator = new BookValidator();
+            this.validator = new BookValidator();
             return true;
         }
 
@@ -76,9 +64,9 @@ namespace Library.ServiceLayer.Services
         /// <param name="book">The book.</param>
         private bool CheckFlags(Book book)
         {
-            var properties = _propertiesRepository.GetLastProperties();
+            var properties = this.propertiesRepository.GetLastProperties();
 
-            if (book.Domains.Count > properties.Domenii)
+            if (book.Domains.Count > properties.DOMENII)
                 return false;
             if (this.BookHasCorrectDomains(book) == false)
                 return false;

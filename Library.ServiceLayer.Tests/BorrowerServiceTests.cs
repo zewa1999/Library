@@ -1,4 +1,8 @@
-﻿namespace Library.ServiceLayer.Tests
+﻿// <copyright file="BorrowerServiceTests.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
+// </copyright>
+
+namespace Library.ServiceLayer.Tests
 {
     using Library.DomainLayer.Person;
     using Library.ServiceLayer.IServices;
@@ -41,7 +45,7 @@
             var account = new Account()
             {
                 PhoneNumber = "0734525427",
-                Email = "gogumortu@gmail.com"
+                Email = "gogumortu@gmail.com",
             };
 
             var borrower = new Borrower()
@@ -49,7 +53,7 @@
                 LastName = "Gogu",
                 FirstName = "Mortu",
                 Address = "Bucuresti, strada Mihai Viteazu, nr 7, bloc C3, ap 26",
-                Account = account
+                Account = account,
             };
 
             this.borrowerServiceMock.Setup(x => x.Insert(borrower)).Returns(true);
@@ -69,7 +73,7 @@
             var account = new Account()
             {
                 PhoneNumber = "0734525427",
-                Email = "gogumortu@gmail.com"
+                Email = "gogumortu@gmail.com",
             };
 
             var borrower = new Borrower()
@@ -77,7 +81,7 @@
                 LastName = "Gogu",
                 FirstName = "Mortu",
                 Address = "Bucuresti, strada Mihai Viteazu, nr 7, bloc C3, ap 26",
-                Account = account
+                Account = account,
             };
 
             this.borrowerServiceMock.Setup(x => x.GetAll(null, book => book.OrderBy(x => x.Id), null))
@@ -102,7 +106,7 @@
             var account = new Account()
             {
                 PhoneNumber = "0734525427",
-                Email = "gogumortu@gmail.com"
+                Email = "gogumortu@gmail.com",
             };
 
             var borrower = new Borrower()
@@ -111,7 +115,7 @@
                 LastName = "Gogu",
                 FirstName = "Mortu",
                 Address = "Bucuresti, strada Mihai Viteazu, nr 7, bloc C3, ap 26",
-                Account = account
+                Account = account,
             };
             this.borrowerServiceMock.Setup(x => x.GetByID(1))
                 .Returns(borrower);
@@ -136,7 +140,7 @@
             var account = new Account()
             {
                 PhoneNumber = "0734525427",
-                Email = "gogumortu@gmail.com"
+                Email = "gogumortu@gmail.com",
             };
 
             var borrower = new Borrower()
@@ -144,7 +148,7 @@
                 LastName = "Gogu",
                 FirstName = "Mortu",
                 Address = "Bucuresti, strada Mihai Viteazu, nr 7, bloc C3, ap 26",
-                Account = account
+                Account = account,
             };
 
             this.borrowerServiceMock.Setup(x => x.GetByID(1))

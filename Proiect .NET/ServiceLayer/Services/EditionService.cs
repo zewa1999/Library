@@ -1,16 +1,6 @@
-﻿// ***********************************************************************
-// Assembly         : Library.ServiceLayer
-// Author           : costa
-// Created          : 12-17-2021
-//
-// Last Modified By : costa
-// Last Modified On : 01-06-2022
-// ***********************************************************************
-// <copyright file="EditionService.cs" company="Library.ServiceLayer">
-//     Copyright (c) . All rights reserved.
+﻿// <copyright file="EditionService.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Library.ServiceLayer.Services
 {
@@ -35,7 +25,7 @@ namespace Library.ServiceLayer.Services
         public EditionService()
             : base(Injector.Create<IEditionRepository>(), Injector.Create<IPropertiesRepository>())
         {
-            this._validator = new EditionValidator();
+            this.validator = new EditionValidator();
         }
     }
 }

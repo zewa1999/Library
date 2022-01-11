@@ -1,4 +1,8 @@
-﻿namespace Proiect_.NET.DataLayer.Validators
+﻿// <copyright file="BaseDomainValidator.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
+// </copyright>
+
+namespace Library.DataLayer.Validators
 {
     using FluentValidation;
     using Library.DomainLayer;
@@ -7,12 +11,12 @@
     {
         public BaseDomainValidator()
         {
-            RuleFor(d => d.Name)
+            this.RuleFor(d => d.Name)
                .NotNull().WithMessage("Null {PropertyName}")
                .NotEmpty().WithMessage("{PropertyName} is Empty")
                .Length(2, 50).WithMessage("Lenght of {PropertyName} Invalid");
 
-            RuleFor(b => b.ChildrenDomains)
+            this.RuleFor(b => b.ChildrenDomains)
                     .NotNull().WithMessage("Null {PropertyName}");
         }
     }

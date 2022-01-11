@@ -1,4 +1,8 @@
-﻿namespace Library.DataLayer.Tests.ValidatorsTests
+﻿// <copyright file="BorrowValidatorTests.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
+// </copyright>
+
+namespace Library.DataLayer.Tests.ValidatorsTests
 {
     using FluentValidation.TestHelper;
     using Library.DataLayer.Validators;
@@ -23,7 +27,7 @@
         {
             var model = new Borrow()
             {
-                NoOfTimeExtended = null
+                NoOfTimeExtended = null,
             };
 
             var result = this.validator.TestValidate(model);
@@ -35,7 +39,7 @@
         {
             var model = new Borrow()
             {
-                NoOfTimeExtended = 3
+                NoOfTimeExtended = 3,
             };
 
             var result = this.validator.TestValidate(model);
@@ -47,7 +51,7 @@
         {
             var model = new Borrow()
             {
-                NoOfTimeExtended = 0
+                NoOfTimeExtended = 0,
             };
 
             var result = this.validator.TestValidate(model);
@@ -59,7 +63,7 @@
         {
             var model = new Borrow()
             {
-                NoOfTimeExtended = 2
+                NoOfTimeExtended = 2,
             };
 
             var result = this.validator.TestValidate(model);
@@ -71,7 +75,7 @@
         {
             var model = new Borrow()
             {
-                NoOfTimeExtended = 5
+                NoOfTimeExtended = 5,
             };
 
             var result = this.validator.TestValidate(model);
@@ -83,7 +87,7 @@
         {
             var model = new Borrow()
             {
-                BorrowDate = null
+                BorrowDate = null,
             };
 
             var result = this.validator.TestValidate(model);
@@ -95,7 +99,7 @@
         {
             var model = new Borrow()
             {
-                BorrowDate = DateTime.Now
+                BorrowDate = DateTime.Now,
             };
 
             var result = this.validator.TestValidate(model);
@@ -107,7 +111,7 @@
         {
             var model = new Borrow()
             {
-                EndDate = null
+                EndDate = null,
             };
 
             var result = this.validator.TestValidate(model);
@@ -119,7 +123,7 @@
         {
             var model = new Borrow()
             {
-                EndDate = DateTime.Now
+                EndDate = DateTime.Now,
             };
 
             var result = this.validator.TestValidate(model);
@@ -131,7 +135,7 @@
         {
             var model = new Borrow()
             {
-                BorrowedBooks = null
+                BorrowedBooks = null,
             };
 
             var result = this.validator.TestValidate(model);
@@ -143,7 +147,7 @@
         {
             var model = new Borrow()
             {
-                BorrowedBooks = new List<Book>()
+                BorrowedBooks = new List<Book>(),
             };
 
             var result = this.validator.TestValidate(model);

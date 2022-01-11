@@ -1,4 +1,8 @@
-﻿namespace Library.DataLayer.Tests.ValidatorsTests
+﻿// <copyright file="BorrowerValidatorTests.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
+// </copyright>
+
+namespace Library.DataLayer.Tests.ValidatorsTests
 {
     using FluentValidation.TestHelper;
     using Library.DataLayer.Validators;
@@ -22,7 +26,7 @@
             var model = new Borrower()
             {
                 FirstName = null,
-                LastName = "Costache"
+                LastName = "Costache",
             };
 
             var result = this.validator.TestValidate(model);
@@ -35,7 +39,7 @@
             var model = new Borrower()
             {
                 FirstName = "ceva",
-                LastName = "Costache"
+                LastName = "Costache",
             };
 
             var result = this.validator.TestValidate(model);
@@ -47,8 +51,8 @@
         {
             var model = new Borrower()
             {
-                FirstName = "",
-                LastName = "Costache"
+                FirstName = string.Empty,
+                LastName = "Costache",
             };
 
             var result = this.validator.TestValidate(model);
@@ -61,7 +65,7 @@
             var model = new Borrower()
             {
                 FirstName = "altceva",
-                LastName = "Costache"
+                LastName = "Costache",
             };
 
             var result = this.validator.TestValidate(model);
@@ -74,7 +78,7 @@
             var model = new Borrower()
             {
                 FirstName = "q",
-                LastName = "Costache"
+                LastName = "Costache",
             };
 
             var result = this.validator.TestValidate(model);
@@ -87,7 +91,7 @@
             var model = new Borrower()
             {
                 FirstName = "qrwer",
-                LastName = "Costache"
+                LastName = "Costache",
             };
 
             var result = this.validator.TestValidate(model);
@@ -100,7 +104,7 @@
             var model = new Borrower()
             {
                 FirstName = "--gds031",
-                LastName = "Costache"
+                LastName = "Costache",
             };
 
             var result = this.validator.TestValidate(model);
@@ -113,7 +117,7 @@
             var model = new Borrower()
             {
                 FirstName = "Costache",
-                LastName = "Costache"
+                LastName = "Costache",
             };
 
             var result = this.validator.TestValidate(model);
@@ -126,7 +130,7 @@
             var model = new Borrower()
             {
                 LastName = null,
-                FirstName = "Costache"
+                FirstName = "Costache",
             };
 
             var result = this.validator.TestValidate(model);
@@ -139,7 +143,7 @@
             var model = new Borrower()
             {
                 LastName = "ceva",
-                FirstName = "Costache"
+                FirstName = "Costache",
             };
 
             var result = this.validator.TestValidate(model);
@@ -151,8 +155,8 @@
         {
             var model = new Borrower()
             {
-                LastName = "",
-                FirstName = "Costache"
+                LastName = string.Empty,
+                FirstName = "Costache",
             };
 
             var result = this.validator.TestValidate(model);
@@ -165,7 +169,7 @@
             var model = new Borrower()
             {
                 LastName = "altceva",
-                FirstName = "Costache"
+                FirstName = "Costache",
             };
 
             var result = this.validator.TestValidate(model);
@@ -178,7 +182,7 @@
             var model = new Borrower()
             {
                 LastName = "q",
-                FirstName = "Costache"
+                FirstName = "Costache",
             };
 
             var result = this.validator.TestValidate(model);
@@ -191,7 +195,7 @@
             var model = new Borrower()
             {
                 LastName = "qrwer",
-                FirstName = "Costache"
+                FirstName = "Costache",
             };
 
             var result = this.validator.TestValidate(model);
@@ -204,7 +208,7 @@
             var model = new Borrower()
             {
                 LastName = "--gds031",
-                FirstName = "Costache"
+                FirstName = "Costache",
             };
 
             var result = this.validator.TestValidate(model);
@@ -217,7 +221,7 @@
             var model = new Borrower()
             {
                 LastName = "Costache",
-                FirstName = "Costache"
+                FirstName = "Costache",
             };
 
             var result = this.validator.TestValidate(model);
@@ -229,7 +233,7 @@
         {
             var model = new Borrower()
             {
-                Address = null
+                Address = null,
             };
 
             var result = this.validator.TestValidate(model);
@@ -241,7 +245,7 @@
         {
             var model = new Borrower()
             {
-                Address = "ceva"
+                Address = "ceva",
             };
 
             var result = this.validator.TestValidate(model);
@@ -253,7 +257,7 @@
         {
             var model = new Borrower()
             {
-                Address = ""
+                Address = string.Empty,
             };
 
             var result = this.validator.TestValidate(model);
@@ -265,7 +269,7 @@
         {
             var model = new Borrower()
             {
-                Address = "altceva"
+                Address = "altceva",
             };
 
             var result = this.validator.TestValidate(model);
@@ -277,7 +281,7 @@
         {
             var model = new Borrower()
             {
-                Address = "q"
+                Address = "q",
             };
 
             var result = this.validator.TestValidate(model);
@@ -289,7 +293,7 @@
         {
             var model = new Borrower()
             {
-                Address = "qrwer"
+                Address = "qrwer",
             };
 
             var result = this.validator.TestValidate(model);

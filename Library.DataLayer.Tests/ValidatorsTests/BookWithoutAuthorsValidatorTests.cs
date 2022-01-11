@@ -1,4 +1,4 @@
-﻿// <copyright file="BookValidatorTests.cs" company="Transilvania University of Brasov">
+﻿// <copyright file="BookWithoutAuthorsValidatorTests.cs" company="Transilvania University of Brasov">
 // Costache Stelian-Andrei
 // </copyright>
 
@@ -11,9 +11,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
     using System.Collections.Generic;
 
     [TestClass]
-    public class BookValidatorTests
+    public class BookWithoutAuthorsValidatorTests
     {
-        private BookValidator validator;
+        private BookWithoutAuthorsValidator validator;
 
         [TestInitialize]
         public void Initialize()
@@ -235,30 +235,6 @@ namespace Library.DataLayer.Tests.ValidatorsTests
 
             var result = this.validator.TestValidate(model);
             result.ShouldNotHaveValidationErrorFor(a => a.IsBorrowed);
-        }
-
-        [TestMethod]
-        public void ShouldHaveErrorWhenAuthorCollectionIsNull()
-        {
-            var model = new Book()
-            {
-                Authors = null,
-            };
-
-            var result = this.validator.TestValidate(model);
-            result.ShouldHaveValidationErrorFor(a => a.Authors);
-        }
-
-        [TestMethod]
-        public void ShouldHaveErrorWhenAuthorCollectionIsEmpty()
-        {
-            var model = new Book()
-            {
-                Authors = new List<Author>(),
-            };
-
-            var result = this.validator.TestValidate(model);
-            result.ShouldHaveValidationErrorFor(a => a.Authors);
         }
 
         [TestMethod]

@@ -1,25 +1,13 @@
-﻿// ***********************************************************************
-// Assembly         : Library.ServiceLayer
-// Author           : costa
-// Created          : 12-17-2021
-//
-// Last Modified By : costa
-// Last Modified On : 01-06-2022
-// ***********************************************************************
-// <copyright file="DomainService.cs" company="Library.ServiceLayer">
-//     Copyright (c) . All rights reserved.
+﻿// <copyright file="DomainService.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Library.ServiceLayer.Services
 {
-    using FluentValidation;
     using Library.DataLayer.Interfaces;
     using Library.DataLayer.Validators;
     using Library.DomainLayer;
     using Library.ServiceLayer.IServices;
-    using Proiect_.NET.DataLayer.Validators;
     using Proiect_.NET.Injection;
 
     /// <summary>
@@ -37,17 +25,17 @@ namespace Library.ServiceLayer.Services
         public DomainService()
              : base(Injector.Create<IDomainRepository>(), Injector.Create<IPropertiesRepository>())
         {
-            this._validator = new DomainValidator();
+            this.validator = new DomainValidator();
         }
 
         public override bool Insert(Domain entity)
         {
             if (entity.ParentDomain == null)
             {
-                this._validator = new BaseDomainValidator();
+                this.validator = new BaseDomainValidator();
             }
 
-            var result = this._validator.Validate(entity);
+            var result = this.validator.Validate(entity);
             var isValid = false;
             if (result.IsValid)
             {
@@ -61,10 +49,10 @@ namespace Library.ServiceLayer.Services
 
             if (isValid == true)
             {
-                this._repository.Insert(entity);
+                this.repository.Insert(entity);
             }
 
-            this._validator = new DomainValidator();
+            this.validator = new DomainValidator();
             return true;
         }
     }

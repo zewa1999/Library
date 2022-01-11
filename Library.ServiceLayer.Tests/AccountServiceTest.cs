@@ -1,16 +1,6 @@
-﻿// ***********************************************************************
-// Assembly         : Library.ServiceLayer.Tests
-// Author           : costa
-// Created          : 01-07-2022
-//
-// Last Modified By : costa
-// Last Modified On : 01-09-2022
-// ***********************************************************************
-// <copyright file="AccountServiceTest.cs" company="Library.ServiceLayer.Tests">
-//     Copyright (c) . All rights reserved.
+﻿// <copyright file="AccountServiceTest.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Library.ServiceLayer.Tests
 {
@@ -55,7 +45,7 @@ namespace Library.ServiceLayer.Tests
             var account = new Account()
             {
                 PhoneNumber = "0734525427",
-                Email = "validemail@gmail.com"
+                Email = "validemail@gmail.com",
             };
 
             this.accountServiceMock.Setup(x => x.Insert(account)).Returns(true);
@@ -77,7 +67,7 @@ namespace Library.ServiceLayer.Tests
                 new List<Account>()
                 { new Account {
                     PhoneNumber = "0734525427",
-                    Email = "validemail@gmail.com"}
+                    Email = "validemail@gmail.com"},
                 });
 
             this.accountService = this.accountServiceMock.Object;
@@ -99,7 +89,7 @@ namespace Library.ServiceLayer.Tests
                 {
                     Id = 1,
                     PhoneNumber = "0734525427",
-                    Email = "validemail@gmail.com"
+                    Email = "validemail@gmail.com",
                 });
 
             this.accountService = this.accountServiceMock.Object;
@@ -122,7 +112,7 @@ namespace Library.ServiceLayer.Tests
                 .Returns(new Account
                 {
                     PhoneNumber = "0734525427",
-                    Email = "validemail@gmail.com"
+                    Email = "validemail@gmail.com",
                 });
 
             this.accountService = this.accountServiceMock.Object;

@@ -1,16 +1,6 @@
-﻿// ***********************************************************************
-// Assembly         : Library
-// Author           : costa
-// Created          : 01-06-2022
-//
-// Last Modified By : costa
-// Last Modified On : 01-06-2022
-// ***********************************************************************
-// <copyright file="AuthorValidator.cs" company="Library">
-//     Copyright (c) . All rights reserved.
+﻿// <copyright file="AuthorValidator.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 /// <summary>
 /// The Validators namespace.
@@ -19,7 +9,6 @@ namespace Library.DataLayer.Validators
 {
     using FluentValidation;
     using Library.DomainLayer;
-    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -35,13 +24,13 @@ namespace Library.DataLayer.Validators
         /// </summary>
         public AuthorValidator()
         {
-            RuleFor(a => a.FirstName)
+            this.RuleFor(a => a.FirstName)
                 .NotNull().WithMessage("Null {PropertyName}")
                 .NotEmpty().WithMessage("{PropertyName} is Empty")
                 .Length(2, 50).WithMessage("Lenght of {PropertyName} Invalid")
                 .Must(this.BeAValidName).WithMessage("{PropertyName} contains invalid characters");
 
-            RuleFor(a => a.LastName)
+            this.RuleFor(a => a.LastName)
                 .NotNull().WithMessage("Null {PropertyName}")
                 .NotEmpty().WithMessage("{PropertyName} is Empty")
                 .Length(2, 50).WithMessage("Lenght of {PropertyName} Invalid")
@@ -58,9 +47,9 @@ namespace Library.DataLayer.Validators
             if (name == null)
                 return false;
 
-            name = name.Replace(" ", "");
-            name = name.Replace("-", "");
-            return name.All(Char.IsLetter);
+            name = name.Replace(" ", string.Empty);
+            name = name.Replace("-", string.Empty);
+            return name.All(char.IsLetter);
         }
 
         protected bool HaveEntities<T>(ICollection<T> entities)

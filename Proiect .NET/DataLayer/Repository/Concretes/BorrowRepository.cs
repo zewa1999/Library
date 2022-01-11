@@ -1,24 +1,14 @@
-﻿// ***********************************************************************
-// Assembly         : Library
-// Author           : costa
-// Created          : 01-06-2022
-//
-// Last Modified By : costa
-// Last Modified On : 01-06-2022
-// ***********************************************************************
-// <copyright file="BorrowRepository.cs" company="Transilvania University of Brasov">
-//     Costache Stelian-Andrei
+﻿// <copyright file="BorrowRepository.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
+
 namespace Library.DataLayer.Concretes
 {
+    using Library.DataLayer.Interfaces;
+    using Library.DomainLayer;
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Library.DataLayer.DataMapper;
-    using Library.DataLayer.Interfaces;
-    using Library.DomainLayer;
 
     /// <summary>
     /// Methods for the borrow controller.
@@ -34,11 +24,11 @@ namespace Library.DataLayer.Concretes
             DateTime pastMonth = DateTime.Now.AddMonths(months * -1);
             try
             {
-                return ctx.Borrow.Where(x => x.BorrowDate >= pastMonth).Select(x => x).ToList();
+                return this.ctx.Borrow.Where(x => x.BorrowDate >= pastMonth).Select(x => x).ToList();
             }
             catch (Exception ex)
             {
-                logger.Error(ex.Message + "The query could not been made!");
+                this.logger.Error(ex.Message + "The query could not been made!");
             }
 
             return new List<Borrow>();
@@ -54,7 +44,7 @@ namespace Library.DataLayer.Concretes
 
             try
             {
-                foreach (var borrow in ctx.Borrow)
+                foreach (var borrow in this.ctx.Borrow)
                 {
                     if (borrow.Borrower.Id == id && borrow.BorrowDate < minDate)
                     {
@@ -66,7 +56,7 @@ namespace Library.DataLayer.Concretes
             }
             catch (Exception ex)
             {
-                logger.Error(ex.Message + "Returning DateTime.MaxValue!");
+                this.logger.Error(ex.Message + "Returning DateTime.MaxValue!");
             }
 
             return minDate;
@@ -82,7 +72,7 @@ namespace Library.DataLayer.Concretes
             var todayDate = DateTime.Today;
             try
             {
-                foreach (var borrow in ctx.Borrow)
+                foreach (var borrow in this.ctx.Borrow)
                 {
                     if (borrow.Borrower.Id == id && borrow.BorrowDate == todayDate)
                     {
@@ -94,7 +84,7 @@ namespace Library.DataLayer.Concretes
             }
             catch (Exception ex)
             {
-                logger.Error(ex.Message + "Returning 0");
+                this.logger.Error(ex.Message + "Returning 0");
             }
             return 0;
         }

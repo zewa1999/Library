@@ -1,16 +1,6 @@
-﻿// ***********************************************************************
-// Assembly         : Library
-// Author           : costa
-// Created          : 01-06-2022
-//
-// Last Modified By : costa
-// Last Modified On : 01-06-2022
-// ***********************************************************************
-// <copyright file="Bindings.cs" company="Library">
-//     Copyright (c) . All rights reserved.
+﻿// <copyright file="Bindings.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Proiect_.NET.Injection
 {
@@ -41,15 +31,15 @@ namespace Proiect_.NET.Injection
         /// </summary>
         private void LoadServicesLayer()
         {
-            Bind<IAuthorService>().To<AuthorService>();
-            Bind<IBookService>().To<BookService>();
-            Bind<IBorrowerService>().To<BorrowerService>();
-            Bind<IBorrowService>().To<BorrowService>();
-            Bind<IDomainService>().To<DomainService>();
-            Bind<IEditionService>().To<EditionService>();
-            Bind<ILibrarianService>().To<LibrarianService>();
-            Bind<IPropertiesService>().To<PropertiesService>();
-            Bind<IAccountService>().To<AccountService>();
+            this.Bind<IAuthorService>().To<AuthorService>();
+            this.Bind<IBookService>().To<BookService>();
+            this.Bind<IBorrowerService>().To<BorrowerService>();
+            this.Bind<IBorrowService>().To<BorrowService>();
+            this.Bind<IDomainService>().To<DomainService>();
+            this.Bind<IEditionService>().To<EditionService>();
+            this.Bind<ILibrarianService>().To<LibrarianService>();
+            this.Bind<IPropertiesService>().To<PropertiesService>();
+            this.Bind<IAccountService>().To<AccountService>();
         }
 
         /// <summary>
@@ -57,15 +47,15 @@ namespace Proiect_.NET.Injection
         /// </summary>
         private void LoadRepositoryLayer()
         {
-            Bind<IAuthorRepository>().To<AuthorRepository>();
-            Bind<IBookRepository>().To<BookRepository>();
-            Bind<IBorrowerRepository>().To<BorrowerRepository>();
-            Bind<IBorrowRepository>().To<BorrowRepository>();
-            Bind<IDomainRepository>().To<DomainRepository>();
-            Bind<IEditionRepository>().To<EditionRepository>();
-            Bind<ILibrarianRepository>().To<LibrarianRepository>();
-            Bind<IPropertiesRepository>().To<PropertiesRepository>();
-            Bind<IAccountRepository>().To<AccountRepository>();
+            this.Bind<IAuthorRepository>().To<AuthorRepository>();
+            this.Bind<IBookRepository>().To<BookRepository>();
+            this.Bind<IBorrowerRepository>().To<BorrowerRepository>();
+            this.Bind<IBorrowRepository>().To<BorrowRepository>();
+            this.Bind<IDomainRepository>().To<DomainRepository>();
+            this.Bind<IEditionRepository>().To<EditionRepository>();
+            this.Bind<ILibrarianRepository>().To<LibrarianRepository>();
+            this.Bind<IPropertiesRepository>().To<PropertiesRepository>();
+            this.Bind<IAccountRepository>().To<AccountRepository>();
         }
     }
 }

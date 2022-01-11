@@ -1,16 +1,7 @@
-﻿// ***********************************************************************
-// Assembly         : Library
-// Author           : costa
-// Created          : 01-06-2022
-//
-// Last Modified By : costa
-// Last Modified On : 01-09-2022
-// ***********************************************************************
-// <copyright file="LibraryContext.cs" company="Library">
-//     Copyright (c) . All rights reserved.
+﻿// <copyright file="LibraryContext.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
+
 /// <summary>
 /// The DataMapper namespace.
 /// </summary>
@@ -19,7 +10,6 @@ namespace Library.DataLayer.DataMapper
     using Library.DomainLayer;
     using Library.DomainLayer.Person;
     using Microsoft.EntityFrameworkCore;
-    using System.Configuration;
 
     /// <summary>
     /// The library context class used to generate the database.
@@ -86,7 +76,7 @@ namespace Library.DataLayer.DataMapper
         /// <param name="optionsBuilder">The optionsBuilder used to configure properties of the server.</param>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //var connString = ConfigurationManager.ConnectionStrings[1].ToString();
+            // var connString = ConfigurationManager.ConnectionStrings[1].ToString();
             optionsBuilder
                .UseLazyLoadingProxies()
                .UseSqlServer("Data Source= (localdb)\\MSSQLLocalDB; Initial Catalog=LibraryDatabase"/*connString*/);

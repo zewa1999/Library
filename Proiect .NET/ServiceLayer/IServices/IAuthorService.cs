@@ -1,16 +1,6 @@
-﻿// ***********************************************************************
-// Assembly         : Library.ServiceLayer
-// Author           : costa
-// Created          : 12-17-2021
-//
-// Last Modified By : costa
-// Last Modified On : 01-06-2022
-// ***********************************************************************
-// <copyright file="IAuthorService.cs" company="Library.ServiceLayer">
-//     Copyright (c) . All rights reserved.
+﻿// <copyright file="IAuthorService.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Library.ServiceLayer.IServices
 {
@@ -18,7 +8,7 @@ namespace Library.ServiceLayer.IServices
 
     /// <summary>
     /// Interface IAuthorService
-    /// Implements the <see cref="Library.ServiceLayer.IServices.IBaseService{Library.DomainLayer.Author}" />
+    /// Implements the <see cref="Library.ServiceLayer.IServices.IBaseService{Library.DomainLayer.Author}" />.
     /// </summary>
     /// <seealso cref="Library.ServiceLayer.IServices.IBaseService{Library.DomainLayer.Author}" />
     public interface IAuthorService : IBaseService<Author>

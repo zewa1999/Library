@@ -1,16 +1,6 @@
-﻿// ***********************************************************************
-// Assembly         : Library.ServiceLayer
-// Author           : costa
-// Created          : 12-17-2021
-//
-// Last Modified By : costa
-// Last Modified On : 01-09-2022
-// ***********************************************************************
-// <copyright file="BaseService.cs" company="Library.ServiceLayer">
-//     Copyright (c) . All rights reserved.
+﻿// <copyright file="BaseService.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Library.ServiceLayer.Services
 {
@@ -19,8 +9,8 @@ namespace Library.ServiceLayer.Services
     using Library.ServiceLayer.IServices;
     using System;
     using System.Collections.Generic;
-    using System.Linq.Expressions;
     using System.Linq;
+    using System.Linq.Expressions;
 
     /// <summary>
     /// Class BaseService.
@@ -38,27 +28,27 @@ namespace Library.ServiceLayer.Services
         /// <summary>
         /// The repository
         /// </summary>
-        protected U _repository;
+        protected U repository;
 
         /// <summary>
         /// The validator
         /// </summary>
-        protected IValidator<T> _validator;
+        protected IValidator<T> validator;
 
         /// <summary>
         /// The properties repository
         /// </summary>
-        protected L _propertiesRepository;
+        protected L propertiesRepository;
 
         /// <summary>
-        /// Ctor for base service
+        /// Initializes a new instance of the <see cref="BaseService{T, U, L}"/> class.
         /// </summary>
-        /// <param name="repository">The actual repository that will fit into this class</param>
+        /// <param name="repository">The repository.</param>
         /// <param name="propRepo">The property repo.</param>
         protected BaseService(U repository, L propRepo)
         {
-            this._repository = repository;
-            this._propertiesRepository = propRepo;
+            this.repository = repository;
+            this.propertiesRepository = propRepo;
         }
 
         /// <summary>
@@ -67,7 +57,7 @@ namespace Library.ServiceLayer.Services
         /// <param name="entity"> The entity. </param>
         public virtual bool Insert(T entity)
         {
-            var result = this._validator.Validate(entity);
+            var result = this.validator.Validate(entity);
             var isValid = false;
             if (result.IsValid)
             {
@@ -81,7 +71,7 @@ namespace Library.ServiceLayer.Services
 
             if (isValid == true)
             {
-                this._repository.Insert(entity);
+                this.repository.Insert(entity);
             }
 
             return true;
@@ -93,11 +83,11 @@ namespace Library.ServiceLayer.Services
         /// <param name="entity"> The entity. </param>
         public virtual bool Update(T entity)
         {
-            var result = this._validator.Validate(entity);
+            var result = this.validator.Validate(entity);
             Utils.LogErrors(result);
             if (result.IsValid)
             {
-                this._repository.Update(entity);
+                this.repository.Update(entity);
             }
             else
             {
@@ -114,7 +104,7 @@ namespace Library.ServiceLayer.Services
         /// <param name="entity">The entity.</param>
         public virtual bool Delete(T entity)
         {
-            return this._repository.Delete(entity);
+            return this.repository.Delete(entity);
         }
 
         /// <summary>
@@ -123,7 +113,7 @@ namespace Library.ServiceLayer.Services
         /// <param name="id"> The identifier. </param>
         public virtual bool DeleteById(object id)
         {
-            return this._repository.DeleteById(id);
+            return this.repository.DeleteById(id);
         }
 
         /// <summary>
@@ -132,7 +122,7 @@ namespace Library.ServiceLayer.Services
         /// <param name="id"> The identifier. </param>
         public virtual T GetByID(object id)
         {
-            return this._repository.GetByID(id);
+            return this.repository.GetByID(id);
         }
 
         /// <summary>
@@ -143,7 +133,7 @@ namespace Library.ServiceLayer.Services
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
             string includeProperties = "")
         {
-            return this._repository.Get(filter, orderBy, includeProperties);
+            return this.repository.Get(filter, orderBy, includeProperties);
         }
     }
 }

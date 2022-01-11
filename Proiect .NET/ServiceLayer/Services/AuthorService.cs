@@ -1,16 +1,6 @@
-﻿// ***********************************************************************
-// Assembly         : Library.ServiceLayer
-// Author           : costa
-// Created          : 12-17-2021
-//
-// Last Modified By : costa
-// Last Modified On : 01-06-2022
-// ***********************************************************************
-// <copyright file="AuthorService.cs" company="Library.ServiceLayer">
-//     Copyright (c) . All rights reserved.
+﻿// <copyright file="AuthorService.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Library.ServiceLayer.Services
 {
@@ -35,7 +25,7 @@ namespace Library.ServiceLayer.Services
         public AuthorService()
             : base(Injector.Create<IAuthorRepository>(), Injector.Create<IPropertiesRepository>())
         {
-            this._validator = new AuthorValidator();
+            this.validator = new AuthorValidator();
         }
     }
 }

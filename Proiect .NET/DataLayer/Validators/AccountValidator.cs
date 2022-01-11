@@ -1,16 +1,6 @@
-﻿// ***********************************************************************
-// Assembly         : Library
-// Author           : costa
-// Created          : 01-06-2022
-//
-// Last Modified By : costa
-// Last Modified On : 01-06-2022
-// ***********************************************************************
-// <copyright file="AccountValidator.cs" company="Library">
-//     Copyright (c) . All rights reserved.
+﻿// <copyright file="AccountValidator.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 /// <summary>
 /// The Validators namespace.
@@ -33,13 +23,13 @@ namespace Library.DataLayer.Validators
         /// </summary>
         public AccountValidator()
         {
-            RuleFor(a => a.PhoneNumber)
+            this.RuleFor(a => a.PhoneNumber)
                 .NotNull().WithMessage("Null phone number")
                 .NotEmpty().WithMessage("Empty phone number")
                 .Must(this.DoesNotContainLetters)
                 .Length(10).WithMessage("Lenght should be 10");
 
-            RuleFor(a => a.Email)
+            this.RuleFor(a => a.Email)
                 .EmailAddress().WithMessage("The email is not valid");
         }
 
@@ -51,7 +41,9 @@ namespace Library.DataLayer.Validators
         protected bool DoesNotContainLetters(string phoneNumber)
         {
             if (phoneNumber == null)
+            {
                 return false;
+            }
             return phoneNumber.Any(x => !char.IsLetter(x));
         }
     }

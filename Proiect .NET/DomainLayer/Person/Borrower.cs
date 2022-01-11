@@ -1,16 +1,7 @@
-﻿// ***********************************************************************
-// Assembly         : Library.DomainLayer
-// Author           : costa
-// Created          : 11-25-2021
-//
-// Last Modified By : costa
-// Last Modified On : 01-09-2022
-// ***********************************************************************
-// <copyright file="Borrower.cs" company="Library.DomainLayer">
-//     Copyright (c) . All rights reserved.
+﻿// <copyright file="Borrower.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
+
 namespace Library.DomainLayer.Person
 {
     using System.ComponentModel.DataAnnotations;

@@ -1,4 +1,8 @@
-﻿namespace Library.DataLayer.Tests.ValidatorsTests
+﻿// <copyright file="PropertiesValidatorTests.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
+// </copyright>
+
+namespace Library.DataLayer.Tests.ValidatorsTests
 {
     using FluentValidation.TestHelper;
     using Library.DataLayer.Validators;
@@ -21,11 +25,11 @@
         {
             var model = new Properties()
             {
-                Domenii = null
+                DOMENII = null,
             };
 
             var result = this.validator.TestValidate(model);
-            result.ShouldHaveValidationErrorFor(a => a.Domenii);
+            result.ShouldHaveValidationErrorFor(a => a.DOMENII);
         }
 
         [TestMethod]
@@ -33,11 +37,11 @@
         {
             var model = new Properties()
             {
-                Domenii = 3
+                DOMENII = 3,
             };
 
             var result = this.validator.TestValidate(model);
-            result.ShouldNotHaveValidationErrorFor(a => a.Domenii);
+            result.ShouldNotHaveValidationErrorFor(a => a.DOMENII);
         }
 
         [TestMethod]
@@ -45,11 +49,11 @@
         {
             var model = new Properties()
             {
-                Domenii = 0
+                DOMENII = 0,
             };
 
             var result = this.validator.TestValidate(model);
-            result.ShouldHaveValidationErrorFor(a => a.Domenii);
+            result.ShouldHaveValidationErrorFor(a => a.DOMENII);
         }
 
         [TestMethod]
@@ -57,11 +61,11 @@
         {
             var model = new Properties()
             {
-                Domenii = 2
+                DOMENII = 2,
             };
 
             var result = this.validator.TestValidate(model);
-            result.ShouldNotHaveValidationErrorFor(a => a.Domenii);
+            result.ShouldNotHaveValidationErrorFor(a => a.DOMENII);
         }
 
         [TestMethod]
@@ -69,11 +73,11 @@
         {
             var model = new Properties()
             {
-                NrMaximCartiImprumutate = null
+                C = null,
             };
 
             var result = this.validator.TestValidate(model);
-            result.ShouldHaveValidationErrorFor(a => a.NrMaximCartiImprumutate);
+            result.ShouldHaveValidationErrorFor(a => a.C);
         }
 
         [TestMethod]
@@ -81,11 +85,11 @@
         {
             var model = new Properties()
             {
-                NrMaximCartiImprumutate = 3
+                C = 3,
             };
 
             var result = this.validator.TestValidate(model);
-            result.ShouldNotHaveValidationErrorFor(a => a.NrMaximCartiImprumutate);
+            result.ShouldNotHaveValidationErrorFor(a => a.C);
         }
 
         [TestMethod]
@@ -93,11 +97,11 @@
         {
             var model = new Properties()
             {
-                NrMaximCartiImprumutate = 0
+                C = 0,
             };
 
             var result = this.validator.TestValidate(model);
-            result.ShouldHaveValidationErrorFor(a => a.NrMaximCartiImprumutate);
+            result.ShouldHaveValidationErrorFor(a => a.C);
         }
 
         [TestMethod]
@@ -105,11 +109,11 @@
         {
             var model = new Properties()
             {
-                NrMaximCartiImprumutate = 2
+                C = 2,
             };
 
             var result = this.validator.TestValidate(model);
-            result.ShouldNotHaveValidationErrorFor(a => a.NrMaximCartiImprumutate);
+            result.ShouldNotHaveValidationErrorFor(a => a.C);
         }
 
         [TestMethod]
@@ -117,11 +121,11 @@
         {
             var model = new Properties()
             {
-                Perioada = null
+                PER = null,
             };
 
             var result = this.validator.TestValidate(model);
-            result.ShouldHaveValidationErrorFor(a => a.Perioada);
+            result.ShouldHaveValidationErrorFor(a => a.PER);
         }
 
         [TestMethod]
@@ -129,11 +133,11 @@
         {
             var model = new Properties()
             {
-                Perioada = 3
+                PER = 3,
             };
 
             var result = this.validator.TestValidate(model);
-            result.ShouldNotHaveValidationErrorFor(a => a.Perioada);
+            result.ShouldNotHaveValidationErrorFor(a => a.PER);
         }
 
         [TestMethod]
@@ -141,11 +145,11 @@
         {
             var model = new Properties()
             {
-                Perioada = 0
+                PER = 0,
             };
 
             var result = this.validator.TestValidate(model);
-            result.ShouldHaveValidationErrorFor(a => a.Perioada);
+            result.ShouldHaveValidationErrorFor(a => a.PER);
         }
 
         [TestMethod]
@@ -153,11 +157,11 @@
         {
             var model = new Properties()
             {
-                Perioada = 2
+                PER = 2,
             };
 
             var result = this.validator.TestValidate(model);
-            result.ShouldNotHaveValidationErrorFor(a => a.Perioada);
+            result.ShouldNotHaveValidationErrorFor(a => a.PER);
         }
 
         [TestMethod]
@@ -165,11 +169,11 @@
         {
             var model = new Properties()
             {
-                NrMaximCartiImprumutateAcelasiDomeniu = null
+                D = null,
             };
 
             var result = this.validator.TestValidate(model);
-            result.ShouldHaveValidationErrorFor(a => a.NrMaximCartiImprumutateAcelasiDomeniu);
+            result.ShouldHaveValidationErrorFor(a => a.D);
         }
 
         [TestMethod]
@@ -177,11 +181,11 @@
         {
             var model = new Properties()
             {
-                NrMaximCartiImprumutateAcelasiDomeniu = 3
+                D = 3,
             };
 
             var result = this.validator.TestValidate(model);
-            result.ShouldNotHaveValidationErrorFor(a => a.NrMaximCartiImprumutateAcelasiDomeniu);
+            result.ShouldNotHaveValidationErrorFor(a => a.D);
         }
 
         [TestMethod]
@@ -189,11 +193,11 @@
         {
             var model = new Properties()
             {
-                NrMaximCartiImprumutateAcelasiDomeniu = 0
+                D = 0,
             };
 
             var result = this.validator.TestValidate(model);
-            result.ShouldHaveValidationErrorFor(a => a.NrMaximCartiImprumutateAcelasiDomeniu);
+            result.ShouldHaveValidationErrorFor(a => a.D);
         }
 
         [TestMethod]
@@ -201,11 +205,11 @@
         {
             var model = new Properties()
             {
-                NrMaximCartiImprumutateAcelasiDomeniu = 2
+                D = 2,
             };
 
             var result = this.validator.TestValidate(model);
-            result.ShouldNotHaveValidationErrorFor(a => a.NrMaximCartiImprumutateAcelasiDomeniu);
+            result.ShouldNotHaveValidationErrorFor(a => a.D);
         }
 
         [TestMethod]
@@ -213,11 +217,11 @@
         {
             var model = new Properties()
             {
-                NumarMaximCarti = null
+                NMC = null,
             };
 
             var result = this.validator.TestValidate(model);
-            result.ShouldHaveValidationErrorFor(a => a.NumarMaximCarti);
+            result.ShouldHaveValidationErrorFor(a => a.NMC);
         }
 
         [TestMethod]
@@ -225,11 +229,11 @@
         {
             var model = new Properties()
             {
-                NumarMaximCarti = 3
+                NMC = 3,
             };
 
             var result = this.validator.TestValidate(model);
-            result.ShouldNotHaveValidationErrorFor(a => a.NumarMaximCarti);
+            result.ShouldNotHaveValidationErrorFor(a => a.NMC);
         }
 
         [TestMethod]
@@ -237,11 +241,11 @@
         {
             var model = new Properties()
             {
-                NumarMaximCarti = 0
+                NMC = 0,
             };
 
             var result = this.validator.TestValidate(model);
-            result.ShouldHaveValidationErrorFor(a => a.NumarMaximCarti);
+            result.ShouldHaveValidationErrorFor(a => a.NMC);
         }
 
         [TestMethod]
@@ -249,11 +253,11 @@
         {
             var model = new Properties()
             {
-                NumarMaximCarti = 2
+                NMC = 2,
             };
 
             var result = this.validator.TestValidate(model);
-            result.ShouldNotHaveValidationErrorFor(a => a.NumarMaximCarti);
+            result.ShouldNotHaveValidationErrorFor(a => a.NMC);
         }
 
         [TestMethod]
@@ -261,11 +265,11 @@
         {
             var model = new Properties()
             {
-                LimitaMaximaImprumut = null
+                LIM = null,
             };
 
             var result = this.validator.TestValidate(model);
-            result.ShouldHaveValidationErrorFor(a => a.LimitaMaximaImprumut);
+            result.ShouldHaveValidationErrorFor(a => a.LIM);
         }
 
         [TestMethod]
@@ -273,11 +277,11 @@
         {
             var model = new Properties()
             {
-                LimitaMaximaImprumut = 3
+                LIM = 3,
             };
 
             var result = this.validator.TestValidate(model);
-            result.ShouldNotHaveValidationErrorFor(a => a.LimitaMaximaImprumut);
+            result.ShouldNotHaveValidationErrorFor(a => a.LIM);
         }
 
         [TestMethod]
@@ -285,11 +289,11 @@
         {
             var model = new Properties()
             {
-                LimitaMaximaImprumut = 0
+                LIM = 0,
             };
 
             var result = this.validator.TestValidate(model);
-            result.ShouldHaveValidationErrorFor(a => a.LimitaMaximaImprumut);
+            result.ShouldHaveValidationErrorFor(a => a.LIM);
         }
 
         [TestMethod]
@@ -297,11 +301,11 @@
         {
             var model = new Properties()
             {
-                LimitaMaximaImprumut = 2
+                LIM = 2,
             };
 
             var result = this.validator.TestValidate(model);
-            result.ShouldNotHaveValidationErrorFor(a => a.LimitaMaximaImprumut);
+            result.ShouldNotHaveValidationErrorFor(a => a.LIM);
         }
 
         [TestMethod]
@@ -309,11 +313,11 @@
         {
             var model = new Properties()
             {
-                Delta = null
+                DELTA = null,
             };
 
             var result = this.validator.TestValidate(model);
-            result.ShouldHaveValidationErrorFor(a => a.Delta);
+            result.ShouldHaveValidationErrorFor(a => a.DELTA);
         }
 
         [TestMethod]
@@ -321,11 +325,11 @@
         {
             var model = new Properties()
             {
-                Delta = 3
+                DELTA = 3,
             };
 
             var result = this.validator.TestValidate(model);
-            result.ShouldNotHaveValidationErrorFor(a => a.Delta);
+            result.ShouldNotHaveValidationErrorFor(a => a.DELTA);
         }
 
         [TestMethod]
@@ -333,11 +337,11 @@
         {
             var model = new Properties()
             {
-                Delta = 0
+                DELTA = 0,
             };
 
             var result = this.validator.TestValidate(model);
-            result.ShouldHaveValidationErrorFor(a => a.Delta);
+            result.ShouldHaveValidationErrorFor(a => a.DELTA);
         }
 
         [TestMethod]
@@ -345,11 +349,11 @@
         {
             var model = new Properties()
             {
-                Delta = 2
+                DELTA = 2,
             };
 
             var result = this.validator.TestValidate(model);
-            result.ShouldNotHaveValidationErrorFor(a => a.Delta);
+            result.ShouldNotHaveValidationErrorFor(a => a.DELTA);
         }
 
         [TestMethod]
@@ -357,11 +361,11 @@
         {
             var model = new Properties()
             {
-                NumarCartiImprumutateZilnic = null
+                NCZ = null,
             };
 
             var result = this.validator.TestValidate(model);
-            result.ShouldHaveValidationErrorFor(a => a.NumarCartiImprumutateZilnic);
+            result.ShouldHaveValidationErrorFor(a => a.NCZ);
         }
 
         [TestMethod]
@@ -369,11 +373,11 @@
         {
             var model = new Properties()
             {
-                NumarCartiImprumutateZilnic = 3
+                NCZ = 3,
             };
 
             var result = this.validator.TestValidate(model);
-            result.ShouldNotHaveValidationErrorFor(a => a.NumarCartiImprumutateZilnic);
+            result.ShouldNotHaveValidationErrorFor(a => a.NCZ);
         }
 
         [TestMethod]
@@ -381,11 +385,11 @@
         {
             var model = new Properties()
             {
-                NumarCartiImprumutateZilnic = 0
+                NCZ = 0,
             };
 
             var result = this.validator.TestValidate(model);
-            result.ShouldHaveValidationErrorFor(a => a.NumarCartiImprumutateZilnic);
+            result.ShouldHaveValidationErrorFor(a => a.NCZ);
         }
 
         [TestMethod]
@@ -393,11 +397,11 @@
         {
             var model = new Properties()
             {
-                NumarCartiImprumutateZilnic = 2
+                NCZ = 2,
             };
 
             var result = this.validator.TestValidate(model);
-            result.ShouldNotHaveValidationErrorFor(a => a.NumarCartiImprumutateZilnic);
+            result.ShouldNotHaveValidationErrorFor(a => a.NCZ);
         }
 
         [TestMethod]
@@ -405,11 +409,11 @@
         {
             var model = new Properties()
             {
-                Persimp = null
+                PERSIMP = null,
             };
 
             var result = this.validator.TestValidate(model);
-            result.ShouldHaveValidationErrorFor(a => a.Persimp);
+            result.ShouldHaveValidationErrorFor(a => a.PERSIMP);
         }
 
         [TestMethod]
@@ -417,11 +421,11 @@
         {
             var model = new Properties()
             {
-                Persimp = 3
+                PERSIMP = 3,
             };
 
             var result = this.validator.TestValidate(model);
-            result.ShouldNotHaveValidationErrorFor(a => a.Persimp);
+            result.ShouldNotHaveValidationErrorFor(a => a.PERSIMP);
         }
 
         [TestMethod]
@@ -429,11 +433,11 @@
         {
             var model = new Properties()
             {
-                Persimp = 0
+                PERSIMP = 0,
             };
 
             var result = this.validator.TestValidate(model);
-            result.ShouldHaveValidationErrorFor(a => a.Persimp);
+            result.ShouldHaveValidationErrorFor(a => a.PERSIMP);
         }
 
         [TestMethod]
@@ -441,11 +445,11 @@
         {
             var model = new Properties()
             {
-                Persimp = 2
+                PERSIMP = 2,
             };
 
             var result = this.validator.TestValidate(model);
-            result.ShouldNotHaveValidationErrorFor(a => a.Persimp);
+            result.ShouldNotHaveValidationErrorFor(a => a.PERSIMP);
         }
     }
 }

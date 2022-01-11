@@ -1,16 +1,6 @@
-﻿// ***********************************************************************
-// Assembly         : Library.DomainLayer
-// Author           : costa
-// Created          : 12-06-2021
-//
-// Last Modified By : costa
-// Last Modified On : 01-06-2022
-// ***********************************************************************
-// <copyright file="Account.cs" company="Library.DomainLayer">
-//     Copyright (c) . All rights reserved.
+﻿// <copyright file="Account.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Library.DomainLayer.Person
 {

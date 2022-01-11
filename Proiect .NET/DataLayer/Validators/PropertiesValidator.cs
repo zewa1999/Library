@@ -1,16 +1,6 @@
-﻿// ***********************************************************************
-// Assembly         : Library
-// Author           : costa
-// Created          : 01-06-2022
-//
-// Last Modified By : costa
-// Last Modified On : 01-06-2022
-// ***********************************************************************
-// <copyright file="PropertiesValidator.cs" company="Library">
-//     Copyright (c) . All rights reserved.
+﻿// <copyright file="PropertiesValidator.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 /// <summary>
 /// The Validators namespace.
@@ -32,34 +22,34 @@ namespace Library.DataLayer.Validators
         /// </summary>
         public PropertiesValidator()
         {
-            this.RuleFor(p => p.Domenii)
+            this.RuleFor(p => p.DOMENII)
             .NotNull().WithMessage("Null {PropertyName}")
             .GreaterThanOrEqualTo(1);
-            this.RuleFor(p => p.NrMaximCartiImprumutate)
+            this.RuleFor(p => p.C)
                 .NotNull().WithMessage("Null {PropertyName}")
                 .GreaterThanOrEqualTo(1);
-            this.RuleFor(p => p.Perioada)
+            this.RuleFor(p => p.PER)
                 .NotNull().WithMessage("Null {PropertyName}")
                 .GreaterThanOrEqualTo(1);
-            this.RuleFor(p => p.NrMaximCartiImprumutateAcelasiDomeniu)
+            this.RuleFor(p => p.D)
                 .NotNull().WithMessage("Null {PropertyName}")
                 .GreaterThanOrEqualTo(1);
-            this.RuleFor(p => p.NumarMaximCarti)
+            this.RuleFor(p => p.NMC)
                 .NotNull().WithMessage("Null {PropertyName}")
                 .GreaterThanOrEqualTo(1);
             this.RuleFor(p => p.L)
                 .NotNull().WithMessage("Null {PropertyName}")
                 .GreaterThanOrEqualTo(1);
-            this.RuleFor(p => p.LimitaMaximaImprumut)
+            this.RuleFor(p => p.LIM)
                 .NotNull().WithMessage("Null {PropertyName}")
                 .GreaterThanOrEqualTo(1);
-            this.RuleFor(p => p.Delta)
+            this.RuleFor(p => p.DELTA)
                 .NotNull().WithMessage("Null {PropertyName}")
                 .GreaterThanOrEqualTo(1);
-            this.RuleFor(p => p.NumarCartiImprumutateZilnic)
+            this.RuleFor(p => p.NCZ)
                 .NotNull().WithMessage("Null {PropertyName}")
                 .GreaterThanOrEqualTo(1);
-            this.RuleFor(p => p.Persimp)
+            this.RuleFor(p => p.PERSIMP)
                 .NotNull().WithMessage("Null {PropertyName}")
                 .GreaterThanOrEqualTo(1);
         }

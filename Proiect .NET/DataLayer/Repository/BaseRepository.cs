@@ -1,29 +1,20 @@
-﻿// ***********************************************************************
-// Assembly         : Library
-// Author           : costa
-// Created          : 01-06-2022
-//
-// Last Modified By : costa
-// Last Modified On : 01-09-2022
-// ***********************************************************************
-// <copyright file="BaseRepository.cs" company="Library">
-//     Copyright (c) . All rights reserved.
+﻿// <copyright file="BaseRepository.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
+
 /// <summary>
 /// The DataLayer namespace.
 /// </summary>
 namespace Library.DataLayer
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Linq.Expressions;
     using Library.DataLayer.DataMapper;
     using Library.DataLayer.Interfaces;
     using Microsoft.EntityFrameworkCore;
     using NLog;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Linq.Expressions;
 
     /// <summary>
     /// Abstract class to be inherited to implement the CRUD operation for an entity.
@@ -33,11 +24,14 @@ namespace Library.DataLayer
         where T : class
     {
         /// <summary>
-        /// The logger
+        /// The CTX.
+        /// </summary>
+        protected readonly LibraryContext ctx = new LibraryContext();
+
+        /// <summary>
+        /// The logger.
         /// </summary>
         protected readonly Logger logger = LogManager.GetCurrentClassLogger();
-
-        protected readonly LibraryContext ctx = new LibraryContext();
 
         /// <summary>
         /// Gets the specified filter.
@@ -52,7 +46,7 @@ namespace Library.DataLayer
         {
             try
             {
-                var databaseSet = ctx.Set<T>();
+                var databaseSet = this.ctx.Set<T>();
 
                 IQueryable<T> query = databaseSet;
 
@@ -92,9 +86,9 @@ namespace Library.DataLayer
         {
             try
             {
-                var databaseSet = ctx.Set<T>();
+                var databaseSet = this.ctx.Set<T>();
                 databaseSet.Add(entity);
-                ctx.SaveChanges();
+                this.ctx.SaveChanges();
 
                 entity = null;
             }
@@ -116,11 +110,11 @@ namespace Library.DataLayer
         {
             try
             {
-                var databaseSet = ctx.Set<T>();
+                var databaseSet = this.ctx.Set<T>();
                 databaseSet.Attach(item);
-                ctx.Entry(item).State = EntityState.Modified;
+                this.ctx.Entry(item).State = EntityState.Modified;
 
-                ctx.SaveChanges();
+                this.ctx.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -160,16 +154,16 @@ namespace Library.DataLayer
         {
             try
             {
-                var dbSet = ctx.Set<T>();
+                var dbSet = this.ctx.Set<T>();
 
-                if (ctx.Entry(entityToDelete).State == EntityState.Detached)
+                if (this.ctx.Entry(entityToDelete).State == EntityState.Detached)
                 {
                     dbSet.Attach(entityToDelete);
                 }
 
                 dbSet.Remove(entityToDelete);
 
-                ctx.SaveChanges();
+                this.ctx.SaveChanges();
             }
             catch (Exception ex)
             {
@@ -188,7 +182,7 @@ namespace Library.DataLayer
         {
             try
             {
-                return ctx.Set<T>().Find(id);
+                return this.ctx.Set<T>().Find(id);
             }
             catch (Exception ex)
             {

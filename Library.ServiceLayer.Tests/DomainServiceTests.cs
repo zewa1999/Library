@@ -1,16 +1,6 @@
-﻿// ***********************************************************************
-// Assembly         : Library.ServiceLayer.Tests
-// Author           : costa
-// Created          : 01-07-2022
-//
-// Last Modified By : costa
-// Last Modified On : 01-09-2022
-// ***********************************************************************
-// <copyright file="DomainServiceTests.cs" company="Library.ServiceLayer.Tests">
-//     Copyright (c) . All rights reserved.
+﻿// <copyright file="DomainServiceTests.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Library.ServiceLayer.Tests
 {
@@ -56,7 +46,7 @@ namespace Library.ServiceLayer.Tests
             {
                 Name = "Stiinta",
                 ParentDomain = null,
-                ChildrenDomains = new List<Domain>()
+                ChildrenDomains = new List<Domain>(),
             };
 
             this.domainServiceMock.Setup(x => x.Insert(domain)).Returns(true);
@@ -77,7 +67,7 @@ namespace Library.ServiceLayer.Tests
             {
                 Name = "Stiinta",
                 ParentDomain = null,
-                ChildrenDomains = new List<Domain>()
+                ChildrenDomains = new List<Domain>(),
             };
 
             this.domainServiceMock.Setup(x => x.GetAll(null, book => book.OrderBy(x => x.Id), null))
@@ -104,7 +94,7 @@ namespace Library.ServiceLayer.Tests
                 Id = 1,
                 Name = "Stiinta",
                 ParentDomain = null,
-                ChildrenDomains = new List<Domain>()
+                ChildrenDomains = new List<Domain>(),
             };
             this.domainServiceMock.Setup(x => x.GetByID(1))
                 .Returns(domain);
@@ -130,7 +120,7 @@ namespace Library.ServiceLayer.Tests
             {
                 Name = "Stiinta",
                 ParentDomain = null,
-                ChildrenDomains = new List<Domain>()
+                ChildrenDomains = new List<Domain>(),
             };
 
             this.domainServiceMock.Setup(x => x.GetByID(1))

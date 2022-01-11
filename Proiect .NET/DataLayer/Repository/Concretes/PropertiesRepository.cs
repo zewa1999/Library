@@ -1,27 +1,17 @@
-﻿// ***********************************************************************
-// Assembly         : Library
-// Author           : costa
-// Created          : 01-06-2022
-//
-// Last Modified By : costa
-// Last Modified On : 01-06-2022
-// ***********************************************************************
-// <copyright file="PropertiesRepository.cs" company="Library">
-//     Copyright (c) . All rights reserved.
+﻿// <copyright file="PropertiesRepository.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
-using Library.DataLayer.DataMapper;
-using Library.DataLayer.Interfaces;
-using Library.DomainLayer;
-using System;
-using System.Linq;
 
 /// <summary>
 /// The Concretes namespace.
 /// </summary>
 namespace Library.DataLayer.Concretes
 {
+    using Library.DataLayer.Interfaces;
+    using Library.DomainLayer;
+    using System;
+    using System.Linq;
+
     /// <summary>
     /// Class PropertiesRepository.
     /// Implements the <see cref="Library.DataLayer.BaseRepository{Library.DomainLayer.Properties}" />
@@ -38,12 +28,12 @@ namespace Library.DataLayer.Concretes
         {
             try
             {
-                var lastPropertiesId = ctx.Properties.Max(x => x.Id);
-                return ctx.Properties.FirstOrDefault(x => x.Id == lastPropertiesId);
+                var lastPropertiesId = this.ctx.Properties.Max(x => x.Id);
+                return this.ctx.Properties.FirstOrDefault(x => x.Id == lastPropertiesId);
             }
             catch (Exception ex)
             {
-                logger.Error(ex.Message + "The query could not been made!");
+                this.logger.Error(ex.Message + "The query could not been made!");
             }
             return new Properties();
         }

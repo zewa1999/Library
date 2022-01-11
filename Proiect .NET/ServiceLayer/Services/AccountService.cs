@@ -1,16 +1,6 @@
-﻿// ***********************************************************************
-// Assembly         : Library.ServiceLayer
-// Author           : costa
-// Created          : 12-17-2021
-//
-// Last Modified By : costa
-// Last Modified On : 01-09-2022
-// ***********************************************************************
-// <copyright file="AccountService.cs" company="Library.ServiceLayer">
-//     Copyright (c) . All rights reserved.
+﻿// <copyright file="AccountService.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Library.ServiceLayer.Services
 {
@@ -35,7 +25,7 @@ namespace Library.ServiceLayer.Services
         public AccountService()
             : base(Injector.Create<IAccountRepository>(), Injector.Create<IPropertiesRepository>())
         {
-            this._validator = new AccountValidator();
+            this.validator = new AccountValidator();
         }
     }
 }

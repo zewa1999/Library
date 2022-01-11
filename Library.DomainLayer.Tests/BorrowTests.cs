@@ -1,4 +1,8 @@
-﻿namespace Library.DomainLayer.Tests.PersonTests
+﻿// <copyright file="BorrowTests.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
+// </copyright>
+
+namespace Library.DomainLayer.Tests.PersonTests
 {
     using Library.DomainLayer.Person;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -23,13 +27,13 @@
             borrower.Account = new()
             {
                 PhoneNumber = "0724525672",
-                Email = "vali@mail.com"
+                Email = "vali@mail.com",
             };
 
             this.borrow = new()
             {
                 Borrower = borrower,
-                BorrowedBooks = null
+                BorrowedBooks = null,
             };
 
             Assert.IsNotNull(this.borrow.Borrower);
@@ -51,7 +55,7 @@
             {
                 Name = "Informatica",
                 ParentDomain = null,
-                ChildrenDomains = null
+                ChildrenDomains = null,
             };
 
             var domainsList = new List<Domain>();
@@ -62,7 +66,7 @@
                 Publisher = "Casa de carti marcel dorel",
                 Year = "1987",
                 EditionNumber = 1,
-                NumberOfPages = 200
+                NumberOfPages = 200,
             };
 
             var editionsList = new List<Edition>();
@@ -76,13 +80,13 @@
                 LecturesOnlyBook = false,
                 Authors = authorsList,
                 Domains = domainsList,
-                Editions = editionsList
+                Editions = editionsList,
             });
 
             this.borrow = new()
             {
                 Borrower = null,
-                BorrowedBooks = borrowedBooks
+                BorrowedBooks = borrowedBooks,
             };
 
             Assert.IsNotNull(this.borrow.BorrowedBooks);

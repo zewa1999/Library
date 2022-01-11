@@ -1,16 +1,6 @@
-﻿// ***********************************************************************
-// Assembly         : Library.ServiceLayer.Tests
-// Author           : costa
-// Created          : 01-07-2022
-//
-// Last Modified By : costa
-// Last Modified On : 01-09-2022
-// ***********************************************************************
-// <copyright file="EditionServiceTests.cs" company="Library.ServiceLayer.Tests">
-//     Copyright (c) . All rights reserved.
+﻿// <copyright file="EditionServiceTests.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 namespace Library.ServiceLayer.Tests
 {
@@ -57,7 +47,7 @@ namespace Library.ServiceLayer.Tests
                 Publisher = "Cartea studentilor saraci",
                 Year = "1999",
                 EditionNumber = int.MaxValue,
-                NumberOfPages = 1
+                NumberOfPages = 1,
             };
 
             this.editionServiceMock.Setup(x => x.Insert(edition)).Returns(true);
@@ -81,7 +71,7 @@ namespace Library.ServiceLayer.Tests
                 Publisher = "Cartea studentilor saraci",
                 Year = "1999",
                 EditionNumber = int.MaxValue,
-                NumberOfPages = 1}
+                NumberOfPages = 1},
                 });
 
             this.editionService = this.editionServiceMock.Object;
@@ -105,7 +95,7 @@ namespace Library.ServiceLayer.Tests
                     Publisher = "Cartea studentilor saraci",
                     Year = "1999",
                     EditionNumber = int.MaxValue,
-                    NumberOfPages = 1
+                    NumberOfPages = 1,
                 });
 
             this.editionService = this.editionServiceMock.Object;
@@ -131,7 +121,7 @@ namespace Library.ServiceLayer.Tests
                     Publisher = "Cartea studentilor saraci",
                     Year = "1999",
                     EditionNumber = int.MaxValue,
-                    NumberOfPages = 1
+                    NumberOfPages = 1,
                 });
 
             this.editionService = this.editionServiceMock.Object;

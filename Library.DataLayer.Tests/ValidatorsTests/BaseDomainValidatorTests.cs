@@ -1,4 +1,4 @@
-﻿// <copyright file="DomainValidatorTests.cs" company="Transilvania University of Brasov">
+﻿// <copyright file="BaseDomainValidatorTests.cs" company="Transilvania University of Brasov">
 // Costache Stelian-Andrei
 // </copyright>
 
@@ -10,9 +10,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
-    public class DomainValidatorTests
+    public class BaseDomainValidatorTests
     {
-        private DomainValidator validator;
+        private BaseDomainValidator validator;
 
         [TestInitialize]
         public void Initialize()

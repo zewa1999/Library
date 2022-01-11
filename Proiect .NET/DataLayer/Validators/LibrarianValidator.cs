@@ -1,16 +1,6 @@
-﻿// ***********************************************************************
-// Assembly         : Library
-// Author           : costa
-// Created          : 01-06-2022
-//
-// Last Modified By : costa
-// Last Modified On : 01-06-2022
-// ***********************************************************************
-// <copyright file="LibrarianValidator.cs" company="Library">
-//     Copyright (c) . All rights reserved.
+﻿// <copyright file="LibrarianValidator.cs" company="Transilvania University of Brasov">
+// Costache Stelian-Andrei
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
 
 /// <summary>
 /// The Validators namespace.
@@ -32,7 +22,7 @@ namespace Library.DataLayer.Validators
         /// </summary>
         public LibrarianValidator()
         {
-            RuleFor(l => l.IsReader)
+            this.RuleFor(l => l.IsReader)
                 .NotNull().WithMessage("Null {PropertyName}");
             this.Include(new BorrowerValidator());
         }
