@@ -4,6 +4,10 @@
 
 namespace Library.ServiceLayer.Services
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Linq.Expressions;
     using FluentValidation;
     using FluentValidation.Results;
     using Library.DataLayer.Interfaces;
@@ -11,25 +15,21 @@ namespace Library.ServiceLayer.Services
     using Library.DomainLayer;
     using Library.ServiceLayer.IServices;
     using Proiect_.NET.Injection;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Linq.Expressions;
 
     /// <summary>
     /// Class PropertiesService.
-    /// Implements the <see cref="Library.ServiceLayer.IServices.IPropertiesService" />
+    /// Implements the <see cref="Library.ServiceLayer.IServices.IPropertiesService" />.
     /// </summary>
     /// <seealso cref="Library.ServiceLayer.IServices.IPropertiesService" />
     public class PropertiesService : IPropertiesService
     {
         /// <summary>
-        /// The validator
+        /// The validator.
         /// </summary>
         private readonly IValidator validator;
 
         /// <summary>
-        /// The repository
+        /// The repository.
         /// </summary>
         private readonly IPropertiesRepository repository;
 
@@ -47,7 +47,7 @@ namespace Library.ServiceLayer.Services
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-        /// <exception cref="NotImplementedException"></exception>
+        /// <exception cref="NotImplementedException"> o exceptie. </exception>
         public bool Delete(Properties entity)
         {
             return this.repository.Delete(entity);
@@ -66,7 +66,12 @@ namespace Library.ServiceLayer.Services
         /// <summary>
         /// Gets all.
         /// </summary>
-        public IEnumerable<Properties> GetAll(Expression<Func<Properties, bool>> filter = null,
+        /// /// <param name="filter"> The filter. </param>
+        /// <param name="orderBy"> The order by. </param>
+        /// <param name="includeProperties"> The include properties. </param>
+        /// <returns> ceva. </returns>
+        public IEnumerable<Properties> GetAll(
+            Expression<Func<Properties, bool>> filter = null,
             Func<IQueryable<Properties>, IOrderedQueryable<Properties>> orderBy = null,
             string includeProperties = "")
         {
@@ -77,6 +82,7 @@ namespace Library.ServiceLayer.Services
         /// Gets the by identifier.
         /// </summary>
         /// <param name="id">The identifier.</param>
+        /// <returns> ceva. </returns>
         public Properties GetByID(object id)
         {
             return this.repository.GetByID(id);
@@ -86,6 +92,7 @@ namespace Library.ServiceLayer.Services
         /// Inserts the specified entity.
         /// </summary>
         /// <param name="entity"> The entity. </param>
+        /// <returns> ceva. </returns>
         public bool Insert(Properties entity)
         {
             var context = new ValidationContext<Properties>(entity);
@@ -103,6 +110,7 @@ namespace Library.ServiceLayer.Services
         /// Updates the specified entity.
         /// </summary>
         /// <param name="entity"> The entity. </param>
+        /// <returns> ceva. </returns>
         public bool Update(Properties entity)
         {
             var context = new ValidationContext<Properties>(entity);

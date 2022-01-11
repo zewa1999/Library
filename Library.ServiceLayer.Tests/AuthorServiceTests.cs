@@ -4,12 +4,12 @@
 
 namespace Library.ServiceLayer.Tests
 {
+    using System.Collections.Generic;
+    using System.Linq;
     using Library.DomainLayer;
     using Library.ServiceLayer.IServices;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Moq;
-    using System.Collections.Generic;
-    using System.Linq;
 
     /// <summary>
     /// Defines test class AuthorServiceTests.
@@ -18,12 +18,12 @@ namespace Library.ServiceLayer.Tests
     public class AuthorServiceTests
     {
         /// <summary>
-        /// The author service mock
+        /// The author service mock.
         /// </summary>
         private Mock<IAuthorService> authorServiceMock;
 
         /// <summary>
-        /// The author service
+        /// The author service.
         /// </summary>
         private IAuthorService authorService;
 
@@ -65,7 +65,9 @@ namespace Library.ServiceLayer.Tests
             this.authorServiceMock.Setup(x => x.GetAll(null, book => book.OrderBy(x => x.Id), null))
                 .Returns(
                 new List<Author>()
-                { new Author {
+                {
+                    new Author
+                {
                 FirstName = "Marcel",
                 LastName = "Dorel",
                 },

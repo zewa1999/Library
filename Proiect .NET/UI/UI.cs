@@ -4,13 +4,13 @@
 
 namespace Proiect_.NET.UI
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using Library.DomainLayer;
     using Library.DomainLayer.Person;
     using Library.ServiceLayer.Services;
     using Proiect_.NET.Injection;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
 
     /// <summary>
     /// Class UI.
@@ -615,78 +615,5 @@ namespace Proiect_.NET.UI
 
             return true;
         }
-
-        //{
-        //    private static readonly List<string> Menu1 = new List<string>()
-        //    {
-        //        "    1. List all...",
-        //        "    2. Add new...",
-        //        "    3. Update...",
-        //        "    4. Delete...",
-        //        "    0. Exit App...",
-        //    };
-
-        //    private static readonly List<string> Menu2 = new List<string>()
-        //    {
-        //        "    1. ...books",
-        //        "    2. ...domains",
-        //        "    3. ...authors",
-        //        "    4. ...editions",
-        //        "    5. ...users",
-        //        "    6. ...borrowed books",
-        //        "    7. ...thresholds",
-        //        "    0. Back",
-        //    };
-
-        //    private static void Main(string[] args)
-        //    {
-        //        int selectedAction = 0, selectedItem = 0, exit = 0;
-
-        //        while (exit != 1)
-        //        {
-        //            do
-        //            {
-        //                Console.Clear();
-        //                Console.WriteLine("\n Hello user!\n");
-        //                PrintMenu(Menu1);
-        //                selectedAction = Convert.ToInt32(Console.ReadLine());
-        //            }
-        //            while (selectedAction < 0 || selectedAction > Menu1.Count);
-
-        //            if (selectedAction == 0)
-        //            {
-        //                exit = 1;
-        //            }
-        //            else
-        //            {
-        //                do
-        //                {
-        //                    Console.Clear();
-        //                    PrintMenu(Menu2);
-        //                    selectedItem = Convert.ToInt32(Console.ReadLine());
-        //                }
-        //                while (selectedItem < 0 || selectedItem > Menu2.Count);
-
-        //                if (selectedItem != 0)
-        //                {
-        //                    Utils.ManageLibrary(selectedAction, selectedItem);
-
-        //                    Console.WriteLine("\n Done! Press any key to continue...");
-        //                }
-        //            }
-        //        }
-        //    }
-
-        //    private static void PrintMenu(List<string> menu)
-        //    {
-        //        Console.WriteLine("\n Choose an option:");
-
-        //        foreach (string menuItem in menu)
-        //        {
-        //            Console.WriteLine(menuItem);
-        //        }
-
-        //        Console.Write("\n Option: ");
-        //    }
     }
 }

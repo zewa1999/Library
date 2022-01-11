@@ -13,7 +13,7 @@ namespace Library.ServiceLayer.Services
     /// <summary>
     /// Class DomainService.
     /// Implements the <see cref="Library.ServiceLayer.Services.BaseService{Library.DomainLayer.Domain, Library.DataLayer.Interfaces.IDomainRepository}" />
-    /// Implements the <see cref="Library.ServiceLayer.IServices.IDomainService" />
+    /// Implements the <see cref="Library.ServiceLayer.IServices.IDomainService" />.
     /// </summary>
     /// <seealso cref="Library.ServiceLayer.Services.BaseService{Library.DomainLayer.Domain, Library.DataLayer.Interfaces.IDomainRepository}" />
     /// <seealso cref="Library.ServiceLayer.IServices.IDomainService" />
@@ -25,17 +25,18 @@ namespace Library.ServiceLayer.Services
         public DomainService()
              : base(Injector.Create<IDomainRepository>(), Injector.Create<IPropertiesRepository>())
         {
-            this.validator = new DomainValidator();
+            this.Validator = new DomainValidator();
         }
 
+        /// <inheritdoc/>
         public override bool Insert(Domain entity)
         {
             if (entity.ParentDomain == null)
             {
-                this.validator = new BaseDomainValidator();
+                this.Validator = new BaseDomainValidator();
             }
 
-            var result = this.validator.Validate(entity);
+            var result = this.Validator.Validate(entity);
             var isValid = false;
             if (result.IsValid)
             {
@@ -49,10 +50,10 @@ namespace Library.ServiceLayer.Services
 
             if (isValid == true)
             {
-                this.repository.Insert(entity);
+                this.Repository.Insert(entity);
             }
 
-            this.validator = new DomainValidator();
+            this.Validator = new DomainValidator();
             return true;
         }
     }

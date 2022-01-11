@@ -13,7 +13,7 @@ namespace Library.ServiceLayer.Services
     /// <summary>
     /// Class LibrarianService.
     /// Implements the <see cref="Library.ServiceLayer.Services.BaseService{Library.DomainLayer.Person.Librarian, Library.DataLayer.Interfaces.ILibrarianRepository}" />
-    /// Implements the <see cref="Library.ServiceLayer.IServices.ILibrarianService" />
+    /// Implements the <see cref="Library.ServiceLayer.IServices.ILibrarianService" />.
     /// </summary>
     /// <seealso cref="Library.ServiceLayer.Services.BaseService{Library.DomainLayer.Person.Librarian, Library.DataLayer.Interfaces.ILibrarianRepository}" />
     /// <seealso cref="Library.ServiceLayer.IServices.ILibrarianService" />
@@ -25,7 +25,7 @@ namespace Library.ServiceLayer.Services
         public LibrarianService()
             : base(Injector.Create<ILibrarianRepository>(), Injector.Create<IPropertiesRepository>())
         {
-            this.validator = new LibrarianValidator();
+            this.Validator = new LibrarianValidator();
         }
     }
 }

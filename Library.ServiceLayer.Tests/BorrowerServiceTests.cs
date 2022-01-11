@@ -4,12 +4,12 @@
 
 namespace Library.ServiceLayer.Tests
 {
+    using System.Collections.Generic;
+    using System.Linq;
     using Library.DomainLayer.Person;
     using Library.ServiceLayer.IServices;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Moq;
-    using System.Collections.Generic;
-    using System.Linq;
 
     /// <summary>
     /// Defines test class BorrowerServiceTests.
@@ -18,12 +18,12 @@ namespace Library.ServiceLayer.Tests
     public class BorrowerServiceTests
     {
         /// <summary>
-        /// The borrower service mock
+        /// The borrower service mock.
         /// </summary>
         private Mock<IBorrowerService> borrowerServiceMock;
 
         /// <summary>
-        /// The borrower service
+        /// The borrower service.
         /// </summary>
         private IBorrowerService borrowerService;
 
@@ -87,7 +87,7 @@ namespace Library.ServiceLayer.Tests
             this.borrowerServiceMock.Setup(x => x.GetAll(null, book => book.OrderBy(x => x.Id), null))
                 .Returns(
                 new List<Borrower>()
-                {borrower});
+                { borrower });
 
             this.borrowerService = this.borrowerServiceMock.Object;
 
@@ -128,7 +128,6 @@ namespace Library.ServiceLayer.Tests
             Assert.AreEqual(1, result.Id);
             Assert.AreEqual("Gogu", result.LastName);
             Assert.AreEqual("Mortu", result.FirstName);
-            // etc
         }
 
         /// <summary>

@@ -4,12 +4,12 @@
 
 namespace Library.ServiceLayer.Tests
 {
+    using System.Collections.Generic;
+    using System.Linq;
     using Library.DomainLayer;
     using Library.ServiceLayer.IServices;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Moq;
-    using System.Collections.Generic;
-    using System.Linq;
 
     /// <summary>
     /// Defines test class DomainServiceTests.
@@ -18,12 +18,12 @@ namespace Library.ServiceLayer.Tests
     public class DomainServiceTests
     {
         /// <summary>
-        /// The domain service mock
+        /// The domain service mock.
         /// </summary>
         private Mock<IDomainService> domainServiceMock;
 
         /// <summary>
-        /// The domain service
+        /// The domain service.
         /// </summary>
         private IDomainService domainService;
 
@@ -73,7 +73,7 @@ namespace Library.ServiceLayer.Tests
             this.domainServiceMock.Setup(x => x.GetAll(null, book => book.OrderBy(x => x.Id), null))
                 .Returns(
                 new List<Domain>()
-                {domain});
+                { domain });
 
             this.domainService = this.domainServiceMock.Object;
 
@@ -107,7 +107,6 @@ namespace Library.ServiceLayer.Tests
             Assert.AreEqual(1, result.Id);
             Assert.AreEqual("Stiinta", result.Name);
             Assert.IsNull(result.ParentDomain);
-            // etc
         }
 
         /// <summary>

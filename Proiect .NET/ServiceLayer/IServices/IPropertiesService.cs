@@ -8,7 +8,7 @@ namespace Library.ServiceLayer.IServices
 
     /// <summary>
     /// Interface IPropertiesService
-    /// Implements the <see cref="Library.ServiceLayer.IServices.IBaseService{Library.DomainLayer.Properties}" />
+    /// Implements the <see cref="Library.ServiceLayer.IServices.IBaseService{Library.DomainLayer.Properties}" />.
     /// </summary>
     /// <seealso cref="Library.ServiceLayer.IServices.IBaseService{Library.DomainLayer.Properties}" />
     public interface IPropertiesService : IBaseService<Properties>

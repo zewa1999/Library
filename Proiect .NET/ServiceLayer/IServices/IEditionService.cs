@@ -8,7 +8,7 @@ namespace Library.ServiceLayer.IServices
 
     /// <summary>
     /// Interface IEditionService
-    /// Implements the <see cref="Library.ServiceLayer.IServices.IBaseService{Library.DomainLayer.Edition}" />
+    /// Implements the <see cref="Library.ServiceLayer.IServices.IBaseService{Library.DomainLayer.Edition}" />.
     /// </summary>
     /// <seealso cref="Library.ServiceLayer.IServices.IBaseService{Library.DomainLayer.Edition}" />
     public interface IEditionService : IBaseService<Edition>

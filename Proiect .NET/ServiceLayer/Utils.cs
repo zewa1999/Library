@@ -13,7 +13,7 @@ namespace Library.ServiceLayer
     public static class Utils
     {
         /// <summary>
-        /// The logger
+        /// The logger.
         /// </summary>
         private static Logger logger = LogManager.GetCurrentClassLogger();
 
@@ -30,8 +30,10 @@ namespace Library.ServiceLayer
                 {
                     logger.Error($"{error.ErrorMessage}");
                 }
+
                 return false;
             }
+
             return true;
         }
     }

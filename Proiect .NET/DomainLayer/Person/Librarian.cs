@@ -8,7 +8,7 @@ namespace Library.DomainLayer.Person
 
     /// <summary>
     /// Class Librarian.
-    /// Implements the <see cref="Library.DomainLayer.Person.Borrower" />
+    /// Implements the <see cref="Library.DomainLayer.Person.Borrower" />.
     /// </summary>
     /// <seealso cref="Library.DomainLayer.Person.Borrower" />
     public class Librarian : Borrower

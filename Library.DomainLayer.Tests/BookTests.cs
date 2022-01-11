@@ -1,24 +1,46 @@
-﻿// <copyright file="BookTests.cs" company="Transilvania University of Brasov">
-// Costache Stelian-Andrei
+﻿// ***********************************************************************
+// Assembly         : Library.DomainLayer.Tests
+// Author           : costa
+// Created          : 01-06-2022
+//
+// Last Modified By : costa
+// Last Modified On : 01-11-2022
+// ***********************************************************************
+// <copyright file="BookTests.cs" company="Transilvania University of Brasov">
+//     Costache Stelian-Andrei
 // </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 namespace Library.DomainLayer.Tests
 {
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System.Collections.Generic;
     using System.Linq;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    /// <summary>
+    /// Defines test class BookTests.
+    /// </summary>
     [TestClass]
     public class BookTests
     {
+        /// <summary>
+        /// The book.
+        /// </summary>
         private Book book;
 
+        /// <summary>
+        /// Initializes this instance.
+        /// </summary>
         [TestInitialize]
         public void Initialize()
         {
-            this.book = new();
+            this.book = new ();
         }
 
+        /// <summary>
+        /// Defines the test method TitleShouldBeValid.
+        /// </summary>
         [TestMethod]
         public void TitleShouldBeValid()
         {
@@ -28,6 +50,9 @@ namespace Library.DomainLayer.Tests
             Assert.IsFalse(isIntString);
         }
 
+        /// <summary>
+        /// Defines the test method TitleShouldNotHaveDigits.
+        /// </summary>
         [TestMethod]
         public void TitleShouldNotHaveDigits()
         {
@@ -37,6 +62,9 @@ namespace Library.DomainLayer.Tests
             Assert.IsFalse(isIntString);
         }
 
+        /// <summary>
+        /// Defines the test method BookAuthorsFirstNameShouldBeValid.
+        /// </summary>
         [TestMethod]
         public void BookAuthorsFirstNameShouldBeValid()
         {
@@ -61,6 +89,9 @@ namespace Library.DomainLayer.Tests
             Assert.IsFalse(flag);
         }
 
+        /// <summary>
+        /// Defines the test method BookAuthorsLastNameShouldBeValid.
+        /// </summary>
         [TestMethod]
         public void BookAuthorsLastNameShouldBeValid()
         {
@@ -85,6 +116,9 @@ namespace Library.DomainLayer.Tests
             Assert.IsFalse(flag);
         }
 
+        /// <summary>
+        /// Defines the test method BookAuthorsShouldNotBeNull.
+        /// </summary>
         [TestMethod]
         public void BookAuthorsShouldNotBeNull()
         {
@@ -106,6 +140,9 @@ namespace Library.DomainLayer.Tests
             Assert.IsNotNull(this.book.Authors);
         }
 
+        /// <summary>
+        /// Defines the test method BookDomainsShouldNotBeNull.
+        /// </summary>
         [TestMethod]
         public void BookDomainsShouldNotBeNull()
         {
@@ -130,6 +167,9 @@ namespace Library.DomainLayer.Tests
             Assert.IsNotNull(this.book.Domains);
         }
 
+        /// <summary>
+        /// Defines the test method BookEditionsShouldNotBeNull.
+        /// </summary>
         [TestMethod]
         public void BookEditionsShouldNotBeNull()
         {
@@ -155,6 +195,9 @@ namespace Library.DomainLayer.Tests
             Assert.IsNotNull(this.book.Editions);
         }
 
+        /// <summary>
+        /// Defines the test method TypeShouldNotContainDigitsValid.
+        /// </summary>
         [TestMethod]
         public void TypeShouldNotContainDigitsValid()
         {
@@ -164,6 +207,9 @@ namespace Library.DomainLayer.Tests
             Assert.IsFalse(isIntString);
         }
 
+        /// <summary>
+        /// Defines the test method BookShouldBeBorrowable.
+        /// </summary>
         [TestMethod]
         public void BookShouldBeBorrowable()
         {
@@ -173,27 +219,43 @@ namespace Library.DomainLayer.Tests
                 Assert.IsTrue(true);
                 return;
             }
+
             Assert.IsTrue(false);
         }
 
+        /// <summary>
+        /// Defines the test method BookShouldNotBeBorrowable.
+        /// </summary>
         [TestMethod]
         public void BookShouldNotBeBorrowable()
         {
             this.book.LecturesOnlyBook = false;
             if (this.book.LecturesOnlyBook == true)
+            {
                 Assert.IsTrue(true);
+            }
+
             Assert.IsFalse(false);
         }
 
+        /// <summary>
+        /// Defines the test method BookShouldBeBorrowed.
+        /// </summary>
         [TestMethod]
         public void BookShouldBeBorrowed()
         {
             this.book.IsBorrowed = false;
             if (this.book.IsBorrowed == true)
+            {
                 Assert.IsTrue(true);
+            }
+
             Assert.IsFalse(false);
         }
 
+        /// <summary>
+        /// Defines the test method BookShouldNotBeBorrowed.
+        /// </summary>
         [TestMethod]
         public void BookShouldNotBeBorrowed()
         {
@@ -203,6 +265,7 @@ namespace Library.DomainLayer.Tests
                 Assert.IsTrue(true);
                 return;
             }
+
             Assert.IsFalse(false);
         }
     }

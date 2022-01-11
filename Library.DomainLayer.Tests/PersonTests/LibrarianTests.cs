@@ -1,24 +1,46 @@
-﻿// <copyright file="LibrarianTests.cs" company="Transilvania University of Brasov">
-// Costache Stelian-Andrei
+﻿// ***********************************************************************
+// Assembly         : Library.DomainLayer.Tests
+// Author           : costa
+// Created          : 01-11-2022
+//
+// Last Modified By : costa
+// Last Modified On : 01-11-2022
+// ***********************************************************************
+// <copyright file="LibrarianTests.cs" company="Transilvania University of Brasov">
+//     Costache Stelian-Andrei
 // </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 namespace Library.DomainLayer.Tests.PersonTests
 {
+    using System.Linq;
     using Library.DomainLayer.Person;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using System.Linq;
 
+    /// <summary>
+    /// Defines test class LibrarianTests.
+    /// </summary>
     [TestClass]
     public class LibrarianTests
     {
+        /// <summary>
+        /// The librarian.
+        /// </summary>
         private Librarian librarian;
 
+        /// <summary>
+        /// Initializes this instance.
+        /// </summary>
         [TestInitialize]
         public void Initialize()
         {
-            this.librarian = new();
+            this.librarian = new ();
         }
 
+        /// <summary>
+        /// Defines the test method BorrowerIdShouldBeValid.
+        /// </summary>
         [TestMethod]
         public void BorrowerIdShouldBeValid()
         {
@@ -26,6 +48,9 @@ namespace Library.DomainLayer.Tests.PersonTests
             Assert.AreEqual(1, this.librarian.Id);
         }
 
+        /// <summary>
+        /// Defines the test method LastNameShouldBeValid.
+        /// </summary>
         [TestMethod]
         public void LastNameShouldBeValid()
         {
@@ -34,6 +59,9 @@ namespace Library.DomainLayer.Tests.PersonTests
             Assert.IsTrue(isIntString);
         }
 
+        /// <summary>
+        /// Defines the test method LastNameShouldBeInvalid.
+        /// </summary>
         [TestMethod]
         public void LastNameShouldBeInvalid()
         {
@@ -42,6 +70,9 @@ namespace Library.DomainLayer.Tests.PersonTests
             Assert.IsFalse(isIntString);
         }
 
+        /// <summary>
+        /// Defines the test method FirstNameShouldBeValid.
+        /// </summary>
         [TestMethod]
         public void FirstNameShouldBeValid()
         {
@@ -50,6 +81,9 @@ namespace Library.DomainLayer.Tests.PersonTests
             Assert.IsTrue(isIntString);
         }
 
+        /// <summary>
+        /// Defines the test method FirstNameShouldBeInvalid.
+        /// </summary>
         [TestMethod]
         public void FirstNameShouldBeInvalid()
         {
@@ -58,7 +92,9 @@ namespace Library.DomainLayer.Tests.PersonTests
             Assert.IsFalse(isIntString);
         }
 
-        //Teste pentru fiecare tip
+        /// <summary>
+        /// Defines the test method AddressShouldBeValidIfContainsComma.
+        /// </summary>
         [TestMethod]
         public void AddressShouldBeValidIfContainsComma()
         {
@@ -68,6 +104,9 @@ namespace Library.DomainLayer.Tests.PersonTests
             Assert.IsTrue(flag1);
         }
 
+        /// <summary>
+        /// Defines the test method AddressShouldBeInvalidIfStreetDoesNotExist.
+        /// </summary>
         [TestMethod]
         public void AddressShouldBeInvalidIfStreetDoesNotExist()
         {
@@ -76,6 +115,9 @@ namespace Library.DomainLayer.Tests.PersonTests
             Assert.IsFalse(flag3);
         }
 
+        /// <summary>
+        /// Defines the test method AddressShouldBeInvalidIfNumberDoesNotExist.
+        /// </summary>
         [TestMethod]
         public void AddressShouldBeInvalidIfNumberDoesNotExist()
         {
@@ -84,6 +126,9 @@ namespace Library.DomainLayer.Tests.PersonTests
             Assert.IsTrue(flag);
         }
 
+        /// <summary>
+        /// Defines the test method AddressShouldBeInvalidIfApartmentBuildingDoesNotExist.
+        /// </summary>
         [TestMethod]
         public void AddressShouldBeInvalidIfApartmentBuildingDoesNotExist()
         {
@@ -92,16 +137,22 @@ namespace Library.DomainLayer.Tests.PersonTests
             Assert.IsTrue(flag);
         }
 
+        /// <summary>
+        /// Defines the test method AddressShouldBeInvalidIfAccountIsNull.
+        /// </summary>
         [TestMethod]
         public void AddressShouldBeInvalidIfAccountIsNull()
         {
             Assert.IsNull(this.librarian.Account);
         }
 
+        /// <summary>
+        /// Defines the test method BorrowerAccountShouldBeInvalidIfPhoneNumberIsInvalidAndEmailIsInvalid.
+        /// </summary>
         [TestMethod]
         public void BorrowerAccountShouldBeInvalidIfPhoneNumberIsInvalidAndEmailIsInvalid()
         {
-            this.librarian.Account = new()
+            this.librarian.Account = new ()
             {
                 PhoneNumber = "073452531nnns",
                 Email = "123mail.com",
@@ -131,10 +182,13 @@ namespace Library.DomainLayer.Tests.PersonTests
             Assert.IsFalse(emailFlag);
         }
 
+        /// <summary>
+        /// Defines the test method BorrowerAccountShouldBeInvalidIfPhoneNumberIsInvalidAndEmailIsValid.
+        /// </summary>
         [TestMethod]
         public void BorrowerAccountShouldBeInvalidIfPhoneNumberIsInvalidAndEmailIsValid()
         {
-            this.librarian.Account = new()
+            this.librarian.Account = new ()
             {
                 PhoneNumber = "073452531nnns",
                 Email = "validemail@ceva.com",
@@ -165,10 +219,13 @@ namespace Library.DomainLayer.Tests.PersonTests
             Assert.IsTrue(emailFlag);
         }
 
+        /// <summary>
+        /// Defines the test method BorrowerAccountShouldBeInvalidIfPhoneNumberIsValidAndEmailIsInvalid.
+        /// </summary>
         [TestMethod]
         public void BorrowerAccountShouldBeInvalidIfPhoneNumberIsValidAndEmailIsInvalid()
         {
-            this.librarian.Account = new()
+            this.librarian.Account = new ()
             {
                 PhoneNumber = "0724525672",
                 Email = "invalidemail.com",
@@ -198,10 +255,13 @@ namespace Library.DomainLayer.Tests.PersonTests
             Assert.IsFalse(emailFlag);
         }
 
+        /// <summary>
+        /// Defines the test method BorrowerAccountShouldBeValidIfPhoneNumberIsValidAndEmailIsValid.
+        /// </summary>
         [TestMethod]
         public void BorrowerAccountShouldBeValidIfPhoneNumberIsValidAndEmailIsValid()
         {
-            this.librarian.Account = new()
+            this.librarian.Account = new ()
             {
                 PhoneNumber = "0724525672",
                 Email = "validmail@ceva.com",
@@ -232,15 +292,24 @@ namespace Library.DomainLayer.Tests.PersonTests
             Assert.IsTrue(emailFlag);
         }
 
+        /// <summary>
+        /// Defines the test method LibrarianShouldBeReader.
+        /// </summary>
         [TestMethod]
         public void LibrarianShouldBeReader()
         {
             this.librarian.IsReader = false;
             if (this.librarian.IsReader == true)
+            {
                 Assert.IsTrue(true);
+            }
+
             Assert.IsFalse(false);
         }
 
+        /// <summary>
+        /// Defines the test method LibrarianShouldNotBeReader.
+        /// </summary>
         [TestMethod]
         public void LibrarianShouldNotBeReader()
         {
@@ -250,6 +319,7 @@ namespace Library.DomainLayer.Tests.PersonTests
                 Assert.IsTrue(true);
                 return;
             }
+
             Assert.IsFalse(false);
         }
     }

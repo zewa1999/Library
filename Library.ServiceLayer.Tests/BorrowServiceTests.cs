@@ -4,13 +4,13 @@
 
 namespace Library.ServiceLayer.Tests
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using Library.DomainLayer;
     using Library.ServiceLayer.IServices;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Moq;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
 
     /// <summary>
     /// Defines test class BorrowServiceTests.
@@ -19,12 +19,12 @@ namespace Library.ServiceLayer.Tests
     public class BorrowServiceTests
     {
         /// <summary>
-        /// The borrow service mock
+        /// The borrow service mock.
         /// </summary>
         private Mock<IBorrowService> borrowServiceMock;
 
         /// <summary>
-        /// The borrow service
+        /// The borrow service.
         /// </summary>
         private IBorrowService borrowService;
 
@@ -61,7 +61,7 @@ namespace Library.ServiceLayer.Tests
             this.borrowServiceMock.Setup(x => x.GetAll(null, book => book.OrderBy(x => x.Id), null))
                 .Returns(
                 new List<Borrow>()
-                {TestUtils.GetBorrowModel()});
+                { TestUtils.GetBorrowModel() });
 
             this.borrowService = this.borrowServiceMock.Object;
 
@@ -123,69 +123,6 @@ namespace Library.ServiceLayer.Tests
             var result = this.borrowService.DeleteById(1);
 
             Assert.IsTrue(result);
-        }
-
-        /// <summary>
-        /// Tests the get number of borrowed books.
-        /// </summary>
-        public void TestGetNumberOfBorrowedBooks()
-        {
-        }
-
-        /// <summary>
-        /// Tests the get maximum period of time for borrowing.
-        /// </summary>
-        public void TestGetMaximumPeriodOfTimeForBorrowing()
-        {
-        }
-
-        /// <summary>
-        /// Tests the check lim.
-        /// </summary>
-        public void TestCheckLIM()
-        {
-        }
-
-        /// <summary>
-        /// Tests the check same book borrowing in a delta time.
-        /// </summary>
-        public void TestCheckSameBookBorrowingInADeltaTime()
-        {
-        }
-
-        /// <summary>
-        /// Tests the check no of books of the same domain.
-        /// </summary>
-        public void TestCheckNoOfBooksOfTheSameDomain()
-        {
-        }
-
-        /// <summary>
-        /// Tests the check if books are borrowable.
-        /// </summary>
-        public void TestCheckIfBooksAreBorrowable()
-        {
-        }
-
-        /// <summary>
-        /// Tests the can borrow book.
-        /// </summary>
-        public void TestCanBorrowBook()
-        {
-        }
-
-        /// <summary>
-        /// Tests the check distinct categories.
-        /// </summary>
-        public void TestCheckDistinctCategories()
-        {
-        }
-
-        /// <summary>
-        /// Tests the get books between past months and present.
-        /// </summary>
-        public void TestGetBooksBetweenPastMonthsAndPresent()
-        {
         }
     }
 }

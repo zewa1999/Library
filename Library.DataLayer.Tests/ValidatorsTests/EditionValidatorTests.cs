@@ -1,6 +1,16 @@
-﻿// <copyright file="EditionValidatorTests.cs" company="Transilvania University of Brasov">
-// Costache Stelian-Andrei
+﻿// ***********************************************************************
+// Assembly         : Library.DataLayer.Tests
+// Author           : costa
+// Created          : 01-06-2022
+//
+// Last Modified By : costa
+// Last Modified On : 01-11-2022
+// ***********************************************************************
+// <copyright file="EditionValidatorTests.cs" company="Transilvania University of Brasov">
+//     Costache Stelian-Andrei
 // </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 namespace Library.DataLayer.Tests.ValidatorsTests
 {
@@ -9,17 +19,29 @@ namespace Library.DataLayer.Tests.ValidatorsTests
     using Library.DomainLayer;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    /// <summary>
+    /// Defines test class EditionValidatorTests.
+    /// </summary>
     [TestClass]
     public class EditionValidatorTests
     {
+        /// <summary>
+        /// The validator.
+        /// </summary>
         private EditionValidator validator;
 
+        /// <summary>
+        /// Initializes this instance.
+        /// </summary>
         [TestInitialize]
         public void Initialize()
         {
-            this.validator = new();
+            this.validator = new ();
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenPublisherIsNull.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenPublisherIsNull()
         {
@@ -32,6 +54,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.Publisher);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenPublisherIsNotNull.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenPublisherIsNotNull()
         {
@@ -44,6 +69,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveValidationErrorFor(a => a.Publisher);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenPublisherIsEmpty.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenPublisherIsEmpty()
         {
@@ -56,6 +84,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.Publisher);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenPublisherIsNotEmpty.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenPublisherIsNotEmpty()
         {
@@ -68,6 +99,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveValidationErrorFor(a => a.Publisher);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenPublisherLenghtIsLessThanOne.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenPublisherLenghtIsLessThanOne()
         {
@@ -80,6 +114,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.Publisher);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenPublisherIsHigherThanOne.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenPublisherIsHigherThanOne()
         {
@@ -92,6 +129,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveValidationErrorFor(a => a.Publisher);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenYearIsNull.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenYearIsNull()
         {
@@ -104,6 +144,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.Year);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenYearIsNotNull.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenYearIsNotNull()
         {
@@ -116,6 +159,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveValidationErrorFor(a => a.Year);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenYearIsEmpty.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenYearIsEmpty()
         {
@@ -128,6 +174,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.Year);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenYearIsNotEmpty.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenYearIsNotEmpty()
         {
@@ -140,6 +189,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveValidationErrorFor(a => a.Year);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenYearIsHigherThanOne.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenYearIsHigherThanOne()
         {
@@ -152,6 +204,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveValidationErrorFor(a => a.Year);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenEditionNumberIsNull.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenEditionNumberIsNull()
         {
@@ -164,6 +219,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.EditionNumber);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenEditionNumberIsNotNull.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenEditionNumberIsNotNull()
         {
@@ -176,6 +234,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveValidationErrorFor(a => a.EditionNumber);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenEditionNumberIsNotGreaterThan1.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenEditionNumberIsNotGreaterThan1()
         {
@@ -188,6 +249,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.EditionNumber);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenEditionNumberIsGreaterThan1.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenEditionNumberIsGreaterThan1()
         {
@@ -200,6 +264,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveValidationErrorFor(a => a.EditionNumber);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenNumberOfPagesIsNull.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenNumberOfPagesIsNull()
         {
@@ -212,6 +279,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.NumberOfPages);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenNumberOfPagesIsNotNull.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenNumberOfPagesIsNotNull()
         {
@@ -224,6 +294,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveValidationErrorFor(a => a.NumberOfPages);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenNumberOfPagesIsNotGreaterThan1.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenNumberOfPagesIsNotGreaterThan1()
         {
@@ -236,6 +309,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.NumberOfPages);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenNumberOfPagesIsGreaterThan1.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenNumberOfPagesIsGreaterThan1()
         {

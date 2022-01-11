@@ -7,9 +7,9 @@
 /// </summary>
 namespace Library.DataLayer.Interfaces
 {
-    using Library.DomainLayer;
     using System;
     using System.Collections.Generic;
+    using Library.DomainLayer;
 
     /// <summary>
     /// Interface for the borrow controller.
@@ -34,7 +34,7 @@ namespace Library.DataLayer.Interfaces
         /// Gets the books between past months and present.
         /// </summary>
         /// <param name="months"> The months. </param>
-        /// /// <returns> IEnumerable<Borrow>. </returns>
+        /// /// <returns> IEnumerable.<Borrow>. </returns>
         public IEnumerable<Borrow> GetBooksBetweenPastMonthsAndPresent(int months);
     }
 }

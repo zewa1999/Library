@@ -13,7 +13,7 @@ namespace Library.ServiceLayer.Services
     /// <summary>
     /// Class AuthorService.
     /// Implements the <see cref="Library.ServiceLayer.Services.BaseService{Library.DomainLayer.Author, Library.DataLayer.Interfaces.IAuthorRepository}" />
-    /// Implements the <see cref="Library.ServiceLayer.IServices.IAuthorService" />
+    /// Implements the <see cref="Library.ServiceLayer.IServices.IAuthorService" />.
     /// </summary>
     /// <seealso cref="Library.ServiceLayer.Services.BaseService{Library.DomainLayer.Author, Library.DataLayer.Interfaces.IAuthorRepository}" />
     /// <seealso cref="Library.ServiceLayer.IServices.IAuthorService" />
@@ -25,7 +25,7 @@ namespace Library.ServiceLayer.Services
         public AuthorService()
             : base(Injector.Create<IAuthorRepository>(), Injector.Create<IPropertiesRepository>())
         {
-            this.validator = new AuthorValidator();
+            this.Validator = new AuthorValidator();
         }
     }
 }

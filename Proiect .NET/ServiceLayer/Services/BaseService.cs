@@ -4,60 +4,64 @@
 
 namespace Library.ServiceLayer.Services
 {
-    using FluentValidation;
-    using Library.DataLayer.Interfaces;
-    using Library.ServiceLayer.IServices;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Expressions;
+    using FluentValidation;
+    using Library.DataLayer.Interfaces;
+    using Library.ServiceLayer.IServices;
 
     /// <summary>
     /// Class BaseService.
-    /// Implements the <see cref="Library.ServiceLayer.IServices.IBaseService{T}" />
+    /// Implements the <see cref="Library.ServiceLayer.IServices.IBaseService{T}" />.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <typeparam name="U"></typeparam>
-    /// <typeparam name="L"></typeparam>
+    /// <typeparam name="TModel"> ceva1. </typeparam>
+    /// <typeparam name="TRepository"> ceva2. </typeparam>
+    /// <typeparam name="TPropRepository"> ceva3. </typeparam>
     /// <seealso cref="Library.ServiceLayer.IServices.IBaseService{T}" />
-    public abstract class BaseService<T, U, L> : IBaseService<T>
-        where T : class
-        where U : IRepository<T>
-        where L : IPropertiesRepository
+    public abstract class BaseService<TModel, TRepository, TPropRepository> : IBaseService<TModel>
+        where TModel : class
+        where TRepository : IRepository<TModel>
+        where TPropRepository : IPropertiesRepository
     {
         /// <summary>
-        /// The repository
-        /// </summary>
-        protected U repository;
-
-        /// <summary>
-        /// The validator
-        /// </summary>
-        protected IValidator<T> validator;
-
-        /// <summary>
-        /// The properties repository
-        /// </summary>
-        protected L propertiesRepository;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BaseService{T, U, L}"/> class.
+        /// Initializes a new instance of the <see cref="BaseService{TModel, TRepository, TPropRepository}"/> class.
         /// </summary>
         /// <param name="repository">The repository.</param>
         /// <param name="propRepo">The property repo.</param>
-        protected BaseService(U repository, L propRepo)
+        protected BaseService(TRepository repository, TPropRepository propRepo)
         {
-            this.repository = repository;
-            this.propertiesRepository = propRepo;
+            this.Repository = repository;
+            this.PropertiesRepository = propRepo;
         }
+
+        /// <summary>
+        /// Gets or sets the repository.
+        /// </summary>
+        /// <value>The repository.</value>
+        protected TRepository Repository { get; set; }
+
+        /// <summary>
+        /// Gets or sets the validator.
+        /// </summary>
+        /// <value>The validator.</value>
+        protected IValidator<TModel> Validator { get; set; }
+
+        /// <summary>
+        /// Gets or sets the properties repository.
+        /// </summary>
+        /// <value>The properties repository.</value>
+        protected TPropRepository PropertiesRepository { get; set; }
 
         /// <summary>
         /// Inserts the specified entity.
         /// </summary>
         /// <param name="entity"> The entity. </param>
-        public virtual bool Insert(T entity)
+        /// <returns> ceva. </returns>
+        public virtual bool Insert(TModel entity)
         {
-            var result = this.validator.Validate(entity);
+            var result = this.Validator.Validate(entity);
             var isValid = false;
             if (result.IsValid)
             {
@@ -71,7 +75,7 @@ namespace Library.ServiceLayer.Services
 
             if (isValid == true)
             {
-                this.repository.Insert(entity);
+                this.Repository.Insert(entity);
             }
 
             return true;
@@ -81,13 +85,14 @@ namespace Library.ServiceLayer.Services
         /// Updates the specified item.
         /// </summary>
         /// <param name="entity"> The entity. </param>
-        public virtual bool Update(T entity)
+        /// <returns> ceva. </returns>
+        public virtual bool Update(TModel entity)
         {
-            var result = this.validator.Validate(entity);
+            var result = this.Validator.Validate(entity);
             Utils.LogErrors(result);
             if (result.IsValid)
             {
-                this.repository.Update(entity);
+                this.Repository.Update(entity);
             }
             else
             {
@@ -102,38 +107,45 @@ namespace Library.ServiceLayer.Services
         /// Deletes the specified identifier.
         /// </summary>
         /// <param name="entity">The entity.</param>
-        public virtual bool Delete(T entity)
+        /// <returns> ceva. </returns>
+        public virtual bool Delete(TModel entity)
         {
-            return this.repository.Delete(entity);
+            return this.Repository.Delete(entity);
         }
 
         /// <summary>
         /// Deletes the by identifier.
         /// </summary>
         /// <param name="id"> The identifier. </param>
+        /// <returns> ceva. </returns>
         public virtual bool DeleteById(object id)
         {
-            return this.repository.DeleteById(id);
+            return this.Repository.DeleteById(id);
         }
 
         /// <summary>
         /// Gets the by identifier.
         /// </summary>
         /// <param name="id"> The identifier. </param>
-        public virtual T GetByID(object id)
+        /// <returns> ceva. </returns>
+        public virtual TModel GetByID(object id)
         {
-            return this.repository.GetByID(id);
+            return this.Repository.GetByID(id);
         }
 
         /// <summary>
         /// Gets all.
         /// </summary>
-        public virtual IEnumerable<T> GetAll(
-            Expression<Func<T, bool>> filter = null,
-            Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
+        /// /// <param name="filter"> The filter. </param>
+        /// <param name="orderBy"> The order by. </param>
+        /// <param name="includeProperties"> The include properties. </param>
+        /// <returns> ceva. </returns>
+        public virtual IEnumerable<TModel> GetAll(
+            Expression<Func<TModel, bool>> filter = null,
+            Func<IQueryable<TModel>, IOrderedQueryable<TModel>> orderBy = null,
             string includeProperties = "")
         {
-            return this.repository.Get(filter, orderBy, includeProperties);
+            return this.Repository.Get(filter, orderBy, includeProperties);
         }
     }
 }

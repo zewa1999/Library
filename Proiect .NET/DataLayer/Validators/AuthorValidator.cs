@@ -7,14 +7,14 @@
 /// </summary>
 namespace Library.DataLayer.Validators
 {
-    using FluentValidation;
-    using Library.DomainLayer;
     using System.Collections.Generic;
     using System.Linq;
+    using FluentValidation;
+    using Library.DomainLayer;
 
     /// <summary>
     /// Class AuthorValidator.
-    /// Implements the <see cref="FluentValidation.AbstractValidator{Author}" />
+    /// Implements the <see cref="FluentValidation.AbstractValidator{Author}" />.
     /// </summary>
     /// <seealso cref="FluentValidation.AbstractValidator{Library.DomainLayer.Author}" />
     public class AuthorValidator : AbstractValidator<Author>
@@ -45,13 +45,21 @@ namespace Library.DataLayer.Validators
         protected bool BeAValidName(string name)
         {
             if (name == null)
+            {
                 return false;
+            }
 
             name = name.Replace(" ", string.Empty);
             name = name.Replace("-", string.Empty);
             return name.All(char.IsLetter);
         }
 
+        /// <summary>
+        /// Haves the entities.
+        /// </summary>
+        /// <typeparam name="T"> un parametru. </typeparam>
+        /// <param name="entities">The entities.</param>
+        /// <returns> ceva. </returns>
         protected bool HaveEntities<T>(ICollection<T> entities)
         {
             if (entities == null || entities.Count == 0)

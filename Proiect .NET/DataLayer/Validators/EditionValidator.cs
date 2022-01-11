@@ -12,7 +12,7 @@ namespace Library.DataLayer.Validators
 
     /// <summary>
     /// Class EditionValidator.
-    /// Implements the <see cref="FluentValidation.AbstractValidator{Library.DomainLayer.Edition}" />
+    /// Implements the <see cref="FluentValidation.AbstractValidator{Library.DomainLayer.Edition}" />.
     /// </summary>
     /// <seealso cref="FluentValidation.AbstractValidator{Library.DomainLayer.Edition}" />
     public class EditionValidator : AbstractValidator<Edition>

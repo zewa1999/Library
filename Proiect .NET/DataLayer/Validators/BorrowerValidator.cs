@@ -7,13 +7,13 @@
 /// </summary>
 namespace Library.DataLayer.Validators
 {
+    using System.Linq;
     using FluentValidation;
     using Library.DomainLayer.Person;
-    using System.Linq;
 
     /// <summary>
     /// Class BorrowerValidator.
-    /// Implements the <see cref="FluentValidation.AbstractValidator{Library.DomainLayer.Person.Borrower}" />
+    /// Implements the <see cref="FluentValidation.AbstractValidator{Library.DomainLayer.Person.Borrower}" />.
     /// </summary>
     /// <seealso cref="FluentValidation.AbstractValidator{Library.DomainLayer.Person.Borrower}" />
     public class BorrowerValidator : AbstractValidator<Borrower>

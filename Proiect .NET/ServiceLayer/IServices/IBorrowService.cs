@@ -8,7 +8,7 @@ namespace Library.ServiceLayer.IServices
 
     /// <summary>
     /// Interface IBorrowService
-    /// Implements the <see cref="Library.ServiceLayer.IServices.IBaseService{Library.DomainLayer.Borrow}" />
+    /// Implements the <see cref="Library.ServiceLayer.IServices.IBaseService{Library.DomainLayer.Borrow}" />.
     /// </summary>
     /// <seealso cref="Library.ServiceLayer.IServices.IBaseService{Library.DomainLayer.Borrow}" />
     public interface IBorrowService : IBaseService<Borrow>

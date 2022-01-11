@@ -7,14 +7,14 @@
 /// </summary>
 namespace Library.DataLayer
 {
-    using Library.DataLayer.DataMapper;
-    using Library.DataLayer.Interfaces;
-    using Microsoft.EntityFrameworkCore;
-    using NLog;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Expressions;
+    using Library.DataLayer.DataMapper;
+    using Library.DataLayer.Interfaces;
+    using Microsoft.EntityFrameworkCore;
+    using NLog;
 
     /// <summary>
     /// Abstract class to be inherited to implement the CRUD operation for an entity.
@@ -24,14 +24,16 @@ namespace Library.DataLayer
         where T : class
     {
         /// <summary>
-        /// The CTX.
+        /// Gets or sets the CTX.
         /// </summary>
-        protected readonly LibraryContext ctx = new LibraryContext();
+        /// <value>The CTX.</value>
+        protected LibraryContext Ctx { get; set; } = new LibraryContext();
 
         /// <summary>
-        /// The logger.
+        /// Gets or sets the logger.
         /// </summary>
-        protected readonly Logger logger = LogManager.GetCurrentClassLogger();
+        /// <value>The logger.</value>
+        protected Logger Logger { get; set; } = LogManager.GetCurrentClassLogger();
 
         /// <summary>
         /// Gets the specified filter.
@@ -39,6 +41,7 @@ namespace Library.DataLayer
         /// <param name="filter"> The filter. </param>
         /// <param name="orderBy"> The order by. </param>
         /// <param name="includeProperties"> The include properties. </param>
+        /// <returns> ceva. </returns>
         public virtual IEnumerable<T> Get(
             Expression<Func<T, bool>> filter = null,
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null,
@@ -46,7 +49,7 @@ namespace Library.DataLayer
         {
             try
             {
-                var databaseSet = this.ctx.Set<T>();
+                var databaseSet = this.Ctx.Set<T>();
 
                 IQueryable<T> query = databaseSet;
 
@@ -71,7 +74,7 @@ namespace Library.DataLayer
             }
             catch (Exception ex)
             {
-                this.logger.Error(ex.Message + "The query will return an empty list!");
+                this.Logger.Error(ex.Message + "The query will return an empty list!");
             }
 
             return null;
@@ -86,15 +89,15 @@ namespace Library.DataLayer
         {
             try
             {
-                var databaseSet = this.ctx.Set<T>();
+                var databaseSet = this.Ctx.Set<T>();
                 databaseSet.Add(entity);
-                this.ctx.SaveChanges();
+                this.Ctx.SaveChanges();
 
                 entity = null;
             }
             catch (Exception ex)
             {
-                this.logger.Error(ex.Message + ex.InnerException + "The INSERT could not been made!");
+                this.Logger.Error(ex.Message + ex.InnerException + "The INSERT could not been made!");
                 return false;
             }
 
@@ -110,15 +113,15 @@ namespace Library.DataLayer
         {
             try
             {
-                var databaseSet = this.ctx.Set<T>();
+                var databaseSet = this.Ctx.Set<T>();
                 databaseSet.Attach(item);
-                this.ctx.Entry(item).State = EntityState.Modified;
+                this.Ctx.Entry(item).State = EntityState.Modified;
 
-                this.ctx.SaveChanges();
+                this.Ctx.SaveChanges();
             }
             catch (Exception ex)
             {
-                this.logger.Error(ex.Message + ex.InnerException + "The UPDATE could not been made!");
+                this.Logger.Error(ex.Message + ex.InnerException + "The UPDATE could not been made!");
                 return false;
             }
 
@@ -138,7 +141,7 @@ namespace Library.DataLayer
             }
             catch (Exception ex)
             {
-                this.logger.Error(ex.Message + ex.InnerException + "The DELETE could not been made!");
+                this.Logger.Error(ex.Message + ex.InnerException + "The DELETE could not been made!");
                 return false;
             }
 
@@ -154,20 +157,20 @@ namespace Library.DataLayer
         {
             try
             {
-                var dbSet = this.ctx.Set<T>();
+                var dbSet = this.Ctx.Set<T>();
 
-                if (this.ctx.Entry(entityToDelete).State == EntityState.Detached)
+                if (this.Ctx.Entry(entityToDelete).State == EntityState.Detached)
                 {
                     dbSet.Attach(entityToDelete);
                 }
 
                 dbSet.Remove(entityToDelete);
 
-                this.ctx.SaveChanges();
+                this.Ctx.SaveChanges();
             }
             catch (Exception ex)
             {
-                this.logger.Error(ex.Message + ex.InnerException + "The DELETE could not been made!");
+                this.Logger.Error(ex.Message + ex.InnerException + "The DELETE could not been made!");
                 return false;
             }
 
@@ -178,15 +181,16 @@ namespace Library.DataLayer
         /// Gets the by identifier.
         /// </summary>
         /// <param name="id"> The identifier. </param>
+        /// <returns> ceva. </returns>
         public virtual T GetByID(object id)
         {
             try
             {
-                return this.ctx.Set<T>().Find(id);
+                return this.Ctx.Set<T>().Find(id);
             }
             catch (Exception ex)
             {
-                this.logger.Error(ex.Message + ex.InnerException + "The GetByID could not been made. Will return null!");
+                this.Logger.Error(ex.Message + ex.InnerException + "The GetByID could not been made. Will return null!");
             }
 
             return null;

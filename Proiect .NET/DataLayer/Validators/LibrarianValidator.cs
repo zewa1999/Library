@@ -12,7 +12,7 @@ namespace Library.DataLayer.Validators
 
     /// <summary>
     /// Class LibrarianValidator.
-    /// Implements the <see cref="FluentValidation.AbstractValidator{Library.DomainLayer.Person.Librarian}" />
+    /// Implements the <see cref="FluentValidation.AbstractValidator{Library.DomainLayer.Person.Librarian}" />.
     /// </summary>
     /// <seealso cref="FluentValidation.AbstractValidator{Library.DomainLayer.Person.Librarian}" />
     public class LibrarianValidator : AbstractValidator<Librarian>

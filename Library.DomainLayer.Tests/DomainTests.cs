@@ -1,24 +1,46 @@
-﻿// <copyright file="DomainTests.cs" company="Transilvania University of Brasov">
-// Costache Stelian-Andrei
+﻿// ***********************************************************************
+// Assembly         : Library.DomainLayer.Tests
+// Author           : costa
+// Created          : 01-06-2022
+//
+// Last Modified By : costa
+// Last Modified On : 01-11-2022
+// ***********************************************************************
+// <copyright file="DomainTests.cs" company="Transilvania University of Brasov">
+//     Costache Stelian-Andrei
 // </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 namespace Library.DomainLayer.Tests.PersonTests
 {
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System.Collections.Generic;
     using System.Linq;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    /// <summary>
+    /// Defines test class DomainTests.
+    /// </summary>
     [TestClass]
     public class DomainTests
     {
+        /// <summary>
+        /// The domain.
+        /// </summary>
         private Domain domain;
 
+        /// <summary>
+        /// Initializes this instance.
+        /// </summary>
         [TestInitialize]
         public void Initialize()
         {
-            this.domain = new();
+            this.domain = new ();
         }
 
+        /// <summary>
+        /// Defines the test method DomainNameShouldNotContainDigits.
+        /// </summary>
         [TestMethod]
         public void DomainNameShouldNotContainDigits()
         {
@@ -29,6 +51,9 @@ namespace Library.DomainLayer.Tests.PersonTests
             Assert.IsFalse(flag);
         }
 
+        /// <summary>
+        /// Defines the test method DomainNameShouldBeCapitalized.
+        /// </summary>
         [TestMethod]
         public void DomainNameShouldBeCapitalized()
         {
@@ -38,6 +63,9 @@ namespace Library.DomainLayer.Tests.PersonTests
             Assert.IsTrue(flag);
         }
 
+        /// <summary>
+        /// Defines the test method DomainParentShouldNotBeNull.
+        /// </summary>
         [TestMethod]
         public void DomainParentShouldNotBeNull()
         {
@@ -47,6 +75,9 @@ namespace Library.DomainLayer.Tests.PersonTests
             Assert.IsNotNull(this.domain.ParentDomain);
         }
 
+        /// <summary>
+        /// Defines the test method DomainChildrensShouldNotBeNull.
+        /// </summary>
         [TestMethod]
         public void DomainChildrensShouldNotBeNull()
         {

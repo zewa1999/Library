@@ -4,11 +4,11 @@
 
 namespace Library.DomainLayer
 {
-    using Library.DomainLayer.Person;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using Library.DomainLayer.Person;
 
     /// <summary>
     /// Class Borrow.
@@ -51,6 +51,10 @@ namespace Library.DomainLayer
         [Required]
         public virtual Borrower Borrower { get; set; }
 
+        /// <summary>
+        /// Gets or sets the librarian.
+        /// </summary>
+        /// <value>The librarian.</value>
         [Required]
         public virtual Librarian Librarian { get; set; }
 

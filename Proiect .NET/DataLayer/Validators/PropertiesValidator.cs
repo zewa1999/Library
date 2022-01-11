@@ -12,7 +12,7 @@ namespace Library.DataLayer.Validators
 
     /// <summary>
     /// Class PropertiesModelValidator.
-    /// Implements the <see cref="FluentValidation.AbstractValidator{Library.DomainLayer.Properties}" />
+    /// Implements the <see cref="FluentValidation.AbstractValidator{Library.DomainLayer.Properties}" />.
     /// </summary>
     /// <seealso cref="FluentValidation.AbstractValidator{Library.DomainLayer.Properties}" />
     public class PropertiesValidator : AbstractValidator<Properties>

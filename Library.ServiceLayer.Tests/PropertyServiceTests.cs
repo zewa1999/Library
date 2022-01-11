@@ -4,12 +4,12 @@
 
 namespace Library.ServiceLayer.Tests
 {
+    using System.Collections.Generic;
+    using System.Linq;
     using Library.DomainLayer;
     using Library.ServiceLayer.IServices;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Moq;
-    using System.Collections.Generic;
-    using System.Linq;
 
     /// <summary>
     /// Defines test class PropertyServiceTests.
@@ -18,12 +18,12 @@ namespace Library.ServiceLayer.Tests
     public class PropertyServiceTests
     {
         /// <summary>
-        /// The properties service mock
+        /// The properties service mock.
         /// </summary>
         private Mock<IPropertiesService> propertiesServiceMock;
 
         /// <summary>
-        /// The properties service
+        /// The properties service.
         /// </summary>
         private IPropertiesService propertiesService;
 
@@ -72,16 +72,19 @@ namespace Library.ServiceLayer.Tests
             this.propertiesServiceMock.Setup(x => x.GetAll(null, book => book.OrderBy(x => x.Id), null))
                 .Returns(
                 new List<Properties>()
-                { new Properties {
+                {
+                    new Properties
+                {
                     DOMENII = 2,
-                NMC = 3,
-                L = 2,
-                C = 3,
-                D = 2,
-                LIM = 2,
-                DELTA = 3,
-                NCZ = 4,
-                PERSIMP = 3},
+                    NMC = 3,
+                    L = 2,
+                    C = 3,
+                    D = 2,
+                    LIM = 2,
+                    DELTA = 3,
+                    NCZ = 4,
+                    PERSIMP = 3,
+                },
                 });
 
             this.propertiesService = this.propertiesServiceMock.Object;
@@ -121,7 +124,6 @@ namespace Library.ServiceLayer.Tests
             Assert.AreEqual(1, result.Id);
             Assert.AreEqual(2, result.DOMENII);
             Assert.AreEqual(3, result.NMC);
-            // etc
         }
 
         /// <summary>

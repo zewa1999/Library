@@ -7,8 +7,8 @@
 /// </summary>
 namespace Library.DataLayer.Interfaces
 {
-    using Library.DomainLayer;
     using System.Collections.Generic;
+    using Library.DomainLayer;
 
     /// <summary>
     /// Interface for the book controller.
@@ -19,6 +19,7 @@ namespace Library.DataLayer.Interfaces
         /// Gets the parent domain.
         /// </summary>
         /// <param name="domain"> The domain. </param>
+        /// <returns> ceva. </returns>
         public Domain GetParentDomain(Domain domain);
 
         /// <summary>
@@ -32,12 +33,14 @@ namespace Library.DataLayer.Interfaces
         /// Gets the unavailable books.
         /// </summary>
         /// <param name="allBooksWithTheSameName"> Name of all books with the same. </param>
+        /// <returns> ceva. </returns>
         public IEnumerable<Book> GetUnavailableBooks(IEnumerable<Book> allBooksWithTheSameName);
 
         /// <summary>
         /// Gets the books with the same title.
         /// </summary>
         /// <param name="title"> The title. </param>
+        /// <returns> ceva. </returns>
         public IEnumerable<Book> GetBooksWithTheSameTitle(string title);
     }
 }

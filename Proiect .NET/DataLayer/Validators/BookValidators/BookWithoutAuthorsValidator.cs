@@ -4,13 +4,21 @@
 
 namespace Library.DataLayer.Validators
 {
-    using FluentValidation;
-    using Library.DomainLayer;
     using System.Collections.Generic;
     using System.Linq;
+    using FluentValidation;
+    using Library.DomainLayer;
 
+    /// <summary>
+    /// Class BookWithoutAuthorsValidator.
+    /// Implements the <see cref="FluentValidation.AbstractValidator{Library.DomainLayer.Book}" />.
+    /// </summary>
+    /// <seealso cref="FluentValidation.AbstractValidator{Library.DomainLayer.Book}" />
     public class BookWithoutAuthorsValidator : AbstractValidator<Book>
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BookWithoutAuthorsValidator"/> class.
+        /// </summary>
         public BookWithoutAuthorsValidator()
         {
             this.RuleFor(b => b.Title)
@@ -66,7 +74,10 @@ namespace Library.DataLayer.Validators
         protected bool BeAValidName(string name)
         {
             if (name == null)
+            {
                 return false;
+            }
+
             name = name.Replace(" ", string.Empty);
             name = name.Replace("-", string.Empty);
             return name.All(char.IsLetter);
@@ -75,7 +86,7 @@ namespace Library.DataLayer.Validators
         /// <summary>
         /// Haves the entities.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="T"> Ceva. </typeparam>
         /// <param name="entities">The entities.</param>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         protected bool HaveEntities<T>(ICollection<T> entities)

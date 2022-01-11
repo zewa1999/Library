@@ -13,7 +13,7 @@ namespace Library.ServiceLayer.Services
     /// <summary>
     /// Class EditionService.
     /// Implements the <see cref="Library.ServiceLayer.Services.BaseService{Library.DomainLayer.Edition, Library.DataLayer.Interfaces.IEditionRepository}" />
-    /// Implements the <see cref="Library.ServiceLayer.IServices.IEditionService" />
+    /// Implements the <see cref="Library.ServiceLayer.IServices.IEditionService" />.
     /// </summary>
     /// <seealso cref="Library.ServiceLayer.Services.BaseService{Library.DomainLayer.Edition, Library.DataLayer.Interfaces.IEditionRepository}" />
     /// <seealso cref="Library.ServiceLayer.IServices.IEditionService" />
@@ -25,7 +25,7 @@ namespace Library.ServiceLayer.Services
         public EditionService()
             : base(Injector.Create<IEditionRepository>(), Injector.Create<IPropertiesRepository>())
         {
-            this.validator = new EditionValidator();
+            this.Validator = new EditionValidator();
         }
     }
 }

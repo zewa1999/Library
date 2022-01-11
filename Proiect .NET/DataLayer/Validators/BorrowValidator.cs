@@ -7,14 +7,14 @@
 /// </summary>
 namespace Library.DataLayer.Validators
 {
+    using System.Collections.Generic;
     using FluentValidation;
     using Library.DomainLayer;
     using Library.DomainLayer.Person;
-    using System.Collections.Generic;
 
     /// <summary>
     /// Class BorrowValidator.
-    /// Implements the <see cref="FluentValidation.AbstractValidator{Library.DomainLayer.Borrow}" />
+    /// Implements the <see cref="FluentValidation.AbstractValidator{Library.DomainLayer.Borrow}" />.
     /// </summary>
     /// <seealso cref="FluentValidation.AbstractValidator{Library.DomainLayer.Borrow}" />
     public class BorrowValidator : AbstractValidator<Borrow>
@@ -48,7 +48,7 @@ namespace Library.DataLayer.Validators
         /// <summary>
         /// Haves the entities.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="T"> Ceva. </typeparam>
         /// <param name="entities">The entities.</param>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         protected bool HaveEntities<T>(ICollection<T> entities)

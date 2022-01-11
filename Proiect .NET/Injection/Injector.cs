@@ -4,8 +4,8 @@
 
 namespace Proiect_.NET.Injection
 {
-    using Ninject;
     using System.Reflection;
+    using Ninject;
 
     /// <summary>
     /// Class Injector.
@@ -13,7 +13,7 @@ namespace Proiect_.NET.Injection
     public class Injector
     {
         /// <summary>
-        /// The kernel
+        /// The kernel.
         /// </summary>
         private static StandardKernel kernel;
 
@@ -29,7 +29,8 @@ namespace Proiect_.NET.Injection
         /// <summary>
         /// Creates this instance.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="T"> ceva. </typeparam>
+        /// <returns> ceva2. </returns>
         public static T Create<T>()
         {
             return kernel.Get<T>();

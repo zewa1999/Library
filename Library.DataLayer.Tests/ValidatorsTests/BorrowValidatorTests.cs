@@ -4,24 +4,36 @@
 
 namespace Library.DataLayer.Tests.ValidatorsTests
 {
+    using System;
+    using System.Collections.Generic;
     using FluentValidation.TestHelper;
     using Library.DataLayer.Validators;
     using Library.DomainLayer;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using System;
-    using System.Collections.Generic;
 
+    /// <summary>
+    /// Defines test class BorrowValidatorTests.
+    /// </summary>
     [TestClass]
     public class BorrowValidatorTests
     {
+        /// <summary>
+        /// The validator.
+        /// </summary>
         private BorrowValidator validator;
 
+        /// <summary>
+        /// Initializes this instance.
+        /// </summary>
         [TestInitialize]
         public void Initialize()
         {
-            this.validator = new();
+            this.validator = new ();
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenNoOfTimeExtendedIsNull.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenNoOfTimeExtendedIsNull()
         {
@@ -34,6 +46,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.NoOfTimeExtended);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenNoOfTimeExtendedIsNotNull.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenNoOfTimeExtendedIsNotNull()
         {
@@ -46,6 +61,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveValidationErrorFor(a => a.NoOfTimeExtended);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenNoOfTimeExtendedIsNotGreaterThan1.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenNoOfTimeExtendedIsNotGreaterThan1()
         {
@@ -58,6 +76,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.NoOfTimeExtended);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenNoOfTimeExtendedIsGreaterThan1.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenNoOfTimeExtendedIsGreaterThan1()
         {
@@ -70,6 +91,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveValidationErrorFor(a => a.NoOfTimeExtended);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenNoOfTimeExtendedIsGreaterThan3.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenNoOfTimeExtendedIsGreaterThan3()
         {
@@ -82,6 +106,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.NoOfTimeExtended);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenBorrowDateIsNull.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenBorrowDateIsNull()
         {
@@ -94,6 +121,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.BorrowDate);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenBorrowDateIsNotNull.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenBorrowDateIsNotNull()
         {
@@ -106,6 +136,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveValidationErrorFor(a => a.BorrowDate);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenEndDateIsNull.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenEndDateIsNull()
         {
@@ -118,6 +151,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.EndDate);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenEndDateIsNotNull.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenEndDateIsNotNull()
         {
@@ -130,6 +166,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveValidationErrorFor(a => a.EndDate);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenBorrowedBooksCollectionIsNull.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenBorrowedBooksCollectionIsNull()
         {
@@ -142,6 +181,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.BorrowedBooks);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenBorrowedBooksCollectionIsEmpty.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenBorrowedBooksCollectionIsEmpty()
         {

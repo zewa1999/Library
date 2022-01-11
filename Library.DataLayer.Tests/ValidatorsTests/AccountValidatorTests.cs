@@ -1,6 +1,16 @@
-﻿// <copyright file="AccountValidatorTests.cs" company="Transilvania University of Brasov">
-// Costache Stelian-Andrei
+﻿// ***********************************************************************
+// Assembly         : Library.DataLayer.Tests
+// Author           : costa
+// Created          : 01-06-2022
+//
+// Last Modified By : costa
+// Last Modified On : 01-11-2022
+// ***********************************************************************
+// <copyright file="AccountValidatorTests.cs" company="Transilvania University of Brasov">
+//     Costache Stelian-Andrei
 // </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 namespace Library.DataLayer.Tests.ValidatorsTests
 {
@@ -9,19 +19,29 @@ namespace Library.DataLayer.Tests.ValidatorsTests
     using Library.DomainLayer.Person;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-    /// <summary>Defines test class AccountValidatorTests.</summary>
-
+    /// <summary>
+    /// Defines test class AccountValidatorTests.
+    /// </summary>
     [TestClass]
     public class AccountValidatorTests
     {
+        /// <summary>
+        /// The validator.
+        /// </summary>
         private AccountValidator validator;
 
+        /// <summary>
+        /// Initializes this instance.
+        /// </summary>
         [TestInitialize]
         public void Initialize()
         {
-            this.validator = new();
+            this.validator = new ();
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenPhoneNumberIsNull.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenPhoneNumberIsNull()
         {
@@ -34,6 +54,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.PhoneNumber);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenPhoneNumberIsNotNull.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenPhoneNumberIsNotNull()
         {
@@ -46,6 +69,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveAnyValidationErrors();
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenPhoneNumberIsEmpty.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenPhoneNumberIsEmpty()
         {
@@ -58,6 +84,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.PhoneNumber);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenPhoneNumberIsNotEmpty.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenPhoneNumberIsNotEmpty()
         {
@@ -70,6 +99,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveAnyValidationErrors();
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenPhoneNumberHasMoreThan10Digits.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenPhoneNumberHasMoreThan10Digits()
         {
@@ -82,6 +114,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.PhoneNumber);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenPhoneNumberDoesNotHaveMoreThan10Digits.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenPhoneNumberDoesNotHaveMoreThan10Digits()
         {
@@ -94,6 +129,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveAnyValidationErrors();
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenPhoneNumberContainsLetters.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenPhoneNumberContainsLetters()
         {
@@ -106,6 +144,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.PhoneNumber);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenPhoneNumberDoesNotContainLetters.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenPhoneNumberDoesNotContainLetters()
         {
@@ -118,6 +159,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveAnyValidationErrors();
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenPhoneNumberIsValid.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenPhoneNumberIsValid()
         {
@@ -130,6 +174,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveAnyValidationErrors();
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenEmailDoesNotContainProperCharacters1.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenEmailDoesNotContainProperCharacters1()
         {
@@ -143,6 +190,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.Email);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenEmailDoesNotContainProperCharacters2.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenEmailDoesNotContainProperCharacters2()
         {
@@ -156,6 +206,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.Email);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenEmailDoesNotContainProperCharacters3.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenEmailDoesNotContainProperCharacters3()
         {
@@ -169,6 +222,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.Email);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenEmailIsValid.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenEmailIsValid()
         {

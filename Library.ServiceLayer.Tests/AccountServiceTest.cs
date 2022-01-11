@@ -4,12 +4,12 @@
 
 namespace Library.ServiceLayer.Tests
 {
+    using System.Collections.Generic;
+    using System.Linq;
     using Library.DomainLayer.Person;
     using Library.ServiceLayer.IServices;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Moq;
-    using System.Collections.Generic;
-    using System.Linq;
 
     /// <summary>
     /// Defines test class AccountServiceTest.
@@ -18,12 +18,12 @@ namespace Library.ServiceLayer.Tests
     public class AccountServiceTest
     {
         /// <summary>
-        /// The account service mock
+        /// The account service mock.
         /// </summary>
         private Mock<IAccountService> accountServiceMock;
 
         /// <summary>
-        /// The account service
+        /// The account service.
         /// </summary>
         private IAccountService accountService;
 
@@ -65,9 +65,12 @@ namespace Library.ServiceLayer.Tests
             this.accountServiceMock.Setup(x => x.GetAll(null, book => book.OrderBy(x => x.Id), null))
                 .Returns(
                 new List<Account>()
-                { new Account {
+                {
+                    new Account
+                {
                     PhoneNumber = "0734525427",
-                    Email = "validemail@gmail.com"},
+                    Email = "validemail@gmail.com",
+                },
                 });
 
             this.accountService = this.accountServiceMock.Object;

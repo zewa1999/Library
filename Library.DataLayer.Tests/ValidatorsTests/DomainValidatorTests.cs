@@ -9,17 +9,29 @@ namespace Library.DataLayer.Tests.ValidatorsTests
     using Library.DomainLayer;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    /// <summary>
+    /// Defines test class DomainValidatorTests.
+    /// </summary>
     [TestClass]
     public class DomainValidatorTests
     {
+        /// <summary>
+        /// The validator.
+        /// </summary>
         private DomainValidator validator;
 
+        /// <summary>
+        /// Initializes this instance.
+        /// </summary>
         [TestInitialize]
         public void Initialize()
         {
-            this.validator = new();
+            this.validator = new ();
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenNameIsNull.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenNameIsNull()
         {
@@ -32,6 +44,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.Name);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenNameIsNotNull.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenNameIsNotNull()
         {
@@ -44,6 +59,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveValidationErrorFor(a => a.Name);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenNameIsEmpty.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenNameIsEmpty()
         {
@@ -56,6 +74,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.Name);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenNameIsNotEmpty.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenNameIsNotEmpty()
         {
@@ -68,6 +89,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveValidationErrorFor(a => a.Name);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenNameLenghtIsLessThanOne.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenNameLenghtIsLessThanOne()
         {
@@ -80,6 +104,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.Name);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenNameIsHigherThanOne.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenNameIsHigherThanOne()
         {
@@ -92,6 +119,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveValidationErrorFor(a => a.Name);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenChildrenDomainsCollectionIsNull.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenChildrenDomainsCollectionIsNull()
         {

@@ -1,36 +1,58 @@
-﻿// <copyright file="BorrowTests.cs" company="Transilvania University of Brasov">
-// Costache Stelian-Andrei
+﻿// ***********************************************************************
+// Assembly         : Library.DomainLayer.Tests
+// Author           : costa
+// Created          : 01-06-2022
+//
+// Last Modified By : costa
+// Last Modified On : 01-11-2022
+// ***********************************************************************
+// <copyright file="BorrowTests.cs" company="Transilvania University of Brasov">
+//     Costache Stelian-Andrei
 // </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 namespace Library.DomainLayer.Tests.PersonTests
 {
-    using Library.DomainLayer.Person;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System;
     using System.Collections.Generic;
+    using Library.DomainLayer.Person;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    /// <summary>
+    /// Defines test class BorrowTests.
+    /// </summary>
     [TestClass]
     public class BorrowTests
     {
+        /// <summary>
+        /// The borrow.
+        /// </summary>
         private Borrow borrow;
 
+        /// <summary>
+        /// Initializes this instance.
+        /// </summary>
         [TestInitialize]
         public void Initialize()
         {
             this.borrow = new Borrow();
         }
 
+        /// <summary>
+        /// Defines the test method BorrowShouldHaveAValidBorrower.
+        /// </summary>
         [TestMethod]
         public void BorrowShouldHaveAValidBorrower()
         {
             var borrower = new Borrower();
-            borrower.Account = new()
+            borrower.Account = new ()
             {
                 PhoneNumber = "0724525672",
                 Email = "vali@mail.com",
             };
 
-            this.borrow = new()
+            this.borrow = new ()
             {
                 Borrower = borrower,
                 BorrowedBooks = null,
@@ -39,6 +61,9 @@ namespace Library.DomainLayer.Tests.PersonTests
             Assert.IsNotNull(this.borrow.Borrower);
         }
 
+        /// <summary>
+        /// Defines the test method BorrowShouldHaveAValidBorrowedBooksList.
+        /// </summary>
         [TestMethod]
         public void BorrowShouldHaveAValidBorrowedBooksList()
         {
@@ -83,7 +108,7 @@ namespace Library.DomainLayer.Tests.PersonTests
                 Editions = editionsList,
             });
 
-            this.borrow = new()
+            this.borrow = new ()
             {
                 Borrower = null,
                 BorrowedBooks = borrowedBooks,
@@ -92,6 +117,9 @@ namespace Library.DomainLayer.Tests.PersonTests
             Assert.IsNotNull(this.borrow.BorrowedBooks);
         }
 
+        /// <summary>
+        /// Defines the test method BorrowDateShouldNotBeHigherThanCurrentDate.
+        /// </summary>
         [TestMethod]
         public void BorrowDateShouldNotBeHigherThanCurrentDate()
         {
@@ -101,9 +129,13 @@ namespace Library.DomainLayer.Tests.PersonTests
                 Assert.IsFalse(false);
                 return;
             }
+
             Assert.IsTrue(false);
         }
 
+        /// <summary>
+        /// Defines the test method EndDateShouldNotExceedThreeMonths.
+        /// </summary>
         [TestMethod]
         public void EndDateShouldNotExceedThreeMonths()
         {
@@ -112,9 +144,13 @@ namespace Library.DomainLayer.Tests.PersonTests
             {
                 Assert.IsTrue(false);
             }
+
             Assert.IsTrue(true);
         }
 
+        /// <summary>
+        /// Defines the test method NoOfTimeExtendedShouldBeNoHigherThanThree.
+        /// </summary>
         [TestMethod]
         public void NoOfTimeExtendedShouldBeNoHigherThanThree()
         {
@@ -123,6 +159,7 @@ namespace Library.DomainLayer.Tests.PersonTests
             {
                 Assert.IsTrue(false);
             }
+
             Assert.IsTrue(true);
         }
     }

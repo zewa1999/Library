@@ -7,11 +7,11 @@
 /// </summary>
 namespace Library.DataLayer.Concretes
 {
-    using Library.DataLayer.Interfaces;
-    using Library.DomainLayer;
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using Library.DataLayer.Interfaces;
+    using Library.DomainLayer;
 
     /// <summary>
     /// Methods for the author controller.
@@ -22,7 +22,7 @@ namespace Library.DataLayer.Concretes
         /// Gets the domains list.
         /// </summary>
         /// <param name="book"> The book. </param>
-
+        /// <returns> ceva. </returns>
         public List<Domain> GetDomainsList(Book book)
         {
             var domainsList = new List<Domain>();
@@ -41,15 +41,16 @@ namespace Library.DataLayer.Concretes
         /// Gets the books with the same title.
         /// </summary>
         /// <param name="title"> The title. </param>
+        /// <returns> ceva. </returns>
         public IEnumerable<Book> GetBooksWithTheSameTitle(string title)
         {
             try
             {
-                return from book in this.ctx.Books where book.Title == title select book;
+                return from book in this.Ctx.Books where book.Title == title select book;
             }
             catch (Exception ex)
             {
-                this.logger.Error(ex.Message + "The query could not been made, will return empty list!");
+                this.Logger.Error(ex.Message + "The query could not been made, will return empty list!");
             }
 
             return new List<Book>();
@@ -68,7 +69,7 @@ namespace Library.DataLayer.Concretes
             }
             catch (Exception ex)
             {
-                this.logger.Error(ex.Message + "The query could not been made, will return empty list!");
+                this.Logger.Error(ex.Message + "The query could not been made, will return empty list!");
             }
 
             return new List<Book>();

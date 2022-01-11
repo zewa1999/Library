@@ -16,7 +16,6 @@ namespace Library.DomainLayer.Person
         /// Gets or sets the identifier.
         /// </summary>
         /// <value>The identifier.</value>
-
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int Id { get; set; }

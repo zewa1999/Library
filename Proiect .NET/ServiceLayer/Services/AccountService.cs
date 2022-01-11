@@ -13,7 +13,7 @@ namespace Library.ServiceLayer.Services
     /// <summary>
     /// Class AccountService.
     /// Implements the <see cref="Library.ServiceLayer.Services.BaseService{Library.DomainLayer.Person.Account, Library.DataLayer.Interfaces.IAccountRepository}" />
-    /// Implements the <see cref="Library.ServiceLayer.IServices.IAccountService" />
+    /// Implements the <see cref="Library.ServiceLayer.IServices.IAccountService" />.
     /// </summary>
     /// <seealso cref="Library.ServiceLayer.Services.BaseService{Library.DomainLayer.Person.Account, Library.DataLayer.Interfaces.IAccountRepository}" />
     /// <seealso cref="Library.ServiceLayer.IServices.IAccountService" />
@@ -25,7 +25,7 @@ namespace Library.ServiceLayer.Services
         public AccountService()
             : base(Injector.Create<IAccountRepository>(), Injector.Create<IPropertiesRepository>())
         {
-            this.validator = new AccountValidator();
+            this.Validator = new AccountValidator();
         }
     }
 }

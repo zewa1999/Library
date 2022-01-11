@@ -1,23 +1,45 @@
-﻿// <copyright file="EditionTests.cs" company="Transilvania University of Brasov">
-// Costache Stelian-Andrei
+﻿// ***********************************************************************
+// Assembly         : Library.DomainLayer.Tests
+// Author           : costa
+// Created          : 01-06-2022
+//
+// Last Modified By : costa
+// Last Modified On : 01-11-2022
+// ***********************************************************************
+// <copyright file="EditionTests.cs" company="Transilvania University of Brasov">
+//     Costache Stelian-Andrei
 // </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 namespace Library.DomainLayer.Tests
 {
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System.Linq;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    /// <summary>
+    /// Defines test class EditionTests.
+    /// </summary>
     [TestClass]
     public class EditionTests
     {
+        /// <summary>
+        /// The edition.
+        /// </summary>
         private Edition edition;
 
+        /// <summary>
+        /// Initializes this instance.
+        /// </summary>
         [TestInitialize]
         public void Initialize()
         {
-            this.edition = new();
+            this.edition = new ();
         }
 
+        /// <summary>
+        /// Defines the test method PublisherShouldHaveLessThanFiftyChars.
+        /// </summary>
         [TestMethod]
         public void PublisherShouldHaveLessThanFiftyChars()
         {
@@ -27,6 +49,9 @@ namespace Library.DomainLayer.Tests
             Assert.IsTrue(this.edition.Publisher.Length <= 50);
         }
 
+        /// <summary>
+        /// Defines the test method PublisherShouldHaveMoreThanFiftyChars.
+        /// </summary>
         [TestMethod]
         public void PublisherShouldHaveMoreThanFiftyChars()
         {
@@ -36,6 +61,9 @@ namespace Library.DomainLayer.Tests
             Assert.IsTrue(this.edition.Publisher.Length > 50);
         }
 
+        /// <summary>
+        /// Defines the test method YearShouldHaveLessThan4Chars.
+        /// </summary>
         [TestMethod]
         public void YearShouldHaveLessThan4Chars()
         {
@@ -45,6 +73,9 @@ namespace Library.DomainLayer.Tests
             Assert.IsTrue(this.edition.Year.Length <= 4);
         }
 
+        /// <summary>
+        /// Defines the test method YearShouldHaveOnlyNumbers.
+        /// </summary>
         [TestMethod]
         public void YearShouldHaveOnlyNumbers()
         {
@@ -53,6 +84,9 @@ namespace Library.DomainLayer.Tests
             Assert.IsTrue(this.edition.Year.All(char.IsDigit));
         }
 
+        /// <summary>
+        /// Defines the test method EditionNumberShouldBeLessThanFifty.
+        /// </summary>
         [TestMethod]
         public void EditionNumberShouldBeLessThanFifty()
         {
@@ -61,6 +95,9 @@ namespace Library.DomainLayer.Tests
             Assert.IsTrue(this.edition.EditionNumber < 50);
         }
 
+        /// <summary>
+        /// Defines the test method EditionNumberShouldNotBeNegative.
+        /// </summary>
         [TestMethod]
         public void EditionNumberShouldNotBeNegative()
         {
@@ -69,6 +106,9 @@ namespace Library.DomainLayer.Tests
             Assert.IsTrue(this.edition.EditionNumber < 0);
         }
 
+        /// <summary>
+        /// Defines the test method NumberOfPagesShouldNotBeNegative.
+        /// </summary>
         [TestMethod]
         public void NumberOfPagesShouldNotBeNegative()
         {

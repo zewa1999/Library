@@ -1,6 +1,16 @@
-﻿// <copyright file="PropertiesValidatorTests.cs" company="Transilvania University of Brasov">
-// Costache Stelian-Andrei
+﻿// ***********************************************************************
+// Assembly         : Library.DataLayer.Tests
+// Author           : costa
+// Created          : 01-06-2022
+//
+// Last Modified By : costa
+// Last Modified On : 01-11-2022
+// ***********************************************************************
+// <copyright file="PropertiesValidatorTests.cs" company="Transilvania University of Brasov">
+//     Costache Stelian-Andrei
 // </copyright>
+// <summary></summary>
+// ***********************************************************************
 
 namespace Library.DataLayer.Tests.ValidatorsTests
 {
@@ -9,17 +19,29 @@ namespace Library.DataLayer.Tests.ValidatorsTests
     using Library.DomainLayer;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+    /// <summary>
+    /// Defines test class PropertiesValidatorTests.
+    /// </summary>
     [TestClass]
     public class PropertiesValidatorTests
     {
+        /// <summary>
+        /// The validator.
+        /// </summary>
         private PropertiesValidator validator;
 
+        /// <summary>
+        /// Initializes this instance.
+        /// </summary>
         [TestInitialize]
         public void Initialize()
         {
-            this.validator = new();
+            this.validator = new ();
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenDomeniiIsNull.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenDomeniiIsNull()
         {
@@ -32,6 +54,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.DOMENII);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenDomeniiIsNotNull.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenDomeniiIsNotNull()
         {
@@ -44,6 +69,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveValidationErrorFor(a => a.DOMENII);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenDomeniiIsNotGreaterThan1.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenDomeniiIsNotGreaterThan1()
         {
@@ -56,6 +84,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.DOMENII);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenDomeniiIsGreaterThan1.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenDomeniiIsGreaterThan1()
         {
@@ -68,6 +99,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveValidationErrorFor(a => a.DOMENII);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenNrMaximCartiImprumutateIsNull.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenNrMaximCartiImprumutateIsNull()
         {
@@ -80,6 +114,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.C);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenNrMaximCartiImprumutateIsNotNull.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenNrMaximCartiImprumutateIsNotNull()
         {
@@ -92,6 +129,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveValidationErrorFor(a => a.C);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenNrMaximCartiImprumutateIsNotGreaterThan1.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenNrMaximCartiImprumutateIsNotGreaterThan1()
         {
@@ -104,6 +144,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.C);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenNrMaximCartiImprumutateIsGreaterThan1.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenNrMaximCartiImprumutateIsGreaterThan1()
         {
@@ -116,6 +159,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveValidationErrorFor(a => a.C);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenPerioadaIsNull.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenPerioadaIsNull()
         {
@@ -128,6 +174,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.PER);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenPerioadaIsNotNull.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenPerioadaIsNotNull()
         {
@@ -140,6 +189,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveValidationErrorFor(a => a.PER);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenPerioadaIsNotGreaterThan1.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenPerioadaIsNotGreaterThan1()
         {
@@ -152,6 +204,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.PER);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenPerioadaIsGreaterThan1.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenPerioadaIsGreaterThan1()
         {
@@ -164,6 +219,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveValidationErrorFor(a => a.PER);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenNrMaximCartiImprumutateAcelasiDomeniuIsNull.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenNrMaximCartiImprumutateAcelasiDomeniuIsNull()
         {
@@ -176,6 +234,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.D);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenNrMaximCartiImprumutateAcelasiDomeniuIsNotNull.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenNrMaximCartiImprumutateAcelasiDomeniuIsNotNull()
         {
@@ -188,6 +249,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveValidationErrorFor(a => a.D);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenNrMaximCartiImprumutateAcelasiDomeniuIsNotGreaterThan1.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenNrMaximCartiImprumutateAcelasiDomeniuIsNotGreaterThan1()
         {
@@ -200,6 +264,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.D);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenNrMaximCartiImprumutateAcelasiDomeniuIsGreaterThan1.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenNrMaximCartiImprumutateAcelasiDomeniuIsGreaterThan1()
         {
@@ -212,6 +279,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveValidationErrorFor(a => a.D);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenNumarMaximCartiIsNull.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenNumarMaximCartiIsNull()
         {
@@ -224,6 +294,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.NMC);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenNumarMaximCartiIsNotNull.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenNumarMaximCartiIsNotNull()
         {
@@ -236,6 +309,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveValidationErrorFor(a => a.NMC);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenNumarMaximCartiIsNotGreaterThan1.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenNumarMaximCartiIsNotGreaterThan1()
         {
@@ -248,6 +324,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.NMC);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenNumarMaximCartiIsGreaterThan1.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenNumarMaximCartiIsGreaterThan1()
         {
@@ -260,6 +339,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveValidationErrorFor(a => a.NMC);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenLimitaMaximaImprumutIsNull.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenLimitaMaximaImprumutIsNull()
         {
@@ -272,6 +354,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.LIM);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenLimitaMaximaImprumutIsNotNull.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenLimitaMaximaImprumutIsNotNull()
         {
@@ -284,6 +369,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveValidationErrorFor(a => a.LIM);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenLimitaMaximaImprumutIsNotGreaterThan1.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenLimitaMaximaImprumutIsNotGreaterThan1()
         {
@@ -296,6 +384,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.LIM);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenLimitaMaximaImprumutIsGreaterThan1.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenLimitaMaximaImprumutIsGreaterThan1()
         {
@@ -308,6 +399,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveValidationErrorFor(a => a.LIM);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenDeltaIsNull.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenDeltaIsNull()
         {
@@ -320,6 +414,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.DELTA);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenDeltaIsNotNull.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenDeltaIsNotNull()
         {
@@ -332,6 +429,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveValidationErrorFor(a => a.DELTA);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenDeltaIsNotGreaterThan1.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenDeltaIsNotGreaterThan1()
         {
@@ -344,6 +444,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.DELTA);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenDeltaIsGreaterThan1.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenDeltaIsGreaterThan1()
         {
@@ -356,6 +459,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveValidationErrorFor(a => a.DELTA);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenNumarCartiImprumutateZilnicIsNull.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenNumarCartiImprumutateZilnicIsNull()
         {
@@ -368,6 +474,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.NCZ);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenNumarCartiImprumutateZilnicIsNotNull.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenNumarCartiImprumutateZilnicIsNotNull()
         {
@@ -380,6 +489,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveValidationErrorFor(a => a.NCZ);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenNumarCartiImprumutateZilnicIsNotGreaterThan1.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenNumarCartiImprumutateZilnicIsNotGreaterThan1()
         {
@@ -392,6 +504,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.NCZ);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenNumarCartiImprumutateZilnicIsGreaterThan1.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenNumarCartiImprumutateZilnicIsGreaterThan1()
         {
@@ -404,6 +519,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveValidationErrorFor(a => a.NCZ);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenPersimpIsNull.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenPersimpIsNull()
         {
@@ -416,6 +534,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.PERSIMP);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenPersimpIsNotNull.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenPersimpIsNotNull()
         {
@@ -428,6 +549,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldNotHaveValidationErrorFor(a => a.PERSIMP);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenPersimpIsNotGreaterThan1.
+        /// </summary>
         [TestMethod]
         public void ShouldHaveErrorWhenPersimpIsNotGreaterThan1()
         {
@@ -440,6 +564,9 @@ namespace Library.DataLayer.Tests.ValidatorsTests
             result.ShouldHaveValidationErrorFor(a => a.PERSIMP);
         }
 
+        /// <summary>
+        /// Defines the test method ShouldNotHaveErrorWhenPersimpIsGreaterThan1.
+        /// </summary>
         [TestMethod]
         public void ShouldNotHaveErrorWhenPersimpIsGreaterThan1()
         {

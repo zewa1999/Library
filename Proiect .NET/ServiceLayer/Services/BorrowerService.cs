@@ -13,7 +13,7 @@ namespace Library.ServiceLayer.Services
     /// <summary>
     /// Class BorrowerService.
     /// Implements the <see cref="Library.ServiceLayer.Services.BaseService{Library.DomainLayer.Person.Borrower, Library.DataLayer.Interfaces.IBorrowerRepository}" />
-    /// Implements the <see cref="Library.ServiceLayer.IServices.IBorrowerService" />
+    /// Implements the <see cref="Library.ServiceLayer.IServices.IBorrowerService" />.
     /// </summary>
     /// <seealso cref="Library.ServiceLayer.Services.BaseService{Library.DomainLayer.Person.Borrower, Library.DataLayer.Interfaces.IBorrowerRepository}" />
     /// <seealso cref="Library.ServiceLayer.IServices.IBorrowerService" />
@@ -25,7 +25,7 @@ namespace Library.ServiceLayer.Services
         public BorrowerService()
             : base(Injector.Create<IBorrowerRepository>(), Injector.Create<IPropertiesRepository>())
         {
-            this.validator = new BorrowerValidator();
+            this.Validator = new BorrowerValidator();
         }
     }
 }

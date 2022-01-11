@@ -4,12 +4,12 @@
 
 namespace Library.ServiceLayer.Tests
 {
+    using System.Collections.Generic;
+    using System.Linq;
     using Library.DomainLayer;
     using Library.ServiceLayer.IServices;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Moq;
-    using System.Collections.Generic;
-    using System.Linq;
 
     /// <summary>
     /// Defines test class EditionServiceTests.
@@ -18,12 +18,12 @@ namespace Library.ServiceLayer.Tests
     public class EditionServiceTests
     {
         /// <summary>
-        /// The edition service mock
+        /// The edition service mock.
         /// </summary>
         private Mock<IEditionService> editionServiceMock;
 
         /// <summary>
-        /// The edition service
+        /// The edition service.
         /// </summary>
         private IEditionService editionService;
 
@@ -67,11 +67,14 @@ namespace Library.ServiceLayer.Tests
             this.editionServiceMock.Setup(x => x.GetAll(null, book => book.OrderBy(x => x.Id), null))
                 .Returns(
                 new List<Edition>()
-                { new Edition {
+                {
+                    new Edition
+                {
                 Publisher = "Cartea studentilor saraci",
                 Year = "1999",
                 EditionNumber = int.MaxValue,
-                NumberOfPages = 1},
+                NumberOfPages = 1,
+                },
                 });
 
             this.editionService = this.editionServiceMock.Object;
@@ -106,7 +109,6 @@ namespace Library.ServiceLayer.Tests
             Assert.AreEqual(1, result.Id);
             Assert.AreEqual(1, result.NumberOfPages);
             Assert.AreEqual("Cartea studentilor saraci", result.Publisher);
-            // etc
         }
 
         /// <summary>

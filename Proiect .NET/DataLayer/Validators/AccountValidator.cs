@@ -7,13 +7,13 @@
 /// </summary>
 namespace Library.DataLayer.Validators
 {
+    using System.Linq;
     using FluentValidation;
     using Library.DomainLayer.Person;
-    using System.Linq;
 
     /// <summary>
     /// Class AccountValidator.
-    /// Implements the <see cref="FluentValidation.AbstractValidator{Account}" />
+    /// Implements the <see cref="FluentValidation.AbstractValidator{Account}" />.
     /// </summary>
     /// <seealso cref="FluentValidation.AbstractValidator{Account}" />
     public class AccountValidator : AbstractValidator<Account>
@@ -37,13 +37,14 @@ namespace Library.DataLayer.Validators
         /// Doeses the not contain letters.
         /// </summary>
         /// <param name="phoneNumber">The phone number.</param>
-        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        /// <returns><c>true</c> if bool, <c>false</c> otherwise.</returns>
         protected bool DoesNotContainLetters(string phoneNumber)
         {
             if (phoneNumber == null)
             {
                 return false;
             }
+
             return phoneNumber.Any(x => !char.IsLetter(x));
         }
     }

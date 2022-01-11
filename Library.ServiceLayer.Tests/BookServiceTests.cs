@@ -4,12 +4,12 @@
 
 namespace Library.ServiceLayer.Tests
 {
+    using System.Collections.Generic;
+    using System.Linq;
     using Library.DomainLayer;
     using Library.ServiceLayer.IServices;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Moq;
-    using System.Collections.Generic;
-    using System.Linq;
 
     /// <summary>
     /// Defines test class BookServiceTests.
@@ -18,12 +18,12 @@ namespace Library.ServiceLayer.Tests
     public class BookServiceTests
     {
         /// <summary>
-        /// The book service mock
+        /// The book service mock.
         /// </summary>
         private Mock<IBookService> bookServiceMock;
 
         /// <summary>
-        /// The book service
+        /// The book service.
         /// </summary>
         private IBookService bookService;
 
@@ -60,7 +60,7 @@ namespace Library.ServiceLayer.Tests
             this.bookServiceMock.Setup(x => x.GetAll(null, book => book.OrderBy(x => x.Id), null))
                 .Returns(
                 new List<Book>()
-                {TestUtils.GetBookModel()});
+                { TestUtils.GetBookModel() });
 
             this.bookService = this.bookServiceMock.Object;
 
@@ -122,41 +122,6 @@ namespace Library.ServiceLayer.Tests
             var result = this.bookService.DeleteById(1);
 
             Assert.IsTrue(result);
-        }
-
-        /// <summary>
-        /// Tests the check if domain exists.
-        /// </summary>
-        public void TestCheckIfDomainExists()
-        {
-        }
-
-        /// <summary>
-        /// Tests the book has correct domains.
-        /// </summary>
-        public void TestBookHasCorrectDomains()
-        {
-        }
-
-        /// <summary>
-        /// Tests the get domains without the first.
-        /// </summary>
-        public void TestGetDomainsWithoutTheFirst()
-        {
-        }
-
-        /// <summary>
-        /// Tests the add ancestor domains.
-        /// </summary>
-        public void TestAddAncestorDomains()
-        {
-        }
-
-        /// <summary>
-        /// Tests the get domains with the first.
-        /// </summary>
-        public void TestGetDomainsWithTheFirst()
-        {
         }
     }
 }

@@ -4,10 +4,10 @@
 
 namespace Library.ServiceLayer.Tests
 {
-    using Library.DomainLayer;
-    using Library.DomainLayer.Person;
     using System;
     using System.Collections.Generic;
+    using Library.DomainLayer;
+    using Library.DomainLayer.Person;
 
     /// <summary>
     /// Class TestUtils.
@@ -17,6 +17,7 @@ namespace Library.ServiceLayer.Tests
         /// <summary>
         /// Gets the borrow model.
         /// </summary>
+        /// <returns> ceva. </returns>
         public static Borrow GetBorrowModel()
         {
             var author = new Author()
@@ -77,6 +78,7 @@ namespace Library.ServiceLayer.Tests
         /// <summary>
         /// Gets the borrow model with identifier.
         /// </summary>
+        /// <returns> ceva. </returns>
         public static Borrow GetBorrowModelWithId()
         {
             var author = new Author()
@@ -138,6 +140,7 @@ namespace Library.ServiceLayer.Tests
         /// <summary>
         /// Gets the book model.
         /// </summary>
+        /// <returns> ceva. </returns>
         public static Book GetBookModel()
         {
             var author = new Author()
@@ -190,6 +193,7 @@ namespace Library.ServiceLayer.Tests
         /// <summary>
         /// Gets the book model with identifier.
         /// </summary>
+        /// <returns> ceva. </returns>
         public static Book GetBookModelWithId()
         {
             var author = new Author()

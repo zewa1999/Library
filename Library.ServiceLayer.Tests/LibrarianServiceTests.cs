@@ -4,12 +4,12 @@
 
 namespace Library.ServiceLayer.Tests
 {
+    using System.Collections.Generic;
+    using System.Linq;
     using Library.DomainLayer.Person;
     using Library.ServiceLayer.IServices;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Moq;
-    using System.Collections.Generic;
-    using System.Linq;
 
     /// <summary>
     /// Defines test class LibrarianServiceTests.
@@ -18,12 +18,12 @@ namespace Library.ServiceLayer.Tests
     public class LibrarianServiceTests
     {
         /// <summary>
-        /// The librarian service mock
+        /// The librarian service mock.
         /// </summary>
         private Mock<ILibrarianService> librarianServiceMock;
 
         /// <summary>
-        /// The librarian service
+        /// The librarian service.
         /// </summary>
         private ILibrarianService librarianService;
 
@@ -89,7 +89,7 @@ namespace Library.ServiceLayer.Tests
             this.librarianServiceMock.Setup(x => x.GetAll(null, book => book.OrderBy(x => x.Id), null))
                 .Returns(
                 new List<Librarian>()
-                {librarian});
+                { librarian });
 
             this.librarianService = this.librarianServiceMock.Object;
 
@@ -131,7 +131,6 @@ namespace Library.ServiceLayer.Tests
             Assert.AreEqual(1, result.Id);
             Assert.AreEqual("Gogu", result.LastName);
             Assert.AreEqual("Mortu", result.FirstName);
-            // etc
         }
 
         /// <summary>

@@ -12,7 +12,7 @@ namespace Proiect_.NET.Injection
 
     /// <summary>
     /// Class Bindings.
-    /// Implements the <see cref="Ninject.Modules.NinjectModule" />
+    /// Implements the <see cref="Ninject.Modules.NinjectModule" />.
     /// </summary>
     /// <seealso cref="Ninject.Modules.NinjectModule" />
     public class Bindings : NinjectModule
