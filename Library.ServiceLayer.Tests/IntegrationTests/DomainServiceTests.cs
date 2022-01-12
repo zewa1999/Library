@@ -94,9 +94,6 @@ namespace Library.ServiceLayer.Tests.IntegrationTests
 
             // Delete
             Assert.IsTrue(this.service.DeleteById(dbDomain.Id));
-
-            // Clean table
-            Assert.IsTrue(this.service.DeleteAll());
         }
 
         /// <summary>
@@ -113,6 +110,16 @@ namespace Library.ServiceLayer.Tests.IntegrationTests
             };
 
             Assert.IsFalse(this.service.Insert(domain));
+        }
+
+        /// <summary>
+        /// Cleanups this instance.
+        /// </summary>
+        [TestCleanup]
+        public void Cleanup()
+        {
+            // Clean table
+            Assert.IsTrue(this.service.DeleteAll());
         }
     }
 }

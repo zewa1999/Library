@@ -25,7 +25,7 @@ namespace Library.ServiceLayer.IServices
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-        bool CheckMaxBorrowBooksToday(Borrow entity);
+        bool CheckMaxBorrowBooksToday();
 
         /// <summary>
         /// Checks the can borrow maximum NMC in per.
@@ -47,12 +47,5 @@ namespace Library.ServiceLayer.IServices
         /// <param name="entity">The entity.</param>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         bool CheckBorrowedBooksForMaxCBooks(Borrow entity);
-
-        /// <summary>
-        /// Checks if borrow books of the same domain in last l months.
-        /// </summary>
-        /// <param name="entity">The entity.</param>
-        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-        bool CheckIfBorrowBooksOfTheSameDomainInLastLMonths(Borrow entity);
     }
 }

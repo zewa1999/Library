@@ -71,7 +71,14 @@ namespace Library.ServiceLayer.Tests.IntegrationTests
 
             // Delete
             Assert.IsTrue(this.service.DeleteById(dbBorrower.Id));
+        }
 
+        /// <summary>
+        /// Cleanups this instance.
+        /// </summary>
+        [TestCleanup]
+        public void Cleanup()
+        {
             // Clean librarian table
             Assert.IsTrue(this.service.DeleteAll());
 

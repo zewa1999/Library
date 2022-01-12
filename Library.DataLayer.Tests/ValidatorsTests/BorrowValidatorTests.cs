@@ -182,21 +182,6 @@ namespace Library.DataLayer.Tests.ValidatorsTests
         }
 
         /// <summary>
-        /// Defines the test method ShouldHaveErrorWhenBorrowedBooksCollectionIsEmpty.
-        /// </summary>
-        [TestMethod]
-        public void ShouldHaveErrorWhenBorrowedBooksCollectionIsEmpty()
-        {
-            var model = new Borrow()
-            {
-                BorrowedBooks = new List<Book>(),
-            };
-
-            var result = this.validator.TestValidate(model);
-            result.ShouldHaveValidationErrorFor(a => a.BorrowedBooks);
-        }
-
-        /// <summary>
         /// Defines the test method ShouldHaveErrorWhenBorrowDateIsHighenThanDateTimeNow.
         /// </summary>
         [TestMethod]

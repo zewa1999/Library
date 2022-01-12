@@ -9,6 +9,7 @@ namespace Library.ServiceLayer.Tests.IntegrationTests
     using System.Linq;
     using Library.DomainLayer;
     using Library.DomainLayer.Person;
+    using Library.ServiceLayer.IServices;
     using Library.ServiceLayer.Services;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Proiect_.NET.Injection;
@@ -106,24 +107,6 @@ namespace Library.ServiceLayer.Tests.IntegrationTests
 
             // Delete
             Assert.IsTrue(this.service.DeleteById(dbBook.Id));
-
-            // Clean Book table
-            Assert.IsTrue(this.service.DeleteAll());
-
-            // Clean Author table
-            var authorService = Injector.Create<AuthorService>();
-            Assert.IsTrue(authorService.DeleteAll());
-
-            // Clean Domain table
-            var domainService = Injector.Create<DomainService>();
-            Assert.IsTrue(domainService.DeleteAll());
-
-            // Clean Edition table
-            var editionService = Injector.Create<EditionService>();
-            Assert.IsTrue(editionService.DeleteAll());
-
-            // Clean Properties table
-            Assert.IsTrue(propertiesService.DeleteAll());
         }
 
         /// <summary>
@@ -197,6 +180,32 @@ namespace Library.ServiceLayer.Tests.IntegrationTests
             };
 
             Assert.IsTrue(this.service.BookHasCorrectDomains(book));
+        }
+
+        /// <summary>
+        /// Cleanups this instance.
+        /// </summary>
+        [TestCleanup]
+        public void Cleanup()
+        {
+            // Clean Book table
+            this.service.DeleteAll();
+
+            // Clean Author table
+            var authorService = Injector.Create<AuthorService>();
+            Assert.IsTrue(authorService.DeleteAll());
+
+            // Clean Domain table
+            var domainService = Injector.Create<DomainService>();
+            Assert.IsTrue(domainService.DeleteAll());
+
+            // Clean Edition table
+            var editionService = Injector.Create<EditionService>();
+            Assert.IsTrue(editionService.DeleteAll());
+
+            // Clean Properties table
+            var propertiesService = Injector.Create<PropertiesService>();
+            Assert.IsTrue(propertiesService.DeleteAll());
         }
     }
 }

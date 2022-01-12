@@ -40,8 +40,7 @@ namespace Library.DataLayer.Validators
                 .NotNull().WithMessage("Complete Date is not a valid date.");
 
             this.RuleFor(b => b.BorrowedBooks)
-               .NotNull().WithMessage("Null {PropertyName}")
-               .Must(this.HaveEntities).WithMessage("{PropertyName} is Empty");
+               .NotNull().WithMessage("Null {PropertyName}");
 
             this.RuleFor(b => b.BorrowDate)
                 .LessThan(DateTime.Now).WithMessage("{PropertyName} is not less than")
@@ -50,22 +49,6 @@ namespace Library.DataLayer.Validators
             this.RuleFor(b => b.Librarian).SetValidator(new LibrarianValidator());
 
             this.RuleForEach(b => b.BorrowedBooks).SetValidator(new BookValidator());
-        }
-
-        /// <summary>
-        /// Haves the entities.
-        /// </summary>
-        /// <typeparam name="T"> Ceva. </typeparam>
-        /// <param name="entities">The entities.</param>
-        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-        protected bool HaveEntities<T>(ICollection<T> entities)
-        {
-            if (entities == null || entities.Count == 0)
-            {
-                return false;
-            }
-
-            return true;
         }
     }
 }

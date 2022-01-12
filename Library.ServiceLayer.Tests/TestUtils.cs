@@ -44,7 +44,7 @@ namespace Library.ServiceLayer.Tests
                 Publisher = "Cartea studentilor saraci",
                 Year = "1999",
                 EditionNumber = int.MaxValue,
-                NumberOfPages = 1,
+                NumberOfPages = 250,
             };
 
             var borrower = new Borrower()
@@ -54,20 +54,28 @@ namespace Library.ServiceLayer.Tests
                 Address = "Bucuresti, strada Mihai Viteazu, nr 7, bloc C3, ap 26",
                 Account = account,
             };
+
+            var editions = new List<Edition>();
+            editions.Add(edition);
+            var domains = new List<Domain>();
+            domains.Add(domain);
+            var authors = new List<Author>();
+            authors.Add(author);
+
             var book = new Book()
             {
                 Title = "Head first design patters",
                 LecturesOnlyBook = false,
                 IsBorrowed = false,
                 Type = "Hard  cover",
-                Authors = new List<Author>() { author },
-                Domains = new List<Domain>() { domain },
-                Editions = new List<Edition>() { edition },
+                Authors = authors,
+                Domains = domains,
+                Editions = editions,
             };
 
             return new Borrow()
             {
-                BorrowDate = DateTime.Now,
+                BorrowDate = DateTime.Now.AddMonths(-1),
                 EndDate = DateTime.Now.AddMonths(3),
                 NoOfTimeExtended = 1,
                 Borrower = borrower,
@@ -167,7 +175,7 @@ namespace Library.ServiceLayer.Tests
                 Publisher = "Cartea studentilor saraci",
                 Year = "1999",
                 EditionNumber = int.MaxValue,
-                NumberOfPages = 1,
+                NumberOfPages = 250,
             };
 
             var borrower = new Borrower()
@@ -188,6 +196,22 @@ namespace Library.ServiceLayer.Tests
                 Domains = new List<Domain>() { domain },
                 Editions = new List<Edition>() { edition },
             };
+        }
+
+        /// <summary>
+        /// Gets the list of books.
+        /// </summary>
+        /// <returns> list of books. </returns>
+        public static List<Book> GetListOfBooks()
+        {
+            var list = new List<Book>();
+
+            for (int i = 0; i < 30; i++)
+            {
+                list.Add(GetBookModel());
+            }
+
+            return list;
         }
 
         /// <summary>

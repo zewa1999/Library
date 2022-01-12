@@ -67,9 +67,6 @@ namespace Library.ServiceLayer.Tests.IntegrationTests
 
             // Delete
             Assert.IsTrue(this.service.DeleteById(dbProperties.Id));
-
-            // Clean table
-            Assert.IsTrue(this.service.DeleteAll());
         }
 
         /// <summary>
@@ -98,6 +95,16 @@ namespace Library.ServiceLayer.Tests.IntegrationTests
             };
 
             Assert.IsFalse(this.service.Update(properties));
+        }
+
+        /// <summary>
+        /// Cleanups this instance.
+        /// </summary>
+        [TestCleanup]
+        public void Cleanup()
+        {
+            // Clean table
+            Assert.IsTrue(this.service.DeleteAll());
         }
     }
 }
