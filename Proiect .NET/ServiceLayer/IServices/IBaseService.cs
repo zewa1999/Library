@@ -31,18 +31,18 @@ namespace Library.ServiceLayer.IServices
         bool Update(T entity);
 
         /// <summary>
-        /// Deletes the specified identifier.
-        /// </summary>
-        /// <param name="entity"> The entity. </param>
-        /// <returns> T. </returns>
-        bool Delete(T entity);
-
-        /// <summary>
         /// Deletes the by identifier.
         /// </summary>
         /// <param name="entity"> The entity. </param>
         /// <returns> T. </returns>
         bool DeleteById(object entity);
+
+        /// <summary>
+        /// Deletes all.
+        /// </summary>
+        /// <param name="entity">The entity.</param>
+        /// <returns> ceva. </returns>
+        bool DeleteAll();
 
         /// <summary>
         /// Gets the by identifier.

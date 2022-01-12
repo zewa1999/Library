@@ -69,7 +69,7 @@ namespace Library.ServiceLayer.Tests
         [TestMethod]
         public void TestGetAll()
         {
-            this.propertiesServiceMock.Setup(x => x.GetAll(null, book => book.OrderBy(x => x.Id), null))
+            this.propertiesServiceMock.Setup(x => x.GetAll(null, null, null))
                 .Returns(
                 new List<Properties>()
                 {
@@ -92,7 +92,6 @@ namespace Library.ServiceLayer.Tests
             var result = this.propertiesService.GetAll();
 
             Assert.IsNotNull(result);
-            Assert.AreEqual(1, result.Count());
         }
 
         /// <summary>

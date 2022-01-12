@@ -35,10 +35,4 @@
     <ProjectReference Include="..\Proiect .NET\Library.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="StyleCop.Cache">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>

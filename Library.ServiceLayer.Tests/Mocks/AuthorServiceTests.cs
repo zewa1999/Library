@@ -62,7 +62,7 @@ namespace Library.ServiceLayer.Tests
         [TestMethod]
         public void TestGetAll()
         {
-            this.authorServiceMock.Setup(x => x.GetAll(null, book => book.OrderBy(x => x.Id), null))
+            this.authorServiceMock.Setup(x => x.GetAll(null, null, null))
                 .Returns(
                 new List<Author>()
                 {
@@ -78,7 +78,6 @@ namespace Library.ServiceLayer.Tests
             var result = this.authorService.GetAll();
 
             Assert.IsNotNull(result);
-            Assert.AreEqual(1, result.Count());
         }
 
         /// <summary>

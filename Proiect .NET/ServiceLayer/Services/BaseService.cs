@@ -104,16 +104,6 @@ namespace Library.ServiceLayer.Services
         }
 
         /// <summary>
-        /// Deletes the specified identifier.
-        /// </summary>
-        /// <param name="entity">The entity.</param>
-        /// <returns> ceva. </returns>
-        public virtual bool Delete(TModel entity)
-        {
-            return this.Repository.Delete(entity);
-        }
-
-        /// <summary>
         /// Deletes the by identifier.
         /// </summary>
         /// <param name="id"> The identifier. </param>
@@ -146,6 +136,16 @@ namespace Library.ServiceLayer.Services
             string includeProperties = "")
         {
             return this.Repository.Get(filter, orderBy, includeProperties);
+        }
+
+        /// <summary>
+        /// Deletes all.
+        /// </summary>
+        /// <param name="entity">The entity.</param>
+        /// <returns> ceva. </returns>
+        public bool DeleteAll()
+        {
+           return this.Repository.DeleteAllEntitiesFromTable();
         }
     }
 }

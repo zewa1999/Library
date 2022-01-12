@@ -59,30 +59,6 @@ namespace Library.ServiceLayer.Services
         }
 
         /// <summary>
-        /// Checks if domain exists.
-        /// </summary>
-        /// <param name="domain">The domain.</param>
-        /// <param name="domains">The domains.</param>
-        /// <returns> ceva. </returns>
-        public bool CheckIfDomainExists(Domain domain, List<Domain> domains)
-        {
-            var noOfBadDomains = (from d in domains where d.Id == domain.Id select d).Count();
-
-            if (domain.ParentDomain == null)
-            {
-                domains.Add(domain);
-                return false;
-            }
-
-            if (noOfBadDomains >= 1)
-            {
-                return false;
-            }
-
-            return this.CheckIfDomainExists(domain.ParentDomain, domains);
-        }
-
-        /// <summary>
         ///  Se va verifica faptul ca o carte nu poate sa se specifice explicit ca fiind din domenii aflate in relatia stramos-descendent.
         /// Books the has correct domains.
         /// </summary>
@@ -97,7 +73,7 @@ namespace Library.ServiceLayer.Services
                 this.GetDomainsWithoutTheFirst(domain, domainsList);
                 foreach (var parentDomain in domainsList)
                 {
-                    if (parentDomain != null && domain.Id == parentDomain.Id)
+                    if (domain.Id == parentDomain.Id)
                     {
                         return false;
                     }
@@ -147,19 +123,11 @@ namespace Library.ServiceLayer.Services
         {
             if (domain.ParentDomain == null)
             {
-                domains.Add(domain.ParentDomain);
                 return;
             }
 
-            if (domains.Count == 0)
-            {
-                this.GetDomainsWithoutTheFirst(domain.ParentDomain, domains);
-            }
-            else
-            {
-                domains.Add(domain.ParentDomain);
-                this.GetDomainsWithoutTheFirst(domain.ParentDomain, domains);
-            }
+            domains.Add(domain.ParentDomain);
+            this.GetDomainsWithoutTheFirst(domain.ParentDomain, domains);
         }
 
         /// <summary>

@@ -129,7 +129,7 @@ namespace Library.DataLayer.Tests.ValidatorsTests
         {
             var model = new Borrow()
             {
-                BorrowDate = DateTime.Now,
+                BorrowDate = DateTime.Now.AddMonths(-1),
             };
 
             var result = this.validator.TestValidate(model);
@@ -194,6 +194,21 @@ namespace Library.DataLayer.Tests.ValidatorsTests
 
             var result = this.validator.TestValidate(model);
             result.ShouldHaveValidationErrorFor(a => a.BorrowedBooks);
+        }
+
+        /// <summary>
+        /// Defines the test method ShouldHaveErrorWhenBorrowDateIsHighenThanDateTimeNow.
+        /// </summary>
+        [TestMethod]
+        public void ShouldHaveErrorWhenBorrowDateIsHighenThanDateTimeNow()
+        {
+            var model = new Borrow()
+            {
+                BorrowDate = DateTime.Now.AddMonths(1),
+            };
+
+            var result = this.validator.TestValidate(model);
+            result.ShouldHaveValidationErrorFor(a => a.BorrowDate);
         }
     }
 }

@@ -43,14 +43,13 @@ namespace Library.ServiceLayer.Services
         }
 
         /// <summary>
-        /// Deletes the specified entity.
+        /// Deletes all.
         /// </summary>
         /// <param name="entity">The entity.</param>
-        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-        /// <exception cref="NotImplementedException"> o exceptie. </exception>
-        public bool Delete(Properties entity)
+        /// <returns> ceva. </returns>
+        public bool DeleteAll()
         {
-            return this.repository.Delete(entity);
+            return this.repository.DeleteAllEntitiesFromTable();
         }
 
         /// <summary>

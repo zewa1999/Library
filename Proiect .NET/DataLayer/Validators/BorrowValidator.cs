@@ -7,6 +7,7 @@
 /// </summary>
 namespace Library.DataLayer.Validators
 {
+    using System;
     using System.Collections.Generic;
     using FluentValidation;
     using Library.DomainLayer;
@@ -41,6 +42,12 @@ namespace Library.DataLayer.Validators
             this.RuleFor(b => b.BorrowedBooks)
                .NotNull().WithMessage("Null {PropertyName}")
                .Must(this.HaveEntities).WithMessage("{PropertyName} is Empty");
+
+            this.RuleFor(b => b.BorrowDate)
+                .LessThan(DateTime.Now).WithMessage("{PropertyName} is not less than")
+                .NotNull().WithMessage("Null {PropertyName}");
+
+            this.RuleFor(b => b.Librarian).SetValidator(new LibrarianValidator());
 
             this.RuleForEach(b => b.BorrowedBooks).SetValidator(new BookValidator());
         }

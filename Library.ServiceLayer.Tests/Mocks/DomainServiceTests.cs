@@ -70,7 +70,7 @@ namespace Library.ServiceLayer.Tests
                 ChildrenDomains = new List<Domain>(),
             };
 
-            this.domainServiceMock.Setup(x => x.GetAll(null, book => book.OrderBy(x => x.Id), null))
+            this.domainServiceMock.Setup(x => x.GetAll(null, null, null))
                 .Returns(
                 new List<Domain>()
                 { domain });
@@ -80,7 +80,6 @@ namespace Library.ServiceLayer.Tests
             var result = this.domainService.GetAll();
 
             Assert.IsNotNull(result);
-            Assert.AreEqual(1, result.Count());
         }
 
         /// <summary>

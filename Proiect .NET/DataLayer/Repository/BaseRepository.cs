@@ -195,5 +195,27 @@ namespace Library.DataLayer
 
             return null;
         }
+
+        /// <summary>
+        /// Deletes all entities from table.
+        /// </summary>
+        /// <param name="entity">The entity.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        public bool DeleteAllEntitiesFromTable()
+        {
+            try
+            {
+                var dbSet = this.Ctx.Set<T>();
+                dbSet.RemoveRange(dbSet);
+                this.Ctx.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                this.Logger.Error(ex.Message + ex.InnerException + "The DeleteAllEntitiesFromTable could not been made.");
+                return false;
+            }
+
+            return true;
+        }
     }
 }
